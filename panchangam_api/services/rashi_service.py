@@ -74,20 +74,21 @@ ELEMENT_NAMES = {
     "bengali": {"fire": "অগ্নি (Fire)", "earth": "ভূমি (Earth)", "air": "বায়ু (Air)", "water": "জল (Water)"},
 }
 
-# Traditional Parabhava Samvatsara Kandadayam (Adayam, Vyayam, Rajapujyam, Avamanam)
+# Traditional Parabhava Samvatsara (2026-2027) Kandadayam: (Adayam, Vyayam, Rajapujyam, Avamanam)
+# Based on planetary lordship pairs and Ugadi Chaitra Shukla Pratipada horizon Ganitam:
 PARABHAVA_KANDADAYAM = [
-    (8, 14, 4, 3),   # Mesha
-    (2, 8, 7, 3),    # Vrishabha
-    (5, 5, 3, 6),    # Mithuna
-    (14, 2, 6, 6),   # Karkataka
-    (2, 8, 2, 2),    # Simha
-    (5, 5, 5, 2),    # Kanya
-    (2, 8, 1, 5),    # Tula
-    (8, 14, 4, 5),   # Vrishchika
-    (11, 5, 7, 5),   # Dhanus
-    (14, 14, 3, 1),  # Makara
-    (14, 14, 6, 1),  # Kumbha
-    (11, 5, 2, 4),   # Meena
+    (11, 5, 2, 4),   # Mesha (Aries - Mars)
+    (5, 14, 5, 4),   # Vrishabha (Taurus - Venus)
+    (8, 11, 1, 7),   # Mithuna (Gemini - Mercury)
+    (2, 11, 4, 7),   # Karkataka (Cancer - Moon)
+    (5, 5, 7, 7),    # Simha (Leo - Sun)
+    (8, 11, 3, 3),   # Kanya (Virgo - Mercury)
+    (5, 14, 6, 3),   # Tula (Libra - Venus)
+    (11, 5, 2, 6),   # Vrishchika (Scorpio - Mars)
+    (14, 11, 5, 6),  # Dhanus (Sagittarius - Jupiter)
+    (2, 8, 1, 2),    # Makara (Capricorn - Saturn)
+    (2, 8, 4, 2),    # Kumbha (Aquarius - Saturn)
+    (14, 11, 7, 5),  # Meena (Pisces - Jupiter)
 ]
 
 # 9 Tara Bala Names in Telugu & English
