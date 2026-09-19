@@ -38,7 +38,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="/static/styles.css?v=4.0">
+  <link rel="stylesheet" href="/static/styles.css?v=5.0">
 </head>
 <body class="min-h-screen flex flex-col bg-[#faf7f2] text-stone-800">
 
@@ -1151,9 +1151,15 @@
   </footer>
 
   <!-- App Logic -->
-  <script src="/static/app.js?v=4.0"></script>
+  <script src="/static/app.js?v=5.0"></script>
   <script>
-    lucide.createIcons();
+    try {
+      if (window.lucide && typeof lucide.createIcons === 'function') {
+        lucide.createIcons();
+      }
+    } catch (e) {
+      console.warn("Lucide icons init error:", e);
+    }
   </script>
 </body>
 </html>

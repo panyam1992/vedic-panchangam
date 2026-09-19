@@ -1129,7 +1129,7 @@ function loadData() {
 async function fetchDaily() {
   showLoader(true);
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 20000);
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
   try {
     const url = `/api/v1/panchangam/daily?city=${encodeURIComponent(STATE.city)}&lat=${STATE.lat}&lon=${STATE.lon}&tz=${encodeURIComponent(STATE.tz)}&date=${STATE.date}&language=${STATE.lang}`;
     const res = await fetch(url, { signal: controller.signal });
@@ -1395,15 +1395,19 @@ function renderDaily(data) {
 // Fetch Monthly Calendar
 async function fetchMonthly() {
   showLoader(true);
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
   try {
     const url = `/api/v1/panchangam/monthly?city=${encodeURIComponent(STATE.city)}&lat=${STATE.lat}&lon=${STATE.lon}&tz=${encodeURIComponent(STATE.tz)}&year=${STATE.year}&month=${STATE.month}&language=${STATE.lang}`;
-    const res = await fetch(url);
+    const res = await fetch(url, { signal: controller.signal });
+    clearTimeout(timeoutId);
     if (!res.ok) throw new Error("Failed to fetch monthly calendar");
     const data = await res.json();
     STATE.monthlyData = data;
     renderMonthly(data);
   } catch (err) {
-    console.error(err);
+    clearTimeout(timeoutId);
+    console.error("Monthly fetch error:", err);
   } finally {
     showLoader(false);
   }
@@ -1482,6 +1486,8 @@ function renderMonthly(data) {
 // Fetch Custom Vedic Sankalpam
 async function fetchSankalpa() {
   showLoader(true);
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
   try {
     const gotra = document.getElementById('sankalpaGotra').value.trim();
     const sharma = document.getElementById('sankalpaSharma').value.trim();
@@ -1492,13 +1498,15 @@ async function fetchSankalpa() {
     if (sharma) url += `&sharma_name=${encodeURIComponent(sharma)}`;
     if (deity) url += `&kula_devata=${encodeURIComponent(deity)}`;
 
-    const res = await fetch(url);
+    const res = await fetch(url, { signal: controller.signal });
+    clearTimeout(timeoutId);
     if (!res.ok) throw new Error("Failed to generate sankalpam");
     const data = await res.json();
     STATE.sankalpaData = data;
     renderSankalpa(data);
   } catch (err) {
-    console.error(err);
+    clearTimeout(timeoutId);
+    console.error("Sankalpa fetch error:", err);
   } finally {
     showLoader(false);
   }
@@ -1635,6 +1643,8 @@ async function fetchRashi(period = null) {
   }
 
   showLoader(true);
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
   try {
     let url = '';
     if (curPeriod === 'daily') {
@@ -1645,13 +1655,15 @@ async function fetchRashi(period = null) {
       url = `/api/v1/rashi/yearly?year=${STATE.year}&language=${STATE.lang}`;
     }
 
-    const res = await fetch(url);
+    const res = await fetch(url, { signal: controller.signal });
+    clearTimeout(timeoutId);
     if (!res.ok) throw new Error("Failed to fetch rashi phalalu");
     const data = await res.json();
     STATE.rashiData[curPeriod] = data;
 
     renderRashiView();
   } catch (err) {
+    clearTimeout(timeoutId);
     console.error("Error fetching Rashi Phalalu:", err);
   } finally {
     showLoader(false);
@@ -1995,13 +2007,17 @@ function renderRashiDetails(item, curPeriod) {
 async function fetchIntercalary() {
   const sys = STATE.intercalarySystem || 'surya_siddhanta';
   showLoader(true);
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
   try {
-    const res = await fetch(`/api/v1/panchangam/intercalary-months?start_year=2026&end_year=2036&system=${sys}&language=${STATE.lang}`);
+    const res = await fetch(`/api/v1/panchangam/intercalary-months?start_year=2026&end_year=2036&system=${sys}&language=${STATE.lang}`, { signal: controller.signal });
+    clearTimeout(timeoutId);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     STATE.intercalaryData = data;
     renderIntercalary(data);
   } catch (err) {
+    clearTimeout(timeoutId);
     console.error('Error fetching intercalary months:', err);
   } finally {
     showLoader(false);
@@ -2079,13 +2095,17 @@ function renderIntercalary(data) {
 
 async function fetchKandadayam() {
   showLoader(true);
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
   try {
-    const res = await fetch(`/api/v1/rashi/kandadayam-all?year=${STATE.year}&language=${STATE.lang}`);
+    const res = await fetch(`/api/v1/rashi/kandadayam-all?year=${STATE.year}&language=${STATE.lang}`, { signal: controller.signal });
+    clearTimeout(timeoutId);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     STATE.kandadayamData = data;
     renderKandadayam(data);
   } catch (err) {
+    clearTimeout(timeoutId);
     console.error('Error fetching Kandadayam data:', err);
   } finally {
     showLoader(false);
@@ -2494,10 +2514,24 @@ function setupKandadayamControls() {
   }
 }
 
+let loaderWatchdogTimer = null;
 function showLoader(show) {
   const loader = document.getElementById('globalLoader');
-  if (show) loader.classList.remove('hidden');
-  else loader.classList.add('hidden');
+  if (!loader) return;
+  if (loaderWatchdogTimer) {
+    clearTimeout(loaderWatchdogTimer);
+    loaderWatchdogTimer = null;
+  }
+  if (show) {
+    loader.classList.remove('hidden');
+    // Safety watchdog: auto-hide after 5 seconds under any circumstance
+    loaderWatchdogTimer = setTimeout(() => {
+      loader.classList.add('hidden');
+      console.warn("Global loader watchdog triggered: auto-dismissed after 5s limit.");
+    }, 5000);
+  } else {
+    loader.classList.add('hidden');
+  }
 }
 
 // Register PWA Service Worker with auto-update
