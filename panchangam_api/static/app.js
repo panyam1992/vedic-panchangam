@@ -2057,11 +2057,14 @@ function showLoader(show) {
   else loader.classList.add('hidden');
 }
 
-// Register PWA Service Worker
+// Register PWA Service Worker with auto-update
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/static/sw.js')
-      .then(reg => console.log('ServiceWorker registered with scope:', reg.scope))
+      .then(reg => {
+        reg.update();
+        console.log('ServiceWorker registered with scope:', reg.scope);
+      })
       .catch(err => console.log('ServiceWorker registration failed:', err));
   });
 }
