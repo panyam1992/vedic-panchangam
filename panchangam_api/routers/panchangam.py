@@ -42,6 +42,11 @@ def _resolve_location(city: Optional[str], lat: Optional[float], lon: Optional[f
             c_lat = found["lat"]
             c_lon = found["lon"]
             c_tz = found["tz"]
+            if lat is not None and lon is not None:
+                c_lat = lat
+                c_lon = lon
+            if tz is not None and tz.strip():
+                c_tz = tz.strip()
         else:
             city_name = city
             if lat is not None and lon is not None and tz is not None:

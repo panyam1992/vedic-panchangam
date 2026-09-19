@@ -1051,6 +1051,15 @@ function setupEventListeners() {
     }, 250);
   });
 
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const firstCity = searchResults.querySelector('.city-search-item');
+      if (firstCity) {
+        firstCity.click();
+      }
+    }
+  });
+
   document.addEventListener('click', (e) => {
     if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
       searchResults.classList.add('hidden');
@@ -1796,7 +1805,7 @@ async function fetchCities(query) {
     if (data.cities && data.cities.length > 0) {
       data.cities.forEach(c => {
         const item = document.createElement('div');
-        item.className = "px-4 py-2.5 hover:bg-amber-50 cursor-pointer border-b border-stone-100 last:border-0 flex justify-between items-center text-sm";
+        item.className = "city-search-item px-4 py-2.5 hover:bg-amber-50 cursor-pointer border-b border-stone-100 last:border-0 flex justify-between items-center text-sm";
         item.innerHTML = `
           <div>
             <span class="font-bold text-stone-800">${c.name}</span>
@@ -1826,7 +1835,10 @@ function selectCity(cityObj) {
   STATE.lat = cityObj.lat;
   STATE.lon = cityObj.lon;
   STATE.tz = cityObj.tz;
-  STATE.annualMoudhyamData = null; // Invalidate cache so modal re-fetches in new timezone
+  STATE.dailyData = null;
+  STATE.monthlyData = null;
+  STATE.sankalpaData = null;
+  STATE.annualMoudhyamData = null; // Invalidate cache so all tabs re-fetch for new city
   localStorage.setItem('vp_city', STATE.city);
   localStorage.setItem('vp_country', STATE.country);
   localStorage.setItem('vp_lat', STATE.lat);
@@ -1851,8 +1863,14 @@ function handleGPSDetect() {
       const res = await fetch(`/api/v1/cities/nearest?lat=${lat}&lon=${lon}`);
       if (res.ok) {
         const nearestCity = await res.json();
-        selectCity(nearestCity);
-        alert(`లొకేషన్ విజయవంతంగా గుర్తించబడింది: ${nearestCity.name}, ${nearestCity.country}`);
+        selectCity({
+          name: nearestCity.name,
+          country: nearestCity.country,
+          lat: lat,
+          lon: lon,
+          tz: nearestCity.tz
+        });
+        alert(`లొకేషన్ విజయవంతంగా గుర్తించబడింది: ${nearestCity.name}, ${nearestCity.country} (${lat.toFixed(4)}°, ${lon.toFixed(4)}°)`);
       }
     } catch (err) {
       console.error(err);

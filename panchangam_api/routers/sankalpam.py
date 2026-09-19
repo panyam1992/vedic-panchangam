@@ -50,6 +50,17 @@ def generate_custom_sankalpam(
             c_lat = found["lat"]
             c_lon = found["lon"]
             c_tz = found["tz"]
+            if lat is not None and lon is not None:
+                c_lat = lat
+                c_lon = lon
+            if tz is not None and tz.strip():
+                c_tz = tz.strip()
+        else:
+            city_name = city
+            if lat is not None and lon is not None and tz is not None:
+                c_lat, c_lon, c_tz = lat, lon, tz
+            else:
+                raise HTTPException(status_code=404, detail=f"City '{city}' not found in database. Please supply lat, lon, and tz.")
     elif lat is not None and lon is not None and tz is not None:
         c_lat, c_lon, c_tz = lat, lon, tz
         city_name = "Custom Location"
