@@ -1,0 +1,31 @@
+default_to_none = true
+id = "zayana-EkAdazI"
+tags = [ "MonthlyVratam", "EkadashiVratam",]
+shlokas = """
+त्वयि सुप्ते जगन्नाथे जगत्सुप्तं भवेदिदम्॥
+विबुद्धे त्वयि बुद्ध्येत सर्वमेतच्चराचरम्॥
+वासुदेव जगद्योने प्राप्तेयं द्वादशी तव।
+भुजङ्गशयनेऽब्धौ च सुखं स्वपिहि माधव॥
+इयं तु द्वादशी देव शयनार्थं विनिर्मिता।
+
+पक्षे पक्षे च कर्तव्यमेकादश्यामुपोषणम्।
+यदीच्छेद्विष्णुसायुज्यं श्रियं सन्ततिमात्मनः।
+एकादश्यां न भुञ्जीत पक्षयोरुभयोरपि॥
+
+अद्य स्थित्वा निराहारः श्वोभूते परमेश्वर।
+भोक्ष्यामि पुण्डरीकाक्ष शरणं मे भवाच्युत॥
+प्रमादादथवाऽऽलस्याद्धरे केशव माधव।
+व्रतस्यास्य च वै विघ्नो न भवेत्त्वत्प्रसादतः॥
+--पद्मपुराणे
+"""
+jsonClass = "HinduCalendarEvent"
+
+[timing]
+default_to_none = true
+jsonClass = "HinduCalendarEventTiming"
+
+[description]
+en = "The Shukla-paksha Ekadashi of `ASADha` month is known as `zayana-EkAdazI`. Lord Vishnu goes to sleep for four months beginning today."
+
+[names]
+sa = [ "शयन-एकादशी", "देवशयनी एकादशी",]

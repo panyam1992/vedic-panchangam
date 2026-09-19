@@ -1,0 +1,114 @@
+﻿/* Vedic Panchangam Custom Styling */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Serif+Telugu:wght@400;600;700&family=Rozha+One&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-terracotta: #881337;
+  --secondary-maroon: #7c2d12;
+  --gold-accent: #d97706;
+  --gold-light: #fef3c7;
+  --bg-cream: #fffdfa;
+}
+
+body {
+  font-family: 'Noto Sans Telugu', 'Inter', sans-serif;
+  background-color: #faf7f2;
+  color: #292524;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif-te {
+  font-family: 'Noto Serif Telugu', serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-rozha {
+  font-family: 'Rozha One', 'Noto Serif Telugu', serif;
+}
+
+/* Gold Gradient Text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #b45309 0%, #d97706 50%, #92400e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Vedic Card */
+.vedic-card {
+  background: #ffffff;
+  border: 1px solid #fde68a;
+  box-shadow: 0 4px 20px -2px rgba(180, 83, 9, 0.08);
+  border-radius: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.vedic-card:hover {
+  box-shadow: 0 8px 25px -4px rgba(180, 83, 9, 0.14);
+}
+
+/* Auspicious & Inauspicious Badges */
+.badge-auspicious {
+  background-color: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.badge-inauspicious {
+  background-color: #fff1f2;
+  color: #9f1239;
+  border: 1px solid #fecdd3;
+}
+
+.badge-neutral {
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fef3c7;
+}
+::-webkit-scrollbar-thumb {
+  background: #d97706;
+  border-radius: 3px;
+}
+
+/* Pulse Animation for GPS */
+@keyframes gps-pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.animate-gps-pulse {
+  animation: gps-pulse 2s infinite ease-in-out;
+}
+
+/* Calendar Day Box */
+.cal-day-cell {
+  min-height: 90px;
+  transition: all 0.15s ease;
+}
+
+.cal-day-cell:hover {
+  background-color: #fef3c7;
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+.cal-day-today {
+  border: 2px solid #b45309 !important;
+  background-color: #fffbeb !important;
+}
+
+.cal-day-selected {
+  border: 2px solid #7c2d12 !important;
+  box-shadow: 0 0 0 2px rgba(124, 45, 18, 0.2);
+}

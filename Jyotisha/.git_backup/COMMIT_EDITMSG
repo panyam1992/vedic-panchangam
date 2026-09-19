@@ -1,0 +1,14 @@
+feat(panchanga): add muhurta, varjyam, amrita kalam to daily calendar
+
+- Add Abhijit Muhurta, Durmuhurta, Varjyam, and Amrita Kalam time
+  periods to the daily panchanga TeX output
+- Add 12-hour AM/PM time format support (hh:mm:a) in temporal/time.py
+- Update TeX template \rygdata to accept 7 parameters and display
+  additional muhurta data in the calendar footer
+- Add helper functions: get_abhijit_muhurta_string, get_varjyam_strings,
+  get_amrita_kalam_strings in day_details.py
+- Improve tex2pdf.py with error handling and configurable output dirs
+- Add convert_panchanga.py and generate_2026_2027.py for multi-city,
+  multi-year, multilingual panchanga generation pipeline
+- Add calculators/ with dina_muhurtam.html reference tool
+- Add .gitignore for Python bytecode and generated output directories

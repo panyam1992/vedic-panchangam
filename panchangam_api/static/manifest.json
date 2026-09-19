@@ -1,0 +1,23 @@
+{
+  "name": "Vedic Samhita - Panchangam",
+  "short_name": "Vedic Samhita",
+  "description": "Vedic Astronomy & Dharma Shastra Computation System created by Ramachandra Sastry Munimadugu • www.vedicsamhita.com",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffbeb",
+  "theme_color": "#7c2d12",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/static/icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/static/logo.jpg",
+      "sizes": "1024x1024",
+      "type": "image/jpeg"
+    }
+  ]
+}

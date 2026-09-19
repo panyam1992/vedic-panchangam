@@ -1,0 +1,21 @@
+default_to_none = true
+id = "kAma-dahanam"
+tags = [ "CommonFestivals", "PuranaEvents",]
+jsonClass = "HinduCalendarEvent"
+
+[timing]
+default_to_none = true
+month_type = "lunar_month"
+priority = "puurvaviddha"
+month_number = 12
+anga_type = "tithi"
+anga_number = 14
+kaala = "निशीथः"
+shlokas = """
+फाल्गुने मासि शुक्ल तु चतुर्दश्यां महानिशि।
+प्रतिवर्षं दहेत् सम्यक् मृण्मयं मन्मथं नृप॥
+"""
+jsonClass = "HinduCalendarEventTiming"
+
+[names]
+sa = [ "काम-दहनम्",]

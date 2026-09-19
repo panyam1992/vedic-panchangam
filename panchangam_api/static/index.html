@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vedic Samhita • Panchangam | Vedic Astronomy & Dharma Shastra Computation System by Ramachandra Sastry Munimadugu</title>
+  
+  <!-- Favicon & PWA Icons -->
+  <link rel="icon" type="image/jpeg" href="/static/icon.jpg">
+  <link rel="apple-touch-icon" href="/static/icon.jpg">
+  
+  <!-- PWA Manifest & Meta -->
+  <link rel="manifest" href="/static/manifest.json">
+  <meta name="theme-color" content="#7c2d12">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vedic: {
+              gold: '#d97706',
+              darkgold: '#b45309',
+              maroon: '#7c2d12',
+              cream: '#fffdfa'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="min-h-screen flex flex-col bg-[#faf7f2] text-stone-800">
+
+  <!-- Header & Navigation Bar -->
+  <header class="bg-gradient-to-r from-amber-950 via-amber-900 to-stone-950 text-white shadow-xl sticky top-0 z-50 border-b-2 border-amber-500/50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-3">
+      
+      <!-- Brand & Title -->
+      <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
+        <div class="flex items-center gap-3">
+          <a href="https://www.vedicsamhita.com" target="_blank" title="Vedic Samhita • www.vedicsamhita.com" class="block shrink-0 group">
+            <img 
+              src="/static/icon.jpg" 
+              alt="Vedic Samhita Logo" 
+              class="w-12 h-12 rounded-full border-2 border-amber-400 object-cover shadow-lg group-hover:scale-105 group-hover:border-amber-300 transition duration-200 ring-2 ring-amber-500/40"
+            >
+          </a>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-300 bg-amber-950/90 px-2 py-0.5 rounded border border-amber-500/50 shadow-xs">
+                Vedic Samhita
+              </span>
+              <a href="https://www.vedicsamhita.com" target="_blank" class="text-[11px] font-mono text-amber-300 hover:text-white underline decoration-amber-400/60 transition">
+                www.vedicsamhita.com
+              </a>
+            </div>
+            <h1 id="appTitle" class="text-lg md:text-2xl font-bold font-serif-te tracking-wide text-amber-100 drop-shadow-sm leading-tight mt-0.5">
+              వేద సంహిత • పంచాంగం
+            </h1>
+            <p id="appSubtitle" class="text-[11px] text-amber-200/90 font-medium">
+              Vedic Astronomy & Dharma Shastra Computation System
+            </p>
+            <p id="headerCreatorCredit" class="text-[10px] sm:text-[11px] font-bold text-amber-300 flex items-center gap-1 mt-0.5">
+              <span>✨ సిద్ధాంతకర్త:</span>
+              <span class="text-white font-extrabold tracking-wide drop-shadow">రామచంద్ర శాస్త్రి మునిమడుగు</span>
+              <span class="text-[10px] text-amber-200/80 font-normal hidden sm:inline">(RAMACHANDRA SASTRY MUNIMADUGU)</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Language Selector (Mobile view right aligned) -->
+        <div class="md:hidden">
+          <select id="langSelectMobile" class="bg-amber-950/80 border border-amber-600/60 text-amber-200 text-xs rounded-lg px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-amber-400">
+            <option value="telugu">తెలుగు</option>
+            <option value="english">English</option>
+            <option value="devanagari">संस्कृतम् / हिन्दी</option>
+            <option value="tamil">தமிழ்</option>
+            <option value="kannada">ಕನ್ನಡ</option>
+            <option value="malayalam">മലയാളം</option>
+            <option value="gujarati">ગુજરાતી</option>
+            <option value="bengali">বাংলা</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- City Search & GPS Bar -->
+      <div class="flex items-center gap-2 w-full md:w-auto">
+        <div class="relative flex-1 md:w-72">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-amber-300/70">
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </div>
+          <input 
+            type="text" 
+            id="citySearchInput" 
+            placeholder="నగరం పేరును వెతకండి (ఉదా: Frisco, Hyderabad)..." 
+            autocomplete="off"
+            class="w-full pl-9 pr-3 py-1.5 bg-amber-950/70 border border-amber-600/50 rounded-full text-sm text-amber-100 placeholder-amber-400/50 focus:outline-none focus:border-amber-400 focus:bg-amber-950 shadow-inner"
+          >
+          <!-- Search Results Dropdown -->
+          <div id="searchResults" class="hidden absolute left-0 right-0 top-full mt-1.5 bg-white text-stone-800 rounded-xl shadow-2xl border border-amber-300 max-h-72 overflow-y-auto z-50 divide-y divide-amber-100">
+          </div>
+        </div>
+
+        <!-- GPS Button -->
+        <button 
+          id="gpsBtn" 
+          title="నా కచ్చితమైన GPS లొకేషన్ గుర్తించు"
+          class="flex items-center gap-1.5 px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold rounded-full shadow transition-all border border-amber-400/40 whitespace-nowrap active:scale-95"
+        >
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-gps-pulse"></span>
+          <i data-lucide="crosshair" class="w-3.5 h-3.5"></i>
+          <span id="gpsBtnText">నా లొకేషన్</span>
+        </button>
+
+        <!-- Language Selector (Desktop) -->
+        <div class="hidden md:block">
+          <select id="langSelect" class="bg-amber-950/80 border border-amber-500/50 text-amber-200 text-xs rounded-full px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-amber-400 cursor-pointer">
+            <option value="telugu">తెలుగు (Telugu)</option>
+            <option value="english">English (IAST)</option>
+            <option value="devanagari">संस्कृतम् / हिन्दी (Devanagari)</option>
+            <option value="tamil">தமிழ் (Tamil)</option>
+            <option value="kannada">ಕನ್ನಡ (Kannada)</option>
+            <option value="malayalam">മലയാളം (Malayalam)</option>
+            <option value="gujarati">ગુજરાતી (Gujarati)</option>
+            <option value="bengali">বাংলা (Bengali)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Date Controls -->
+      <div class="flex items-center gap-1.5 w-full md:w-auto justify-center">
+        <button id="prevDayBtn" class="p-1.5 rounded-full hover:bg-amber-700/60 text-amber-200 transition" title="మునుపటి రోజు">
+          <i data-lucide="chevron-left" class="w-5 h-5"></i>
+        </button>
+        <input 
+          type="date" 
+          id="datePicker" 
+          class="bg-amber-950/70 border border-amber-600/50 text-amber-100 text-xs font-semibold rounded-lg px-2.5 py-1 focus:outline-none focus:border-amber-400 cursor-pointer text-center"
+        >
+        <button id="nextDayBtn" class="p-1.5 rounded-full hover:bg-amber-700/60 text-amber-200 transition" title="తరువాతి రోజు">
+          <i data-lucide="chevron-right" class="w-5 h-5"></i>
+        </button>
+        <button id="todayBtn" class="px-2.5 py-1 bg-amber-700 hover:bg-amber-600 text-amber-100 text-xs font-bold rounded-lg border border-amber-500/50 transition active:scale-95">
+          ఈరోజు
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Navigation Tabs Bar -->
+    <div class="bg-amber-950/90 border-t border-amber-800/60">
+      <div class="max-w-7xl mx-auto px-4 flex justify-center md:justify-start gap-2 py-1.5">
+        <button id="dailyTabBtn" class="px-5 py-2 rounded-full font-semibold text-white bg-amber-700 shadow-md text-xs md:text-sm transition-all">
+          రోజువారీ పంచాంగం
+        </button>
+        <button id="monthlyTabBtn" class="px-5 py-2 rounded-full font-semibold text-stone-300 hover:bg-amber-900/60 text-xs md:text-sm transition-all">
+          మాస క్యాలెండర్
+        </button>
+        <button id="sankalpaTabBtn" class="px-5 py-2 rounded-full font-semibold text-stone-300 hover:bg-amber-900/60 text-xs md:text-sm transition-all">
+          వైదిక సంకల్పం
+        </button>
+        <button id="rashiTabBtn" class="px-5 py-2 rounded-full font-semibold text-stone-300 hover:bg-amber-900/60 text-xs md:text-sm transition-all">
+          రాశి ఫలాలు
+        </button>
+        <button id="intercalaryTabBtn" class="px-5 py-2 rounded-full font-semibold text-stone-300 hover:bg-amber-900/60 text-xs md:text-sm transition-all">
+          అధిక / క్షయ మాసములు
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Global Loader -->
+  <div id="globalLoader" class="hidden fixed inset-0 bg-stone-900/30 backdrop-blur-sm flex items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-2xl shadow-2xl flex flex-col items-center gap-3 border border-amber-300">
+      <div class="w-10 h-10 border-4 border-amber-600 border-t-transparent rounded-full animate-spin"></div>
+      <p id="loaderText" class="text-sm font-bold text-amber-900">పంచాంగ వివరాలు లోడ్ అవుతున్నాయి...</p>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6">
+
+    <!-- ================= VIEW 1: DAILY VIEW ================= -->
+    <div id="dailyView" class="space-y-6">
+      
+      <!-- Hero Card: Samvatsara & Geography -->
+      <div class="vedic-card p-6 bg-gradient-to-br from-amber-50/90 via-amber-100/40 to-orange-50/80 border-amber-300 relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 opacity-5 pointer-events-none text-9xl">🕉️</div>
+        
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span id="heroPortalBadge" class="text-xs px-2.5 py-0.5 bg-amber-950 text-amber-200 rounded-full font-bold border border-amber-500/50">
+                🌐 Vedic Samhita
+              </span>
+              <span id="heroEraBadge" class="text-xs px-3 py-0.5 bg-amber-600 text-white rounded-full font-bold uppercase tracking-wider">
+                ప్రభవాది షష్టి సంవత్సరం
+              </span>
+              <span id="heroCityBadge" class="text-xs font-semibold text-amber-900 bg-amber-200/70 px-3 py-0.5 rounded-full border border-amber-300">
+                📍 Frisco, Texas, USA
+              </span>
+              <span id="heroAuthorBadge" class="text-xs font-bold text-amber-950 bg-amber-300/90 px-3 py-0.5 rounded-full border border-amber-500/60 shadow-xs flex items-center gap-1">
+                ✍️ రూపకర్త: రామచంద్ర శాస్త్రి మునిమడుగు
+              </span>
+            </div>
+            <h2 id="heroSamvatsara" class="text-3xl md:text-4xl font-extrabold text-amber-950 font-serif-te mt-2">
+              శ్రీ పరాభవ నామ సంవత్సరం
+            </h2>
+            <p id="heroSubDetails" class="text-stone-700 font-semibold text-base mt-1">
+              ఉత్తరాయణం • వసంత ఋతువు • చైత్ర మాసము • శుక్ల పక్షము
+            </p>
+          </div>
+
+          <!-- Quick Date Pill -->
+          <div class="flex items-center gap-3 bg-white/80 backdrop-blur px-4 py-2.5 rounded-xl border border-amber-200 shadow-sm">
+            <div class="text-center">
+              <div id="heroVaraLabel" class="text-[11px] text-stone-500 font-bold uppercase">వారం</div>
+              <div id="angaVara" class="font-extrabold text-amber-800 text-base">గురువారం</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Traditional Mana Systems Banner -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Chandramana -->
+        <div class="vedic-card p-4 border-l-4 border-amber-600 bg-white">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">🌙</span>
+              <h3 id="cmTitle" class="font-bold text-amber-900 text-base">చాంద్రమానం (Chandramana)</h3>
+            </div>
+            <span id="cmMasaBadge" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 shadow-2xs">సాధారణ మాసం</span>
+          </div>
+          <div class="space-y-1.5 text-sm">
+            <div class="flex justify-between"><span id="labelCmAmanta" class="text-stone-500">అమాంత మాసం:</span> <span id="cmAmanta" class="font-bold text-stone-800">చైత్రః</span></div>
+            <div class="flex justify-between"><span id="labelCmPurnimanta" class="text-stone-500">పూర్ణిమాంత మాసం:</span> <span id="cmPurnimanta" class="font-bold text-stone-800">చైత్రః</span></div>
+            <div class="flex justify-between"><span id="labelCmPaksha" class="text-stone-500">పక్షము:</span> <span id="cmPaksha" class="font-bold text-stone-800">శుక్ల</span></div>
+            <div class="flex justify-between text-xs pt-1 border-t border-stone-100"><span id="labelCmMasaStatus" class="text-stone-500">మాస స్థితి:</span> <span id="cmMasaStatus" class="font-semibold text-amber-900">నిజ మాసం (1 సంక్రాంతి)</span></div>
+          </div>
+        </div>
+
+        <!-- Sauramana -->
+        <div class="vedic-card p-4 border-l-4 border-orange-600 bg-white">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl">☀️</span>
+            <h3 id="smTitle" class="font-bold text-orange-950 text-base">సౌరమానం (Sauramana)</h3>
+          </div>
+          <div class="space-y-1.5 text-sm">
+            <div class="flex justify-between"><span id="labelSmSolarMonth" class="text-stone-500">సౌర రాశి/మాసం:</span> <span id="smSolarMonth" class="font-bold text-stone-800">మీన</span></div>
+            <div class="flex justify-between"><span id="labelSmTamil" class="text-stone-500">తమిళ మాసం:</span> <span id="smTamil" class="font-bold text-stone-800">పంగుని</span></div>
+            <div class="flex justify-between"><span id="labelSmMalayalam" class="text-stone-500">మలయాళ కొల్లాం:</span> <span id="smMalayalam" class="font-bold text-stone-800">మీనం</span></div>
+            <div class="flex justify-between text-xs pt-1 border-t border-stone-100 text-stone-600">
+              <span id="labelSmSankranti">సంక్రాంతి:</span> <span id="smSankranti" class="font-medium text-amber-900">---</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Barhaspatyamana -->
+        <div class="vedic-card p-4 border-l-4 border-yellow-600 bg-white">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl">🪐</span>
+            <h3 id="bmTitle" class="font-bold text-yellow-950 text-base">బార్హస్పత్యమానం (Jovian)</h3>
+          </div>
+          <div class="space-y-1.5 text-sm">
+            <div class="flex justify-between"><span id="labelBmRashi" class="text-stone-500">గురు రాశి:</span> <span id="bmRashi" class="font-bold text-stone-800">మిథున</span></div>
+            <div class="flex justify-between"><span id="labelBmNakshatra" class="text-stone-500">నక్షత్రం:</span> <span id="bmNakshatra" class="font-bold text-stone-800">పునర్వసు-1</span></div>
+            <div class="flex justify-between"><span id="labelBmStatus" class="text-stone-500">గతి:</span> <span id="bmStatus" class="font-semibold text-emerald-700">ఋజు</span></div>
+            <div class="flex justify-between"><span id="labelBmMahaMasa" class="text-stone-500">మహా-మాసం:</span> <span id="bmMahaMasa" class="font-bold text-stone-800">మహా-జ్యేష్ఠ</span></div>
+            <div class="flex justify-between text-xs pt-1 border-t border-stone-100">
+              <span id="labelBmPushkaram" class="text-stone-500">పుష్కరం:</span> <span id="bmPushkaram" class="font-bold text-amber-800">సరస్వతీ నది</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panchangam Card -->
+      <div class="vedic-card p-5 bg-white">
+        <h3 class="text-xl font-bold text-amber-950 mb-4 flex items-center gap-2 font-serif-te">
+          <span class="text-amber-600 text-2xl">📜</span>
+          <span id="panchangaCardTitle">పంచాంగం</span>
+        </h3>
+
+        <!-- Samvatsara, Ayanam, Rutu, Masam, Paksham Highlights -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-5 p-3.5 bg-gradient-to-r from-amber-50 via-orange-50/50 to-amber-50 rounded-2xl border border-amber-200/80 shadow-inner">
+          <div class="text-center p-2.5 bg-white/95 rounded-xl border border-amber-200/60 shadow-sm flex flex-col justify-center">
+            <span id="labelPanchangaSamvatsara" class="text-[11px] font-bold text-amber-800 uppercase tracking-wider mb-1">సంవత్సరం</span>
+            <span id="panchangaSamvatsara" class="font-bold text-amber-950 text-sm md:text-base font-serif-te">---</span>
+          </div>
+          <div class="text-center p-2.5 bg-white/95 rounded-xl border border-amber-200/60 shadow-sm flex flex-col justify-center">
+            <span id="labelPanchangaAyanam" class="text-[11px] font-bold text-amber-800 uppercase tracking-wider mb-1">ఆయనం</span>
+            <span id="panchangaAyanam" class="font-bold text-amber-950 text-sm md:text-base">---</span>
+          </div>
+          <div class="text-center p-2.5 bg-white/95 rounded-xl border border-amber-200/60 shadow-sm flex flex-col justify-center">
+            <span id="labelPanchangaRutu" class="text-[11px] font-bold text-amber-800 uppercase tracking-wider mb-1">ఋతువు</span>
+            <span id="panchangaRutu" class="font-bold text-amber-950 text-sm md:text-base">---</span>
+          </div>
+          <div class="text-center p-2.5 bg-white/95 rounded-xl border border-amber-200/60 shadow-sm flex flex-col justify-center">
+            <span id="labelPanchangaMasam" class="text-[11px] font-bold text-amber-800 uppercase tracking-wider mb-1">మాసం</span>
+            <span id="panchangaMasam" class="font-bold text-amber-950 text-sm md:text-base">---</span>
+          </div>
+          <div class="text-center p-2.5 bg-white/95 rounded-xl border border-amber-200/60 shadow-sm col-span-2 sm:col-span-1 flex flex-col justify-center">
+            <span id="labelPanchangaPaksham" class="text-[11px] font-bold text-amber-800 uppercase tracking-wider mb-1">పక్షం</span>
+            <span id="panchangaPaksham" class="font-bold text-amber-950 text-sm md:text-base">---</span>
+          </div>
+        </div>
+
+        <!-- 5 Angas Grid: Tithi, Vara, Nakshatra, Yoga, Karana -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+          <!-- Tithi -->
+          <div class="p-3.5 bg-amber-50/50 rounded-xl border border-amber-200 shadow-sm">
+            <div class="text-xs font-bold text-amber-700 uppercase tracking-wider mb-2 flex items-center justify-between">
+              <span id="labelAngaTithi">తిథి (Tithi)</span>
+            </div>
+            <div id="angaTithis" class="space-y-1"></div>
+          </div>
+          <!-- Vara -->
+          <div class="p-3.5 bg-amber-50/50 rounded-xl border border-amber-200 shadow-sm flex flex-col justify-between">
+            <div class="text-xs font-bold text-amber-700 uppercase tracking-wider mb-2 flex items-center justify-between">
+              <span id="labelAngaVara">వారం (Vara)</span>
+            </div>
+            <div class="py-1">
+              <div id="angaCardVara" class="font-extrabold text-stone-900 text-sm sm:text-base leading-snug">---</div>
+              <div id="angaCardVaraEnglish" class="text-xs font-semibold text-amber-800/90 mt-1">---</div>
+            </div>
+          </div>
+          <!-- Nakshatra -->
+          <div class="p-3.5 bg-amber-50/50 rounded-xl border border-amber-200 shadow-sm">
+            <div class="text-xs font-bold text-amber-700 uppercase tracking-wider mb-2 flex items-center justify-between">
+              <span id="labelAngaNakshatra">నక్షత్రం (Nakshatra)</span>
+            </div>
+            <div id="angaNakshatras" class="space-y-1"></div>
+          </div>
+          <!-- Yoga -->
+          <div class="p-3.5 bg-amber-50/50 rounded-xl border border-amber-200 shadow-sm">
+            <div class="text-xs font-bold text-amber-700 uppercase tracking-wider mb-2 flex items-center justify-between">
+              <span id="labelAngaYoga">యోగం (Yoga)</span>
+            </div>
+            <div id="angaYogas" class="space-y-1"></div>
+          </div>
+          <!-- Karana -->
+          <div class="p-3.5 bg-amber-50/50 rounded-xl border border-amber-200 shadow-sm">
+            <div class="text-xs font-bold text-amber-700 uppercase tracking-wider mb-2 flex items-center justify-between">
+              <span id="labelAngaKarana">కరణం (Karana)</span>
+            </div>
+            <div id="angaKaranas" class="space-y-1"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sun & Moon + Muhurthams -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Sun & Moon Timings -->
+        <div class="vedic-card p-5 bg-white">
+          <h3 class="text-base font-bold text-amber-950 mb-3.5 flex items-center gap-2">
+            <i data-lucide="sun" class="w-5 h-5 text-amber-600"></i> <span id="sunMoonTitle">సూర్యోదయ & చంద్రోదయ కాలాలు</span>
+          </h3>
+          <div class="grid grid-cols-2 gap-3 text-sm">
+            <div class="p-2.5 bg-stone-50 rounded-lg border border-stone-200/80">
+              <span id="labelTimeSunrise" class="text-xs text-stone-500 block">సూర్యోదయం</span>
+              <span id="timeSunrise" class="font-extrabold text-stone-800 text-base">---</span>
+            </div>
+            <div class="p-2.5 bg-stone-50 rounded-lg border border-stone-200/80">
+              <span id="labelTimeSunset" class="text-xs text-stone-500 block">సూర్యాస్తమయం</span>
+              <span id="timeSunset" class="font-extrabold text-stone-800 text-base">---</span>
+            </div>
+            <div class="p-2.5 bg-stone-50 rounded-lg border border-stone-200/80">
+              <span id="labelTimeBrahma" class="text-xs text-stone-500 block">బ్రహ్మ ముహూర్తం</span>
+              <span id="timeBrahma" class="font-semibold text-amber-900">---</span>
+            </div>
+            <div class="p-2.5 bg-stone-50 rounded-lg border border-stone-200/80">
+              <span id="labelTimeMidday" class="text-xs text-stone-500 block">మధ్యాహ్నం</span>
+              <span id="timeMidday" class="font-semibold text-stone-800">---</span>
+            </div>
+            <div class="p-2.5 bg-stone-50 rounded-lg border border-stone-200/80">
+              <span id="labelTimePratah" class="text-xs text-stone-500 block">ప్రాతః సంధ్య</span>
+              <span id="timePratah" class="font-semibold text-stone-700">---</span>
+            </div>
+            <div class="p-2.5 bg-stone-50 rounded-lg border border-stone-200/80">
+              <span id="labelTimeSayan" class="text-xs text-stone-500 block">సాయం సంధ్య</span>
+              <span id="timeSayan" class="font-semibold text-stone-700">---</span>
+            </div>
+            <div class="p-2.5 bg-stone-50 rounded-lg border border-stone-200/80">
+              <span id="labelTimeMoonrise" class="text-xs text-stone-500 block">చంద్రోదయం</span>
+              <span id="timeMoonrise" class="font-semibold text-stone-800">---</span>
+            </div>
+            <div class="p-2.5 bg-stone-50 rounded-lg border border-stone-200/80">
+              <span id="labelTimeMoonset" class="text-xs text-stone-500 block">చంద్రాస్తమయం</span>
+              <span id="timeMoonset" class="font-semibold text-stone-800">---</span>
+            </div>
+          </div>
+          <div class="mt-3 p-2 bg-amber-50 rounded-lg border border-amber-200 text-xs flex justify-between items-center text-amber-900 font-medium">
+            <span id="labelTimeMoonPhase">చంద్ర స్థితి:</span>
+            <span id="timeMoonPhase" class="font-bold">---</span>
+          </div>
+        </div>
+
+        <!-- Muhurthams & Inauspicious Periods -->
+        <div class="vedic-card p-5 bg-white">
+          <h3 class="text-base font-bold text-amber-950 mb-3.5 flex items-center gap-2">
+            <i data-lucide="clock" class="w-5 h-5 text-amber-600"></i> <span id="muhurthasTitle">ముహూర్తాలు & వర్జ్య కాలాలు</span>
+          </h3>
+          <div class="space-y-2 text-sm">
+            <!-- Auspicious -->
+            <div class="flex justify-between items-center p-2 rounded-lg badge-auspicious">
+              <span class="font-bold flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> <span id="labelAbhijit">అభిజిత్ ముహూర్తం</span></span>
+              <span id="timeAbhijit" class="font-bold font-mono">---</span>
+            </div>
+            <div class="flex justify-between items-center p-2 rounded-lg badge-auspicious">
+              <span class="font-bold flex items-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4 text-emerald-600"></i> <span id="labelAmrita">అమృత కాలం</span></span>
+              <span id="timeAmrita" class="font-bold font-mono">---</span>
+            </div>
+
+            <!-- Inauspicious -->
+            <div class="flex justify-between items-center p-2 rounded-lg badge-inauspicious">
+              <span class="font-bold flex items-center gap-1.5"><i data-lucide="alert-triangle" class="w-4 h-4 text-rose-600"></i> <span id="labelRahu">రాహుకాలం</span></span>
+              <span id="timeRahu" class="font-bold font-mono">---</span>
+            </div>
+            <div class="flex justify-between items-center p-2 rounded-lg badge-inauspicious">
+              <span class="font-bold flex items-center gap-1.5"><i data-lucide="alert-circle" class="w-4 h-4 text-rose-600"></i> <span id="labelYama">యమగండం</span></span>
+              <span id="timeYama" class="font-bold font-mono">---</span>
+            </div>
+            <div class="flex justify-between items-center p-2 rounded-lg badge-neutral">
+              <span class="font-bold flex items-center gap-1.5"><i data-lucide="info" class="w-4 h-4 text-amber-600"></i> <span id="labelGulika">గుళిక కాలం</span></span>
+              <span id="timeGulika" class="font-bold font-mono">---</span>
+            </div>
+            <div class="flex justify-between items-center p-2 rounded-lg badge-inauspicious">
+              <span id="labelDurmuhurtham" class="font-bold text-rose-800">దుర్ముహూర్తం</span>
+              <span id="timeDurmuhurtham" class="font-bold font-mono">---</span>
+            </div>
+            <div class="flex justify-between items-center p-2 rounded-lg badge-inauspicious">
+              <span id="labelVarjyam" class="font-bold text-rose-800">వర్జ్యం</span>
+              <span id="timeVarjyam" class="font-bold font-mono">---</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 24-Hour Lagna Schedule -->
+      <div class="vedic-card p-5 bg-white">
+        <h3 class="text-base font-bold text-amber-950 mb-3 flex items-center gap-2 font-serif-te">
+          <i data-lucide="compass" class="w-5 h-5 text-amber-600"></i> <span id="lagnasTitle">24-గంటల లగ్న పట్టిక (Daily Lagnas)</span>
+        </h3>
+        <div id="lagnasContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        </div>
+      </div>
+
+      <!-- Festivals & Vratams -->
+      <div class="vedic-card p-5 bg-gradient-to-r from-amber-50 via-white to-amber-50">
+        <h3 class="text-base font-bold text-amber-950 mb-3 flex items-center gap-2 font-serif-te">
+          <span class="text-amber-600 text-lg">🪔</span> <span id="festivalsTitle">ఈ రోజు పండుగలు & వ్రతాలు (Festivals & Vratas)</span>
+        </h3>
+        <div id="festivalsContainer" class="flex flex-wrap gap-2">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ================= VIEW 2: MONTHLY VIEW ================= -->
+    <div id="monthlyView" class="hidden space-y-4">
+      <div class="vedic-card p-5 bg-white">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-3 mb-4">
+          <h2 id="monthlyTitle" class="text-xl font-bold text-amber-950 font-serif-te">
+            మాస క్యాలెండర్ (Monthly Grid)
+          </h2>
+          <div id="monthlyHint" class="text-xs text-stone-500 font-medium">
+            ఏదైనా తేదీపై క్లిక్ చేస్తే ఆ రోజు పంచాంగ వివరాలు ఓపెన్ అవుతాయి
+          </div>
+        </div>
+
+        <!-- 7 Weekdays Header -->
+        <div class="grid grid-cols-7 gap-1 md:gap-2 mb-2 text-center font-bold text-xs md:text-sm text-amber-900 bg-amber-100/60 py-2 rounded-lg">
+          <div id="calDay0" class="text-rose-700">ఆది</div>
+          <div id="calDay1">సోమ</div>
+          <div id="calDay2">మంగళ</div>
+          <div id="calDay3">బుధ</div>
+          <div id="calDay4">గురు</div>
+          <div id="calDay5">శుక్ర</div>
+          <div id="calDay6">శని</div>
+        </div>
+
+        <!-- Calendar Days Grid -->
+        <div id="calendarDaysGrid" class="grid grid-cols-7 gap-1 md:gap-2">
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VIEW 3: VEDIC SANKALPA VIEW ================= -->
+    <div id="sankalpaView" class="hidden space-y-6">
+      <div class="vedic-card p-6 bg-white">
+        <h2 id="sankalpaTitle" class="text-2xl font-bold text-amber-950 font-serif-te mb-2">
+          🪔 వైదిక దేశ-కాల సంకల్పం (Vedic Deśa-Kāla Sankalpa)
+        </h2>
+        <p id="sankalpaSubtitle" class="text-stone-600 text-sm mb-6">
+          పూజ, హోమం, వ్రతాలలో చదివేందుకు మీరు ఉన్న దేశం, నగర భౌగోళిక నిరూపకాలు మరియు ఖగోళ కాల సమన్వయంతో రూపొందించబడిన శాస్త్రీయ సంకల్పం.
+        </p>
+
+        <!-- User Input Form -->
+        <form id="sankalpaForm" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div>
+            <label id="labelGotra" class="block text-xs font-bold text-stone-700 mb-1">మీ గోత్రం (Gotra):</label>
+            <input 
+              type="text" 
+              id="sankalpaGotra" 
+              placeholder="ఉదా: కాశ్యప, భారద్వాజ, కౌండిన్య..."
+              class="w-full px-3 py-2 border border-amber-300 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-amber-500"
+            >
+          </div>
+          <div>
+            <label id="labelSharma" class="block text-xs font-bold text-stone-700 mb-1">మీ పేరు / శర్మ (Name):</label>
+            <input 
+              type="text" 
+              id="sankalpaSharma" 
+              placeholder="ఉదా: రామ శర్మ..."
+              class="w-full px-3 py-2 border border-amber-300 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-amber-500"
+            >
+          </div>
+          <div>
+            <label id="labelDeity" class="block text-xs font-bold text-stone-700 mb-1">పూజించు దైవం / కులదైవం (Deity):</label>
+            <input 
+              type="text" 
+              id="sankalpaDeity" 
+              placeholder="ఉదా: శ్రీ వేంకటేశ్వర స్వామి..."
+              class="w-full px-3 py-2 border border-amber-300 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-amber-500"
+            >
+          </div>
+          <div class="col-span-full flex justify-end">
+            <button 
+              type="submit" 
+              class="px-6 py-2.5 bg-amber-700 hover:bg-amber-800 text-white font-bold text-sm rounded-lg shadow-md transition active:scale-95 flex items-center gap-2"
+            >
+              <i data-lucide="wand-2" class="w-4 h-4"></i> <span id="sankalpaSubmitBtnText">సంకల్పం సిద్ధం చేయండి</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Sankalpam Display Cards -->
+        <div class="space-y-4">
+          <!-- Telugu/Selected Language -->
+          <div class="p-5 bg-amber-50/70 border border-amber-300 rounded-xl relative">
+            <div class="flex justify-between items-center mb-3">
+              <span id="sankalpaLangBadge" class="text-xs px-2.5 py-1 bg-amber-600 text-white font-bold rounded-full">
+                సంకల్ప మంత్రం (ప్రస్తుత భాషలో)
+              </span>
+              <button 
+                id="copySankalpaBtn" 
+                class="px-3 py-1 bg-amber-700 hover:bg-amber-800 text-white text-xs font-semibold rounded-lg flex items-center gap-1.5 shadow transition active:scale-95"
+              >
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> <span id="copySankalpaBtnText">కాపీ చేయండి</span>
+              </button>
+            </div>
+            <div id="sankalpaTeluguText" class="text-base font-medium text-stone-800 leading-relaxed whitespace-pre-line font-serif-te">
+              ...
+            </div>
+          </div>
+
+          <!-- Original Sanskrit Devanagari -->
+          <div class="p-4 bg-stone-50 border border-stone-200 rounded-xl">
+            <div id="sankalpaSaBadge" class="text-xs text-stone-500 font-bold uppercase mb-2">मूल-संस्कृत-सङ्कल्पः (Original Sanskrit Devanagari)</div>
+            <div id="sankalpaSanskritText" class="text-sm font-medium text-stone-700 leading-relaxed whitespace-pre-line">
+              ...
+            </div>
+          </div>
+
+          <!-- Geography Insight -->
+          <div id="sankalpaGeoInfo" class="text-xs text-amber-900 bg-amber-100/50 p-3 rounded-lg border border-amber-200 font-medium">
+            భౌగోళిక స్థానం: ...
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ================= VIEW 4: RASHI PHALALU VIEW ================= -->
+    <div id="rashiView" class="hidden space-y-6">
+      
+      <!-- Rashi Top Bar: Title & Sub-period selector (Daily / Monthly / Yearly) -->
+      <div class="vedic-card p-6 bg-gradient-to-br from-amber-50/90 via-amber-100/40 to-orange-50/80 border-amber-300">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs px-3 py-0.5 bg-amber-700 text-white rounded-full font-bold uppercase tracking-wider">
+                ♈ ద్వాదశ రాశి గోచారం
+              </span>
+              <span id="rashiPeriodInfoBadge" class="text-xs font-semibold text-amber-900 bg-amber-200/70 px-3 py-0.5 rounded-full border border-amber-300">
+                2026-03-19
+              </span>
+            </div>
+            <h2 id="rashiHeading" class="text-2xl md:text-3xl font-extrabold text-amber-950 font-serif-te mt-1.5">
+              రాశి ఫలాలు (Gochara Horoscope)
+            </h2>
+            <p id="rashiSubtitle" class="text-xs md:text-sm text-stone-600 font-medium mt-1">
+              ఖగోళ గోచార సంచారం, చంద్రబలం, తారాబలం మరియు పంచాంగ కందాయ సూత్రాల ఆధారిత ప్రామాణిక ఫలితాలు.
+            </p>
+          </div>
+
+          <!-- Sub-period Toggle Pills -->
+          <div class="flex items-center bg-amber-950/80 p-1 rounded-xl shadow-inner gap-1 border border-amber-600/40">
+            <button id="rashiPeriodDailyBtn" class="px-4 py-1.5 rounded-lg text-xs font-bold text-white bg-amber-600 shadow transition-all">
+              ☀️ దిన ఫలాలు
+            </button>
+            <button id="rashiPeriodMonthlyBtn" class="px-4 py-1.5 rounded-lg text-xs font-bold text-amber-200 hover:text-white transition-all">
+              🌙 మాస ఫలాలు
+            </button>
+            <button id="rashiPeriodYearlyBtn" class="px-4 py-1.5 rounded-lg text-xs font-bold text-amber-200 hover:text-white transition-all">
+              🪐 వార్షిక ఫలాలు (కందాయం)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12 Rashis Selector Grid -->
+      <div class="vedic-card p-4 bg-white">
+        <div class="flex items-center justify-between mb-3 px-1">
+          <h3 id="rashiGridTitle" class="text-sm font-bold text-amber-900 uppercase tracking-wide flex items-center gap-1.5">
+            <span>✨ మీ రాశిని ఎంచుకోండి (Select Your Rashi)</span>
+          </h3>
+          <span id="rashiActivePlanetBadge" class="text-xs text-stone-500 font-medium">చంద్ర సంచారం: --</span>
+        </div>
+        <div id="rashiCardsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Selected Rashi Detailed Report Card -->
+      <div id="selectedRashiDetailContainer" class="space-y-6">
+        <!-- Populated by renderRashiDetails() -->
+      </div>
+    </div>
+
+    <!-- ================= VIEW 5: ADHIKA & KSHAYA MASAS VIEW ================= -->
+    <div id="intercalaryView" class="hidden space-y-6">
+      <!-- Hero Header -->
+      <div class="vedic-card p-6 bg-gradient-to-r from-amber-950 via-amber-900 to-stone-950 text-white relative overflow-hidden shadow-xl border-2 border-amber-500/40">
+        <div class="absolute -right-6 -bottom-6 opacity-10 text-9xl">⚖️</div>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative z-10">
+          <div>
+            <div class="inline-flex items-center gap-2 bg-amber-950/90 px-3 py-1 rounded-full border border-amber-500/60 text-xs font-bold text-amber-300 mb-2">
+              <span>🏛️ ధర్మశాస్త్రం & ఖగోళ సిద్ధాంతం</span>
+              <span>•</span>
+              <span>కాలమాధవీయం</span>
+            </div>
+            <h2 id="intercalaryHeroTitle" class="text-xl md:text-3xl font-extrabold font-serif-te text-amber-100">
+              అధిక మాసం & క్షయ మాస ఖగోళ-ధర్మశాస్త్ర విజ్ఞానం
+            </h2>
+            <p id="intercalaryHeroSubtitle" class="text-xs md:text-sm text-amber-200/90 mt-1 max-w-2xl">
+              సూర్యసిద్ధాంత స్పష్టగతి మరియు కాలమాధవీయ సూత్రాల ప్రకారం అధిక, క్షయ, సంసర్ప, మరియు అంహస్పతి మాసాల సమగ్ర కాలగణన.
+            </p>
+          </div>
+
+          <!-- Calculation System Toggle -->
+          <div class="bg-amber-950/90 p-1.5 rounded-2xl border border-amber-500/60 shadow-xl flex items-center gap-1 shrink-0">
+            <button id="systemSuryaBtn" class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-amber-600 shadow transition-all">
+              📜 సూర్యసిద్ధాంతం (శాస్త్రం)
+            </button>
+            <button id="systemDrikBtn" class="px-4 py-2 rounded-xl text-xs font-bold text-amber-200 hover:text-white transition-all">
+              🔭 దృక్సిద్ధాంతం (Swiss Ephemeris)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shastric Verse Card: Kalamadhava Rule -->
+      <div class="vedic-card p-6 bg-gradient-to-br from-amber-50 via-white to-orange-50/60 border-2 border-amber-400 shadow-md">
+        <div class="flex items-start gap-3">
+          <span class="text-3xl">📿</span>
+          <div class="flex-1 space-y-2">
+            <span class="text-xs font-bold text-amber-800 uppercase tracking-wider">కాలమాధవీయ పరమ ప్రామాణిక శ్లోకం (Kalamadhava Canonical Verse)</span>
+            <blockquote class="text-base md:text-xl font-bold font-serif-te text-amber-950 p-3 bg-amber-100/60 rounded-xl border-l-4 border-amber-600 shadow-xs">
+              అసంక్రాంతావేకవర్షౌ ద్వౌచేత్ సంసర్ప ఆదిమః ।<br>
+              క్షయమాసో ద్విసంక్రాంతః సచాంహస్పతి సంజ్ఞకః ॥
+            </blockquote>
+            <p class="text-xs text-stone-700 leading-relaxed">
+              <strong>ధర్మశాస్త్ర నియమం:</strong> ఒకే సౌర సంవత్సరంలో రెండు అసంక్రాంత మాసాలు వస్తే, మొదటి దానిని <strong>సంసర్పం</strong> అంటారు. మధ్యలో వచ్చే ద్విసంక్రాంత మాసమే <strong>క్షయ మాసం (అంహస్పతి)</strong>. సంవత్సరాంతంలో వచ్చే రెండవ అసంక్రాంత మాసం <strong>అధిక మాసం</strong> అవుతుంది. సంసర్పంలో నిత్య నైమిత్తిక కర్మలు చేయవచ్చు; అంహస్పతి (క్షయ) మాసంలో వివాహాది శుభకార్యాలు వర్జ్యం.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Criteria Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Adhika Masa -->
+        <div class="vedic-card p-5 bg-white border-t-4 border-amber-600">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-2xl">🌒</span>
+            <span class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300">0 సంక్రాంతులు</span>
+          </div>
+          <h3 class="text-base font-bold text-amber-950 font-serif-te mb-1">అధిక మాసం (Asankranta)</h3>
+          <p class="text-xs font-mono font-semibold text-amber-700 mb-2">Ingresses = 0 (అసంక్రాంతం)</p>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            ఒక అమావాస్య నుండి తర్వాతి అమావాస్య వరకు సూర్యుడు ఏ రాశి లోకీ ప్రవేశించకపోతే అది అధిక మాసం (మలమాసం). ప్రతి ~32.5 నెలలకు ఒకసారి వస్తుంది.
+          </p>
+          <div class="mt-3 pt-2 border-t border-stone-100 text-[11px] font-semibold text-amber-800 italic">
+            "సంక్రాంతి వర్జితో మాసః అధిమాసః ప్రకీర్తితః"
+          </div>
+        </div>
+
+        <!-- Nija Masa -->
+        <div class="vedic-card p-5 bg-white border-t-4 border-emerald-600">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-2xl">🌕</span>
+            <span class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300">1 సంక్రాంతి</span>
+          </div>
+          <h3 class="text-base font-bold text-emerald-950 font-serif-te mb-1">సాధారణ మాసం (Nija Masa)</h3>
+          <p class="text-xs font-mono font-semibold text-emerald-700 mb-2">Ingresses = 1 (సంక్రాంతం)</p>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            ఒక చాంద్రమాసంలో ఖచ్చితంగా ఒకే సూర్య సంక్రమణం సంభవిస్తే అది నిజ లేదా శుద్ధ మాసం. అన్ని శుభకార్యాలకు ప్రశస్తమైన కాలం.
+          </p>
+          <div class="mt-3 pt-2 border-t border-stone-100 text-[11px] font-semibold text-emerald-800 italic">
+            "ఏక సంక్రాంతి సంయుక్తః శుద్ధ మాసః ప్రకీర్తితః"
+          </div>
+        </div>
+
+        <!-- Kshaya Masa -->
+        <div class="vedic-card p-5 bg-white border-t-4 border-rose-600">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-2xl">🌑</span>
+            <span class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-900 border border-rose-300">2 సంక్రాంతులు</span>
+          </div>
+          <h3 class="text-base font-bold text-rose-950 font-serif-te mb-1">క్షయ మాసం (Dvi-Sankranta)</h3>
+          <p class="text-xs font-mono font-semibold text-rose-700 mb-2">Ingresses = 2 (ద్విసంక్రాంతం)</p>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            ఒకే చాంద్రమాసంలో సూర్యుని 2 సంక్రాంతులు సంభవిస్తే అది క్షయ మాసం (అంహస్పతి). రెండు నెలలు యుగళీభూతమై ఒకటిగా మారుతాయి.
+          </p>
+          <div class="mt-3 pt-2 border-t border-stone-100 text-[11px] font-semibold text-rose-800 italic">
+            "ద్వి సంక్రాంతి సమో మాసః క్షయమాసః ప్రకీర్తితః"
+          </div>
+        </div>
+      </div>
+
+      <!-- Mathematical Constants & Kaliyuga Balance Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Solar-Lunar Drift & Vedanga Jyotisha -->
+        <div class="vedic-card p-5 bg-white space-y-3">
+          <h3 class="text-sm font-bold text-amber-900 uppercase tracking-wide flex items-center gap-1.5">
+            <span>📐 సౌర-చాంద్ర కాలగణన సూత్రాలు (Calendar Drift)</span>
+          </h3>
+          <div class="space-y-2 text-xs text-stone-700">
+            <div class="flex justify-between p-2 rounded-lg bg-amber-50 border border-amber-200">
+              <span class="font-medium">సౌర సంవత్సరం:</span>
+              <span class="font-bold">~365.25 రోజులు</span>
+            </div>
+            <div class="flex justify-between p-2 rounded-lg bg-amber-50 border border-amber-200">
+              <span class="font-medium">చాంద్ర సంవత్సరం (12 × 29.5):</span>
+              <span class="font-bold">~354.0 రోజులు</span>
+            </div>
+            <div class="flex justify-between p-2 rounded-lg bg-amber-100 font-bold text-amber-950 border border-amber-300">
+              <span>వార్షిక లోటు (Annual Drift):</span>
+              <span>365.25 - 354 = 11.25 రోజులు (~11 రోజులు)</span>
+            </div>
+            <div class="flex justify-between p-2 rounded-lg bg-amber-50 border border-amber-200">
+              <span class="font-medium">3 సంవత్సరాలలో చేరే లోటు:</span>
+              <span class="font-bold">11 × 3 = ~33 రోజులు (ఒక పూర్తి నెల)</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-orange-50 border border-orange-200 font-semibold text-orange-950 text-[11px]">
+              ✨ <strong>వేదాంగ జ్యోతిష నియమం (లగధ మహర్షి):</strong> పంచసంవత్సరాత్మక యుగంలో 60 సౌర మాసాలు = 62 చాంద్ర మాసాలు. అంటే ప్రతి 5 సంవత్సరాలకు సరిగ్గా 2 అధిక మాసాలు వస్తాయి.
+            </div>
+          </div>
+        </div>
+
+        <!-- Kaliyuga Balance & Kshaya Recurrence -->
+        <div class="vedic-card p-5 bg-white space-y-3">
+          <h3 class="text-sm font-bold text-amber-900 uppercase tracking-wide flex items-center gap-1.5">
+            <span>🪐 కలియుగ మహాయుగ సమతుల్యత & క్షయ చక్రం</span>
+          </h3>
+          <div class="space-y-2 text-xs text-stone-700">
+            <div class="p-2.5 rounded-xl bg-amber-100/70 border border-amber-300 text-amber-950 font-bold">
+              కలియుగం (4,32,000 సంవత్సరాలు) సూత్రం:<br>
+              <span class="text-amber-800 font-mono text-[13px]">1,68,152 (మొత్తం అధిక మాసాలు) - 8,718 (క్షయ మాసాలు) = 1,59,034 నెట్ అధిక మాసాలు</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-stone-50 border border-stone-200 space-y-1">
+              <span class="font-bold text-stone-800">క్షయ మాస పునరావృత ఆవృత్తి చక్రం (Recurrence Intervals):</span>
+              <p class="text-[11px] text-stone-600">
+                క్షయ మాసాలు కేవలం మెటోనిక్ అనుసంధాన చక్రాల ఆధారంగా మాత్రమే వస్తాయి:<br>
+                <span class="font-mono font-bold text-amber-900">ΔYears ∈ { 19, 38, 46, 65, 76, 141 }</span>
+              </p>
+              <p class="text-[10px] text-stone-500 font-mono">
+                38 = 2×19 • 46 = 38+8 • 65 = 46+19 • 76 = 4×19 • 141 = 65+76
+              </p>
+            </div>
+            <div class="p-2 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900 text-[11px] font-medium">
+              💡 <strong>ఖగోళ పెరిహిలియన్ నియమం:</strong> సూర్యుడు భూమికి దగ్గరగా ఉండి పరమోచ్ఛ వేగంతో ధనుస్సు, మకర, కుంభ రాశులను దాటినప్పుడు మాత్రమే చాంద్రమాసంలో 2 సంక్రాంతులు వచ్చే అవకాశం ఉంటుంది.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sri Keelaka Samvatsara Highlight Callout -->
+      <div id="keelakaCallout" class="vedic-card p-5 bg-gradient-to-r from-amber-500/10 via-amber-100/60 to-orange-50 border-2 border-amber-400">
+        <div class="flex items-start gap-3">
+          <span class="text-3xl">👑</span>
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-900 text-amber-100 uppercase tracking-widest">ప్రత్యేక పరిశీలన</span>
+              <h4 class="text-base font-bold text-amber-950">శ్రీ కీలక నామ సంవత్సరం (2028 – 2029) • క్షయ & సంసర్ప మాసాలు</h4>
+            </div>
+            <p class="text-xs text-stone-700 leading-relaxed">
+              హైదరాబాద్‌లోని గాంధీనగర్‌లో 23 మంది ప్రసిద్ధ సిద్ధాంతులు మరియు ధర్మశాస్త్ర పండితులతో జరిగిన <strong>'తెలంగాణ విద్వత్సభ' విద్వద్గోష్ఠి</strong> (ఆగస్టు 30, 2026) తీర్మానం ప్రకారం: <em>"పూర్వసిద్ధాంతం సదా ఆచరణీయం"</em> అనే సూత్రంపై, శ్రీ కీలక నామ సంవత్సరంలో <strong>సంసర్ప కార్తిక మాసం (అధికం)</strong> మరియు <strong>మార్గశిర-పుష్య యుగళీభూత అంహస్పతి మాసం (క్షయ మాసం)</strong> గా ఏకగ్రీవంగా నిర్ణయించబడింది.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Intercalary Months Table Card -->
+      <div class="vedic-card p-5 bg-white shadow-md">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4">
+          <div>
+            <h3 class="text-lg font-bold text-amber-950 font-serif-te flex items-center gap-2">
+              <span>📅 రాబోయే 10 సంవత్సరాల అధిక / క్షయ మాసాల పట్టిక (2026 – 2036)</span>
+            </h3>
+            <p class="text-xs text-stone-500">ఎంచుకున్న సిద్ధాంత పద్ధతి ప్రకారం అమావాస్యాంత చాంద్రమాసాల ఫలితాలు</p>
+          </div>
+          <span id="activeSystemBadge" class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300">
+            సూర్యసిద్ధాంత పద్ధతి
+          </span>
+        </div>
+
+        <div class="overflow-x-auto rounded-xl border border-stone-200">
+          <table class="w-full text-left border-collapse text-xs md:text-sm">
+            <thead>
+              <tr class="bg-amber-900 text-amber-100 text-[11px] md:text-xs uppercase tracking-wider font-bold">
+                <th class="p-3 border-b border-amber-950">సంవత్సరం</th>
+                <th class="p-3 border-b border-amber-950">తెలుగు సంవత్సరం</th>
+                <th class="p-3 border-b border-amber-950">మాసం పేరు</th>
+                <th class="p-3 border-b border-amber-950 text-center">రకం / హోదా</th>
+                <th class="p-3 border-b border-amber-950 text-center">సంక్రాంతులు</th>
+                <th class="p-3 border-b border-amber-950">కాలం (ప్రారంభం – సమాప్తి)</th>
+                <th class="p-3 border-b border-amber-950">శాస్త్ర వివరణ</th>
+              </tr>
+            </thead>
+            <tbody id="intercalaryTableBody" class="divide-y divide-stone-200 bg-white">
+              <!-- Populated by renderIntercalaryTable() -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-b from-stone-950 via-stone-900 to-black text-stone-300 py-8 border-t-2 border-amber-600/50">
+    <div class="max-w-7xl mx-auto px-4 text-center space-y-4">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 text-base font-bold font-serif-te text-amber-200">
+        <img src="/static/icon.jpg" alt="Vedic Samhita Emblem" class="w-10 h-10 rounded-full border-2 border-amber-400/80 shadow-md">
+        <span>వేద సంహిత • Vedic Samhita</span>
+        <span class="hidden sm:inline text-amber-500">•</span>
+        <span class="text-amber-300">Vedic Astronomy & Dharma Shastra Computation System</span>
+      </div>
+      
+      <!-- Prominent Creator Credit Box -->
+      <div class="inline-block mx-auto p-6 rounded-3xl bg-gradient-to-b from-amber-950/80 via-stone-900/95 to-black border-2 border-amber-500/50 text-center shadow-2xl max-w-2xl">
+        <div class="flex justify-center mb-4">
+          <a href="https://www.vedicsamhita.com" target="_blank" title="Vedic Samhita" class="inline-block group">
+            <img 
+              src="/static/logo.jpg" 
+              alt="Vedic Samhita Official Logo" 
+              class="w-32 h-32 rounded-2xl border-2 border-amber-400/80 shadow-2xl object-cover group-hover:scale-105 group-hover:border-amber-300 transition duration-300 ring-4 ring-amber-500/20"
+            >
+          </a>
+        </div>
+        <p class="text-[11px] text-amber-400/90 font-bold uppercase tracking-widest">
+          సిద్ధాంత & ఖగోళ కంప్యుటేషన్ రూపకర్త (System Architect & Creator)
+        </p>
+        <h4 class="text-xl md:text-2xl font-extrabold text-amber-100 font-serif-te tracking-wide mt-1.5">
+          రామచంద్ర శాస్త్రి మునిమడుగు
+        </h4>
+        <p class="text-sm font-bold text-amber-300 font-mono mt-0.5">
+          RAMACHANDRA SASTRY MUNIMADUGU
+        </p>
+        <p class="text-xs text-stone-300 mt-2.5 leading-relaxed font-normal">
+          ఈ పంచాంగ గణనలు, వైదిక ఖగోళ సూత్రాలు, ధర్మశాస్త్ర నిర్ణయాలు మరియు సాంకేతిక క్రోడీకరణ సమగ్రంగా <strong class="text-amber-200 font-bold">శ్రీ రామచంద్ర శాస్త్రి మునిమడుగు</strong> గారి పరిశోధన & రూపకల్పన ద్వారా రూపొందించబడినవి. <br class="hidden sm:inline"/> All credits go to <strong class="text-amber-200 font-bold">RAMACHANDRA SASTRY MUNIMADUGU</strong>.
+        </p>
+        <div class="mt-3 pt-3 border-t border-amber-600/30 flex justify-center items-center gap-2 text-xs">
+          <span class="text-amber-400 font-semibold">అధికారిక వెబ్‌సైట్:</span>
+          <a href="https://www.vedicsamhita.com" target="_blank" class="font-bold text-amber-200 hover:text-white underline decoration-amber-400 transition font-mono">
+            www.vedicsamhita.com
+          </a>
+        </div>
+      </div>
+
+      <p class="text-[11px] text-stone-400 pt-1">
+        Swiss Ephemeris ఖగోళ గణనలు, జ్యోతిష ఇంజిన్ మరియు అక్షరముఖ బహుభాషా పరివర్తన ఆధారితం.
+      </p>
+      <p class="text-[11px] text-stone-500">
+        &copy; 2026 <a href="https://www.vedicsamhita.com" target="_blank" class="text-amber-400 hover:underline font-semibold">Vedic Samhita</a>. All rights reserved. Created by RAMACHANDRA SASTRY MUNIMADUGU.
+      </p>
+    </div>
+  </footer>
+
+  <!-- App Logic -->
+  <script src="/static/app.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

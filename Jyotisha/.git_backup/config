@@ -1,0 +1,22 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+	longpaths = true
+[remote "origin"]
+	url = https://github.com/vaibhavchavali/Jyotisha.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+	vscode-merge-base = origin/main
+[branch "feat/muhurta-varjyam-amrita-panchanga"]
+	vscode-merge-base = origin/main
+	remote = myfork
+	merge = refs/heads/feat/muhurta-varjyam-amrita-panchanga
+[remote "myfork"]
+	url = https://github.com/panyam1992/Jyotisha.git
+	fetch = +refs/heads/*:refs/remotes/myfork/*
