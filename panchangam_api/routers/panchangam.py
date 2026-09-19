@@ -20,6 +20,7 @@ from services.intercalary_service import (
     get_intercalary_months_range,
     get_intercalary_theory_and_formulas
 )
+from services.moudhyam_kartari_service import get_annual_moudhyam_kartari
 
 router = APIRouter(prefix="/api/v1/panchangam", tags=["Panchangam"])
 
@@ -161,3 +162,19 @@ def get_intercalary_theory(
         return get_intercalary_theory_and_formulas(language.lower())
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/moudhyam-kartari")
+def get_moudhyam_kartari_schedule(
+    year: int = Query(2026, description="Gregorian year (e.g. 2026)"),
+    language: str = Query("telugu", description="Target language: telugu, english, devanagari, etc.")
+):
+    """
+    Returns annual Moudhyam (combustion) periods and Kartari (solar heat ingress)
+    milestones with exact IST timings, degrees, and Shastric taboos.
+    """
+    try:
+        return get_annual_moudhyam_kartari(year=year, lang=language.lower())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+

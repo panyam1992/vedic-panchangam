@@ -110,6 +110,9 @@ class DailyPanchangamResponse(BaseModel):
     festivals: List[FestivalItem]
     lagnas: List[LagnaItem]
     sankalpam: Dict[str, Any]
+    moudhyam_kartari: Optional[Dict[str, Any]] = None
+
+    model_config = {"extra": "allow"}
 
 
 class MonthlyDaySummary(BaseModel):

@@ -25,7 +25,8 @@ const STATE = {
   rashiData: { daily: null, monthly: null, yearly: null },
   dailyData: null,
   monthlyData: null,
-  sankalpaData: null
+  sankalpaData: null,
+  annualMoudhyamData: null
 };
 
 // UI Translations for all 8 supported languages
@@ -1067,6 +1068,16 @@ function setupEventListeners() {
 
   // Copy Sankalpa Button
   document.getElementById('copySankalpaBtn').addEventListener('click', copySankalpaMantra);
+
+  // Moudhyam & Kartari Modal Close
+  const closeMdBtn = document.getElementById('closeMoudhyamModalBtn');
+  const mdModal = document.getElementById('annualMoudhyamModal');
+  if (closeMdBtn && mdModal) {
+    closeMdBtn.addEventListener('click', () => mdModal.classList.add('hidden'));
+    mdModal.addEventListener('click', (e) => {
+      if (e.target === mdModal) mdModal.classList.add('hidden');
+    });
+  }
 }
 
 function adjustDate(days) {
@@ -1390,6 +1401,226 @@ function renderDaily(data) {
   } else {
     festContainer.innerHTML = `<span class="text-stone-500 italic text-sm">${t('noFestivals')}</span>`;
   }
+
+  // 8. Moudhyam & Kartari Assessment Banner
+  renderMoudhyamKartariBanner(data.moudhyam_kartari);
+}
+
+// ==========================================
+// MOUDYAM & KARTARI LIVE & ANNUAL LOGIC
+// ==========================================
+
+function renderMoudhyamKartariBanner(mk) {
+  const container = document.getElementById('moudhyamKartariBanner');
+  if (!container) return;
+
+  if (!mk) {
+    container.classList.add('hidden');
+    return;
+  }
+  container.classList.remove('hidden');
+
+  const isMoudhyam = mk.is_moudhyam;
+  const isKartari = mk.is_kartari;
+
+  let bgClasses = "bg-gradient-to-r from-emerald-50/90 to-amber-50/60 border-emerald-300 text-emerald-950";
+  let iconHtml = "✨";
+  let iconBg = "bg-emerald-100 border-emerald-300 text-emerald-700";
+  let pillHtml = `<span class="text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-900 border border-emerald-300">శుద్ధ కాలం</span>`;
+  let btnClasses = "bg-emerald-700 hover:bg-emerald-800 text-white";
+
+  if (isMoudhyam) {
+    bgClasses = "bg-gradient-to-r from-rose-50/95 via-rose-100/40 to-orange-50/60 border-rose-300 text-rose-950 shadow-xs";
+    iconHtml = "⚠️";
+    iconBg = "bg-rose-100 border-rose-300 text-rose-700";
+    pillHtml = `<span class="text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-rose-100 text-rose-900 border border-rose-300 animate-pulse">శుభకార్యములు వర్జ్యం</span>`;
+    btnClasses = "bg-rose-700 hover:bg-rose-800 text-white";
+  } else if (isKartari) {
+    bgClasses = "bg-gradient-to-r from-amber-50/95 via-orange-50/50 to-amber-100/40 border-amber-300 text-amber-950 shadow-xs";
+    iconHtml = "🔥";
+    iconBg = "bg-amber-100 border-amber-300 text-amber-800";
+    pillHtml = `<span class="text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-amber-100 text-amber-900 border border-amber-300">గృహారంభం నిషిద్ధం</span>`;
+    btnClasses = "bg-amber-700 hover:bg-amber-800 text-white";
+  }
+
+  container.className = `vedic-card p-4 transition-all border rounded-2xl ${bgClasses}`;
+
+  container.innerHTML = `
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <div class="flex items-start sm:items-center gap-3">
+        <div class="w-10 h-10 rounded-full ${iconBg} border flex items-center justify-center text-xl font-bold shrink-0 shadow-2xs">
+          ${iconHtml}
+        </div>
+        <div>
+          <div class="flex flex-wrap items-center gap-2">
+            <h4 class="text-base font-extrabold font-serif-te tracking-wide">${mk.status_title}</h4>
+            ${pillHtml}
+          </div>
+          <p class="text-xs opacity-90 mt-0.5 leading-relaxed">${mk.status_description}</p>
+        </div>
+      </div>
+      <button 
+        id="openMoudhyamModalBtn" 
+        class="shrink-0 px-4 py-2 rounded-xl text-xs font-bold ${btnClasses} shadow-md transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer"
+      >
+        <span>📅</span> <span>సంవత్సర పట్టిక & శాస్త్ర నియమాలు</span>
+      </button>
+    </div>
+  `;
+
+  const btn = document.getElementById('openMoudhyamModalBtn');
+  if (btn) {
+    btn.addEventListener('click', () => openAnnualMoudhyamModal());
+  }
+}
+
+async function openAnnualMoudhyamModal() {
+  const modal = document.getElementById('annualMoudhyamModal');
+  const body = document.getElementById('modalMoudhyamBody');
+  if (!modal || !body) return;
+
+  modal.classList.remove('hidden');
+
+  if (STATE.annualMoudhyamData && STATE.annualMoudhyamData.year === STATE.year) {
+    renderAnnualMoudhyamModalBody(STATE.annualMoudhyamData);
+    return;
+  }
+
+  body.innerHTML = `
+    <div class="flex flex-col items-center justify-center py-10">
+      <div class="w-8 h-8 border-4 border-amber-600 border-t-transparent rounded-full animate-spin"></div>
+      <p class="text-xs text-amber-900 mt-2 font-medium">మౌఢ్య & కర్తరి నిర్ణయ పట్టిక లోడ్ అవుతోంది...</p>
+    </div>
+  `;
+
+  try {
+    const res = await fetch(`/api/v1/panchangam/moudhyam-kartari?year=${STATE.year}&language=${STATE.lang}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    STATE.annualMoudhyamData = data;
+    renderAnnualMoudhyamModalBody(data);
+  } catch (err) {
+    console.error('Error fetching annual moudhyam data:', err);
+    body.innerHTML = `<div class="text-rose-700 p-4 text-center">పట్టిక లోడ్ చేయడంలో లోపం ఏర్పడింది. దయచేసి మళ్ళీ ప్రయత్నించండి.</div>`;
+  }
+}
+
+function renderAnnualMoudhyamModalBody(data) {
+  const body = document.getElementById('modalMoudhyamBody');
+  if (!body) return;
+
+  const ks = data.kartari_schedule;
+  const ml = data.moudhyam_schedule;
+  const taboos = data.shastric_taboos;
+
+  // 1. Kartari Milestones Table
+  const kartariRows = ks.milestones.map(m => `
+    <tr class="border-b border-amber-100 hover:bg-amber-50/50 transition">
+      <td class="p-2.5 font-bold text-amber-950 font-serif-te whitespace-nowrap">${m.phase}</td>
+      <td class="p-2.5 text-xs text-stone-700">${m.transit}</td>
+      <td class="p-2.5 text-xs font-mono font-bold text-amber-900 whitespace-nowrap">${m.timing}</td>
+      <td class="p-2.5 text-xs text-stone-600">${m.importance}</td>
+    </tr>
+  `).join('');
+
+  // 2. Moudhyam Cards
+  const moudhyamCards = ml.map(m => `
+    <div class="p-4 bg-gradient-to-br from-rose-50/70 to-amber-50/40 rounded-xl border border-rose-200 space-y-2">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1">
+        <h5 class="font-extrabold text-rose-950 text-sm sm:text-base font-serif-te flex items-center gap-1.5">
+          <span>⚠️</span> <span>${m.type}</span>
+        </h5>
+        <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-rose-100 text-rose-900 border border-rose-300">
+          వ్యవధి: ~${m.duration_days} రోజులు
+        </span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+        <div class="p-2.5 bg-white rounded-lg border border-rose-200/80 shadow-2xs">
+          <span class="text-stone-500 block text-[11px] font-medium">ఆరంభం (అస్తమయం):</span>
+          <span class="font-mono font-bold text-rose-900 text-xs sm:text-sm">${m.start}</span>
+        </div>
+        <div class="p-2.5 bg-white rounded-lg border border-emerald-200/80 shadow-2xs">
+          <span class="text-stone-500 block text-[11px] font-medium">సమాప్తి (ఉదయం):</span>
+          <span class="font-mono font-bold text-emerald-900 text-xs sm:text-sm">${m.end}</span>
+        </div>
+      </div>
+      <div class="text-xs text-stone-700 bg-white/70 p-2.5 rounded-lg border border-rose-100 flex flex-col sm:flex-row justify-between gap-1">
+        <span><strong>వార్ధక్య దోషం:</strong> ${m.vardhakya_start}</span>
+        <span><strong>బాల్య దోషం:</strong> ${m.balya_end}</span>
+      </div>
+      <p class="text-xs text-rose-800 font-semibold pt-1">
+        <strong>నిషేధం:</strong> ${m.prohibition}
+      </p>
+    </div>
+  `).join('');
+
+  // 3. Taboos List
+  const taboosMoudhyamList = (taboos.moudhyam_taboos || []).map(t => `<li class="flex items-center gap-1.5"><span class="text-rose-600 font-bold">✕</span> <span>${t}</span></li>`).join('');
+  const taboosKartariList = (taboos.kartari_taboos || []).map(t => `<li class="flex items-center gap-1.5"><span class="text-amber-700 font-bold">✕</span> <span>${t}</span></li>`).join('');
+  const permittedList = (taboos.permitted_karmas || []).map(p => `<li class="flex items-center gap-1.5"><span class="text-emerald-600 font-bold">✓</span> <span>${p}</span></li>`).join('');
+
+  body.innerHTML = `
+    <!-- Section A: Kartari (Agni Kartari) -->
+    <div class="space-y-3">
+      <div class="flex items-center gap-2 border-b border-amber-200 pb-2">
+        <span class="text-2xl">🔥</span>
+        <div>
+          <h4 class="font-bold text-amber-950 text-base font-serif-te">${ks.title}</h4>
+          <p class="text-xs text-stone-600">${ks.description}</p>
+        </div>
+      </div>
+      <div class="overflow-x-auto rounded-xl border border-amber-200 bg-white shadow-xs">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-amber-100/80 text-amber-950 font-bold border-b border-amber-200">
+              <th class="p-2.5">విభాగం (Phase)</th>
+              <th class="p-2.5">సూర్య సంచారం (Transit)</th>
+              <th class="p-2.5">ఖచ్చితమైన సమయం (Timing)</th>
+              <th class="p-2.5">ప్రాముఖ్యత (Significance)</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${kartariRows}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section B: Moudhyam Periods -->
+    <div class="space-y-3 pt-2">
+      <div class="flex items-center gap-2 border-b border-rose-200 pb-2">
+        <span class="text-2xl">🪐</span>
+        <div>
+          <h4 class="font-bold text-rose-950 text-base font-serif-te">మౌఢ్యములు (గురు & శుక్ర అస్తమయాలు)</h4>
+          <p class="text-xs text-stone-600">దేవగురు బృహస్పతి, దైత్యగురు శుక్రులు సూర్య సామీప్యంచే అస్తంగతులయ్యే కాలాలు.</p>
+        </div>
+      </div>
+      <div class="space-y-3">
+        ${moudhyamCards}
+      </div>
+    </div>
+
+    <!-- Section C: Dharmashastric Guidelines -->
+    <div class="pt-2">
+      <h4 class="font-bold text-stone-900 text-sm font-serif-te mb-2.5 flex items-center gap-1.5">
+        <span>📜</span> <span>ధర్మశాస్త్ర ముహూర్త నిర్ణయాలు (ఏవి చేయవచ్చు? ఏవి నిషిద్ధం?)</span>
+      </h4>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+        <div class="p-3 bg-rose-50/70 border border-rose-200 rounded-xl space-y-1.5">
+          <span class="font-bold text-rose-900 block border-b border-rose-200 pb-1">మౌఢ్యంలో నిషిద్ధాలు:</span>
+          <ul class="space-y-1 text-stone-700">${taboosMoudhyamList}</ul>
+        </div>
+        <div class="p-3 bg-amber-50/70 border border-amber-200 rounded-xl space-y-1.5">
+          <span class="font-bold text-amber-900 block border-b border-amber-200 pb-1">కర్తరిలో నిషిద్ధాలు:</span>
+          <ul class="space-y-1 text-stone-700">${taboosKartariList}</ul>
+        </div>
+        <div class="p-3 bg-emerald-50/70 border border-emerald-200 rounded-xl space-y-1.5">
+          <span class="font-bold text-emerald-900 block border-b border-emerald-200 pb-1">ఆచరించదగినవి:</span>
+          <ul class="space-y-1 text-stone-700">${permittedList}</ul>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 // Fetch Monthly Calendar

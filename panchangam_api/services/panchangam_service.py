@@ -51,6 +51,7 @@ from services.mana_systems import (
     RASHI_NAMES_DEV
 )
 from services.sankalpa_service import generate_sankalpam
+from services.moudhyam_kartari_service import compute_daily_moudhyam_kartari, get_annual_moudhyam_kartari
 
 # Load default computation system
 COMP_SYSTEM_PATH = os.path.join(JYOTISHA_DIR, 'computation_systems', 'vishvAsa_bhAskara.toml')
@@ -510,6 +511,9 @@ def get_daily_panchangam(
         target_lang=lang
     )
 
+    # 8. Moudhyam & Kartari Assessment
+    moudhyam_kartari = compute_daily_moudhyam_kartari(dp.jd_sunrise, lang)
+
     return {
         "city": city_name,
         "country": country_name,
@@ -528,7 +532,8 @@ def get_daily_panchangam(
         "muhurthams": muhurthams_data,
         "festivals": festivals,
         "lagnas": lagnas,
-        "sankalpam": sankalpa_res
+        "sankalpam": sankalpa_res,
+        "moudhyam_kartari": moudhyam_kartari
     }
 
 

@@ -234,3 +234,61 @@ def test_vedic_vasaram_names():
     assert data_thu["angas"]["vara"] == "బృహస్పతి వాసరం (గురు వాసరం)"
     assert data_thu["angas"]["vara_english"] == "Bruhaspati vasaram ( Guru vasaram )"
 
+
+def test_moudhyam_and_kartari():
+    """Verify annual Moudhyam and Kartari schedule and daily live assessment."""
+    # 1. Annual Schedule API
+    res = client.get("/api/v1/panchangam/moudhyam-kartari?year=2026&language=telugu")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["year"] == 2026
+    ks = data["kartari_schedule"]
+    assert "2026-05" in ks["pedda_kartari_start"]
+    assert "2026-06" in ks["kartari_end"]
+    assert len(ks["milestones"]) == 4
+
+    ml = data["moudhyam_schedule"]
+    assert len(ml) >= 2
+    guru_m = next(m for m in ml if m["graha_code"] == "jupiter")
+    sukra_m = next(m for m in ml if m["graha_code"] == "venus")
+    assert "2026-07" in guru_m["start"]
+    assert "2026-08" in guru_m["end"]
+    assert "2026-10" in sukra_m["start"]
+
+    # 2. Daily Panchangam during Pedda Kartari (2026-05-18)
+    res_pk = client.get("/api/v1/panchangam/daily?city=Hyderabad&date=2026-05-18&language=telugu")
+    assert res_pk.status_code == 200
+    data_pk = res_pk.json()
+    mk_pk = data_pk["moudhyam_kartari"]
+    assert mk_pk["is_kartari"] is True
+    assert mk_pk["kartari_type"] == "PEDDA_KARTARI"
+    assert "అగ్ని కర్తరి" in mk_pk["badge_text"]
+
+    # 3. Daily Panchangam during Guru Moudhyam (2026-07-20)
+    res_gm = client.get("/api/v1/panchangam/daily?city=Hyderabad&date=2026-07-20&language=telugu")
+    assert res_gm.status_code == 200
+    data_gm = res_gm.json()
+    mk_gm = data_gm["moudhyam_kartari"]
+    assert mk_gm["is_moudhyam"] is True
+    assert mk_gm["is_guru_moudhyam"] is True
+    assert "గురు మౌఢ్యమి" in mk_gm["badge_text"]
+
+    # 4. Daily Panchangam during Sukra Moudhyam (2026-10-22)
+    res_sm = client.get("/api/v1/panchangam/daily?city=Hyderabad&date=2026-10-22&language=telugu")
+    assert res_sm.status_code == 200
+    data_sm = res_sm.json()
+    mk_sm = data_sm["moudhyam_kartari"]
+    assert mk_sm["is_moudhyam"] is True
+    assert mk_sm["is_sukra_moudhyam"] is True
+    assert "శుక్ర మౌఢ్యమి" in mk_sm["badge_text"]
+
+    # 5. Clean Day (Ugadi 2026-03-19)
+    res_clean = client.get("/api/v1/panchangam/daily?city=Hyderabad&date=2026-03-19&language=telugu")
+    assert res_clean.status_code == 200
+    data_clean = res_clean.json()
+    mk_clean = data_clean["moudhyam_kartari"]
+    assert mk_clean["is_moudhyam"] is False
+    assert mk_clean["is_kartari"] is False
+    assert "శుద్ధ కాలం" in mk_clean["badge_text"]
+
+

@@ -38,7 +38,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="/static/styles.css?v=5.0">
+  <link rel="stylesheet" href="/static/styles.css?v=6.0">
 </head>
 <body class="min-h-screen flex flex-col bg-[#faf7f2] text-stone-800">
 
@@ -188,6 +188,28 @@
     <div class="bg-white p-6 rounded-2xl shadow-2xl flex flex-col items-center gap-3 border border-amber-300">
       <div class="w-10 h-10 border-4 border-amber-600 border-t-transparent rounded-full animate-spin"></div>
       <p id="loaderText" class="text-sm font-bold text-amber-900">పంచాంగ వివరాలు లోడ్ అవుతున్నాయి...</p>
+    </div>
+  </div>
+
+  <!-- Annual Moudhyam & Kartari Full Schedule Modal -->
+  <div id="annualMoudhyamModal" class="hidden fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-2xl shadow-2xl border border-amber-300 max-w-3xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-fadeIn">
+      <!-- Modal Header -->
+      <div class="p-4 sm:p-5 bg-gradient-to-r from-amber-950 via-amber-900 to-stone-950 text-white flex justify-between items-center border-b border-amber-700/60">
+        <div>
+          <h3 id="modalMoudhyamTitle" class="text-lg sm:text-xl font-bold font-serif-te flex items-center gap-2">
+            🪔 సంవత్సర మౌఢ్య & కర్తరి నిర్ణయ పట్టిక
+          </h3>
+          <p class="text-xs text-amber-200/90 mt-0.5">ఖగోళ నిరయణ గణితం • ధర్మశాస్త్ర ముహూర్త నిషేధాలు & ప్రాశస్త్యాలు</p>
+        </div>
+        <button id="closeMoudhyamModalBtn" class="w-8 h-8 rounded-full bg-amber-800/80 hover:bg-amber-700 text-white flex items-center justify-center transition active:scale-95 cursor-pointer">
+          ✕
+        </button>
+      </div>
+      <!-- Modal Content (Scrollable) -->
+      <div id="modalMoudhyamBody" class="p-5 overflow-y-auto space-y-6 text-sm text-stone-800">
+        <!-- Injected via JavaScript -->
+      </div>
     </div>
   </div>
 
@@ -360,6 +382,11 @@
             <div id="angaKaranas" class="space-y-1"></div>
           </div>
         </div>
+      </div>
+
+      <!-- Moudhyam & Kartari Live Assessment Banner -->
+      <div id="moudhyamKartariBanner" class="vedic-card p-4 transition-all border shadow-xs">
+        <!-- Injected via JavaScript in renderDaily() -->
       </div>
 
       <!-- Sun & Moon + Muhurthams -->
@@ -1151,7 +1178,7 @@
   </footer>
 
   <!-- App Logic -->
-  <script src="/static/app.js?v=5.0"></script>
+  <script src="/static/app.js?v=6.0"></script>
   <script>
     try {
       if (window.lucide && typeof lucide.createIcons === 'function') {
