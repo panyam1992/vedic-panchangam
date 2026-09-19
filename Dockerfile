@@ -4,7 +4,7 @@ FROM python:3.11-slim
 # Prevent Python from writing .pyc and enable unbuffered output
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV PYTHONPATH="/app/Jyotisha:/app/panchangam_api"
+ENV PYTHONPATH="/app/panchangam_api:/app/Jyotisha"
 
 WORKDIR /app
 
@@ -29,12 +29,9 @@ COPY panchangam_api /app/panchangam_api
 
 WORKDIR /app/panchangam_api
 
-# Expose port 8000
+# Expose port (supports Render $PORT or default 8000)
 EXPOSE 8000
+EXPOSE 10000
 
-# Healthcheck
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:8000/health || exit 1
-
-# Launch Uvicorn with standard production settings
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2"]
+# Launch Uvicorn supporting dynamic PORT from cloud provider
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"]
