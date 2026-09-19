@@ -1139,7 +1139,14 @@ function renderDaily(data) {
   // Chandramana
   document.getElementById('cmAmanta').innerText = cm.amanta_masa.name;
   document.getElementById('cmPurnimanta').innerText = cm.purnimanta_masa.name;
-  document.getElementById('cmPaksha').innerText = cm.paksha_name || cm.paksha;
+  const pakshaRaw = cm.paksha_name || cm.paksha || '';
+  let pakshaDisplay = pakshaRaw;
+  if (STATE.lang === 'telugu' || !STATE.lang) {
+    if (pakshaRaw === 'Shukla') pakshaDisplay = 'శుక్ల పక్షము';
+    else if (pakshaRaw === 'Krishna') pakshaDisplay = 'కృష్ణ పక్షము';
+    else if (!pakshaRaw.includes('పక్షము') && (pakshaRaw === 'శుక్ల' || pakshaRaw === 'కృష్ణ')) pakshaDisplay = `${pakshaRaw} పక్షము`;
+  }
+  document.getElementById('cmPaksha').innerText = pakshaDisplay || '---';
 
   const cmBadge = document.getElementById('cmMasaBadge');
   const cmStatus = document.getElementById('cmMasaStatus');
@@ -1161,8 +1168,15 @@ function renderDaily(data) {
   }
 
   // Sauramana
-  const regSolar = sm.regional_solar_calendars;
-  document.getElementById('smSolarMonth').innerText = sm.solar_month.name;
+  const regSolar = sm.regional_solar_calendars || {};
+  const smSolar = sm.solar_month || {};
+  let smSolarText = smSolar.name;
+  if (!smSolarText) {
+    const rName = smSolar.rashi_name || '';
+    const dayVal = smSolar.day ? `${smSolar.day}వ రోజు` : '';
+    smSolarText = (rName && dayVal) ? `${rName} (${dayVal})` : (rName || '---');
+  }
+  document.getElementById('smSolarMonth').innerText = smSolarText || '---';
   document.getElementById('smTamil').innerText = regSolar.tamil ? regSolar.tamil.month_name : "---";
   document.getElementById('smMalayalam').innerText = regSolar.malayalam_kollam ? regSolar.malayalam_kollam.month_name : "---";
   document.getElementById('smSankranti').innerText = sm.sankranti_transition ? `${sm.sankranti_transition.to_month}: ${sm.sankranti_transition.transition_time}` : "---";

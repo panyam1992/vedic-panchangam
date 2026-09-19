@@ -113,18 +113,98 @@ body {
   box-shadow: 0 0 0 2px rgba(124, 45, 18, 0.2);
 }
 
-/* Screen Rotation & Landscape Mode Responsive Support */
-@media (orientation: landscape) and (max-height: 600px) {
-  .cal-day-cell {
-    min-height: 70px;
-  }
-  header {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
+/* Custom utility to hide scrollbars on mobile tab swipe */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 body {
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Screen Rotation & Landscape Mode Responsive Support for Mobile Phones */
+@media (orientation: landscape) and (max-height: 600px), (max-height: 520px) {
+  /* Release sticky pinning so header NEVER traps or covers landscape view */
+  header {
+    position: relative !important;
+    top: auto !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+  
+  header > div:first-child {
+    padding-top: 0.35rem !important;
+    padding-bottom: 0.35rem !important;
+    gap: 0.35rem !important;
+  }
+  
+  /* Compact brand & title in landscape */
+  #headerBrandContainer {
+    gap: 0.5rem !important;
+  }
+  #headerBrandContainer img {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+  #appTitle {
+    font-size: 1.05rem !important;
+    line-height: 1.2 !important;
+    margin-top: 0 !important;
+  }
+  #appSubtitle {
+    display: none !important; /* Save valuable vertical space */
+  }
+  #headerCreatorCredit {
+    font-size: 0.65rem !important;
+    margin-top: 0 !important;
+  }
+
+  /* Compact search & controls */
+  #citySearchInput {
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+    font-size: 0.75rem !important;
+  }
+  #gpsBtn {
+    padding: 0.3rem 0.6rem !important;
+    font-size: 0.72rem !important;
+  }
+  #datePicker {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.72rem !important;
+  }
+  #todayBtn {
+    padding: 0.25rem 0.6rem !important;
+    font-size: 0.72rem !important;
+  }
+
+  /* Compact navigation tabs */
+  #tabBarContainer {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+    gap: 0.35rem !important;
+  }
+  #tabBarContainer button {
+    padding: 0.25rem 0.65rem !important;
+    font-size: 0.72rem !important;
+  }
+
+  /* Compact main content spacing */
+  main {
+    padding-top: 0.75rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  .vedic-card {
+    padding: 0.85rem !important;
+    border-radius: 0.75rem !important;
+  }
+  .cal-day-cell {
+    min-height: 60px !important;
+  }
 }

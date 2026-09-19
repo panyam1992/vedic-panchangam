@@ -144,7 +144,12 @@ def compute_chandramana(daily_panchaanga, target_lang: str) -> dict:
             amanta_masa_user = transliterate_text("संसर्प कार्तिक मास", target_lang)
         purnimanta_masa_user = amanta_masa_user
 
-    paksha_str = "Shukla" if tithi_num <= 15 else "Krishna"
+    if target_lang == "telugu":
+        paksha_str = "శుక్ల పక్షము" if tithi_num <= 15 else "కృష్ణ పక్షము"
+    elif target_lang == "devanagari":
+        paksha_str = "शुक्ल पक्ष" if tithi_num <= 15 else "कृष्ण पक्ष"
+    else:
+        paksha_str = "Shukla" if tithi_num <= 15 else "Krishna"
 
     return {
         "samvatsara": {
@@ -175,8 +180,9 @@ def compute_chandramana(daily_panchaanga, target_lang: str) -> dict:
             "badge_label": badge_label
         },
         "paksha": paksha_str,
+        "paksha_name": paksha_str,
         "tithi_at_sunrise": tithi_num,
-        "description": f"{sam_user} సం|| {amanta_masa_user} {paksha_str} పక్షము"
+        "description": f"{sam_user} సం|| {amanta_masa_user} {paksha_str}"
     }
 
 
@@ -217,9 +223,12 @@ def compute_sauramana(daily_panchaanga, target_lang: str) -> dict:
             "target_rashi": transliterate_text(RASHI_NAMES_DEV[solar_month % 12], target_lang)
         }
 
+    solar_month_name = f"{rashi_user} ({solar_day}వ రోజు)" if target_lang == "telugu" else (f"{rashi_user} (Day {solar_day})" if target_lang == "english" else f"{rashi_user} ({solar_day})")
+
     return {
         "solar_month": {
             "index": solar_month,
+            "name": solar_month_name,
             "rashi_name": rashi_user,
             "rashi_name_sanskrit": rashi_dev,
             "day": solar_day

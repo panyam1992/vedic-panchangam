@@ -47,7 +47,7 @@
     <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-3">
       
       <!-- Brand & Title -->
-      <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
+      <div id="headerBrandContainer" class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
         <div class="flex items-center gap-3">
           <a href="https://www.vedicsamhita.com" target="_blank" title="Vedic Samhita • www.vedicsamhita.com" class="block shrink-0 group">
             <img 
@@ -95,7 +95,7 @@
       </div>
 
       <!-- City Search & GPS Bar -->
-      <div class="flex items-center gap-2 w-full md:w-auto">
+      <div id="headerSearchControls" class="flex items-center gap-2 w-full md:w-auto">
         <div class="relative flex-1 md:w-72">
           <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-amber-300/70">
             <i data-lucide="search" class="w-4 h-4"></i>
@@ -139,7 +139,7 @@
       </div>
 
       <!-- Date Controls -->
-      <div class="flex items-center gap-1.5 w-full md:w-auto justify-center">
+      <div id="headerDateControls" class="flex items-center gap-1.5 w-full md:w-auto justify-center">
         <button id="prevDayBtn" class="p-1.5 rounded-full hover:bg-amber-700/60 text-amber-200 transition" title="మునుపటి రోజు">
           <i data-lucide="chevron-left" class="w-5 h-5"></i>
         </button>
@@ -160,20 +160,20 @@
 
     <!-- Navigation Tabs Bar -->
     <div class="bg-amber-950/90 border-t border-amber-800/60">
-      <div class="max-w-7xl mx-auto px-4 flex justify-center md:justify-start gap-2 py-1.5">
-        <button id="dailyTabBtn" class="px-5 py-2 rounded-full font-semibold text-white bg-amber-700 shadow-md text-xs md:text-sm transition-all">
+      <div id="tabBarContainer" class="max-w-7xl mx-auto px-4 flex items-center justify-start md:justify-start gap-2 py-1.5 overflow-x-auto no-scrollbar scroll-smooth">
+        <button id="dailyTabBtn" class="shrink-0 whitespace-nowrap px-4 py-2 rounded-full font-semibold text-white bg-amber-700 shadow-md text-xs md:text-sm transition-all">
           రోజువారీ పంచాంగం
         </button>
-        <button id="monthlyTabBtn" class="px-5 py-2 rounded-full font-semibold text-stone-300 hover:bg-amber-900/60 text-xs md:text-sm transition-all">
+        <button id="monthlyTabBtn" class="shrink-0 whitespace-nowrap px-4 py-2 rounded-full font-semibold text-stone-300 hover:bg-amber-900/60 text-xs md:text-sm transition-all">
           మాస క్యాలెండర్
         </button>
-        <button id="sankalpaTabBtn" class="px-5 py-2 rounded-full font-semibold text-stone-300 hover:bg-amber-900/60 text-xs md:text-sm transition-all">
+        <button id="sankalpaTabBtn" class="shrink-0 whitespace-nowrap px-4 py-2 rounded-full font-semibold text-stone-300 hover:bg-amber-900/60 text-xs md:text-sm transition-all">
           వైదిక సంకల్పం
         </button>
-        <button id="rashiTabBtn" class="px-5 py-2 rounded-full font-semibold text-stone-300 hover:bg-amber-900/60 text-xs md:text-sm transition-all">
+        <button id="rashiTabBtn" class="shrink-0 whitespace-nowrap px-4 py-2 rounded-full font-semibold text-stone-300 hover:bg-amber-900/60 text-xs md:text-sm transition-all">
           రాశి ఫలాలు
         </button>
-        <button id="intercalaryTabBtn" class="px-5 py-2 rounded-full font-semibold text-stone-300 hover:bg-amber-900/60 text-xs md:text-sm transition-all">
+        <button id="intercalaryTabBtn" class="shrink-0 whitespace-nowrap px-4 py-2 rounded-full font-semibold text-stone-300 hover:bg-amber-900/60 text-xs md:text-sm transition-all">
           అధిక / క్షయ మాసములు
         </button>
       </div>

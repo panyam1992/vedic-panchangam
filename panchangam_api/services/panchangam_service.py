@@ -409,6 +409,7 @@ def get_daily_panchangam(
     chandramana["ritu_name"] = ritu_display
     chandramana["masam_name"] = masam_display
     chandramana["paksha_name"] = paksha_display
+    chandramana["paksha"] = paksha_display
     chandramana["description"] = f"{samvatsara_display} • {ayana_display} • {ritu_display} • {masam_display} • {paksha_display}"
 
     sauramana["solar_month"]["ayana"] = ayana_display

@@ -50,18 +50,29 @@ class ChandramanaData(BaseModel):
     amanta_masa: Dict[str, Any]
     purnimanta_masa: Dict[str, Any]
     paksha: str
+    paksha_name: Optional[str] = None
+    samvatsara_name: Optional[str] = None
+    ayana_name: Optional[str] = None
+    ritu_name: Optional[str] = None
+    masam_name: Optional[str] = None
     tithi_at_sunrise: int
     description: str
+
+    model_config = {"extra": "allow"}
 
 class SauramanaData(BaseModel):
     solar_month: Dict[str, Any]
     regional_solar_calendars: Dict[str, Any]
     sankranti_transition: Optional[Dict[str, Any]] = None
 
+    model_config = {"extra": "allow"}
+
 class BarhaspatyamanaData(BaseModel):
     jupiter_position: Dict[str, Any]
     jovian_cycle_12_year: Dict[str, Any]
     sacred_river_pushkaram: Dict[str, Any]
+
+    model_config = {"extra": "allow"}
 
 class LagnaItem(BaseModel):
     lagna_id: int
