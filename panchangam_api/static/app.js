@@ -1109,16 +1109,19 @@ function loadData() {
 // Fetch Daily Panchangam
 async function fetchDaily() {
   showLoader(true);
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 20000);
   try {
     const url = `/api/v1/panchangam/daily?city=${encodeURIComponent(STATE.city)}&lat=${STATE.lat}&lon=${STATE.lon}&tz=${encodeURIComponent(STATE.tz)}&date=${STATE.date}&language=${STATE.lang}`;
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("Failed to fetch daily panchangam");
+    const res = await fetch(url, { signal: controller.signal });
+    clearTimeout(timeoutId);
+    if (!res.ok) throw new Error(`Failed to fetch daily panchangam (${res.status})`);
     const data = await res.json();
     STATE.dailyData = data;
     renderDaily(data);
   } catch (err) {
-    console.error(err);
-    alert("Error loading Panchangam data: " + err.message);
+    clearTimeout(timeoutId);
+    console.error("Daily Panchangam error:", err);
   } finally {
     showLoader(false);
   }

@@ -70,8 +70,13 @@ def get_annual_panchaanga(city: City, year: int) -> Any:
     if key in _ANNUAL_CACHE:
         return _ANNUAL_CACHE[key]
 
-    # Precomputed storage directory
-    precomputed_dir = os.path.expanduser("~/Documents/jyotisha")
+    # Precomputed storage directory: check bundled project data first, then user Documents
+    bundled_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "precomputed")
+    if os.path.isdir(bundled_dir):
+        precomputed_dir = bundled_dir
+    else:
+        precomputed_dir = os.path.expanduser("~/Documents/jyotisha")
+
     panchaanga = annual.get_panchaanga_for_civil_year(
         city=city,
         year=year,
