@@ -1481,7 +1481,7 @@ async function openAnnualMoudhyamModal() {
 
   modal.classList.remove('hidden');
 
-  if (STATE.annualMoudhyamData && STATE.annualMoudhyamData.year === STATE.year) {
+  if (STATE.annualMoudhyamData && STATE.annualMoudhyamData.year === STATE.year && STATE.annualMoudhyamData.timezone === STATE.tz) {
     renderAnnualMoudhyamModalBody(STATE.annualMoudhyamData);
     return;
   }
@@ -1494,7 +1494,7 @@ async function openAnnualMoudhyamModal() {
   `;
 
   try {
-    const res = await fetch(`/api/v1/panchangam/moudhyam-kartari?year=${STATE.year}&language=${STATE.lang}`);
+    const res = await fetch(`/api/v1/panchangam/moudhyam-kartari?year=${STATE.year}&language=${STATE.lang}&tz=${encodeURIComponent(STATE.tz)}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     STATE.annualMoudhyamData = data;
@@ -1512,6 +1512,22 @@ function renderAnnualMoudhyamModalBody(data) {
   const ks = data.kartari_schedule;
   const ml = data.moudhyam_schedule;
   const taboos = data.shastric_taboos;
+  const tz = data.timezone || STATE.tz || 'Asia/Kolkata';
+
+  const locationBanner = `
+    <div class="bg-gradient-to-r from-amber-50 to-orange-50/60 border border-amber-200/90 rounded-xl p-3 flex flex-wrap items-center justify-between gap-2 shadow-2xs">
+      <div class="flex items-center gap-2">
+        <span class="text-lg">📍</span>
+        <div>
+          <span class="font-bold text-amber-950 text-sm font-serif-te">${STATE.city}, ${STATE.country}</span>
+          <span class="text-[11px] text-stone-600 font-mono ml-2 bg-white/80 px-2 py-0.5 rounded border border-amber-200">సమయ మండలం: ${tz}</span>
+        </div>
+      </div>
+      <div class="text-[11px] text-amber-900 bg-amber-100/70 border border-amber-300/80 px-2.5 py-1 rounded-lg font-medium">
+        🕒 సమయాలు: మీ స్థానిక సమయం &amp; (IST భారత ప్రామాణిక సమయం)
+      </div>
+    </div>
+  `;
 
   // 1. Kartari Milestones Table
   const kartariRows = ks.milestones.map(m => `
@@ -1560,6 +1576,8 @@ function renderAnnualMoudhyamModalBody(data) {
   const permittedList = (taboos.permitted_karmas || []).map(p => `<li class="flex items-center gap-1.5"><span class="text-emerald-600 font-bold">✓</span> <span>${p}</span></li>`).join('');
 
   body.innerHTML = `
+    ${locationBanner}
+
     <!-- Section A: Kartari (Agni Kartari) -->
     <div class="space-y-3">
       <div class="flex items-center gap-2 border-b border-amber-200 pb-2">
@@ -1808,6 +1826,7 @@ function selectCity(cityObj) {
   STATE.lat = cityObj.lat;
   STATE.lon = cityObj.lon;
   STATE.tz = cityObj.tz;
+  STATE.annualMoudhyamData = null; // Invalidate cache so modal re-fetches in new timezone
   localStorage.setItem('vp_city', STATE.city);
   localStorage.setItem('vp_country', STATE.country);
   localStorage.setItem('vp_lat', STATE.lat);

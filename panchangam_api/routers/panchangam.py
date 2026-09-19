@@ -167,14 +167,15 @@ def get_intercalary_theory(
 @router.get("/moudhyam-kartari")
 def get_moudhyam_kartari_schedule(
     year: int = Query(2026, description="Gregorian year (e.g. 2026)"),
-    language: str = Query("telugu", description="Target language: telugu, english, devanagari, etc.")
+    language: str = Query("telugu", description="Target language: telugu, english, devanagari, etc."),
+    tz: str = Query("Asia/Kolkata", description="Timezone name e.g. America/Chicago, Asia/Kolkata")
 ):
     """
     Returns annual Moudhyam (combustion) periods and Kartari (solar heat ingress)
-    milestones with exact IST timings, degrees, and Shastric taboos.
+    milestones with exact localized timings (and IST references), degrees, and Shastric taboos.
     """
     try:
-        return get_annual_moudhyam_kartari(year=year, lang=language.lower())
+        return get_annual_moudhyam_kartari(year=year, lang=language.lower(), tz_name=tz)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

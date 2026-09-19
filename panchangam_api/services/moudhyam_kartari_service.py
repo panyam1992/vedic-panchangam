@@ -5,6 +5,7 @@ and Panchanga Pithika Lekhana Prakriya by Sri Pidaparti Sitarama Sastry.
 """
 
 from datetime import datetime, timezone, timedelta
+from zoneinfo import ZoneInfo
 from typing import Dict, Any, List, Optional
 import swisseph as swe
 
@@ -118,11 +119,34 @@ def _get_lang_dict(lang: str) -> Dict[str, Any]:
     return MOUDYAM_KARTARI_TEXTS.get(l_clean, MOUDYAM_KARTARI_TEXTS["telugu"])
 
 
-def jd_to_ist_datetime_str(jd: float) -> str:
+def jd_to_local_datetime_str(jd: float, tz_name: str = "Asia/Kolkata") -> str:
+    """
+    Converts Julian Day float to localized date-time string in target timezone.
+    If timezone is not IST, also appends (IST: HH:MM AM/PM) for dual awareness.
+    """
     year, month, day, hour_float = swe.revjul(jd)
-    dt_utc = datetime(year, month, day, tzinfo=timezone.utc) + timedelta(hours=hour_float)
-    dt_ist = dt_utc + timedelta(hours=5, minutes=30)
-    return dt_ist.strftime("%Y-%m-%d %I:%M %p IST")
+    whole_hours = int(hour_float)
+    minute_float = (hour_float - whole_hours) * 60.0
+    whole_minutes = int(minute_float)
+    whole_seconds = int((minute_float - whole_minutes) * 60.0)
+
+    dt_utc = datetime(year, month, day, whole_hours, whole_minutes, whole_seconds, tzinfo=timezone.utc)
+    try:
+        target_tz = ZoneInfo(tz_name)
+    except Exception:
+        target_tz = ZoneInfo("Asia/Kolkata")
+
+    dt_local = dt_utc.astimezone(target_tz)
+    local_str = dt_local.strftime("%Y-%m-%d %I:%M %p %Z")
+
+    if target_tz.key != "Asia/Kolkata":
+        dt_ist = dt_utc.astimezone(ZoneInfo("Asia/Kolkata"))
+        return f"{local_str} (IST: {dt_ist.strftime('%I:%M %p')})"
+    return local_str
+
+
+def jd_to_ist_datetime_str(jd: float) -> str:
+    return jd_to_local_datetime_str(jd, "Asia/Kolkata")
 
 
 def compute_daily_moudhyam_kartari(jd: float, lang: str = "telugu") -> Dict[str, Any]:
@@ -274,9 +298,10 @@ def _find_exact_moudhyam_boundary(planet: int, limit: float, jd_start: float, jd
     return mid
 
 
-def get_annual_moudhyam_kartari(year: int = 2026, lang: str = "telugu") -> Dict[str, Any]:
+def get_annual_moudhyam_kartari(year: int = 2026, lang: str = "telugu", tz_name: str = "Asia/Kolkata") -> Dict[str, Any]:
     """
-    Computes full-year schedule of Moudhyam periods and Kartari ingress milestones.
+    Computes full-year schedule of Moudhyam periods and Kartari ingress milestones
+    localized to the requested city's timezone.
     """
     texts = _get_lang_dict(lang)
 
@@ -288,35 +313,36 @@ def get_annual_moudhyam_kartari(year: int = 2026, lang: str = "telugu") -> Dict[
 
     kartari_schedule = {
         "year": year,
+        "timezone": tz_name,
         "title": "అగ్ని కర్తరి నిర్ణయ పట్టిక (Kartari Schedule)",
-        "chinna_kartari_start": jd_to_ist_datetime_str(jd_chinna),
-        "pedda_kartari_start": jd_to_ist_datetime_str(jd_pedda),
-        "rohini_kartari_start": jd_to_ist_datetime_str(jd_rohini),
-        "kartari_end": jd_to_ist_datetime_str(jd_end),
+        "chinna_kartari_start": jd_to_local_datetime_str(jd_chinna, tz_name),
+        "pedda_kartari_start": jd_to_local_datetime_str(jd_pedda, tz_name),
+        "rohini_kartari_start": jd_to_local_datetime_str(jd_rohini, tz_name),
+        "kartari_end": jd_to_local_datetime_str(jd_end, tz_name),
         "description": "సూర్యుడు భరణి 3వ పాదం ప్రవేశం మొదలు రోహిణి 2వ పాదం ముగిసే వరకు కర్తరి. గృహారంభాలు, శంకుస్థాపనలు, స్లాబులు, కలప కోయడం నిషిద్ధం.",
         "milestones": [
             {
                 "phase": "చిన్న కర్తరి ప్రారంభం",
                 "transit": "సూర్యుడు భరణి 3వ పాదం ప్రవేశం (మేషం 20°00')",
-                "timing": jd_to_ist_datetime_str(jd_chinna),
+                "timing": jd_to_local_datetime_str(jd_chinna, tz_name),
                 "importance": "పూర్వ కర్తరి ఆరంభం • శంకుస్థాపనలు వర్జ్యం"
             },
             {
                 "phase": "పెద్ద కర్తరి / అగ్ని కర్తరి ప్రారంభం",
                 "transit": "సూర్యుడు కృత్తిక 1వ పాదం ప్రవేశం (మేషం 26°40')",
-                "timing": jd_to_ist_datetime_str(jd_pedda),
+                "timing": jd_to_local_datetime_str(jd_pedda, tz_name),
                 "importance": "ముఖ్య అగ్ని కర్తరి • ప్రచండ సూర్యతాపం • సమస్త గృహ నిర్మాణ పనులు నిషిద్ధం"
             },
             {
                 "phase": "రోహిణి కర్తరి ప్రారంభం",
                 "transit": "సూర్యుడు రోహిణి 1వ పాదం ప్రవేశం (వృషభం 10°00')",
-                "timing": jd_to_ist_datetime_str(jd_rohini),
+                "timing": jd_to_local_datetime_str(jd_rohini, tz_name),
                 "importance": "ఉత్తర కర్తరి దశ"
             },
             {
                 "phase": "కర్తరి త్యాగం (సమాప్తి)",
                 "transit": "సూర్యుడు రోహిణి 2వ పాదం ముగింపు (వృషభం 16°40')",
-                "timing": jd_to_ist_datetime_str(jd_end),
+                "timing": jd_to_local_datetime_str(jd_end, tz_name),
                 "importance": "కర్తరి విముక్తి • యథావిధిగా నిర్మాణ పనులు ప్రారంభించవచ్చు"
             }
         ]
@@ -333,11 +359,11 @@ def get_annual_moudhyam_kartari(year: int = 2026, lang: str = "telugu") -> Dict[
             "graha": "గురుడు (బృహస్పతి)",
             "graha_code": "jupiter",
             "type": "గురు మౌఢ్యం (బృహస్పతి అస్తమయం)",
-            "start": jd_to_ist_datetime_str(jd_g_start),
-            "end": jd_to_ist_datetime_str(jd_g_end),
+            "start": jd_to_local_datetime_str(jd_g_start, tz_name),
+            "end": jd_to_local_datetime_str(jd_g_end, tz_name),
             "peak_conjunction": "2026-07-29",
-            "vardhakya_start": "2026-07-11 (అస్తమయానికి 3 రోజుల ముందు)",
-            "balya_end": "2026-08-16 (ఉదయించిన 3 రోజుల తర్వాత)",
+            "vardhakya_start": "అస్తమయానికి 3 రోజుల ముందు",
+            "balya_end": "ఉదయించిన 3 రోజుల తర్వాత",
             "prohibition": "వివాహం, ఉపనయనం, గృహప్రవేశం, శంకుస్థాపనలు, నూతన వ్రతాలు సమస్తం నిషిద్ధం.",
             "duration_days": 30
         })
@@ -349,17 +375,18 @@ def get_annual_moudhyam_kartari(year: int = 2026, lang: str = "telugu") -> Dict[
             "graha": "శుక్రుడు (భార్గవుడు)",
             "graha_code": "venus",
             "type": "శుక్ర మౌఢ్యం (భార్గవ అస్తమయం - వక్రగతి)",
-            "start": jd_to_ist_datetime_str(jd_v_start),
-            "end": jd_to_ist_datetime_str(jd_v_end),
+            "start": jd_to_local_datetime_str(jd_v_start, tz_name),
+            "end": jd_to_local_datetime_str(jd_v_end, tz_name),
             "peak_conjunction": "2026-10-24",
-            "vardhakya_start": "2026-10-15 (3 రోజుల ముందు)",
-            "balya_end": "2026-11-02 (3 రోజుల తర్వాత)",
+            "vardhakya_start": "అస్తమయానికి 3 రోజుల ముందు",
+            "balya_end": "ఉదయించిన 3 రోజుల తర్వాత",
             "prohibition": "సమస్త శుభకార్యములు నిషిద్ధం.",
             "duration_days": 12
         })
 
     return {
         "year": year,
+        "timezone": tz_name,
         "kartari_schedule": kartari_schedule,
         "moudhyam_schedule": moudhyam_list,
         "shastric_taboos": {
