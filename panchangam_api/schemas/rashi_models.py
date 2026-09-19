@@ -86,3 +86,40 @@ class YearlyRashiResponse(BaseModel):
     samvatsara: str
     language: str
     rashis: List[YearlyRashiItem]
+
+class TrimesterKandaya(BaseModel):
+    name: str = Field(..., description="కందాయం పేరు (e.g. ప్రథమ కందాయం)")
+    months: str = Field(..., description="నెలలు (e.g. చైత్రం, వైశాఖం, జ్యేష్ఠం, ఆషాఢం)")
+    score: int = Field(..., description="కందాయ సంఖ్య")
+    max_score: int = Field(..., description="గరిష్ట సంఖ్య (8, 3, or 5)")
+    status: str = Field(..., description="ఫలిత వర్గీకరణ (ఉత్తమం, మధ్యమం, అప్రమత్తత)")
+    prediction: str = Field(..., description="వివరణాత్మక ఫలితం")
+
+class NakshatraKandayaItem(BaseModel):
+    id: int = Field(..., description="నక్షత్ర సంఖ్య 1 to 27")
+    name: str = Field(..., description="నక్షత్రం పేరు")
+    rashi_names: List[str] = Field(default_factory=list, description="నక్షత్ర పాదాలు వ్యాపించిన రాశులు")
+    trimester_1: TrimesterKandaya
+    trimester_2: TrimesterKandaya
+    trimester_3: TrimesterKandaya
+    overall_status: str = Field(..., description="సంవత్సర సమగ్ర ఫలితం")
+    overall_rating: str = Field(..., description="ఉత్తమం / అనుకూలం / మధ్యమం / అప్రమత్తత")
+
+class RashiKandadayamItem(BaseModel):
+    rashi: RashiMeta
+    aadhayam: int
+    vyayam: int
+    rajapujyam: int
+    avamanam: int
+    finance_status: str
+    social_status: str
+    verdict: str
+
+class ComprehensiveKandadayamResponse(BaseModel):
+    samvatsara: str
+    year: int
+    language: str
+    explanation: Dict[str, str]
+    rashis: List[RashiKandadayamItem]
+    nakshatras: List[NakshatraKandayaItem]
+

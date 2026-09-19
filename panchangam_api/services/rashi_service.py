@@ -20,7 +20,11 @@ from schemas.rashi_models import (
     MonthlyRashiResponse,
     KandadayamData,
     YearlyRashiItem,
-    YearlyRashiResponse
+    YearlyRashiResponse,
+    TrimesterKandaya,
+    NakshatraKandayaItem,
+    RashiKandadayamItem,
+    ComprehensiveKandadayamResponse
 )
 
 # 12 Rashi Base Definitions
@@ -597,3 +601,232 @@ def compute_yearly_rashi_phalalu(year: int = 2026, lang: str = "telugu") -> Year
         language=lang_code,
         rashis=items
     )
+
+
+# 27 Nakshatras Canonical Metadata & Pada-to-Rashi mapping
+NAKSHATRAS_METADATA = [
+    {"id": 1, "te": "అశ్వినీ", "en": "Ashwini", "dev": "अश्विनी", "rashis_te": ["మేషం"], "rashis_en": ["Aries"]},
+    {"id": 2, "te": "భరణీ", "en": "Bharani", "dev": "भरणी", "rashis_te": ["మేషం"], "rashis_en": ["Aries"]},
+    {"id": 3, "te": "కృత్తిక", "en": "Krittika", "dev": "कृत्तिका", "rashis_te": ["మేషం (1వ పాదం)", "వృషభం (2, 3, 4వ పాదాలు)"], "rashis_en": ["Aries (1st Pada)", "Taurus (2, 3, 4 Padas)"]},
+    {"id": 4, "te": "రోహిణీ", "en": "Rohini", "dev": "रोहिणी", "rashis_te": ["వృషభం"], "rashis_en": ["Taurus"]},
+    {"id": 5, "te": "మృగశిర", "en": "Mrigashira", "dev": "मृगशीर्ष", "rashis_te": ["వృషభం (1, 2వ పాదాలు)", "మిథునం (3, 4వ పాదాలు)"], "rashis_en": ["Taurus (1, 2 Padas)", "Gemini (3, 4 Padas)"]},
+    {"id": 6, "te": "ఆర్ద్ర", "en": "Arudra", "dev": "आर्द्रा", "rashis_te": ["మిథునం"], "rashis_en": ["Gemini"]},
+    {"id": 7, "te": "పునర్వసు", "en": "Punarvasu", "dev": "पुनर्वसु", "rashis_te": ["మిథునం (1, 2, 3వ పాదాలు)", "కర్కాటకం (4వ పాదం)"], "rashis_en": ["Gemini (1, 2, 3 Padas)", "Cancer (4th Pada)"]},
+    {"id": 8, "te": "పుష్యమి", "en": "Pushyami", "dev": "पुष्य", "rashis_te": ["కర్కాటకం"], "rashis_en": ["Cancer"]},
+    {"id": 9, "te": "ఆశ్లేష", "en": "Ashlesha", "dev": "आश्लेषा", "rashis_te": ["కర్కాటకం"], "rashis_en": ["Cancer"]},
+    {"id": 10, "te": "మఖ", "en": "Makha", "dev": "मघा", "rashis_te": ["సింహం"], "rashis_en": ["Leo"]},
+    {"id": 11, "te": "పూర్వఫల్గుణి (పుబ్బ)", "en": "Poorvaphalguni (Pubba)", "dev": "पूर्वाफाल्गुनी", "rashis_te": ["సింహం"], "rashis_en": ["Leo"]},
+    {"id": 12, "te": "ఉత్తరఫల్గుణి (ఉత్తర)", "en": "Uttaraphalguni (Uttara)", "dev": "उत्तराफाल्गुनी", "rashis_te": ["సింహం (1వ పాదం)", "కన్య (2, 3, 4వ పాదాలు)"], "rashis_en": ["Leo (1st Pada)", "Virgo (2, 3, 4 Padas)"]},
+    {"id": 13, "te": "హస్త", "en": "Hastha", "dev": "हस्त", "rashis_te": ["కన్య"], "rashis_en": ["Virgo"]},
+    {"id": 14, "te": "చిత్త", "en": "Chitra", "dev": "चित्रा", "rashis_te": ["కన్య (1, 2వ పాదాలు)", "తుల (3, 4వ పాదాలు)"], "rashis_en": ["Virgo (1, 2 Padas)", "Libra (3, 4 Padas)"]},
+    {"id": 15, "te": "స్వాతి", "en": "Swati", "dev": "स्वाती", "rashis_te": ["తుల"], "rashis_en": ["Libra"]},
+    {"id": 16, "te": "విశాఖ", "en": "Vishakha", "dev": "विशाखा", "rashis_te": ["తుల (1, 2, 3వ పాదాలు)", "వృశ్చికం (4వ పాదం)"], "rashis_en": ["Libra (1, 2, 3 Padas)", "Scorpio (4th Pada)"]},
+    {"id": 17, "te": "అనూరాధ", "en": "Anuradha", "dev": "अनुराधा", "rashis_te": ["వృశ్చికం"], "rashis_en": ["Scorpio"]},
+    {"id": 18, "te": "జ్యేష్ఠ", "en": "Jyeshtha", "dev": "ज्येष्ठा", "rashis_te": ["వృశ్చికం"], "rashis_en": ["Scorpio"]},
+    {"id": 19, "te": "మూల", "en": "Moola", "dev": "मूल", "rashis_te": ["ధనుస్సు"], "rashis_en": ["Sagittarius"]},
+    {"id": 20, "te": "పూర్వాషాఢ", "en": "Poorvashadha", "dev": "पूर्वाषाढा", "rashis_te": ["ధనుస్సు"], "rashis_en": ["Sagittarius"]},
+    {"id": 21, "te": "ఉత్తరాషాఢ", "en": "Uttarashadha", "dev": "उत्तराषाढा", "rashis_te": ["ధనుస్సు (1వ పాదం)", "మకరం (2, 3, 4వ పాదాలు)"], "rashis_en": ["Sagittarius (1st Pada)", "Capricorn (2, 3, 4 Padas)"]},
+    {"id": 22, "te": "శ్రవణం", "en": "Shravanam", "dev": "श्रवण", "rashis_te": ["మకరం"], "rashis_en": ["Capricorn"]},
+    {"id": 23, "te": "ధనిష్ఠ", "en": "Dhanishta", "dev": "धनिष्ठा", "rashis_te": ["మకరం (1, 2వ పాదాలు)", "కుంభం (3, 4వ పాదాలు)"], "rashis_en": ["Capricorn (1, 2 Padas)", "Aquarius (3, 4 Padas)"]},
+    {"id": 24, "te": "శతభిషం", "en": "Shatabhisha", "dev": "शतभिषक्", "rashis_te": ["కుంభం"], "rashis_en": ["Aquarius"]},
+    {"id": 25, "te": "పూర్వాభాద్ర", "en": "Poorvabhadra", "dev": "पूर्वभाद्रपदा", "rashis_te": ["కుంభం (1, 2, 3వ పాదాలు)", "మీనం (4వ పాదం)"], "rashis_en": ["Aquarius (1, 2, 3 Padas)", "Pisces (4th Pada)"]},
+    {"id": 26, "te": "ఉత్తరాభాద్ర", "en": "Uttarabhadra", "dev": "उत्तरभाद्रपदा", "rashis_te": ["మీనం"], "rashis_en": ["Pisces"]},
+    {"id": 27, "te": "రేవతి", "en": "Revati", "dev": "रेवती", "rashis_te": ["మీనం"], "rashis_en": ["Pisces"]},
+]
+
+
+def compute_comprehensive_kandadayam(year: int = 2026, lang: str = "telugu") -> ComprehensiveKandadayamResponse:
+    """Computes complete traditional Kandadayam for all 12 Rashis (Adayam, Vyayam,
+    Rajapujyam, Avamanam) and 27 Nakshatras across the 3 canonical trimesters:
+    1. Prathama Kandayam (Chaitra, Vaishakha, Jyeshtha, Ashadha) - Months 1-4
+    2. Dvitiya Kandayam (Shravana, Bhadrapada, Ashwayuja, Kartika) - Months 5-8
+    3. Tritiya Kandayam (Margashirsha, Pushya, Magha, Phalguna) - Months 9-12
+    """
+    lang_code = lang if lang in RASHI_NAMES else "telugu"
+    samvatsara_name = "శ్రీ పరాభవ నామ సంవత్సరం (2026-2027)" if lang_code == "telugu" else "Sri Parabhava Samvatsara (2026-2027)"
+
+    # 1. 12 Rashi Kandadayam Items
+    rashi_items: List[RashiKandadayamItem] = []
+    for idx in range(12):
+        meta = _build_rashi_meta(idx, lang_code)
+        aadhayam, vyayam, rajapujyam, avamanam = PARABHAVA_KANDADAYAM[idx]
+
+        if aadhayam > vyayam:
+            fin_status = "విశేష ధనలాభం & ఆర్థిక అభివృద్ధి" if lang_code == "telugu" else "Substantial Wealth & Surplus"
+        elif aadhayam == vyayam:
+            fin_status = "ఆదాయ వ్యయాలు సమతుల్యం" if lang_code == "telugu" else "Balanced Income & Expenses"
+        else:
+            fin_status = "ఖర్చులు ఎక్కువ (ఆర్థిక జాగ్రత్త అవసరం)" if lang_code == "telugu" else "Expenditures Higher (Budget Prudence)"
+
+        if rajapujyam > avamanam:
+            soc_status = "సమాజంలో విశేష గౌరవం & కీర్తి" if lang_code == "telugu" else "High Honor & Social Respect"
+        elif rajapujyam == avamanam:
+            soc_status = "సాధారణ గౌరవ మర్యాదలు" if lang_code == "telugu" else "Steady Social Standing"
+        else:
+            soc_status = "వివాదాలు రాకుండా సంయమనం పాటించాలి" if lang_code == "telugu" else "Exercise Caution against Disputes"
+
+        # Overall verdict text
+        if aadhayam > vyayam and rajapujyam >= avamanam:
+            verdict = "అత్యంత శుభదాయకం - ఆర్థిక ప్రగతి, సమాజంలో గౌరవం" if lang_code == "telugu" else "Highly Auspicious - Financial Gain & High Honor"
+        elif aadhayam >= vyayam:
+            verdict = "శుభప్రదం - ఆర్థిక నిలకడ, శుభకార్యాలు" if lang_code == "telugu" else "Favorable - Financial Stability"
+        elif rajapujyam > avamanam:
+            verdict = "మధ్యమం - ఖర్చులు పెరిగినా గౌరవ మర్యాదలకు లోటుండదు" if lang_code == "telugu" else "Moderate - High Honor despite Expenses"
+        else:
+            verdict = "అప్రమత్తత అవసరం - వ్యయ నియంత్రణ, దైవ ప్రార్థన శ్రేయస్కరం" if lang_code == "telugu" else "Caution Required - Prudent Budgeting & Prayers"
+
+        rashi_items.append(RashiKandadayamItem(
+            rashi=meta,
+            aadhayam=aadhayam,
+            vyayam=vyayam,
+            rajapujyam=rajapujyam,
+            avamanam=avamanam,
+            finance_status=fin_status,
+            social_status=soc_status,
+            verdict=verdict
+        ))
+
+    # 2. 27 Nakshatras 3-Trimester Kandaya
+    # Parabhava Samvatsara (2026-2027) Ashwini anchors & progressions:
+    # Trimester 1: (4 + 3 * idx) % 8
+    # Trimester 2: (2 + 1 * idx) % 3
+    # Trimester 3: (1 + 2 * idx) % 5
+    nakshatra_items: List[NakshatraKandayaItem] = []
+    is_te = (lang_code == "telugu")
+
+    t1_title = "ప్రథమ కందాయం (మొదటి 4 నెలలు)" if is_te else "1st Trimester (Months 1-4)"
+    t1_months = "చైత్రం, వైశాఖం, జ్యేష్ఠం, ఆషాఢం" if is_te else "Chaitra, Vaishakha, Jyeshtha, Ashadha"
+    t2_title = "ద్వితీయ కందాయం (రెండవ 4 నెలలు)" if is_te else "2nd Trimester (Months 5-8)"
+    t2_months = "శ్రావణం, భాద్రపదం, ఆశ్వయుజం, కార్తీకం" if is_te else "Shravana, Bhadrapada, Ashwayuja, Kartika"
+    t3_title = "తృతీయ కందాయం (మూడవ 4 నెలలు)" if is_te else "3rd Trimester (Months 9-12)"
+    t3_months = "మార్గశిరం, పుష్యం, మాఘం, ఫాల్గుణం" if is_te else "Margashirsha, Pushya, Magha, Phalguna"
+
+    for idx, nmeta in enumerate(NAKSHATRAS_METADATA):
+        k1 = (4 + 3 * idx) % 8
+        k2 = (2 + 1 * idx) % 3
+        k3 = (1 + 2 * idx) % 5
+
+        # T1 Assessment (0-7)
+        if k1 >= 6:
+            t1_status = "ఉత్తమం" if is_te else "Excellent"
+            t1_pred = "విశేష ధనలాభం, నూతన కార్యసిద్ధి, ఉద్యోగ వ్యాపారాలలో అనుకూలత." if is_te else "Outstanding financial gains, success in ventures, and career growth."
+        elif k1 >= 4:
+            t1_status = "అనుకూలం" if is_te else "Good"
+            t1_pred = "ఆర్థిక నిలకడ, గౌరవ ప్రతిష్టలు, పనులలో పురోగతి మరియు సత్ఫలితాలు." if is_te else "Steady income, recognition, and consistent progress."
+        elif k1 >= 2:
+            t1_status = "మధ్యమం" if is_te else "Moderate"
+            t1_pred = "శ్రమతో కూడిన ఫలితాలు, హెచ్చుతగ్గులతో కూడిన ఆర్థిక స్థితి, సంయమనం అవసరం." if is_te else "Mixed results with effort, fluctuating finances; patience required."
+        else:
+            t1_status = "అప్రమత్తత" if is_te else "Caution"
+            t1_pred = "అధిక ఖర్చులు, పనులలో జాప్యం, ఆరోగ్య విషయంలో జాగ్రత్త మరియు దైవారాధన అవసరం." if is_te else "High expenses, delays; health vigilance and prayers recommended."
+
+        # T2 Assessment (0-2)
+        if k2 == 2:
+            t2_status = "ఉత్తమం" if is_te else "Excellent"
+            t2_pred = "అభీష్టసిద్ధి, స్థిరాస్తి వ్యవహారాలలో లాభం, బంధుమిత్రుల ఆదరణ మరియు సంతోషం." if is_te else "Desires fulfilled, real estate gains, heartwarming family moments."
+        elif k2 == 1:
+            t2_status = "మధ్యమం" if is_te else "Moderate"
+            t2_pred = "సాధారణ జీవనం, అనుకూల ప్రతికూలతల సమతూకం, బడ్జెట్ ప్రకారం ఖర్చులు చేయాలి." if is_te else "Steady lifestyle; manage expenses prudently."
+        else:
+            t2_status = "అప్రమత్తత" if is_te else "Caution"
+            t2_pred = "ప్రయాణాలలో జాగ్రత్త, శారీరక అలసట, వివాదాలకు దూరంగా ఉండటం శ్రేయస్కరం." if is_te else "Travel vigilance, physical fatigue; avoid controversies."
+
+        # T3 Assessment (0-4)
+        if k3 >= 3:
+            t3_status = "ఉత్తమం" if is_te else "Excellent"
+            t3_pred = "సర్వతోముఖాభివృద్ధి, నూతన వస్తు/వాహన లాభం, మానసిక ప్రశాంతత మరియు విజయాలు." if is_te else "All-round prosperity, acquisition of assets/vehicles, profound peace."
+        elif k3 == 2:
+            t3_status = "మధ్యమం" if is_te else "Moderate"
+            t3_pred = "శ్రమకు తగిన ప్రతిఫలం, నిలకడైన పరిస్థితులు, ఆలోచించి నిర్ణయాలు తీసుకోవాలి." if is_te else "Commensurate reward for hard work, maintain thoughtful planning."
+        else:
+            t3_status = "అప్రమత్తత" if is_te else "Caution"
+            t3_pred = "ఆకస్మిక ఖర్చులు, మానసిక ఒత్తిడి, కులదైవ ఆరాధన మరియు నవగ్రహ ప్రార్థన మేలు చేస్తుంది." if is_te else "Sudden expenses, stress; worship of Ishta Devata brings relief."
+
+        # Normalized Overall Composite Score
+        norm = (k1 / 7.0 * 0.4) + (k2 / 2.0 * 0.3) + (k3 / 4.0 * 0.3)
+        if norm >= 0.65:
+            overall_rating = "ఉత్తమం (Highly Favorable)" if is_te else "Highly Favorable"
+            overall_status = "ఈ సంవత్సరంలోని అత్యధిక కాలం శుభప్రదంగా గడుస్తుంది. నూతన కార్యారంభాలు, ఆర్థిక అభివృద్ధి, కుటుంబ సౌఖ్యం సిద్ధిస్తుంది." if is_te else "Most of the year yields favorable results with strong financial progress and domestic happiness."
+        elif norm >= 0.45:
+            overall_rating = "అనుకూలం (Favorable)" if is_te else "Favorable"
+            overall_status = "మొత్తం మీద సంవత్సర ఫలితాలు ఆశాజనకంగా ఉంటాయి. మధ్యమ కందాయాలలో జాగ్రత్తలు పాటిస్తే కార్యసిద్ధి లభిస్తుంది." if is_te else "Overall year remains progressive. Prudence during moderate trimesters ensures success."
+        elif norm >= 0.30:
+            overall_rating = "మధ్యమం (Moderate)" if is_te else "Moderate"
+            overall_status = "సంవత్సరంలో హెచ్చుతగ్గులు ఉంటాయి. ప్రణాళికాబద్ధంగా ముందుకు సాగడం, బడ్జెట్ నియంత్రణ మరియు దైవబలం రక్షిస్తుంది." if is_te else "Fluctuations exist across the seasons. Disciplined budgeting and prayers provide stability."
+        else:
+            overall_rating = "అప్రమత్తత (Caution)" if is_te else "Caution"
+            overall_status = "శ్రమ అధికంగా ఉండే కాలం. ముఖ్య నిర్ణయాలలో అనుభవజ్ఞుల సలహాలు తీసుకోవడం, నవగ్రహ శాంతి శ్రేయస్కరం." if is_te else "High diligence needed. Consult elders/experts for key decisions and observe remedial prayers."
+
+        n_name = nmeta["te"] if is_te else nmeta["en"]
+        r_names = nmeta["rashis_te"] if is_te else nmeta["rashis_en"]
+
+        nakshatra_items.append(NakshatraKandayaItem(
+            id=nmeta["id"],
+            name=n_name,
+            rashi_names=r_names,
+            trimester_1=TrimesterKandaya(
+                name=t1_title,
+                months=t1_months,
+                score=k1,
+                max_score=8,
+                status=t1_status,
+                prediction=t1_pred
+            ),
+            trimester_2=TrimesterKandaya(
+                name=t2_title,
+                months=t2_months,
+                score=k2,
+                max_score=3,
+                status=t2_status,
+                prediction=t2_pred
+            ),
+            trimester_3=TrimesterKandaya(
+                name=t3_title,
+                months=t3_months,
+                score=k3,
+                max_score=5,
+                status=t3_status,
+                prediction=t3_pred
+            ),
+            overall_status=overall_status,
+            overall_rating=overall_rating
+        ))
+
+    # Detailed Shastric Explanations
+    explanation = {
+        "title": "కందదాయ ఫలాల శాస్త్రీయ విజ్ఞానము & గణన పద్ధతి" if is_te else "Shastric Science & Calculation Method of Kandadayam",
+        "trimester_system": (
+            "సంవత్సరంలోని 12 మాసాలను 4 నెలల చొప్పున 3 కందాయాలుగా విభజిస్తారు:\n"
+            "• ప్రథమ కందాయం (మొదటి 4 నెలలు): చైత్రం, వైశాఖం, జ్యేష్ఠం, ఆషాఢం (మొత్తం 8 భాగాలు/శేషం).\n"
+            "• ద్వితీయ కందాయం (రెండవ 4 నెలలు): శ్రావణం, భాద్రపదం, ఆశ్వయుజం, కార్తీకం (మొత్తం 3 భాగాలు/శేషం).\n"
+            "• తృతీయ కందాయం (మూడవ 4 నెలలు): మార్గశిరం, పుష్యం, మాఘం, ఫాల్గుణం (మొత్తం 5 భాగాలు/శేషం)."
+        ) if is_te else (
+            "The 12 months of the Vedic lunar year are grouped into 3 canonical trimesters of 4 months each:\n"
+            "• 1st Trimester: Chaitra, Vaishakha, Jyeshtha, Ashadha (Modulo 8).\n"
+            "• 2nd Trimester: Shravana, Bhadrapada, Ashwayuja, Kartika (Modulo 3).\n"
+            "• 3rd Trimester: Margashirsha, Pushya, Magha, Phalguna (Modulo 5)."
+        ),
+        "rashi_kandadayam_rule": (
+            "రాశి కందదాయంలో ఆదాయ-వ్యయాలు (0-14 పాయింట్లు), రాజపూజ్య-అవమానాలు (0-8 పాయింట్లు) ఉంటాయి.\n"
+            "• ఆదాయం > వ్యయం అయితే ధనలాభం, మిగులు నిధులు.\n"
+            "• వ్యయం > ఆదాయం అయితే ఖర్చులు ఎక్కువ, రుణభారం రాకుండా పొదుపు పాటించాలి.\n"
+            "• రాజపూజ్యం > అవమానం అయితే సమాజంలో ఉన్నత గౌరవం, కీర్తి.\n"
+            "• అవమానం > రాజపూజ్యం అయితే వివాదాలు, అపవాదులు రాకుండా మితభాషణం, సంయమనం ముఖ్యం."
+        ) if is_te else (
+            "In Rashi Kandadayam, Income-Expense (0-14) and Honor-Disgrace (0-8) are evaluated:\n"
+            "• Income > Expense signifies substantial wealth accumulation and financial surplus.\n"
+            "• Expense > Income advises financial caution and avoiding unnecessary debt.\n"
+            "• Honor > Disgrace indicates widespread public prestige and accolades.\n"
+            "• Disgrace > Honor calls for diplomatic speech and emotional restraint."
+        )
+    }
+
+    return ComprehensiveKandadayamResponse(
+        samvatsara=samvatsara_name,
+        year=year,
+        language=lang_code,
+        explanation=explanation,
+        rashis=rashi_items,
+        nakshatras=nakshatra_items
+    )
+

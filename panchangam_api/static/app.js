@@ -14,9 +14,12 @@ const STATE = {
   date: localStorage.getItem('vp_date') || '2026-03-19', // Default to Parabhava Ugadi for rich experience
   year: 2026,
   month: 3,
-  activeTab: 'daily', // 'daily', 'monthly', 'sankalpa', 'rashi', 'intercalary'
+  activeTab: 'daily', // 'daily', 'monthly', 'sankalpa', 'rashi', 'intercalary', 'kandadayam'
   intercalarySystem: 'surya_siddhanta',
   intercalaryData: null,
+  kandadayamData: null,
+  selectedNakshatraIdx: 0,
+  rashiKdViewMode: 'cards',
   activeRashiPeriod: 'daily', // 'daily', 'monthly', 'yearly'
   selectedRashiIdx: 0,
   rashiData: { daily: null, monthly: null, yearly: null },
@@ -37,6 +40,7 @@ const UI_TEXT = {
     sankalpaTab: "వైదిక సంకల్పం",
     rashiTab: "రాశి ఫలాలు",
     intercalaryTab: "అధిక / క్షయ మాసములు",
+    kandadayamTab: "కందదాయ ఫలాలు",
     rashiDaily: "☀️ దిన ఫలాలు",
     rashiMonthly: "🌙 మాస ఫలాలు",
     rashiYearly: "🪐 వార్షిక ఫలాలు",
@@ -133,6 +137,7 @@ const UI_TEXT = {
     sankalpaTab: "Vedic Sankalpa",
     rashiTab: "Rashi Phalalu",
     intercalaryTab: "Adhika & Kshaya Masas",
+    kandadayamTab: "Kandadayam & Trimesters",
     rashiDaily: "☀️ Daily Horoscope",
     rashiMonthly: "🌙 Monthly Horoscope",
     rashiYearly: "🪐 Yearly Horoscope",
@@ -229,6 +234,7 @@ const UI_TEXT = {
     sankalpaTab: "वैदिक सङ्कल्प",
     rashiTab: "राशि फल",
     intercalaryTab: "अधिक / क्षय मास",
+    kandadayamTab: "कन्ददाय फलानि",
     rashiDaily: "☀️ दैनिक राशिफल",
     rashiMonthly: "🌙 मासिक राशिफल",
     rashiYearly: "🪐 वार्षिक राशिफल",
@@ -325,6 +331,7 @@ const UI_TEXT = {
     sankalpaTab: "வைதிக சங்கல்பம்",
     rashiTab: "ராசி பலன்",
     intercalaryTab: "அதிக / க்ஷய மாதங்கள்",
+    kandadayamTab: "கந்ததாய பலன்கள்",
     rashiDaily: "☀️ தினசரி ராசிபலன்",
     rashiMonthly: "🌙 மாத ராசிபலன்",
     rashiYearly: "🪐 வருடாந்திர ராசிபலன்",
@@ -421,6 +428,7 @@ const UI_TEXT = {
     sankalpaTab: "ವೈದಿಕ ಸಂಕಲ್ಪ",
     rashiTab: "ರಾಶಿ ಫಲ",
     intercalaryTab: "ಅಧಿಕ / ಕ್ಷಯ ಮಾಸಗಳು",
+    kandadayamTab: "ಕಂದದಾಯ ಫಲಗಳು",
     rashiDaily: "☀️ ದಿನ ಭವಿಷ್ಯ",
     rashiMonthly: "🌙 ಮಾಸಿಕ ಭವಿಷ್ಯ",
     rashiYearly: "🪐 ವಾರ್ಷಿಕ ಭವಿಷ್ಯ",
@@ -517,6 +525,7 @@ const UI_TEXT = {
     sankalpaTab: "വൈദിക സങ്കൽപ്പം",
     rashiTab: "രാശി ഫലം",
     intercalaryTab: "അധിക / ക്ഷയ മാസങ്ങൾ",
+    kandadayamTab: "കന്ദദായ ഫലങ്ങൾ",
     rashiDaily: "☀️ ദിവസേന രാശിഫലം",
     rashiMonthly: "🌙 പ്രതിമാസ രാശിഫലം",
     rashiYearly: "🪐 വാർഷിക രാശിഫലം",
@@ -613,6 +622,7 @@ const UI_TEXT = {
     sankalpaTab: "વૈદિક સંકલ્પ",
     rashiTab: "રાશિ ફળ",
     intercalaryTab: "અધિક / ક્ષય માસ",
+    kandadayamTab: "કંદદાય ફળ",
     rashiDaily: "☀️ દૈનિક રાશિફળ",
     rashiMonthly: "🌙 માસિક રાશિફળ",
     rashiYearly: "🪐 વાર્ષિક રાશિફળ",
@@ -709,6 +719,7 @@ const UI_TEXT = {
     sankalpaTab: "বৈদিক সংকল্প",
     rashiTab: "রাশি ফল",
     intercalaryTab: "অধিক / ক্ষয় মাস",
+    kandadayamTab: "কন্দদায় ফল",
     rashiDaily: "☀️ দৈনিক রাশিফল",
     rashiMonthly: "🌙 মাসিক রাশিফল",
     rashiYearly: "🪐 বার্ষিক রাশিফল",
@@ -861,6 +872,7 @@ function updateStaticLabels() {
   setTxt('sankalpaTabBtn', t('sankalpaTab'));
   setTxt('rashiTabBtn', t('rashiTab'));
   setTxt('intercalaryTabBtn', t('intercalaryTab'));
+  setTxt('kandadayamTabBtn', t('kandadayamTab'));
   setTxt('rashiPeriodDailyBtn', t('rashiDaily'));
   setTxt('rashiPeriodMonthlyBtn', t('rashiMonthly'));
   setTxt('rashiPeriodYearlyBtn', t('rashiYearly'));
@@ -1004,6 +1016,9 @@ function setupEventListeners() {
   if (rashiBtn) rashiBtn.addEventListener('click', () => switchTab('rashi'));
   const interBtn = document.getElementById('intercalaryTabBtn');
   if (interBtn) interBtn.addEventListener('click', () => switchTab('intercalary'));
+  const kdBtn = document.getElementById('kandadayamTabBtn');
+  if (kdBtn) kdBtn.addEventListener('click', () => switchTab('kandadayam'));
+  setupKandadayamControls();
 
   const sysSurya = document.getElementById('systemSuryaBtn');
   if (sysSurya) sysSurya.addEventListener('click', () => switchIntercalarySystem('surya_siddhanta'));
@@ -1069,7 +1084,7 @@ function adjustDate(days) {
 
 function switchTab(tab) {
   STATE.activeTab = tab;
-  ['daily', 'monthly', 'sankalpa', 'rashi', 'intercalary'].forEach((t) => {
+  ['daily', 'monthly', 'sankalpa', 'rashi', 'intercalary', 'kandadayam'].forEach((t) => {
     const el = document.getElementById(`${t}View`);
     const btn = document.getElementById(`${t}TabBtn`);
     if (t === tab) {
@@ -1089,6 +1104,8 @@ function switchTab(tab) {
     fetchRashi();
   } else if (tab === 'intercalary') {
     fetchIntercalary();
+  } else if (tab === 'kandadayam') {
+    fetchKandadayam();
   }
 }
 
@@ -1103,6 +1120,8 @@ function loadData() {
     fetchRashi();
   } else if (STATE.activeTab === 'intercalary') {
     fetchIntercalary();
+  } else if (STATE.activeTab === 'kandadayam') {
+    fetchKandadayam();
   }
 }
 
@@ -2052,6 +2071,427 @@ function renderIntercalary(data) {
   }).join('');
 
   tbody.innerHTML = rowsHtml;
+}
+
+// ==========================================
+// KANDADAYAM & NAKSHATRA TRIMESTERS LOGIC
+// ==========================================
+
+async function fetchKandadayam() {
+  showLoader(true);
+  try {
+    const res = await fetch(`/api/v1/rashi/kandadayam-all?year=${STATE.year}&language=${STATE.lang}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    STATE.kandadayamData = data;
+    renderKandadayam(data);
+  } catch (err) {
+    console.error('Error fetching Kandadayam data:', err);
+  } finally {
+    showLoader(false);
+  }
+}
+
+function renderKandadayam(data) {
+  if (!data) return;
+
+  // 1. Update Badges & Titles
+  const badge = document.getElementById('kdSamvatsaraBadge');
+  if (badge) badge.innerText = data.samvatsara;
+
+  // 2. Render 12 Rashi Kandadayam (Cards & Table)
+  renderRashiKandadayam(data.rashis);
+
+  // 3. Populate 27 Nakshatras Dropdown & Pills
+  setupNakshatraPicker(data.nakshatras);
+
+  // 4. Render Spotlight Nakshatra Details
+  if (data.nakshatras && data.nakshatras.length > 0) {
+    const activeNak = data.nakshatras[STATE.selectedNakshatraIdx] || data.nakshatras[0];
+    renderNakshatraSpotlight(activeNak);
+  }
+
+  // 5. Render 27 Nakshatras Master Table
+  renderNakshatrasMasterTable(data.nakshatras);
+}
+
+function renderRashiKandadayam(rashis) {
+  if (!rashis) return;
+
+  // Render Cards Grid
+  const cardsContainer = document.getElementById('rashiKdCardsGrid');
+  if (cardsContainer) {
+    cardsContainer.innerHTML = rashis.map((item, idx) => {
+      const isFinSurplus = item.aadhayam > item.vyayam;
+      const isFinEqual = item.aadhayam === item.vyayam;
+      const isSocHigh = item.rajapujyam > item.avamanam;
+      const isSocEqual = item.rajapujyam === item.avamanam;
+
+      const finBadgeClass = isFinSurplus 
+        ? "bg-emerald-100 text-emerald-900 border-emerald-300" 
+        : (isFinEqual ? "bg-amber-100 text-amber-900 border-amber-300" : "bg-rose-100 text-rose-900 border-rose-300");
+
+      const socBadgeClass = isSocHigh
+        ? "bg-purple-100 text-purple-900 border-purple-300"
+        : (isSocEqual ? "bg-stone-100 text-stone-800 border-stone-300" : "bg-orange-100 text-orange-900 border-orange-300");
+
+      return `
+        <div class="vedic-card p-4 bg-white border border-amber-200 hover:border-amber-400 shadow-sm flex flex-col justify-between transition group">
+          <div>
+            <!-- Header: Symbol + Name + Lord -->
+            <div class="flex items-center justify-between border-b border-amber-100 pb-2.5 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">${item.rashi.symbol}</span>
+                <div>
+                  <h4 class="font-extrabold text-amber-950 text-base font-serif-te leading-tight">${item.rashi.name}</h4>
+                  <span class="text-[11px] text-stone-500 font-medium">${item.rashi.name_english}</span>
+                </div>
+              </div>
+              <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                ${item.rashi.lord}
+              </span>
+            </div>
+
+            <!-- Scores: Income vs Expense -->
+            <div class="space-y-2 text-xs">
+              <div>
+                <div class="flex justify-between font-bold mb-1">
+                  <span class="text-emerald-800">ఆదాయం: <span class="font-mono text-sm">${item.aadhayam}</span>/14</span>
+                  <span class="text-rose-800">వ్యయం: <span class="font-mono text-sm">${item.vyayam}</span>/14</span>
+                </div>
+                <!-- Dual Comparative Progress Bar -->
+                <div class="h-2 w-full bg-stone-100 rounded-full overflow-hidden flex">
+                  <div class="bg-emerald-500 h-full" style="width: ${(item.aadhayam / 14) * 100}%"></div>
+                  <div class="bg-rose-400 h-full ml-auto" style="width: ${(item.vyayam / 14) * 100}%"></div>
+                </div>
+              </div>
+
+              <!-- Scores: Honor vs Disgrace -->
+              <div class="pt-1">
+                <div class="flex justify-between font-bold mb-1">
+                  <span class="text-purple-800">రాజపూజ్యం: <span class="font-mono text-sm">${item.rajapujyam}</span>/8</span>
+                  <span class="text-orange-800">అవమానం: <span class="font-mono text-sm">${item.avamanam}</span>/8</span>
+                </div>
+                <div class="h-2 w-full bg-stone-100 rounded-full overflow-hidden flex">
+                  <div class="bg-purple-500 h-full" style="width: ${(item.rajapujyam / 8) * 100}%"></div>
+                  <div class="bg-orange-400 h-full ml-auto" style="width: ${(item.avamanam / 8) * 100}%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Status Badges -->
+            <div class="mt-3.5 space-y-1.5">
+              <div class="px-2.5 py-1 rounded-lg border text-[11px] font-bold ${finBadgeClass} flex items-center gap-1.5">
+                <span>${isFinSurplus ? '📈' : (isFinEqual ? '⚖️' : '📉')}</span>
+                <span>${item.finance_status}</span>
+              </div>
+              <div class="px-2.5 py-1 rounded-lg border text-[11px] font-bold ${socBadgeClass} flex items-center gap-1.5">
+                <span>${isSocHigh ? '👑' : (isSocEqual ? '🛡️' : '⚠️')}</span>
+                <span>${item.social_status}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shastric Verdict -->
+          <div class="mt-3 pt-2.5 border-t border-amber-100/80 text-[11px] font-semibold text-amber-950 italic">
+            ✨ ${item.verdict}
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Render Table View
+  const tableBody = document.getElementById('rashiKdTableBody');
+  if (tableBody) {
+    tableBody.innerHTML = rashis.map(item => {
+      const isFinSurplus = item.aadhayam > item.vyayam;
+      const isSocHigh = item.rajapujyam > item.avamanam;
+
+      return `
+        <tr class="hover:bg-amber-50/50 transition border-b border-stone-200 last:border-0">
+          <td class="p-3 font-extrabold text-amber-950 font-serif-te whitespace-nowrap">
+            ${item.rashi.symbol} ${item.rashi.name} <span class="text-xs font-normal text-stone-500">(${item.rashi.name_english})</span>
+          </td>
+          <td class="p-3 font-medium text-stone-700 whitespace-nowrap">${item.rashi.lord}</td>
+          <td class="p-3 text-center font-mono font-extrabold text-emerald-800 text-sm bg-emerald-50/40">${item.aadhayam}</td>
+          <td class="p-3 text-center font-mono font-extrabold text-rose-800 text-sm bg-rose-50/40">${item.vyayam}</td>
+          <td class="p-3 text-center font-mono font-extrabold text-purple-800 text-sm bg-purple-50/40">${item.rajapujyam}</td>
+          <td class="p-3 text-center font-mono font-extrabold text-orange-800 text-sm bg-orange-50/40">${item.avamanam}</td>
+          <td class="p-3 text-xs font-bold ${isFinSurplus ? 'text-emerald-800' : 'text-stone-700'}">${item.finance_status}</td>
+          <td class="p-3 text-xs font-bold ${isSocHigh ? 'text-purple-800' : 'text-stone-700'}">${item.social_status}</td>
+          <td class="p-3 text-xs font-semibold text-amber-900">${item.verdict}</td>
+        </tr>
+      `;
+    }).join('');
+  }
+}
+
+function setupNakshatraPicker(nakshatras) {
+  if (!nakshatras) return;
+
+  const dropdown = document.getElementById('nakshatraSelectDropdown');
+  if (dropdown) {
+    dropdown.innerHTML = nakshatras.map((n, idx) => `
+      <option value="${idx}" ${idx === STATE.selectedNakshatraIdx ? 'selected' : ''}>
+        ${n.id}. ${n.name}
+      </option>
+    `).join('');
+  }
+
+  const pillsContainer = document.getElementById('nakshatraQuickPills');
+  if (pillsContainer) {
+    pillsContainer.innerHTML = nakshatras.map((n, idx) => {
+      const isSelected = idx === STATE.selectedNakshatraIdx;
+      return `
+        <button 
+          onclick="selectNakshatra(${idx})" 
+          class="shrink-0 px-3 py-1 rounded-full text-xs font-bold transition-all ${
+            isSelected 
+              ? 'bg-amber-700 text-white shadow-sm ring-2 ring-amber-400' 
+              : 'bg-stone-100 text-stone-700 hover:bg-amber-100 hover:text-amber-900'
+          }"
+        >
+          ${n.name}
+        </button>
+      `;
+    }).join('');
+  }
+}
+
+function selectNakshatra(idx) {
+  STATE.selectedNakshatraIdx = idx;
+  const dropdown = document.getElementById('nakshatraSelectDropdown');
+  if (dropdown) dropdown.value = idx;
+
+  if (STATE.kandadayamData && STATE.kandadayamData.nakshatras) {
+    renderNakshatraSpotlight(STATE.kandadayamData.nakshatras[idx]);
+    setupNakshatraPicker(STATE.kandadayamData.nakshatras);
+    const searchInput = document.getElementById('nakshatraTableSearchInput');
+    renderNakshatrasMasterTable(STATE.kandadayamData.nakshatras, searchInput ? searchInput.value.trim().toLowerCase() : '');
+  }
+}
+
+function renderNakshatraSpotlight(item) {
+  const container = document.getElementById('selectedNakshatraSpotlight');
+  if (!container || !item) return;
+
+  const getStatusBadge = (status) => {
+    if (status.includes("ఉత్తమం") || status.includes("Excellent")) {
+      return `<span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-900 border border-emerald-300">ఉత్తమం (Auspicious)</span>`;
+    } else if (status.includes("అనుకూలం") || status.includes("Good")) {
+      return `<span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-sky-100 text-sky-900 border border-sky-300">అనుకూలం (Favorable)</span>`;
+    } else if (status.includes("మధ్యమం") || status.includes("Moderate")) {
+      return `<span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-amber-100 text-amber-900 border border-amber-300">మధ్యమం (Moderate)</span>`;
+    } else {
+      return `<span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-rose-100 text-rose-900 border border-rose-300">అప్రమత్తత (Caution)</span>`;
+    }
+  };
+
+  container.innerHTML = `
+    <!-- Top Header for Selected Nakshatra -->
+    <div class="p-4 rounded-2xl bg-gradient-to-r from-amber-100/80 via-amber-50 to-orange-50 border border-amber-300 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs px-2.5 py-0.5 rounded-full font-extrabold bg-amber-900 text-white font-mono">
+            #${item.id}
+          </span>
+          <h3 class="text-xl md:text-2xl font-extrabold text-amber-950 font-serif-te">
+            ${item.name} నక్షత్రం
+          </h3>
+        </div>
+        <p class="text-xs font-semibold text-stone-600 mt-1 flex items-center gap-1">
+          <span>వ్యాపించిన రాశులు / పాదాలు:</span>
+          <span class="font-bold text-amber-900">${item.rashi_names.join(', ')}</span>
+        </p>
+      </div>
+
+      <!-- Composite Annual Status -->
+      <div class="bg-white px-4 py-2.5 rounded-xl border border-amber-200 shadow-sm text-left md:text-right">
+        <div class="text-[10px] text-stone-500 font-bold uppercase tracking-wider">సంవత్సర సమగ్ర స్థితి</div>
+        <div class="font-extrabold text-amber-950 text-sm mt-0.5">${item.overall_rating}</div>
+      </div>
+    </div>
+
+    <!-- 3 Trimester Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- Trimester 1 -->
+      <div class="vedic-card p-5 bg-white border-2 border-amber-300 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+        <div>
+          <div class="flex items-center justify-between border-b border-amber-100 pb-2 mb-3">
+            <div>
+              <h4 class="font-extrabold text-amber-950 text-sm">ప్రథమ కందాయం</h4>
+              <p class="text-[11px] font-semibold text-stone-500">చైత్రం – ఆషాఢం (నెలలు 1–4)</p>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-amber-50 border border-amber-300 flex items-center justify-center font-mono font-extrabold text-amber-900 text-lg shadow-2xs">
+              ${item.trimester_1.score}
+            </div>
+          </div>
+          <div class="mb-3">
+            ${getStatusBadge(item.trimester_1.status)}
+          </div>
+          <p class="text-xs text-stone-700 leading-relaxed font-normal">
+            ${item.trimester_1.prediction}
+          </p>
+        </div>
+        <div class="mt-4 pt-2 border-t border-stone-100 text-[10px] font-semibold text-stone-400">
+          గరిష్ట పరిమితి: 8 భాగాలు
+        </div>
+      </div>
+
+      <!-- Trimester 2 -->
+      <div class="vedic-card p-5 bg-white border-2 border-orange-300 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+        <div>
+          <div class="flex items-center justify-between border-b border-orange-100 pb-2 mb-3">
+            <div>
+              <h4 class="font-extrabold text-amber-950 text-sm">ద్వితీయ కందాయం</h4>
+              <p class="text-[11px] font-semibold text-stone-500">శ్రావణం – కార్తీకం (నెలలు 5–8)</p>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-orange-50 border border-orange-300 flex items-center justify-center font-mono font-extrabold text-orange-950 text-lg shadow-2xs">
+              ${item.trimester_2.score}
+            </div>
+          </div>
+          <div class="mb-3">
+            ${getStatusBadge(item.trimester_2.status)}
+          </div>
+          <p class="text-xs text-stone-700 leading-relaxed font-normal">
+            ${item.trimester_2.prediction}
+          </p>
+        </div>
+        <div class="mt-4 pt-2 border-t border-stone-100 text-[10px] font-semibold text-stone-400">
+          గరిష్ట పరిమితి: 3 భాగాలు
+        </div>
+      </div>
+
+      <!-- Trimester 3 -->
+      <div class="vedic-card p-5 bg-white border-2 border-emerald-300 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+        <div>
+          <div class="flex items-center justify-between border-b border-emerald-100 pb-2 mb-3">
+            <div>
+              <h4 class="font-extrabold text-amber-950 text-sm">తృతీయ కందాయం</h4>
+              <p class="text-[11px] font-semibold text-stone-500">మార్గశిరం – ఫాల్గుణం (నెలలు 9–12)</p>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-emerald-50 border border-emerald-300 flex items-center justify-center font-mono font-extrabold text-emerald-950 text-lg shadow-2xs">
+              ${item.trimester_3.score}
+            </div>
+          </div>
+          <div class="mb-3">
+            ${getStatusBadge(item.trimester_3.status)}
+          </div>
+          <p class="text-xs text-stone-700 leading-relaxed font-normal">
+            ${item.trimester_3.prediction}
+          </p>
+        </div>
+        <div class="mt-4 pt-2 border-t border-stone-100 text-[10px] font-semibold text-stone-400">
+          గరిష్ట పరిమితి: 5 భాగాలు
+        </div>
+      </div>
+    </div>
+
+    <!-- Overall Summary Callout -->
+    <div class="p-4 rounded-xl bg-amber-50/80 border border-amber-200 text-xs text-amber-950 font-medium leading-relaxed flex items-start gap-2.5">
+      <span class="text-xl">💡</span>
+      <div>
+        <strong class="font-bold">సంవత్సర ఫలిత సారాంశం & సూచన:</strong> ${item.overall_status}
+      </div>
+    </div>
+  `;
+}
+
+function renderNakshatrasMasterTable(nakshatras, filterTerm = '') {
+  const tbody = document.getElementById('nakshatraKdTableBody');
+  if (!tbody || !nakshatras) return;
+
+  const filtered = filterTerm 
+    ? nakshatras.filter(n => n.name.toLowerCase().includes(filterTerm) || n.rashi_names.some(r => r.toLowerCase().includes(filterTerm)))
+    : nakshatras;
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-stone-400 italic">నక్షత్ర ఫలితాలు ఏవీ కనుగొనబడలేదు</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = filtered.map(n => {
+    return `
+      <tr class="hover:bg-amber-50/50 transition border-b border-stone-200 last:border-0 cursor-pointer ${n.id === (STATE.selectedNakshatraIdx + 1) ? 'bg-amber-100/50 font-bold' : ''}" onclick="selectNakshatra(${n.id - 1})">
+        <td class="p-3 font-mono text-center text-stone-500 font-bold">${n.id}</td>
+        <td class="p-3 font-extrabold text-amber-950 font-serif-te whitespace-nowrap">${n.name}</td>
+        <td class="p-3 text-xs text-stone-600 whitespace-nowrap">${n.rashi_names.join(', ')}</td>
+        <td class="p-3 text-center whitespace-nowrap">
+          <span class="font-mono font-extrabold text-amber-900 text-sm mr-1.5">${n.trimester_1.score}</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-amber-50 text-amber-800 border border-amber-200">${n.trimester_1.status}</span>
+        </td>
+        <td class="p-3 text-center whitespace-nowrap">
+          <span class="font-mono font-extrabold text-orange-900 text-sm mr-1.5">${n.trimester_2.score}</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-orange-50 text-orange-800 border border-orange-200">${n.trimester_2.status}</span>
+        </td>
+        <td class="p-3 text-center whitespace-nowrap">
+          <span class="font-mono font-extrabold text-emerald-900 text-sm mr-1.5">${n.trimester_3.score}</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">${n.trimester_3.status}</span>
+        </td>
+        <td class="p-3 text-center whitespace-nowrap text-xs font-bold text-amber-900">
+          ${n.overall_rating}
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function setupKandadayamControls() {
+  const btnCards = document.getElementById('rashiKdViewCardsBtn');
+  const btnTable = document.getElementById('rashiKdViewTableBtn');
+  const containerCards = document.getElementById('rashiKdCardsGrid');
+  const containerTable = document.getElementById('rashiKdTableContainer');
+
+  if (btnCards && btnTable && containerCards && containerTable) {
+    btnCards.addEventListener('click', () => {
+      btnCards.className = "px-3 py-1 rounded-lg text-xs font-bold text-white bg-amber-700 shadow transition";
+      btnTable.className = "px-3 py-1 rounded-lg text-xs font-bold text-stone-600 hover:text-stone-900 transition";
+      containerCards.classList.remove('hidden');
+      containerTable.classList.add('hidden');
+    });
+
+    btnTable.addEventListener('click', () => {
+      btnTable.className = "px-3 py-1 rounded-lg text-xs font-bold text-white bg-amber-700 shadow transition";
+      btnCards.className = "px-3 py-1 rounded-lg text-xs font-bold text-stone-600 hover:text-stone-900 transition";
+      containerTable.classList.remove('hidden');
+      containerCards.classList.add('hidden');
+    });
+  }
+
+  // Jump buttons
+  const jumpRashi = document.getElementById('jumpToRashiKdBtn');
+  if (jumpRashi) jumpRashi.addEventListener('click', () => {
+    document.getElementById('sectionRashiKd')?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  const jumpNakshatra = document.getElementById('jumpToNakshatraKdBtn');
+  if (jumpNakshatra) jumpNakshatra.addEventListener('click', () => {
+    document.getElementById('sectionNakshatraKd')?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  const jumpShastra = document.getElementById('jumpToShastraKdBtn');
+  if (jumpShastra) jumpShastra.addEventListener('click', () => {
+    document.getElementById('sectionShastraKd')?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Nakshatra dropdown
+  const dropdown = document.getElementById('nakshatraSelectDropdown');
+  if (dropdown) {
+    dropdown.addEventListener('change', (e) => {
+      selectNakshatra(parseInt(e.target.value));
+    });
+  }
+
+  // Table search
+  const searchInput = document.getElementById('nakshatraTableSearchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      if (STATE.kandadayamData && STATE.kandadayamData.nakshatras) {
+        renderNakshatrasMasterTable(STATE.kandadayamData.nakshatras, e.target.value.trim().toLowerCase());
+      }
+    });
+  }
 }
 
 function showLoader(show) {

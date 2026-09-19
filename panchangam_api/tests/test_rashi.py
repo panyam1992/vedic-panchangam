@@ -114,3 +114,43 @@ def test_rashi_multilingual():
     assert res_ta.status_code == 200
     data_ta = res_ta.json()
     assert data_ta["rashis"][0]["rashi"]["name"] == "மேஷம்"
+
+
+def test_comprehensive_kandadayam_endpoint():
+    res = client.get("/api/v1/rashi/kandadayam-all?year=2026&language=telugu")
+    assert res.status_code == 200
+    data = res.json()
+
+    assert "samvatsara" in data
+    assert "పరాభవ" in data["samvatsara"]
+    assert "explanation" in data
+    assert "rashis" in data
+    assert len(data["rashis"]) == 12
+    assert "nakshatras" in data
+    assert len(data["nakshatras"]) == 27
+
+    # Check 1st Nakshatra (Ashwini)
+    ashwini = data["nakshatras"][0]
+    assert ashwini["id"] == 1
+    assert "అశ్వినీ" in ashwini["name"]
+    assert ashwini["trimester_1"]["score"] == 4
+    assert ashwini["trimester_2"]["score"] == 2
+    assert ashwini["trimester_3"]["score"] == 1
+    assert "చైత్రం" in ashwini["trimester_1"]["months"]
+    assert "శ్రావణం" in ashwini["trimester_2"]["months"]
+    assert "మార్గశిరం" in ashwini["trimester_3"]["months"]
+
+    # Check 2nd Nakshatra (Bharani: 7, 0, 3)
+    bharani = data["nakshatras"][1]
+    assert bharani["id"] == 2
+    assert "భరణీ" in bharani["name"]
+    assert bharani["trimester_1"]["score"] == 7
+    assert bharani["trimester_2"]["score"] == 0
+    assert bharani["trimester_3"]["score"] == 3
+
+    # Check English localization
+    res_en = client.get("/api/v1/rashi/kandadayam-all?year=2026&language=english")
+    assert res_en.status_code == 200
+    data_en = res_en.json()
+    assert data_en["nakshatras"][0]["name"] == "Ashwini"
+

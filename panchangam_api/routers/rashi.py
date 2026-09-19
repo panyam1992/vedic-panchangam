@@ -12,15 +12,18 @@ from fastapi import APIRouter, Query, HTTPException
 from schemas.rashi_models import (
     DailyRashiResponse,
     MonthlyRashiResponse,
-    YearlyRashiResponse
+    YearlyRashiResponse,
+    ComprehensiveKandadayamResponse
 )
 from services.rashi_service import (
     compute_daily_rashi_phalalu,
     compute_monthly_rashi_phalalu,
-    compute_yearly_rashi_phalalu
+    compute_yearly_rashi_phalalu,
+    compute_comprehensive_kandadayam
 )
 
 router = APIRouter(prefix="/api/v1/rashi", tags=["Rashi Phalalu"])
+
 
 
 @router.get("/daily", response_model=DailyRashiResponse)
@@ -91,3 +94,21 @@ def get_yearly_rashi(
         year = datetime.now().year
 
     return compute_yearly_rashi_phalalu(year=year, lang=language)
+
+
+@router.get("/kandadayam-all", response_model=ComprehensiveKandadayamResponse)
+def get_kandadayam_all(
+    year: Optional[int] = Query(None, description="Year (defaults to 2026 / current year)"),
+    language: str = Query("telugu", description="Target language: telugu, english, devanagari, tamil, kannada, malayalam, gujarati, bengali")
+):
+    """
+    Compute Comprehensive Kandadayam & Nakshatra Trimester Phalalu:
+    - 12 Rashi Kandadayam (ఆదాయం, వ్యయం, రాజపూజ్యం, అవమానం)
+    - 27 Nakshatra Kandaya across 3 Trimesters (ప్రథమ, ద్వితీయ, తృతీయ కందాయాలు)
+    - Shastric principles & formula explanation
+    """
+    if not year:
+        year = 2026
+
+    return compute_comprehensive_kandadayam(year=year, lang=language)
+

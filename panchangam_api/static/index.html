@@ -176,6 +176,9 @@
         <button id="intercalaryTabBtn" class="shrink-0 whitespace-nowrap px-4 py-2 rounded-full font-semibold text-stone-300 hover:bg-amber-900/60 text-xs md:text-sm transition-all">
           అధిక / క్షయ మాసములు
         </button>
+        <button id="kandadayamTabBtn" class="shrink-0 whitespace-nowrap px-4 py-2 rounded-full font-semibold text-stone-300 hover:bg-amber-900/60 text-xs md:text-sm transition-all">
+          కందదాయ ఫలాలు
+        </button>
       </div>
     </div>
   </header>
@@ -847,6 +850,252 @@
           </table>
         </div>
       </div>
+    </div>
+
+    <!-- ================= VIEW 6: KANDADAYAM & NAKSHATRA TRIMESTERS VIEW ================= -->
+    <div id="kandadayamView" class="hidden space-y-6">
+
+      <!-- Hero Banner -->
+      <div class="vedic-card p-6 bg-gradient-to-r from-amber-950 via-amber-900 to-stone-950 text-white relative overflow-hidden shadow-xl border-2 border-amber-500/40">
+        <div class="absolute -right-6 -bottom-6 opacity-10 text-9xl">⚖️</div>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative z-10">
+          <div>
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="px-3 py-0.5 rounded-full text-xs font-extrabold bg-amber-600 text-white uppercase tracking-wider">
+                📊 వార్షిక కందదాయ గణితం
+              </span>
+              <span id="kdSamvatsaraBadge" class="px-3 py-0.5 rounded-full text-xs font-bold bg-amber-900/80 text-amber-200 border border-amber-500/40">
+                శ్రీ పరాభవ నామ సంవత్సరం (2026–2027)
+              </span>
+              <span class="px-3 py-0.5 rounded-full text-xs font-bold bg-amber-300 text-amber-950 shadow-xs">
+                ✍️ రూపకర్త: రామచంద్ర శాస్త్రి మునిమడుగు
+              </span>
+            </div>
+            <h2 id="kdMainHeading" class="text-2xl md:text-3xl font-extrabold font-serif-te text-amber-100 drop-shadow">
+              కందదాయ ఫలాలు & ఆదాయ వ్యయాలు
+            </h2>
+            <p id="kdMainSubtitle" class="text-xs md:text-sm text-stone-300 mt-1 max-w-3xl leading-relaxed">
+              ద్వాదశ రాశుల ఆదాయ-వ్యయ, రాజపూజ్య-అవమానాలు మరియు 27 నక్షత్రాల త్రైమాసిక (ప్రథమ, ద్వితీయ, తృతీయ కందాయాల) ప్రామాణిక ఫలితాలు.
+            </p>
+          </div>
+
+          <!-- Section Quick-Jump Buttons -->
+          <div class="flex flex-wrap gap-2">
+            <button id="jumpToRashiKdBtn" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-700 hover:bg-amber-600 text-white shadow transition">
+              💰 రాశి కందదాయం
+            </button>
+            <button id="jumpToNakshatraKdBtn" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-800/80 hover:bg-amber-700 text-amber-100 border border-amber-500/40 transition">
+              ⭐ నక్షత్ర కందాయాలు
+            </button>
+            <button id="jumpToShastraKdBtn" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-900/90 hover:bg-amber-800 text-amber-200 border border-amber-600/40 transition">
+              📜 శాస్త్ర గణన సూత్రాలు
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Trimester Definition Banner -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Trimester 1 -->
+        <div class="vedic-card p-4 border-l-4 border-amber-600 bg-white shadow-sm">
+          <div class="flex items-center justify-between mb-1.5">
+            <h4 class="font-bold text-amber-950 text-sm flex items-center gap-1.5">
+              <span>🌱 ప్రథమ కందాయం</span>
+            </h4>
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-900">మొదటి 4 నెలలు</span>
+          </div>
+          <p class="text-xs font-semibold text-stone-700">చైత్రం, వైశాఖం, జ్యేష్ఠం, ఆషాఢం</p>
+          <p class="text-[11px] text-stone-500 mt-1">గరిష్ట పరిమితి: 8 భాగాలు (0–7 శేషం)</p>
+        </div>
+
+        <!-- Trimester 2 -->
+        <div class="vedic-card p-4 border-l-4 border-orange-500 bg-white shadow-sm">
+          <div class="flex items-center justify-between mb-1.5">
+            <h4 class="font-bold text-amber-950 text-sm flex items-center gap-1.5">
+              <span>🌧️ ద్వితీయ కందాయం</span>
+            </h4>
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-orange-100 text-orange-900">రెండవ 4 నెలలు</span>
+          </div>
+          <p class="text-xs font-semibold text-stone-700">శ్రావణం, భాద్రపదం, ఆశ్వయుజం, కార్తీకం</p>
+          <p class="text-[11px] text-stone-500 mt-1">గరిష్ట పరిమితి: 3 భాగాలు (0–2 శేషం)</p>
+        </div>
+
+        <!-- Trimester 3 -->
+        <div class="vedic-card p-4 border-l-4 border-emerald-600 bg-white shadow-sm">
+          <div class="flex items-center justify-between mb-1.5">
+            <h4 class="font-bold text-amber-950 text-sm flex items-center gap-1.5">
+              <span>❄️ తృతీయ కందాయం</span>
+            </h4>
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-900">మూడవ 4 నెలలు</span>
+          </div>
+          <p class="text-xs font-semibold text-stone-700">మార్గశిరం, పుష్యం, మాఘం, ఫాల్గుణం</p>
+          <p class="text-[11px] text-stone-500 mt-1">గరిష్ట పరిమితి: 5 భాగాలు (0–4 శేషం)</p>
+        </div>
+      </div>
+
+      <!-- SECTION 1: 12 RASHI KANDADAYAM -->
+      <div id="sectionRashiKd" class="space-y-4">
+        <div class="vedic-card p-5 bg-white shadow-md">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-amber-200/60 pb-3">
+            <div>
+              <h3 class="text-lg font-bold text-amber-950 font-serif-te flex items-center gap-2">
+                <span>💰 ద్వాదశ రాశి కందదాయం (ఆదాయం, వ్యయం, రాజపూజ్యం, అవమానం)</span>
+              </h3>
+              <p class="text-xs text-stone-600 mt-0.5">
+                శ్రీ పరాభవ నామ సంవత్సర ద్వాదశ రాశుల సంపూర్ణ ఆర్థిక & సామాజిక గౌరవ స్థితిగతులు
+              </p>
+            </div>
+            <!-- View Toggle: Cards vs Table -->
+            <div class="flex items-center bg-stone-100 p-1 rounded-xl border border-stone-200 gap-1">
+              <button id="rashiKdViewCardsBtn" class="px-3 py-1 rounded-lg text-xs font-bold text-white bg-amber-700 shadow transition">
+                కార్డులు
+              </button>
+              <button id="rashiKdViewTableBtn" class="px-3 py-1 rounded-lg text-xs font-bold text-stone-600 hover:text-stone-900 transition">
+                పట్టిక
+              </button>
+            </div>
+          </div>
+
+          <!-- Cards View -->
+          <div id="rashiKdCardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pt-4">
+            <!-- Populated by JS -->
+          </div>
+
+          <!-- Table View -->
+          <div id="rashiKdTableContainer" class="hidden pt-4 overflow-x-auto rounded-xl">
+            <table class="w-full text-left border-collapse text-xs md:text-sm">
+              <thead>
+                <tr class="bg-amber-900 text-amber-100 text-[11px] md:text-xs uppercase tracking-wider font-bold">
+                  <th class="p-3 border-b border-amber-950">రాశి</th>
+                  <th class="p-3 border-b border-amber-950">అధిపతి</th>
+                  <th class="p-3 border-b border-amber-950 text-center">ఆదాయం</th>
+                  <th class="p-3 border-b border-amber-950 text-center">వ్యయం</th>
+                  <th class="p-3 border-b border-amber-950 text-center">రాజపూజ్యం</th>
+                  <th class="p-3 border-b border-amber-950 text-center">అవమానం</th>
+                  <th class="p-3 border-b border-amber-950">ఆర్థిక స్థితి</th>
+                  <th class="p-3 border-b border-amber-950">సామాజిక గౌరవం</th>
+                  <th class="p-3 border-b border-amber-950">సమగ్ర నిర్ణయం</th>
+                </tr>
+              </thead>
+              <tbody id="rashiKdTableBody" class="divide-y divide-stone-200 bg-white">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: 27 NAKSHATRA KANDAYA TRIMESTERS -->
+      <div id="sectionNakshatraKd" class="space-y-4">
+        <div class="vedic-card p-5 bg-white shadow-md">
+          <div class="border-b border-amber-200/60 pb-3">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+              <div>
+                <h3 class="text-lg font-bold text-amber-950 font-serif-te flex items-center gap-2">
+                  <span>⭐ 27 నక్షత్ర కందాయ ఫలాలు (త్రైమాసిక విభజన)</span>
+                </h3>
+                <p class="text-xs text-stone-600 mt-0.5">
+                  సంవత్సరంలోని 3 కందాయాల ప్రకారం మీ జన్మ నక్షత్ర ఫలితాలు తెలుసుకోండి
+                </p>
+              </div>
+              <div class="flex items-center gap-2 w-full sm:w-auto">
+                <label for="nakshatraSelectDropdown" class="text-xs font-bold text-stone-700 whitespace-nowrap">నక్షత్రం:</label>
+                <select id="nakshatraSelectDropdown" class="w-full sm:w-56 bg-amber-50 border border-amber-300 rounded-lg px-3 py-1.5 text-xs font-bold text-amber-950 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                  <!-- Populated by JS -->
+                </select>
+              </div>
+            </div>
+
+            <!-- Quick Nakshatra Pills Scrollable -->
+            <div class="mt-3 flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar" id="nakshatraQuickPills">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- Spotlight Nakshatra Details -->
+          <div id="selectedNakshatraSpotlight" class="pt-4 space-y-4">
+            <!-- Populated by renderNakshatraSpotlight() -->
+          </div>
+
+          <!-- 27 Nakshatras Master Table -->
+          <div class="mt-8 pt-4 border-t border-amber-200/60">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
+              <h4 class="text-base font-bold text-amber-950 font-serif-te flex items-center gap-2">
+                <span>📋 సమగ్ర 27 నక్షత్రాల కందాయ పట్టిక (Master Table)</span>
+              </h4>
+              <input 
+                type="text" 
+                id="nakshatraTableSearchInput" 
+                placeholder="నక్షత్రం పేరుతో వెతకండి..." 
+                class="px-3 py-1 border border-stone-300 rounded-lg text-xs w-full sm:w-56 focus:outline-none focus:ring-1 focus:ring-amber-500"
+              >
+            </div>
+
+            <div class="overflow-x-auto rounded-xl border border-stone-200">
+              <table class="w-full text-left border-collapse text-xs md:text-sm">
+                <thead>
+                  <tr class="bg-stone-800 text-amber-100 text-[11px] md:text-xs uppercase tracking-wider font-bold">
+                    <th class="p-3 border-b border-stone-900 text-center">క్ర.సం.</th>
+                    <th class="p-3 border-b border-stone-900">నక్షత్రం</th>
+                    <th class="p-3 border-b border-stone-900">రాశులు</th>
+                    <th class="p-3 border-b border-stone-900 text-center">ప్రథమ (1–4 నెలలు)</th>
+                    <th class="p-3 border-b border-stone-900 text-center">ద్వితీయ (5–8 నెలలు)</th>
+                    <th class="p-3 border-b border-stone-900 text-center">తృతీయ (9–12 నెలలు)</th>
+                    <th class="p-3 border-b border-stone-900 text-center">వార్షిక స్థితి</th>
+                  </tr>
+                </thead>
+                <tbody id="nakshatraKdTableBody" class="divide-y divide-stone-200 bg-white">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: SHASTRA & MATHEMATICAL RULES -->
+      <div id="sectionShastraKd" class="vedic-card p-6 bg-gradient-to-br from-amber-50/90 via-amber-100/40 to-orange-50/80 border-amber-300 space-y-4">
+        <h3 class="text-base md:text-lg font-bold text-amber-950 font-serif-te flex items-center gap-2">
+          <span>📜 కందదాయ గణిత విజ్ఞానము & శాస్త్ర ప్రమాణాలు (Shastric Rules & Trimester Science)</span>
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-stone-700 leading-relaxed">
+          <div class="p-4 rounded-xl bg-white border border-amber-200 shadow-xs space-y-2">
+            <h4 class="font-bold text-amber-900 text-sm flex items-center gap-1.5">
+              <span>📅 సంవత్సర కాల విభజన (3 కందాయాలు)</span>
+            </h4>
+            <p>
+              సంవత్సరంలోని 12 చాంద్రమాసాలను 4 నెలల చొప్పున 3 కందాయాలుగా విభజిస్తారు:
+            </p>
+            <ul class="list-disc pl-4 space-y-1">
+              <li><strong>ప్రథమ కందాయం (మొదటి 4 నెలలు):</strong> చైత్రం, వైశాఖం, జ్యేష్ఠం, ఆషాఢం. భాజకం 8 (శేషం 0 నుండి 7 వరకు).</li>
+              <li><strong>ద్వితీయ కందాయం (రెండవ 4 నెలలు):</strong> శ్రావణం, భాద్రపదం, ఆశ్వయుజం, కార్తీకం. భాజకం 3 (శేషం 0 నుండి 2 వరకు).</li>
+              <li><strong>తృతీయ కందాయం (మూడవ 4 నెలలు):</strong> మార్గశిరం, పుష్యం, మాఘం, ఫాల్గుణం. భాజకం 5 (శేషం 0 నుండి 4 వరకు).</li>
+            </ul>
+            <div class="p-2 bg-amber-50 rounded text-[11px] font-mono text-amber-900">
+              శ్రీ పరాభవ నామ సంవత్సర ఆరంభ సంఖ్యలు (అశ్వినీ ధ్రువకాలు):<br>
+              ప్రథమ = 4 (+3 చొప్పున mod 8) • ద్వితీయ = 2 (+1 చొప్పున mod 3) • తృతీయ = 1 (+2 చొప్పున mod 5)
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-white border border-amber-200 shadow-xs space-y-2">
+            <h4 class="font-bold text-amber-900 text-sm flex items-center gap-1.5">
+              <span>⚖️ ద్వాదశ రాశి కందదాయ గణితం</span>
+            </h4>
+            <p>
+              ద్వాదశ రాశుల కందదాయంలో ఉగాది శుక్ల ప్రతిపదా హోరా, అధిపతుల ఆధారంగా గణితం చేయబడుతుంది:
+            </p>
+            <ul class="list-disc pl-4 space-y-1">
+              <li><strong>ఆదాయం vs వ్యయం:</strong> ఆదాయం కంటే వ్యయం తక్కువగా ఉంటే శుభప్రదం, ధనవృద్ధి. వ్యయం ఎక్కువగా ఉంటే పొదుపు, రుణ నియంత్రణ ముఖ్యం.</li>
+              <li><strong>రాజపూజ్యం vs అవమానం:</strong> రాజపూజ్యం ఎక్కువగా ఉంటే సమాజంలో కీర్తి, గౌరవం. అవమానం ఎక్కువగా ఉంటే వివాదాలు రాకుండా మితభాషణం పాటించాలి.</li>
+            </ul>
+            <div class="p-2 bg-stone-50 rounded text-[11px] text-stone-600">
+              <strong>ఆధార గ్రంథం:</strong> శ్రీ పిడపర్తి సీతారామశాస్త్రి గారి <em>"పంచాంగ పీఠికా లేఖన ప్రక్రియ"</em> మరియు సాంప్రదాయిక సిద్ధాంత గ్రంథాలు.
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </main>
