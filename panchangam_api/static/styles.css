@@ -1,4 +1,4 @@
-﻿/* Vedic Panchangam Custom Styling */
+/* Vedic Panchangam Custom Styling */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Serif+Telugu:wght@400;600;700&family=Rozha+One&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
@@ -111,4 +111,20 @@ body {
 .cal-day-selected {
   border: 2px solid #7c2d12 !important;
   box-shadow: 0 0 0 2px rgba(124, 45, 18, 0.2);
+}
+
+/* Screen Rotation & Landscape Mode Responsive Support */
+@media (orientation: landscape) and (max-height: 600px) {
+  .cal-day-cell {
+    min-height: 70px;
+  }
+  header {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
