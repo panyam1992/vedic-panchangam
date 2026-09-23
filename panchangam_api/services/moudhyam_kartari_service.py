@@ -617,6 +617,7 @@ def get_annual_moudhyam_kartari(year: int = 2026, lang: str = "telugu", tz_name:
 
     return {
         "year": year,
+        "language": lang,
         "timezone": tz_name,
         "kartari_schedule": kartari_schedule,
         "moudhyam_schedule": moudhyam_list,

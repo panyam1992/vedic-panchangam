@@ -1,9 +1,9 @@
 // Service Worker for Vedic Panchangam PWA
-const CACHE_NAME = 'panchangam-pwa-v6.3';
+const CACHE_NAME = 'panchangam-pwa-v6.4';
 const ASSETS_TO_CACHE = [
   '/',
   '/static/styles.css?v=6.0',
-  '/static/app.js?v=6.3',
+  '/static/app.js?v=6.4',
   '/static/manifest.json',
   '/static/icon.jpg'
 ];

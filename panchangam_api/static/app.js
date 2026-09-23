@@ -2442,8 +2442,15 @@ function handleLangChange(newLang) {
   STATE.monthlyData = null;
   STATE.sankalpaData = null;
   STATE.rashiData = { daily: null, monthly: null, yearly: null };
+  STATE.annualMoudhyamData = null;
+  STATE.intercalaryData = null;
+  STATE.kandadayamData = null;
   updateStaticLabels();
   loadData();
+  if (STATE.activeTab === 'intercalary') fetchIntercalary();
+  if (STATE.activeTab === 'kandadayam') fetchKandadayam();
+  if (STATE.activeTab === 'rashi') fetchRashi(STATE.activeRashiPeriod);
+  if (STATE.activeTab === 'monthly') fetchMonthly();
 }
 
 function updateStaticLabels() {
@@ -3199,7 +3206,15 @@ async function openAnnualMoudhyamModal() {
 
   modal.classList.remove('hidden');
 
-  if (STATE.annualMoudhyamData && STATE.annualMoudhyamData.year === STATE.year && STATE.annualMoudhyamData.timezone === STATE.tz) {
+  const titleEl = document.getElementById('modalMoudhyamTitle');
+  if (titleEl) titleEl.innerText = t('modalMoudhyamTitle');
+  const subEl = document.getElementById('modalMoudhyamSubtitle');
+  if (subEl) subEl.innerText = t('modalMoudhyamSubtitle');
+
+  if (STATE.annualMoudhyamData && 
+      STATE.annualMoudhyamData.year === STATE.year && 
+      STATE.annualMoudhyamData.timezone === STATE.tz &&
+      STATE.annualMoudhyamData.language === STATE.lang) {
     renderAnnualMoudhyamModalBody(STATE.annualMoudhyamData);
     return;
   }
@@ -3215,6 +3230,7 @@ async function openAnnualMoudhyamModal() {
     const res = await fetch(`/api/v1/panchangam/moudhyam-kartari?year=${STATE.year}&language=${STATE.lang}&tz=${encodeURIComponent(STATE.tz)}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
+    data.language = STATE.lang;
     STATE.annualMoudhyamData = data;
     renderAnnualMoudhyamModalBody(data);
   } catch (err) {
