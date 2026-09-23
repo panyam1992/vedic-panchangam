@@ -200,7 +200,7 @@
           <h3 id="modalMoudhyamTitle" class="text-lg sm:text-xl font-bold font-serif-te flex items-center gap-2">
             🪔 సంవత్సర మౌఢ్య & కర్తరి నిర్ణయ పట్టిక
           </h3>
-          <p class="text-xs text-amber-200/90 mt-0.5">ఖగోళ నిరయణ గణితం • ధర్మశాస్త్ర ముహూర్త నిషేధాలు & ప్రాశస్త్యాలు</p>
+          <p id="modalMoudhyamSubtitle" class="text-xs text-amber-200/90 mt-0.5">ఖగోళ నిరయణ గణితం • ధర్మశాస్త్ర ముహూర్త నిషేధాలు & ప్రాశస్త్యాలు</p>
         </div>
         <button id="closeMoudhyamModalBtn" class="w-8 h-8 rounded-full bg-amber-800/80 hover:bg-amber-700 text-white flex items-center justify-center transition active:scale-95 cursor-pointer">
           ✕
@@ -622,7 +622,7 @@
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
             <div class="flex items-center gap-2">
-              <span class="text-xs px-3 py-0.5 bg-amber-700 text-white rounded-full font-bold uppercase tracking-wider">
+              <span id="rashiGocharaBadge" class="text-xs px-3 py-0.5 bg-amber-700 text-white rounded-full font-bold uppercase tracking-wider">
                 ♈ ద్వాదశ రాశి గోచారం
               </span>
               <span id="rashiPeriodInfoBadge" class="text-xs font-semibold text-amber-900 bg-amber-200/70 px-3 py-0.5 rounded-full border border-amber-300">
@@ -678,7 +678,7 @@
         <div class="absolute -right-6 -bottom-6 opacity-10 text-9xl">⚖️</div>
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative z-10">
           <div>
-            <div class="inline-flex items-center gap-2 bg-amber-950/90 px-3 py-1 rounded-full border border-amber-500/60 text-xs font-bold text-amber-300 mb-2">
+            <div id="intercalaryHeroBadge" class="inline-flex items-center gap-2 bg-amber-950/90 px-3 py-1 rounded-full border border-amber-500/60 text-xs font-bold text-amber-300 mb-2">
               <span>🏛️ ధర్మశాస్త్రం & ఖగోళ సిద్ధాంతం</span>
               <span>•</span>
               <span>కాలమాధవీయం</span>
@@ -708,12 +708,12 @@
         <div class="flex items-start gap-3">
           <span class="text-3xl">📿</span>
           <div class="flex-1 space-y-2">
-            <span class="text-xs font-bold text-amber-800 uppercase tracking-wider">కాలమాధవీయ పరమ ప్రామాణిక శ్లోకం (Kalamadhava Canonical Verse)</span>
+            <span id="kalamadhavaHeader" class="text-xs font-bold text-amber-800 uppercase tracking-wider">కాలమాధవీయ పరమ ప్రామాణిక శ్లోకం (Kalamadhava Canonical Verse)</span>
             <blockquote class="text-base md:text-xl font-bold font-serif-te text-amber-950 p-3 bg-amber-100/60 rounded-xl border-l-4 border-amber-600 shadow-xs">
               అసంక్రాంతావేకవర్షౌ ద్వౌచేత్ సంసర్ప ఆదిమః ।<br>
               క్షయమాసో ద్విసంక్రాంతః సచాంహస్పతి సంజ్ఞకః ॥
             </blockquote>
-            <p class="text-xs text-stone-700 leading-relaxed">
+            <p id="kalamadhavaRuleDesc" class="text-xs text-stone-700 leading-relaxed">
               <strong>ధర్మశాస్త్ర నియమం:</strong> ఒకే సౌర సంవత్సరంలో రెండు అసంక్రాంత మాసాలు వస్తే, మొదటి దానిని <strong>సంసర్పం</strong> అంటారు. మధ్యలో వచ్చే ద్విసంక్రాంత మాసమే <strong>క్షయ మాసం (అంహస్పతి)</strong>. సంవత్సరాంతంలో వచ్చే రెండవ అసంక్రాంత మాసం <strong>అధిక మాసం</strong> అవుతుంది. సంసర్పంలో నిత్య నైమిత్తిక కర్మలు చేయవచ్చు; అంహస్పతి (క్షయ) మాసంలో వివాహాది శుభకార్యాలు వర్జ్యం.
             </p>
           </div>
@@ -726,11 +726,11 @@
         <div class="vedic-card p-5 bg-white border-t-4 border-amber-600">
           <div class="flex items-center justify-between mb-2">
             <span class="text-2xl">🌒</span>
-            <span class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300">0 సంక్రాంతులు</span>
+            <span id="adhikaCardBadge" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300">0 సంక్రాంతులు</span>
           </div>
-          <h3 class="text-base font-bold text-amber-950 font-serif-te mb-1">అధిక మాసం (Asankranta)</h3>
-          <p class="text-xs font-mono font-semibold text-amber-700 mb-2">Ingresses = 0 (అసంక్రాంతం)</p>
-          <p class="text-xs text-stone-600 leading-relaxed">
+          <h3 id="adhikaCardTitle" class="text-base font-bold text-amber-950 font-serif-te mb-1">అధిక మాసం (Asankranta)</h3>
+          <p id="adhikaCardFormula" class="text-xs font-mono font-semibold text-amber-700 mb-2">Ingresses = 0 (అసంక్రాంతం)</p>
+          <p id="adhikaCardDesc" class="text-xs text-stone-600 leading-relaxed">
             ఒక అమావాస్య నుండి తర్వాతి అమావాస్య వరకు సూర్యుడు ఏ రాశి లోకీ ప్రవేశించకపోతే అది అధిక మాసం (మలమాసం). ప్రతి ~32.5 నెలలకు ఒకసారి వస్తుంది.
           </p>
           <div class="mt-3 pt-2 border-t border-stone-100 text-[11px] font-semibold text-amber-800 italic">
@@ -742,11 +742,11 @@
         <div class="vedic-card p-5 bg-white border-t-4 border-emerald-600">
           <div class="flex items-center justify-between mb-2">
             <span class="text-2xl">🌕</span>
-            <span class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300">1 సంక్రాంతి</span>
+            <span id="nijaCardBadge" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300">1 సంక్రాంతి</span>
           </div>
-          <h3 class="text-base font-bold text-emerald-950 font-serif-te mb-1">సాధారణ మాసం (Nija Masa)</h3>
-          <p class="text-xs font-mono font-semibold text-emerald-700 mb-2">Ingresses = 1 (సంక్రాంతం)</p>
-          <p class="text-xs text-stone-600 leading-relaxed">
+          <h3 id="nijaCardTitle" class="text-base font-bold text-emerald-950 font-serif-te mb-1">సాధారణ మాసం (Nija Masa)</h3>
+          <p id="nijaCardFormula" class="text-xs font-mono font-semibold text-emerald-700 mb-2">Ingresses = 1 (సంక్రాంతం)</p>
+          <p id="nijaCardDesc" class="text-xs text-stone-600 leading-relaxed">
             ఒక చాంద్రమాసంలో ఖచ్చితంగా ఒకే సూర్య సంక్రమణం సంభవిస్తే అది నిజ లేదా శుద్ధ మాసం. అన్ని శుభకార్యాలకు ప్రశస్తమైన కాలం.
           </p>
           <div class="mt-3 pt-2 border-t border-stone-100 text-[11px] font-semibold text-emerald-800 italic">
@@ -758,11 +758,11 @@
         <div class="vedic-card p-5 bg-white border-t-4 border-rose-600">
           <div class="flex items-center justify-between mb-2">
             <span class="text-2xl">🌑</span>
-            <span class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-900 border border-rose-300">2 సంక్రాంతులు</span>
+            <span id="kshayaCardBadge" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-900 border border-rose-300">2 సంక్రాంతులు</span>
           </div>
-          <h3 class="text-base font-bold text-rose-950 font-serif-te mb-1">క్షయ మాసం (Dvi-Sankranta)</h3>
-          <p class="text-xs font-mono font-semibold text-rose-700 mb-2">Ingresses = 2 (ద్విసంక్రాంతం)</p>
-          <p class="text-xs text-stone-600 leading-relaxed">
+          <h3 id="kshayaCardTitle" class="text-base font-bold text-rose-950 font-serif-te mb-1">క్షయ మాసం (Dvi-Sankranta)</h3>
+          <p id="kshayaCardFormula" class="text-xs font-mono font-semibold text-rose-700 mb-2">Ingresses = 2 (ద్విసంక్రాంతం)</p>
+          <p id="kshayaCardDesc" class="text-xs text-stone-600 leading-relaxed">
             ఒకే చాంద్రమాసంలో సూర్యుని 2 సంక్రాంతులు సంభవిస్తే అది క్షయ మాసం (అంహస్పతి). రెండు నెలలు యుగళీభూతమై ఒకటిగా మారుతాయి.
           </p>
           <div class="mt-3 pt-2 border-t border-stone-100 text-[11px] font-semibold text-rose-800 italic">
@@ -775,27 +775,27 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- Solar-Lunar Drift & Vedanga Jyotisha -->
         <div class="vedic-card p-5 bg-white space-y-3">
-          <h3 class="text-sm font-bold text-amber-900 uppercase tracking-wide flex items-center gap-1.5">
+          <h3 id="driftTitle" class="text-sm font-bold text-amber-900 uppercase tracking-wide flex items-center gap-1.5">
             <span>📐 సౌర-చాంద్ర కాలగణన సూత్రాలు (Calendar Drift)</span>
           </h3>
           <div class="space-y-2 text-xs text-stone-700">
             <div class="flex justify-between p-2 rounded-lg bg-amber-50 border border-amber-200">
-              <span class="font-medium">సౌర సంవత్సరం:</span>
+              <span id="driftSolarYr" class="font-medium">సౌర సంవత్సరం:</span>
               <span class="font-bold">~365.25 రోజులు</span>
             </div>
             <div class="flex justify-between p-2 rounded-lg bg-amber-50 border border-amber-200">
-              <span class="font-medium">చాంద్ర సంవత్సరం (12 × 29.5):</span>
+              <span id="driftLunarYr" class="font-medium">చాంద్ర సంవత్సరం (12 × 29.5):</span>
               <span class="font-bold">~354.0 రోజులు</span>
             </div>
             <div class="flex justify-between p-2 rounded-lg bg-amber-100 font-bold text-amber-950 border border-amber-300">
-              <span>వార్షిక లోటు (Annual Drift):</span>
+              <span id="driftAnnual">వార్షిక లోటు (Annual Drift):</span>
               <span>365.25 - 354 = 11.25 రోజులు (~11 రోజులు)</span>
             </div>
             <div class="flex justify-between p-2 rounded-lg bg-amber-50 border border-amber-200">
-              <span class="font-medium">3 సంవత్సరాలలో చేరే లోటు:</span>
+              <span id="drift3Yr" class="font-medium">3 సంవత్సరాలలో చేరే లోటు:</span>
               <span class="font-bold">11 × 3 = ~33 రోజులు (ఒక పూర్తి నెల)</span>
             </div>
-            <div class="p-2.5 rounded-xl bg-orange-50 border border-orange-200 font-semibold text-orange-950 text-[11px]">
+            <div id="driftLagadhaRule" class="p-2.5 rounded-xl bg-orange-50 border border-orange-200 font-semibold text-orange-950 text-[11px]">
               ✨ <strong>వేదాంగ జ్యోతిష నియమం (లగధ మహర్షి):</strong> పంచసంవత్సరాత్మక యుగంలో 60 సౌర మాసాలు = 62 చాంద్ర మాసాలు. అంటే ప్రతి 5 సంవత్సరాలకు సరిగ్గా 2 అధిక మాసాలు వస్తాయి.
             </div>
           </div>
@@ -803,17 +803,17 @@
 
         <!-- Kaliyuga Balance & Kshaya Recurrence -->
         <div class="vedic-card p-5 bg-white space-y-3">
-          <h3 class="text-sm font-bold text-amber-900 uppercase tracking-wide flex items-center gap-1.5">
+          <h3 id="kaliyugaTitle" class="text-sm font-bold text-amber-900 uppercase tracking-wide flex items-center gap-1.5">
             <span>🪐 కలియుగ మహాయుగ సమతుల్యత & క్షయ చక్రం</span>
           </h3>
           <div class="space-y-2 text-xs text-stone-700">
-            <div class="p-2.5 rounded-xl bg-amber-100/70 border border-amber-300 text-amber-950 font-bold">
+            <div id="kaliyugaFormula" class="p-2.5 rounded-xl bg-amber-100/70 border border-amber-300 text-amber-950 font-bold">
               కలియుగం (4,32,000 సంవత్సరాలు) సూత్రం:<br>
               <span class="text-amber-800 font-mono text-[13px]">1,68,152 (మొత్తం అధిక మాసాలు) - 8,718 (క్షయ మాసాలు) = 1,59,034 నెట్ అధిక మాసాలు</span>
             </div>
             <div class="p-2.5 rounded-xl bg-stone-50 border border-stone-200 space-y-1">
-              <span class="font-bold text-stone-800">క్షయ మాస పునరావృత ఆవృత్తి చక్రం (Recurrence Intervals):</span>
-              <p class="text-[11px] text-stone-600">
+              <span id="kaliyugaRecurrenceTitle" class="font-bold text-stone-800">క్షయ మాస పునరావృత ఆవృత్తి చక్రం (Recurrence Intervals):</span>
+              <p id="kaliyugaRecurrenceDesc" class="text-[11px] text-stone-600">
                 క్షయ మాసాలు కేవలం మెటోనిక్ అనుసంధాన చక్రాల ఆధారంగా మాత్రమే వస్తాయి:<br>
                 <span class="font-mono font-bold text-amber-900">ΔYears ∈ { 19, 38, 46, 65, 76, 141 }</span>
               </p>
@@ -821,7 +821,7 @@
                 38 = 2×19 • 46 = 38+8 • 65 = 46+19 • 76 = 4×19 • 141 = 65+76
               </p>
             </div>
-            <div class="p-2 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900 text-[11px] font-medium">
+            <div id="perihelionRule" class="p-2 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900 text-[11px] font-medium">
               💡 <strong>ఖగోళ పెరిహిలియన్ నియమం:</strong> సూర్యుడు భూమికి దగ్గరగా ఉండి పరమోచ్ఛ వేగంతో ధనుస్సు, మకర, కుంభ రాశులను దాటినప్పుడు మాత్రమే చాంద్రమాసంలో 2 సంక్రాంతులు వచ్చే అవకాశం ఉంటుంది.
             </div>
           </div>
@@ -834,10 +834,10 @@
           <span class="text-3xl">👑</span>
           <div class="space-y-1">
             <div class="flex items-center gap-2">
-              <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-900 text-amber-100 uppercase tracking-widest">ప్రత్యేక పరిశీలన</span>
-              <h4 class="text-base font-bold text-amber-950">శ్రీ కీలక నామ సంవత్సరం (2028 – 2029) • క్షయ & సంసర్ప మాసాలు</h4>
+              <span id="keelakaBadge" class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-900 text-amber-100 uppercase tracking-widest">ప్రత్యేక పరిశీలన</span>
+              <h4 id="keelakaTitle" class="text-base font-bold text-amber-950">శ్రీ కీలక నామ సంవత్సరం (2028 – 2029) • క్షయ & సంసర్ప మాసాలు</h4>
             </div>
-            <p class="text-xs text-stone-700 leading-relaxed">
+            <p id="keelakaDesc" class="text-xs text-stone-700 leading-relaxed">
               హైదరాబాద్‌లోని గాంధీనగర్‌లో 23 మంది ప్రసిద్ధ సిద్ధాంతులు మరియు ధర్మశాస్త్ర పండితులతో జరిగిన <strong>'తెలంగాణ విద్వత్సభ' విద్వద్గోష్ఠి</strong> (ఆగస్టు 30, 2026) తీర్మానం ప్రకారం: <em>"పూర్వసిద్ధాంతం సదా ఆచరణీయం"</em> అనే సూత్రంపై, శ్రీ కీలక నామ సంవత్సరంలో <strong>సంసర్ప కార్తిక మాసం (అధికం)</strong> మరియు <strong>మార్గశిర-పుష్య యుగళీభూత అంహస్పతి మాసం (క్షయ మాసం)</strong> గా ఏకగ్రీవంగా నిర్ణయించబడింది.
             </p>
           </div>
@@ -848,10 +848,10 @@
       <div class="vedic-card p-5 bg-white shadow-md">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4">
           <div>
-            <h3 class="text-lg font-bold text-amber-950 font-serif-te flex items-center gap-2">
+            <h3 id="intercalaryTableTitle" class="text-lg font-bold text-amber-950 font-serif-te flex items-center gap-2">
               <span>📅 రాబోయే 10 సంవత్సరాల అధిక / క్షయ మాసాల పట్టిక (2026 – 2036)</span>
             </h3>
-            <p class="text-xs text-stone-500">ఎంచుకున్న సిద్ధాంత పద్ధతి ప్రకారం అమావాస్యాంత చాంద్రమాసాల ఫలితాలు</p>
+            <p id="intercalaryTableSubtitle" class="text-xs text-stone-500">ఎంచుకున్న సిద్ధాంత పద్ధతి ప్రకారం అమావాస్యాంత చాంద్రమాసాల ఫలితాలు</p>
           </div>
           <span id="activeSystemBadge" class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300">
             సూర్యసిద్ధాంత పద్ధతి
@@ -862,13 +862,13 @@
           <table class="w-full text-left border-collapse text-xs md:text-sm">
             <thead>
               <tr class="bg-amber-900 text-amber-100 text-[11px] md:text-xs uppercase tracking-wider font-bold">
-                <th class="p-3 border-b border-amber-950">సంవత్సరం</th>
-                <th class="p-3 border-b border-amber-950">తెలుగు సంవత్సరం</th>
-                <th class="p-3 border-b border-amber-950">మాసం పేరు</th>
-                <th class="p-3 border-b border-amber-950 text-center">రకం / హోదా</th>
-                <th class="p-3 border-b border-amber-950 text-center">సంక్రాంతులు</th>
-                <th class="p-3 border-b border-amber-950">కాలం (ప్రారంభం – సమాప్తి)</th>
-                <th class="p-3 border-b border-amber-950">శాస్త్ర వివరణ</th>
+                <th id="thInterYr" class="p-3 border-b border-amber-950">సంవత్సరం</th>
+                <th id="thInterSamvat" class="p-3 border-b border-amber-950">తెలుగు సంవత్సరం</th>
+                <th id="thInterMasa" class="p-3 border-b border-amber-950">మాసం పేరు</th>
+                <th id="thInterType" class="p-3 border-b border-amber-950 text-center">రకం / హోదా</th>
+                <th id="thInterSankranti" class="p-3 border-b border-amber-950 text-center">సంక్రాంతులు</th>
+                <th id="thInterSpan" class="p-3 border-b border-amber-950">కాలం (ప్రారంభం – సమాప్తి)</th>
+                <th id="thInterRule" class="p-3 border-b border-amber-950">శాస్త్ర వివరణ</th>
               </tr>
             </thead>
             <tbody id="intercalaryTableBody" class="divide-y divide-stone-200 bg-white">
@@ -888,13 +888,13 @@
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative z-10">
           <div>
             <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="px-3 py-0.5 rounded-full text-xs font-extrabold bg-amber-600 text-white uppercase tracking-wider">
+              <span id="kdHeroBadge" class="px-3 py-0.5 rounded-full text-xs font-extrabold bg-amber-600 text-white uppercase tracking-wider">
                 📊 వార్షిక కందదాయ గణితం
               </span>
               <span id="kdSamvatsaraBadge" class="px-3 py-0.5 rounded-full text-xs font-bold bg-amber-900/80 text-amber-200 border border-amber-500/40">
                 శ్రీ పరాభవ నామ సంవత్సరం (2026–2027)
               </span>
-              <span class="px-3 py-0.5 rounded-full text-xs font-bold bg-amber-300 text-amber-950 shadow-xs">
+              <span id="kdCreatorBadge" class="px-3 py-0.5 rounded-full text-xs font-bold bg-amber-300 text-amber-950 shadow-xs">
                 ✍️ రూపకర్త: రామచంద్ర శాస్త్రి మునిమడుగు
               </span>
             </div>
@@ -926,37 +926,37 @@
         <!-- Trimester 1 -->
         <div class="vedic-card p-4 border-l-4 border-amber-600 bg-white shadow-sm">
           <div class="flex items-center justify-between mb-1.5">
-            <h4 class="font-bold text-amber-950 text-sm flex items-center gap-1.5">
+            <h4 id="kdQuickT1Title" class="font-bold text-amber-950 text-sm flex items-center gap-1.5">
               <span>🌱 ప్రథమ కందాయం</span>
             </h4>
-            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-900">మొదటి 4 నెలలు</span>
+            <span id="kdQuickT1Span" class="text-[11px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-900">మొదటి 4 నెలలు</span>
           </div>
-          <p class="text-xs font-semibold text-stone-700">చైత్రం, వైశాఖం, జ్యేష్ఠం, ఆషాఢం</p>
-          <p class="text-[11px] text-stone-500 mt-1">గరిష్ట పరిమితి: 8 భాగాలు (0–7 శేషం)</p>
+          <p id="kdQuickT1Months" class="text-xs font-semibold text-stone-700">చైత్రం, వైశాఖం, జ్యేష్ఠం, ఆషాఢం</p>
+          <p id="kdQuickT1Max" class="text-[11px] text-stone-500 mt-1">గరిష్ట పరిమితి: 8 భాగాలు (0–7 శేషం)</p>
         </div>
 
         <!-- Trimester 2 -->
         <div class="vedic-card p-4 border-l-4 border-orange-500 bg-white shadow-sm">
           <div class="flex items-center justify-between mb-1.5">
-            <h4 class="font-bold text-amber-950 text-sm flex items-center gap-1.5">
+            <h4 id="kdQuickT2Title" class="font-bold text-amber-950 text-sm flex items-center gap-1.5">
               <span>🌧️ ద్వితీయ కందాయం</span>
             </h4>
-            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-orange-100 text-orange-900">రెండవ 4 నెలలు</span>
+            <span id="kdQuickT2Span" class="text-[11px] font-bold px-2 py-0.5 rounded bg-orange-100 text-orange-900">రెండవ 4 నెలలు</span>
           </div>
-          <p class="text-xs font-semibold text-stone-700">శ్రావణం, భాద్రపదం, ఆశ్వయుజం, కార్తీకం</p>
-          <p class="text-[11px] text-stone-500 mt-1">గరిష్ట పరిమితి: 3 భాగాలు (0–2 శేషం)</p>
+          <p id="kdQuickT2Months" class="text-xs font-semibold text-stone-700">శ్రావణం, భాద్రపదం, ఆశ్వయుజం, కార్తీకం</p>
+          <p id="kdQuickT2Max" class="text-[11px] text-stone-500 mt-1">గరిష్ట పరిమితి: 3 భాగాలు (0–2 శేషం)</p>
         </div>
 
         <!-- Trimester 3 -->
         <div class="vedic-card p-4 border-l-4 border-emerald-600 bg-white shadow-sm">
           <div class="flex items-center justify-between mb-1.5">
-            <h4 class="font-bold text-amber-950 text-sm flex items-center gap-1.5">
+            <h4 id="kdQuickT3Title" class="font-bold text-amber-950 text-sm flex items-center gap-1.5">
               <span>❄️ తృతీయ కందాయం</span>
             </h4>
-            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-900">మూడవ 4 నెలలు</span>
+            <span id="kdQuickT3Span" class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-900">మూడవ 4 నెలలు</span>
           </div>
-          <p class="text-xs font-semibold text-stone-700">మార్గశిరం, పుష్యం, మాఘం, ఫాల్గుణం</p>
-          <p class="text-[11px] text-stone-500 mt-1">గరిష్ట పరిమితి: 5 భాగాలు (0–4 శేషం)</p>
+          <p id="kdQuickT3Months" class="text-xs font-semibold text-stone-700">మార్గశిరం, పుష్యం, మాఘం, ఫాల్గుణం</p>
+          <p id="kdQuickT3Max" class="text-[11px] text-stone-500 mt-1">గరిష్ట పరిమితి: 5 భాగాలు (0–4 శేషం)</p>
         </div>
       </div>
 
@@ -965,10 +965,10 @@
         <div class="vedic-card p-5 bg-white shadow-md">
           <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-amber-200/60 pb-3">
             <div>
-              <h3 class="text-lg font-bold text-amber-950 font-serif-te flex items-center gap-2">
+              <h3 id="rashiKdSectionTitle" class="text-lg font-bold text-amber-950 font-serif-te flex items-center gap-2">
                 <span>💰 ద్వాదశ రాశి కందదాయం (ఆదాయం, వ్యయం, రాజపూజ్యం, అవమానం)</span>
               </h3>
-              <p class="text-xs text-stone-600 mt-0.5">
+              <p id="rashiKdSectionSubtitle" class="text-xs text-stone-600 mt-0.5">
                 శ్రీ పరాభవ నామ సంవత్సర ద్వాదశ రాశుల సంపూర్ణ ఆర్థిక & సామాజిక గౌరవ స్థితిగతులు
               </p>
             </div>
@@ -993,15 +993,15 @@
             <table class="w-full text-left border-collapse text-xs md:text-sm">
               <thead>
                 <tr class="bg-amber-900 text-amber-100 text-[11px] md:text-xs uppercase tracking-wider font-bold">
-                  <th class="p-3 border-b border-amber-950">రాశి</th>
-                  <th class="p-3 border-b border-amber-950">అధిపతి</th>
-                  <th class="p-3 border-b border-amber-950 text-center">ఆదాయం</th>
-                  <th class="p-3 border-b border-amber-950 text-center">వ్యయం</th>
-                  <th class="p-3 border-b border-amber-950 text-center">రాజపూజ్యం</th>
-                  <th class="p-3 border-b border-amber-950 text-center">అవమానం</th>
-                  <th class="p-3 border-b border-amber-950">ఆర్థిక స్థితి</th>
-                  <th class="p-3 border-b border-amber-950">సామాజిక గౌరవం</th>
-                  <th class="p-3 border-b border-amber-950">సమగ్ర నిర్ణయం</th>
+                  <th id="thKdRashi" class="p-3 border-b border-amber-950">రాశి</th>
+                  <th id="thKdLord" class="p-3 border-b border-amber-950">అధిపతి</th>
+                  <th id="thKdAdayam" class="p-3 border-b border-amber-950 text-center">ఆదాయం</th>
+                  <th id="thKdVyayam" class="p-3 border-b border-amber-950 text-center">వ్యయం</th>
+                  <th id="thKdRajapujyam" class="p-3 border-b border-amber-950 text-center">రాజపూజ్యం</th>
+                  <th id="thKdAvamanam" class="p-3 border-b border-amber-950 text-center">అవమానం</th>
+                  <th id="thKdFinStatus" class="p-3 border-b border-amber-950">ఆర్థిక స్థితి</th>
+                  <th id="thKdSocStatus" class="p-3 border-b border-amber-950">సామాజిక గౌరవం</th>
+                  <th id="thKdVerdict" class="p-3 border-b border-amber-950">సమగ్ర నిర్ణయం</th>
                 </tr>
               </thead>
               <tbody id="rashiKdTableBody" class="divide-y divide-stone-200 bg-white">
@@ -1018,15 +1018,15 @@
           <div class="border-b border-amber-200/60 pb-3">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
               <div>
-                <h3 class="text-lg font-bold text-amber-950 font-serif-te flex items-center gap-2">
+                <h3 id="nakshatraSectionTitle" class="text-lg font-bold text-amber-950 font-serif-te flex items-center gap-2">
                   <span>⭐ 27 నక్షత్ర కందాయ ఫలాలు (త్రైమాసిక విభజన)</span>
                 </h3>
-                <p class="text-xs text-stone-600 mt-0.5">
+                <p id="nakshatraSectionSubtitle" class="text-xs text-stone-600 mt-0.5">
                   సంవత్సరంలోని 3 కందాయాల ప్రకారం మీ జన్మ నక్షత్ర ఫలితాలు తెలుసుకోండి
                 </p>
               </div>
               <div class="flex items-center gap-2 w-full sm:w-auto">
-                <label for="nakshatraSelectDropdown" class="text-xs font-bold text-stone-700 whitespace-nowrap">నక్షత్రం:</label>
+                <label id="nakshatraSelectLabel" for="nakshatraSelectDropdown" class="text-xs font-bold text-stone-700 whitespace-nowrap">నక్షత్రం:</label>
                 <select id="nakshatraSelectDropdown" class="w-full sm:w-56 bg-amber-50 border border-amber-300 rounded-lg px-3 py-1.5 text-xs font-bold text-amber-950 focus:outline-none focus:ring-2 focus:ring-amber-500">
                   <!-- Populated by JS -->
                 </select>
@@ -1047,7 +1047,7 @@
           <!-- 27 Nakshatras Master Table -->
           <div class="mt-8 pt-4 border-t border-amber-200/60">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
-              <h4 class="text-base font-bold text-amber-950 font-serif-te flex items-center gap-2">
+              <h4 id="nakshatraMasterTableTitle" class="text-base font-bold text-amber-950 font-serif-te flex items-center gap-2">
                 <span>📋 సమగ్ర 27 నక్షత్రాల కందాయ పట్టిక (Master Table)</span>
               </h4>
               <input 
@@ -1062,13 +1062,13 @@
               <table class="w-full text-left border-collapse text-xs md:text-sm">
                 <thead>
                   <tr class="bg-stone-800 text-amber-100 text-[11px] md:text-xs uppercase tracking-wider font-bold">
-                    <th class="p-3 border-b border-stone-900 text-center">క్ర.సం.</th>
-                    <th class="p-3 border-b border-stone-900">నక్షత్రం</th>
-                    <th class="p-3 border-b border-stone-900">రాశులు</th>
-                    <th class="p-3 border-b border-stone-900 text-center">ప్రథమ (1–4 నెలలు)</th>
-                    <th class="p-3 border-b border-stone-900 text-center">ద్వితీయ (5–8 నెలలు)</th>
-                    <th class="p-3 border-b border-stone-900 text-center">తృతీయ (9–12 నెలలు)</th>
-                    <th class="p-3 border-b border-stone-900 text-center">వార్షిక స్థితి</th>
+                    <th id="thNId" class="p-3 border-b border-stone-900 text-center">క్ర.సం.</th>
+                    <th id="thNName" class="p-3 border-b border-stone-900">నక్షత్రం</th>
+                    <th id="thNRashis" class="p-3 border-b border-stone-900">రాశులు</th>
+                    <th id="thNT1" class="p-3 border-b border-stone-900 text-center">ప్రథమ (1–4 నెలలు)</th>
+                    <th id="thNT2" class="p-3 border-b border-stone-900 text-center">ద్వితీయ (5–8 నెలలు)</th>
+                    <th id="thNT3" class="p-3 border-b border-stone-900 text-center">తృతీయ (9–12 నెలలు)</th>
+                    <th id="thNOverall" class="p-3 border-b border-stone-900 text-center">వార్షిక స్థితి</th>
                   </tr>
                 </thead>
                 <tbody id="nakshatraKdTableBody" class="divide-y divide-stone-200 bg-white">
@@ -1082,42 +1082,46 @@
 
       <!-- SECTION 3: SHASTRA & MATHEMATICAL RULES -->
       <div id="sectionShastraKd" class="vedic-card p-6 bg-gradient-to-br from-amber-50/90 via-amber-100/40 to-orange-50/80 border-amber-300 space-y-4">
-        <h3 class="text-base md:text-lg font-bold text-amber-950 font-serif-te flex items-center gap-2">
+        <h3 id="shastraKdTitle" class="text-base md:text-lg font-bold text-amber-950 font-serif-te flex items-center gap-2">
           <span>📜 కందదాయ గణిత విజ్ఞానము & శాస్త్ర ప్రమాణాలు (Shastric Rules & Trimester Science)</span>
         </h3>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-stone-700 leading-relaxed">
           <div class="p-4 rounded-xl bg-white border border-amber-200 shadow-xs space-y-2">
-            <h4 class="font-bold text-amber-900 text-sm flex items-center gap-1.5">
+            <h4 id="shastraKdT1Title" class="font-bold text-amber-900 text-sm flex items-center gap-1.5">
               <span>📅 సంవత్సర కాల విభజన (3 కందాయాలు)</span>
             </h4>
-            <p>
-              సంవత్సరంలోని 12 చాంద్రమాసాలను 4 నెలల చొప్పున 3 కందాయాలుగా విభజిస్తారు:
-            </p>
-            <ul class="list-disc pl-4 space-y-1">
-              <li><strong>ప్రథమ కందాయం (మొదటి 4 నెలలు):</strong> చైత్రం, వైశాఖం, జ్యేష్ఠం, ఆషాఢం. భాజకం 8 (శేషం 0 నుండి 7 వరకు).</li>
-              <li><strong>ద్వితీయ కందాయం (రెండవ 4 నెలలు):</strong> శ్రావణం, భాద్రపదం, ఆశ్వయుజం, కార్తీకం. భాజకం 3 (శేషం 0 నుండి 2 వరకు).</li>
-              <li><strong>తృతీయ కందాయం (మూడవ 4 నెలలు):</strong> మార్గశిరం, పుష్యం, మాఘం, ఫాల్గుణం. భాజకం 5 (శేషం 0 నుండి 4 వరకు).</li>
-            </ul>
-            <div class="p-2 bg-amber-50 rounded text-[11px] font-mono text-amber-900">
-              శ్రీ పరాభవ నామ సంవత్సర ఆరంభ సంఖ్యలు (అశ్వినీ ధ్రువకాలు):<br>
-              ప్రథమ = 4 (+3 చొప్పున mod 8) • ద్వితీయ = 2 (+1 చొప్పున mod 3) • తృతీయ = 1 (+2 చొప్పున mod 5)
+            <div id="shastraKdT1Desc">
+              <p>
+                సంవత్సరంలోని 12 చాంద్రమాసాలను 4 నెలల చొప్పున 3 కందాయాలుగా విభజిస్తారు:
+              </p>
+              <ul class="list-disc pl-4 space-y-1">
+                <li><strong>ప్రథమ కందాయం (మొదటి 4 నెలలు):</strong> చైత్రం, వైశాఖం, జ్యేష్ఠం, ఆషాఢం. భాజకం 8 (శేషం 0 నుండి 7 వరకు).</li>
+                <li><strong>ద్వితీయ కందాయం (రెండవ 4 నెలలు):</strong> శ్రావణం, భాద్రపదం, ఆశ్వయుజం, కార్తీకం. భాజకం 3 (శేషం 0 నుండి 2 వరకు).</li>
+                <li><strong>తృతీయ కందాయం (మూడవ 4 నెలలు):</strong> మార్గశిరం, పుష్యం, మాఘం, ఫాల్గుణం. భాజకం 5 (శేషం 0 నుండి 4 వరకు).</li>
+              </ul>
+              <div class="p-2 bg-amber-50 rounded text-[11px] font-mono text-amber-900 mt-2">
+                శ్రీ పరాభవ నామ సంవత్సర ఆరంభ సంఖ్యలు (అశ్వినీ ధ్రువకాలు):<br>
+                ప్రథమ = 4 (+3 చొప్పున mod 8) • ద్వితీయ = 2 (+1 చొప్పున mod 3) • తృతీయ = 1 (+2 చొప్పున mod 5)
+              </div>
             </div>
           </div>
 
           <div class="p-4 rounded-xl bg-white border border-amber-200 shadow-xs space-y-2">
-            <h4 class="font-bold text-amber-900 text-sm flex items-center gap-1.5">
+            <h4 id="shastraKdT2Title" class="font-bold text-amber-900 text-sm flex items-center gap-1.5">
               <span>⚖️ ద్వాదశ రాశి కందదాయ గణితం</span>
             </h4>
-            <p>
-              ద్వాదశ రాశుల కందదాయంలో ఉగాది శుక్ల ప్రతిపదా హోరా, అధిపతుల ఆధారంగా గణితం చేయబడుతుంది:
-            </p>
-            <ul class="list-disc pl-4 space-y-1">
-              <li><strong>ఆదాయం vs వ్యయం:</strong> ఆదాయం కంటే వ్యయం తక్కువగా ఉంటే శుభప్రదం, ధనవృద్ధి. వ్యయం ఎక్కువగా ఉంటే పొదుపు, రుణ నియంత్రణ ముఖ్యం.</li>
-              <li><strong>రాజపూజ్యం vs అవమానం:</strong> రాజపూజ్యం ఎక్కువగా ఉంటే సమాజంలో కీర్తి, గౌరవం. అవమానం ఎక్కువగా ఉంటే వివాదాలు రాకుండా మితభాషణం పాటించాలి.</li>
-            </ul>
-            <div class="p-2 bg-stone-50 rounded text-[11px] text-stone-600">
-              <strong>ఆధార గ్రంథం:</strong> శ్రీ పిడపర్తి సీతారామశాస్త్రి గారి <em>"పంచాంగ పీఠికా లేఖన ప్రక్రియ"</em> మరియు సాంప్రదాయిక సిద్ధాంత గ్రంథాలు.
+            <div id="shastraKdT2Desc">
+              <p>
+                ద్వాదశ రాశుల కందదాయంలో ఉగాది శుక్ల ప్రతిపదా హోరా, అధిపతుల ఆధారంగా గణితం చేయబడుతుంది:
+              </p>
+              <ul class="list-disc pl-4 space-y-1">
+                <li><strong>ఆదాయం vs వ్యయం:</strong> ఆదాయం కంటే వ్యయం తక్కువగా ఉంటే శుభప్రదం, ధనవృద్ధి. వ్యయం ఎక్కువగా ఉంటే పొదుపు, రుణ నియంత్రణ ముఖ్యం.</li>
+                <li><strong>రాజపూజ్యం vs అవమానం:</strong> రాజపూజ్యం ఎక్కువగా ఉంటే సమాజంలో కీర్తి, గౌరవం. అవమానం ఎక్కువగా ఉంటే వివాదాలు రాకుండా మితభాషణం పాటించాలి.</li>
+              </ul>
+              <div class="p-2 bg-stone-50 rounded text-[11px] text-stone-600 mt-2">
+                <strong>ఆధార గ్రంథం:</strong> శ్రీ పిడపర్తి సీతారామశాస్త్రి గారి <em>"పంచాంగ పీఠికా లేఖన ప్రక్రియ"</em> మరియు సాంప్రదాయిక సిద్ధాంత గ్రంథాలు.
+              </div>
             </div>
           </div>
         </div>
@@ -1132,9 +1136,9 @@
     <div class="max-w-7xl mx-auto px-4 text-center space-y-4">
       <div class="flex flex-col sm:flex-row items-center justify-center gap-3 text-base font-bold font-serif-te text-amber-200">
         <img src="/static/icon.jpg" alt="Vedic Samhita Emblem" class="w-10 h-10 rounded-full border-2 border-amber-400/80 shadow-md">
-        <span>వేద సంహిత • Vedic Samhita</span>
+        <span id="footerOrgTitle">వేద సంహిత • Vedic Samhita</span>
         <span class="hidden sm:inline text-amber-500">•</span>
-        <span class="text-amber-300">Vedic Astronomy & Dharma Shastra Computation System</span>
+        <span id="footerOrgSubtitle" class="text-amber-300">Vedic Astronomy & Dharma Shastra Computation System</span>
       </div>
       
       <!-- Prominent Creator Credit Box -->
@@ -1148,37 +1152,37 @@
             >
           </a>
         </div>
-        <p class="text-[11px] text-amber-400/90 font-bold uppercase tracking-widest">
+        <p id="footerCreatorRole" class="text-[11px] text-amber-400/90 font-bold uppercase tracking-widest">
           సిద్ధాంత & ఖగోళ కంప్యుటేషన్ రూపకర్త (System Architect & Creator)
         </p>
-        <h4 class="text-xl md:text-2xl font-extrabold text-amber-100 font-serif-te tracking-wide mt-1.5">
+        <h4 id="footerCreatorName" class="text-xl md:text-2xl font-extrabold text-amber-100 font-serif-te tracking-wide mt-1.5">
           రామచంద్ర శాస్త్రి మునిమడుగు
         </h4>
         <p class="text-sm font-bold text-amber-300 font-mono mt-0.5">
           RAMACHANDRA SASTRY MUNIMADUGU
         </p>
-        <p class="text-xs text-stone-300 mt-2.5 leading-relaxed font-normal">
+        <p id="footerCreatorDesc" class="text-xs text-stone-300 mt-2.5 leading-relaxed font-normal">
           ఈ పంచాంగ గణనలు, వైదిక ఖగోళ సూత్రాలు, ధర్మశాస్త్ర నిర్ణయాలు మరియు సాంకేతిక క్రోడీకరణ సమగ్రంగా <strong class="text-amber-200 font-bold">శ్రీ రామచంద్ర శాస్త్రి మునిమడుగు</strong> గారి పరిశోధన & రూపకల్పన ద్వారా రూపొందించబడినవి. <br class="hidden sm:inline"/> All credits go to <strong class="text-amber-200 font-bold">RAMACHANDRA SASTRY MUNIMADUGU</strong>.
         </p>
         <div class="mt-3 pt-3 border-t border-amber-600/30 flex justify-center items-center gap-2 text-xs">
-          <span class="text-amber-400 font-semibold">అధికారిక వెబ్‌సైట్:</span>
+          <span id="footerOfficialWebsiteLabel" class="text-amber-400 font-semibold">అధికారిక వెబ్‌సైట్:</span>
           <a href="https://www.vedicsamhita.com" target="_blank" class="font-bold text-amber-200 hover:text-white underline decoration-amber-400 transition font-mono">
             www.vedicsamhita.com
           </a>
         </div>
       </div>
 
-      <p class="text-[11px] text-stone-400 pt-1">
+      <p id="footerPoweredBy" class="text-[11px] text-stone-400 pt-1">
         Swiss Ephemeris ఖగోళ గణనలు, జ్యోతిష ఇంజిన్ మరియు అక్షరముఖ బహుభాషా పరివర్తన ఆధారితం.
       </p>
-      <p class="text-[11px] text-stone-500">
+      <p id="footerCopyright" class="text-[11px] text-stone-500">
         &copy; 2026 <a href="https://www.vedicsamhita.com" target="_blank" class="text-amber-400 hover:underline font-semibold">Vedic Samhita</a>. All rights reserved. Created by RAMACHANDRA SASTRY MUNIMADUGU.
       </p>
     </div>
   </footer>
 
   <!-- App Logic -->
-  <script src="/static/app.js?v=6.2"></script>
+  <script src="/static/app.js?v=6.3"></script>
   <script>
     try {
       if (window.lucide && typeof lucide.createIcons === 'function') {

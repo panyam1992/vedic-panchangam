@@ -26,6 +26,8 @@ from schemas.rashi_models import (
     RashiKandadayamItem,
     ComprehensiveKandadayamResponse
 )
+from indic_transliteration import sanscript
+from services.localization_service import transliterate_text
 
 # 12 Rashi Base Definitions
 RASHI_DEFINITIONS = [
@@ -643,7 +645,16 @@ def compute_comprehensive_kandadayam(year: int = 2026, lang: str = "telugu") -> 
     3. Tritiya Kandayam (Margashirsha, Pushya, Magha, Phalguna) - Months 9-12
     """
     lang_code = lang if lang in RASHI_NAMES else "telugu"
-    samvatsara_name = "శ్రీ పరాభవ నామ సంవత్సరం (2026-2027)" if lang_code == "telugu" else "Sri Parabhava Samvatsara (2026-2027)"
+    samvatsara_names = {
+        "telugu": "శ్రీ పరాభవ నామ సంవత్సరం (2026-2027)",
+        "tamil": "ஸ்ரீ பராபவ நாம வருடம் (2026-2027)",
+        "kannada": "ಶ್ರೀ ಪರಾಭವ ನಾಮ ಸಂವತ್ಸರ (2026-2027)",
+        "devanagari": "श्री पराभव नाम संवत्सर (2026-2027)",
+        "hindi": "श्री पराभव नाम संवत्सर (2026-2027)",
+        "sanskrit": "श्रीपराभवनामसंवत्सरः (2026-2027)",
+        "english": "Sri Parabhava Samvatsara (2026-2027)"
+    }
+    samvatsara_name = samvatsara_names.get(lang_code, "Sri Parabhava Samvatsara (2026-2027)")
 
     # 1. 12 Rashi Kandadayam Items
     rashi_items: List[RashiKandadayamItem] = []
@@ -652,28 +663,91 @@ def compute_comprehensive_kandadayam(year: int = 2026, lang: str = "telugu") -> 
         aadhayam, vyayam, rajapujyam, avamanam = PARABHAVA_KANDADAYAM[idx]
 
         if aadhayam > vyayam:
-            fin_status = "విశేష ధనలాభం & ఆర్థిక అభివృద్ధి" if lang_code == "telugu" else "Substantial Wealth & Surplus"
+            fin_status_dict = {
+                "telugu": "విశేష ధనలాభం & ఆర్థిక అభివృద్ధి",
+                "tamil": "விசேஷ தனலாபம் & பொருளாதார வளர்ச்சி",
+                "kannada": "ವಿಶೇಷ ಧನಲಾಭ & ಆರ್ಥಿಕ ಅಭಿವೃದ್ಧಿ",
+                "devanagari": "विशेष धनलाभ एवं आर्थिक समृद्धि",
+                "english": "Substantial Wealth & Surplus"
+            }
         elif aadhayam == vyayam:
-            fin_status = "ఆదాయ వ్యయాలు సమతుల్యం" if lang_code == "telugu" else "Balanced Income & Expenses"
+            fin_status_dict = {
+                "telugu": "ఆదాయ వ్యయాలు సమతుల్యం",
+                "tamil": "வரவு செலவு சமநிலை",
+                "kannada": "ಆದಾಯ ವ್ಯಯಗಳು ಸಮತೋಲನ",
+                "devanagari": "आय-व्यय सन्तुलन",
+                "english": "Balanced Income & Expenses"
+            }
         else:
-            fin_status = "ఖర్చులు ఎక్కువ (ఆర్థిక జాగ్రత్త అవసరం)" if lang_code == "telugu" else "Expenditures Higher (Budget Prudence)"
+            fin_status_dict = {
+                "telugu": "ఖర్చులు ఎక్కువ (ఆర్థిక జాగ్రత్త అవసరం)",
+                "tamil": "செலவுகள் அதிகம் (பட்ஜெட் கவனம் தேவை)",
+                "kannada": "ವೆಚ್ಚಗಳು ಹೆಚ್ಚು (ಆರ್ಥಿಕ ಜಾಗರೂಕತೆ ಅಗತ್ಯ)",
+                "devanagari": "व्ययाधिक्य (आर्थिक सतर्कता आवश्यक)",
+                "english": "Expenditures Higher (Budget Prudence)"
+            }
+        fin_status = fin_status_dict.get(lang_code, fin_status_dict["english"])
 
         if rajapujyam > avamanam:
-            soc_status = "సమాజంలో విశేష గౌరవం & కీర్తి" if lang_code == "telugu" else "High Honor & Social Respect"
+            soc_status_dict = {
+                "telugu": "సమాజంలో విశేష గౌరవం & కీర్తి",
+                "tamil": "சமூகத்தில் பெரும் மரியாதை & புகழ்",
+                "kannada": "ಸಮಾಜದಲ್ಲಿ ವಿಶೇಷ ಗೌರವ & ಕೀರ್ತಿ",
+                "devanagari": "समाज में विशेष मान-सम्मान एवं कीर्ति",
+                "english": "High Honor & Social Respect"
+            }
         elif rajapujyam == avamanam:
-            soc_status = "సాధారణ గౌరవ మర్యాదలు" if lang_code == "telugu" else "Steady Social Standing"
+            soc_status_dict = {
+                "telugu": "సాధారణ గౌరవ మర్యాదలు",
+                "tamil": "நிலையான சமூக அந்தஸ்து",
+                "kannada": "ಸಾಧಾರಣ ಗೌರವ ಮರ್ಯಾದೆಗಳು",
+                "devanagari": "स्थिर सामाजिक प्रतिष्ठा",
+                "english": "Steady Social Standing"
+            }
         else:
-            soc_status = "వివాదాలు రాకుండా సంయమనం పాటించాలి" if lang_code == "telugu" else "Exercise Caution against Disputes"
+            soc_status_dict = {
+                "telugu": "వివాదాలు రాకుండా సంయమనం పాటించాలి",
+                "tamil": "சர்ச்சைகள் வராமல் அமைதி காக்க வேண்டும்",
+                "kannada": "ವಿವಾದಗಳು ಬಾರದಂತೆ ಸಂಯಮ ಕಾಪಾಡಿಕೊಳ್ಳಿ",
+                "devanagari": "विवादों से बचें, संयम आवश्यक",
+                "english": "Exercise Caution against Disputes"
+            }
+        soc_status = soc_status_dict.get(lang_code, soc_status_dict["english"])
 
         # Overall verdict text
         if aadhayam > vyayam and rajapujyam >= avamanam:
-            verdict = "అత్యంత శుభదాయకం - ఆర్థిక ప్రగతి, సమాజంలో గౌరవం" if lang_code == "telugu" else "Highly Auspicious - Financial Gain & High Honor"
+            verdict_dict = {
+                "telugu": "అత్యంత శుభదాయకం - ఆర్థిక ప్రగతి, సమాజంలో గౌరవం",
+                "tamil": "மிகவும் சுபகரமானது - பொருளாதார முன்னேற்றம், உயர் கௌரவம்",
+                "kannada": "ಅತ್ಯಂತ ಶುಭದಾಯಕ - ಆರ್ಥಿಕ ಪ್ರಗತಿ, ಸಮಾಜದಲ್ಲಿ ಗೌರವ",
+                "devanagari": "अत्यन्त शुभप्रद - आर्थिक प्रगति एवं सामाजिक सम्मान",
+                "english": "Highly Auspicious - Financial Gain & High Honor"
+            }
         elif aadhayam >= vyayam:
-            verdict = "శుభప్రదం - ఆర్థిక నిలకడ, శుభకార్యాలు" if lang_code == "telugu" else "Favorable - Financial Stability"
+            verdict_dict = {
+                "telugu": "శుభప్రదం - ఆర్థిక నిలకడ, శుభకార్యాలు",
+                "tamil": "சுபகரமானது - நிதி நிலைத்தன்மை, நற்காரியங்கள்",
+                "kannada": "ಶುಭಪ್ರದ - ಆರ್ಥಿಕ ಸ್ಥಿರತೆ, ಶುಭಕಾರ್ಯಗಳು",
+                "devanagari": "शुभप्रद - आर्थिक स्थिरता एवं मांगलिक कार्य",
+                "english": "Favorable - Financial Stability"
+            }
         elif rajapujyam > avamanam:
-            verdict = "మధ్యమం - ఖర్చులు పెరిగినా గౌరవ మర్యాదలకు లోటుండదు" if lang_code == "telugu" else "Moderate - High Honor despite Expenses"
+            verdict_dict = {
+                "telugu": "మధ్యమం - ఖర్చులు పెరిగినా గౌరవ మర్యాదలకు లోటుండదు",
+                "tamil": "மத்திமம் - செலவுகள் இருப்பினும் கௌரவத்திற்கு குறைவில்லை",
+                "kannada": "ಮಧ್ಯಮ - ಖರ್ಚು ಹೆಚ್ಚಿದರೂ ಗೌರವಕ್ಕೆ ಕೊರತೆಯಿಲ್ಲ",
+                "devanagari": "मध्यम - व्यय के बावजूद मान-सम्मान यथावत्",
+                "english": "Moderate - High Honor despite Expenses"
+            }
         else:
-            verdict = "అప్రమత్తత అవసరం - వ్యయ నియంత్రణ, దైవ ప్రార్థన శ్రేయస్కరం" if lang_code == "telugu" else "Caution Required - Prudent Budgeting & Prayers"
+            verdict_dict = {
+                "telugu": "అప్రమత్తత అవసరం - వ్యయ నియంత్రణ, దైవ ప్రార్థన శ్రేయస్కరం",
+                "tamil": "கவனம் தேவை - செலவுக் கட்டுப்பாடு, தெய்வ வழிபாடு நலம்",
+                "kannada": "ಎಚ್ಚರಿಕೆ ಅಗತ್ಯ - ವೆಚ್ಚ ನಿಯಂತ್ರಣ, ದೈವ ಪ್ರಾರ್ಥನೆ ಕ್ಷೇಮ",
+                "devanagari": "सावधानी आवश्यक - व्यय नियंत्रण एवं ईश्वर आराधना श्रेयस्कर",
+                "english": "Caution Required - Prudent Budgeting & Prayers"
+            }
+        verdict = verdict_dict.get(lang_code, verdict_dict["english"])
 
         rashi_items.append(RashiKandadayamItem(
             rashi=meta,
@@ -687,19 +761,64 @@ def compute_comprehensive_kandadayam(year: int = 2026, lang: str = "telugu") -> 
         ))
 
     # 2. 27 Nakshatras 3-Trimester Kandaya
-    # Parabhava Samvatsara (2026-2027) Ashwini anchors & progressions:
-    # Trimester 1: (4 + 3 * idx) % 8
-    # Trimester 2: (2 + 1 * idx) % 3
-    # Trimester 3: (1 + 2 * idx) % 5
     nakshatra_items: List[NakshatraKandayaItem] = []
     is_te = (lang_code == "telugu")
 
-    t1_title = "ప్రథమ కందాయం (మొదటి 4 నెలలు)" if is_te else "1st Trimester (Months 1-4)"
-    t1_months = "చైత్రం, వైశాఖం, జ్యేష్ఠం, ఆషాఢం" if is_te else "Chaitra, Vaishakha, Jyeshtha, Ashadha"
-    t2_title = "ద్వితీయ కందాయం (రెండవ 4 నెలలు)" if is_te else "2nd Trimester (Months 5-8)"
-    t2_months = "శ్రావణం, భాద్రపదం, ఆశ్వయుజం, కార్తీకం" if is_te else "Shravana, Bhadrapada, Ashwayuja, Kartika"
-    t3_title = "తృతీయ కందాయం (మూడవ 4 నెలలు)" if is_te else "3rd Trimester (Months 9-12)"
-    t3_months = "మార్గశిరం, పుష్యం, మాఘం, ఫాల్గుణం" if is_te else "Margashirsha, Pushya, Magha, Phalguna"
+    t1_title_dict = {
+        "telugu": "ప్రథమ కందాయం (మొదటి 4 నెలలు)",
+        "tamil": "முதல் கந்தாயம் (மாதங்கள் 1-4)",
+        "kannada": "ಪ್ರಥಮ ಕಂದಾಯ (ತಿಂಗಳು 1-4)",
+        "devanagari": "प्रथम कन्ददाय (मास 1-4)",
+        "english": "1st Trimester (Months 1-4)"
+    }
+    t1_months_dict = {
+        "telugu": "చైత్రం, వైశాఖం, జ్యేష్ఠం, ఆషాఢం",
+        "tamil": "சைத்ரம், வைசாகம், ஜ்யேஷ்டம், ஆஷாடகம்",
+        "kannada": "ಚೈತ್ರ, ವೈಶಾಖ, ಜ್ಯೇಷ್ಠ, ಆಷಾಢ",
+        "devanagari": "चैत्र, वैशाख, ज्येष्ठ, आषाढ",
+        "english": "Chaitra, Vaishakha, Jyeshtha, Ashadha"
+    }
+    t2_title_dict = {
+        "telugu": "ద్వితీయ కందాయం (రెండవ 4 నెలలు)",
+        "tamil": "இரண்டாம் கந்தாயம் (மாதங்கள் 5-8)",
+        "kannada": "ದ್ವಿತೀಯ ಕಂದಾಯ (ತಿಂಗಳು 5-8)",
+        "devanagari": "द्वितीय कन्ददाय (मास 5-8)",
+        "english": "2nd Trimester (Months 5-8)"
+    }
+    t2_months_dict = {
+        "telugu": "శ్రావణం, భాద్రపదం, ఆశ్వయుజం, కార్తీకం",
+        "tamil": "ஸ்ராவணம், பாத்ரபதம், ஆஸ்வயுஜம், கார்த்திகம்",
+        "kannada": "ಶ್ರಾವಣ, ಭಾದ್ರಪದ, ಆಶ್ವಯುಜ, ಕಾರ್ತಿಕ",
+        "devanagari": "श्रावण, भाद्रपद, आश्वयुज, कार्तिक",
+        "english": "Shravana, Bhadrapada, Ashwayuja, Kartika"
+    }
+    t3_title_dict = {
+        "telugu": "తృతీయ కందాయం (మూడవ 4 నెలలు)",
+        "tamil": "மூன்றாம் கந்தாயம் (மாதங்கள் 9-12)",
+        "kannada": "ತೃತೀಯ ಕಂದಾಯ (ತಿಂಗಳು 9-12)",
+        "devanagari": "तृतीय कन्ददाय (मास 9-12)",
+        "english": "3rd Trimester (Months 9-12)"
+    }
+    t3_months_dict = {
+        "telugu": "మార్గశిరం, పుష్యం, మాఘం, ఫాల్గుణం",
+        "tamil": "மார்கசீர்ஷம், புஷ்யம், மாகம், பால்குனம்",
+        "kannada": "ಮಾರ್ಗಶಿರ, ಪುಷ್ಯ, ಮಾಘ, ಫಾಲ್ಗುಣ",
+        "devanagari": "मार्गशीर्ष, पौष, माघ, फाल्गुन",
+        "english": "Margashirsha, Pushya, Magha, Phalguna"
+    }
+    t1_title = t1_title_dict.get(lang_code, t1_title_dict["english"])
+    t1_months = t1_months_dict.get(lang_code, t1_months_dict["english"])
+    t2_title = t2_title_dict.get(lang_code, t2_title_dict["english"])
+    t2_months = t2_months_dict.get(lang_code, t2_months_dict["english"])
+    t3_title = t3_title_dict.get(lang_code, t3_title_dict["english"])
+    t3_months = t3_months_dict.get(lang_code, t3_months_dict["english"])
+
+    status_labels = {
+        "excellent": {"telugu": "ఉత్తమం", "tamil": "உத்தமம்", "kannada": "ಉತ್ತಮ", "devanagari": "उत्तम", "english": "Excellent"},
+        "good": {"telugu": "అనుకూలం", "tamil": "அனுகூலம்", "kannada": "ಅನುಕೂಲ", "devanagari": "अनुकूल", "english": "Good"},
+        "moderate": {"telugu": "మధ్యమం", "tamil": "மத்திமம்", "kannada": "ಮಧ್ಯಮ", "devanagari": "मध्यम", "english": "Moderate"},
+        "caution": {"telugu": "అప్రమత్తత", "tamil": "கவனம் தேவை", "kannada": "ಎಚ್ಚರಿಕೆ", "devanagari": "सावधानी", "english": "Caution"}
+    }
 
     for idx, nmeta in enumerate(NAKSHATRAS_METADATA):
         k1 = (4 + 3 * idx) % 8
@@ -708,57 +827,64 @@ def compute_comprehensive_kandadayam(year: int = 2026, lang: str = "telugu") -> 
 
         # T1 Assessment (0-7)
         if k1 >= 6:
-            t1_status = "ఉత్తమం" if is_te else "Excellent"
+            t1_status = status_labels["excellent"].get(lang_code, "Excellent")
             t1_pred = "విశేష ధనలాభం, నూతన కార్యసిద్ధి, ఉద్యోగ వ్యాపారాలలో అనుకూలత." if is_te else "Outstanding financial gains, success in ventures, and career growth."
         elif k1 >= 4:
-            t1_status = "అనుకూలం" if is_te else "Good"
+            t1_status = status_labels["good"].get(lang_code, "Good")
             t1_pred = "ఆర్థిక నిలకడ, గౌరవ ప్రతిష్టలు, పనులలో పురోగతి మరియు సత్ఫలితాలు." if is_te else "Steady income, recognition, and consistent progress."
         elif k1 >= 2:
-            t1_status = "మధ్యమం" if is_te else "Moderate"
+            t1_status = status_labels["moderate"].get(lang_code, "Moderate")
             t1_pred = "శ్రమతో కూడిన ఫలితాలు, హెచ్చుతగ్గులతో కూడిన ఆర్థిక స్థితి, సంయమనం అవసరం." if is_te else "Mixed results with effort, fluctuating finances; patience required."
         else:
-            t1_status = "అప్రమత్తత" if is_te else "Caution"
+            t1_status = status_labels["caution"].get(lang_code, "Caution")
             t1_pred = "అధిక ఖర్చులు, పనులలో జాప్యం, ఆరోగ్య విషయంలో జాగ్రత్త మరియు దైవారాధన అవసరం." if is_te else "High expenses, delays; health vigilance and prayers recommended."
 
         # T2 Assessment (0-2)
         if k2 == 2:
-            t2_status = "ఉత్తమం" if is_te else "Excellent"
+            t2_status = status_labels["excellent"].get(lang_code, "Excellent")
             t2_pred = "అభీష్టసిద్ధి, స్థిరాస్తి వ్యవహారాలలో లాభం, బంధుమిత్రుల ఆదరణ మరియు సంతోషం." if is_te else "Desires fulfilled, real estate gains, heartwarming family moments."
         elif k2 == 1:
-            t2_status = "మధ్యమం" if is_te else "Moderate"
+            t2_status = status_labels["moderate"].get(lang_code, "Moderate")
             t2_pred = "సాధారణ జీవనం, అనుకూల ప్రతికూలతల సమతూకం, బడ్జెట్ ప్రకారం ఖర్చులు చేయాలి." if is_te else "Steady lifestyle; manage expenses prudently."
         else:
-            t2_status = "అప్రమత్తత" if is_te else "Caution"
+            t2_status = status_labels["caution"].get(lang_code, "Caution")
             t2_pred = "ప్రయాణాలలో జాగ్రత్త, శారీరక అలసట, వివాదాలకు దూరంగా ఉండటం శ్రేయస్కరం." if is_te else "Travel vigilance, physical fatigue; avoid controversies."
 
         # T3 Assessment (0-4)
         if k3 >= 3:
-            t3_status = "ఉత్తమం" if is_te else "Excellent"
+            t3_status = status_labels["excellent"].get(lang_code, "Excellent")
             t3_pred = "సర్వతోముఖాభివృద్ధి, నూతన వస్తు/వాహన లాభం, మానసిక ప్రశాంతత మరియు విజయాలు." if is_te else "All-round prosperity, acquisition of assets/vehicles, profound peace."
         elif k3 == 2:
-            t3_status = "మధ్యమం" if is_te else "Moderate"
+            t3_status = status_labels["moderate"].get(lang_code, "Moderate")
             t3_pred = "శ్రమకు తగిన ప్రతిఫలం, నిలకడైన పరిస్థితులు, ఆలోచించి నిర్ణయాలు తీసుకోవాలి." if is_te else "Commensurate reward for hard work, maintain thoughtful planning."
         else:
-            t3_status = "అప్రమత్తత" if is_te else "Caution"
+            t3_status = status_labels["caution"].get(lang_code, "Caution")
             t3_pred = "ఆకస్మిక ఖర్చులు, మానసిక ఒత్తిడి, కులదైవ ఆరాధన మరియు నవగ్రహ ప్రార్థన మేలు చేస్తుంది." if is_te else "Sudden expenses, stress; worship of Ishta Devata brings relief."
 
         # Normalized Overall Composite Score
         norm = (k1 / 7.0 * 0.4) + (k2 / 2.0 * 0.3) + (k3 / 4.0 * 0.3)
         if norm >= 0.65:
-            overall_rating = "ఉత్తమం (Highly Favorable)" if is_te else "Highly Favorable"
+            overall_rating = "ఉత్తమం (Highly Favorable)" if is_te else ("உத்தமம் (Highly Favorable)" if lang_code == "tamil" else "Highly Favorable")
             overall_status = "ఈ సంవత్సరంలోని అత్యధిక కాలం శుభప్రదంగా గడుస్తుంది. నూతన కార్యారంభాలు, ఆర్థిక అభివృద్ధి, కుటుంబ సౌఖ్యం సిద్ధిస్తుంది." if is_te else "Most of the year yields favorable results with strong financial progress and domestic happiness."
         elif norm >= 0.45:
-            overall_rating = "అనుకూలం (Favorable)" if is_te else "Favorable"
+            overall_rating = "అనుకూలం (Favorable)" if is_te else ("அனுகூலம் (Favorable)" if lang_code == "tamil" else "Favorable")
             overall_status = "మొత్తం మీద సంవత్సర ఫలితాలు ఆశాజనకంగా ఉంటాయి. మధ్యమ కందాయాలలో జాగ్రత్తలు పాటిస్తే కార్యసిద్ధి లభిస్తుంది." if is_te else "Overall year remains progressive. Prudence during moderate trimesters ensures success."
         elif norm >= 0.30:
-            overall_rating = "మధ్యమం (Moderate)" if is_te else "Moderate"
+            overall_rating = "మధ్యమం (Moderate)" if is_te else ("மத்திமம் (Moderate)" if lang_code == "tamil" else "Moderate")
             overall_status = "సంవత్సరంలో హెచ్చుతగ్గులు ఉంటాయి. ప్రణాళికాబద్ధంగా ముందుకు సాగడం, బడ్జెట్ నియంత్రణ మరియు దైవబలం రక్షిస్తుంది." if is_te else "Fluctuations exist across the seasons. Disciplined budgeting and prayers provide stability."
         else:
-            overall_rating = "అప్రమత్తత (Caution)" if is_te else "Caution"
+            overall_rating = "అప్రమత్తత (Caution)" if is_te else ("கவனம் தேவை (Caution)" if lang_code == "tamil" else "Caution")
             overall_status = "శ్రమ అధికంగా ఉండే కాలం. ముఖ్య నిర్ణయాలలో అనుభవజ్ఞుల సలహాలు తీసుకోవడం, నవగ్రహ శాంతి శ్రేయస్కరం." if is_te else "High diligence needed. Consult elders/experts for key decisions and observe remedial prayers."
 
-        n_name = nmeta["te"] if is_te else nmeta["en"]
-        r_names = nmeta["rashis_te"] if is_te else nmeta["rashis_en"]
+        if is_te:
+            n_name = nmeta["te"]
+            r_names = nmeta["rashis_te"]
+        elif lang_code == "english":
+            n_name = nmeta["en"]
+            r_names = nmeta["rashis_en"]
+        else:
+            n_name = transliterate_text(nmeta["dev"], lang_code)
+            r_names = [transliterate_text(r, lang_code, sanscript.TELUGU) for r in nmeta["rashis_te"]]
 
         nakshatra_items.append(NakshatraKandayaItem(
             id=nmeta["id"],

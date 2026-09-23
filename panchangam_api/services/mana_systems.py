@@ -146,10 +146,14 @@ def compute_chandramana(daily_panchaanga, target_lang: str) -> dict:
 
     if target_lang == "telugu":
         paksha_str = "శుక్ల పక్షము" if tithi_num <= 15 else "కృష్ణ పక్షము"
-    elif target_lang == "devanagari":
+    elif target_lang == "tamil":
+        paksha_str = "சுக்ல பக்ஷம்" if tithi_num <= 15 else "கிருஷ்ண பக்ஷம்"
+    elif target_lang == "kannada":
+        paksha_str = "ಶುಕ್ಲ ಪಕ್ಷ" if tithi_num <= 15 else "ಕೃಷ್ಣ ಪಕ್ಷ"
+    elif target_lang in ["devanagari", "hindi", "sanskrit"]:
         paksha_str = "शुक्ल पक्ष" if tithi_num <= 15 else "कृष्ण पक्ष"
     else:
-        paksha_str = "Shukla" if tithi_num <= 15 else "Krishna"
+        paksha_str = "Shukla Paksha" if tithi_num <= 15 else "Krishna Paksha"
 
     return {
         "samvatsara": {

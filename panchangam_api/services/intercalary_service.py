@@ -252,6 +252,40 @@ def get_intercalary_months_range(
     """
     results = []
     
+    # Multilingual description helpers
+    def _get_adhika_desc(l: str) -> str:
+        d = {
+            "telugu": "ఒక చాంద్రమాసంలో సూర్యుని రాశి ప్రవేశం జరగలేదు (0 సంక్రాంతి - అసంక్రాంతం).",
+            "tamil": "ஒரு சந்திர மாதத்தில் சூரியனின் ராசிப் பெயர்ச்சி நிகழவில்லை (0 சங்கராந்தி - அசங்கிராந்தம்).",
+            "kannada": "ಒಂದು ಚಾಂದ್ರಮಾಸದಲ್ಲಿ ಸೂರ್ಯನ ರಾಶಿ ಪ್ರವೇಶವಿಲ್ಲ (0 ಸಂಕ್ರಾಂತಿ - ಅಸಂಕ್ರಾಂತ).",
+            "devanagari": "एक चान्द्रमास में कोई सूर्य संक्रान्ति नहीं (0 संक्रान्ति - असंक्रान्त)।",
+            "english": "No solar ingress occurs during this lunar month (0 Sankrantis - Asankranta)."
+        }
+        return d.get(l, d["english"])
+
+    def _get_samsarpa_desc(l: str) -> str:
+        d = {
+            "telugu": "క్షయమాసానికి ముందు వచ్చే అసంక్రాంత మాసం. శాస్త్రప్రకారం నిత్య, నైమిత్తిక కర్మలు చేయదగినవి.",
+            "tamil": "க்ஷய மாதத்திற்கு முன் வரும் அசங்கிராந்த மாதம். சாஸ்திரப்படி நித்ய, நைமித்திக கர்மங்கள் செய்யத்தக்கவை.",
+            "kannada": "ಕ್ಷಯಮಾಸಕ್ಕಿಂತ ಮೊದಲು ಬರುವ ಅಸಂಕ್ರಾಂತ ಮಾಸ. ನಿತ್ಯ, ನೈಮಿತ್ತಿಕ ಕರ್ಮಗಳು ಮಾಡಬಹುದು.",
+            "devanagari": "क्षय मास से पूर्व आने वाला असंक्रान्त मास। नित्य एवं नैमित्तिक कर्म ग्राह्य।",
+            "english": "Intercalary month preceding a Kshaya Masa. Regular Vedic and seasonal rites permitted."
+        }
+        return d.get(l, d["english"])
+
+    def _get_kshaya_desc(l: str) -> str:
+        d = {
+            "telugu": "ఒకే చాంద్రమాసంలో ధనుస్సు మరియు మకర సంక్రాంతులు రెండూ (2 సంక్రాంతులు) సంభవిస్తాయి. శుభకార్యాలు వర్జ్యం.",
+            "tamil": "ஒரே சந்திர மாதத்தில் இரண்டு சூரிய சங்கராந்திகள் நிகழ்கின்றன (துவிசங்கிராந்தம்). சுபகாரியங்கள் விலக்கத்தக்கவை.",
+            "kannada": "ಒಂದೇ ಚಾಂದ್ರಮಾಸದಲ್ಲಿ ಎರಡು ಸೂರ್ಯ ಸಂಕ್ರಾಂತಿಗಳು ಸಂಭವಿಸುತ್ತವೆ. ಶುಭಕಾರ್ಯಗಳು ವರ್ಜ್ಯ.",
+            "devanagari": "एक ही चान्द्रमास में दो सूर्य संक्रान्तियां (द्विसंक्रान्त)। शुभ कार्य वर्जित।",
+            "english": "Two solar ingresses occur within a single lunar month (Dvi-Sankranta). Auspicious ceremonies prohibited."
+        }
+        return d.get(l, d["english"])
+
+    asankranta_verse = "సంక్రాంతి వర్జితో మాసః అధిమాసః ప్రకీర్తితః" if lang == "telugu" else transliterate_text("संक्रान्ति वर्जितो मासः अधिमासः प्रकीर्तितः", lang)
+    kalamadhava_verse = KALAMADHAVA_VERSE_TELUGU if lang == "telugu" else (KALAMADHAVA_VERSE_DEVANAGARI if lang in ["devanagari", "hindi", "sanskrit"] else (transliterate_text(KALAMADHAVA_VERSE_DEVANAGARI, lang) if lang in ["tamil", "kannada", "malayalam", "bengali", "gujarati"] else KALAMADHAVA_VERSE_IAST))
+
     # Scan year by year
     for yr in range(start_year, end_year + 1):
         # 1. Surya Siddhanta / Vidwathsabha Canonical Mode
@@ -270,8 +304,8 @@ def get_intercalary_months_range(
                     "sankranti_count": 0,
                     "start_date": "2026-05-17",
                     "end_date": "2026-06-15",
-                    "description": "ఒక చాంద్రమాసంలో సూర్యుని రాశి ప్రవేశం జరగలేదు (0 సంక్రాంతి - అసంక్రాంతం).",
-                    "shastra_verse": "సంక్రాంతి వర్జితో మాసః అధిమాసః ప్రకీర్తితః"
+                    "description": _get_adhika_desc(lang),
+                    "shastra_verse": asankranta_verse
                 })
             # Year 2028: Sri Keelaka Nama Samvatsaram (Samsarpa Kartika & Margashirsha-Pushya Kshaya)
             elif yr == 2028:
@@ -288,8 +322,8 @@ def get_intercalary_months_range(
                     "sankranti_count": 0,
                     "start_date": "2028-10-18",
                     "end_date": "2028-11-16",
-                    "description": "క్షయమాసానికి ముందు వచ్చే అసంక్రాంత మాసం. శాస్త్రప్రకారం నిత్య, నైమిత్తిక కర్మలు చేయదగినవి.",
-                    "shastra_verse": KALAMADHAVA_VERSE_TELUGU if lang == "telugu" else KALAMADHAVA_VERSE_DEVANAGARI
+                    "description": _get_samsarpa_desc(lang),
+                    "shastra_verse": kalamadhava_verse
                 })
                 # Margashirsha-Pushya Yugalibhuta Kshaya (Amhaspati)
                 results.append({
@@ -305,8 +339,8 @@ def get_intercalary_months_range(
                     "conjoined_months": ["Margashirsha", "Pushya"],
                     "start_date": "2028-11-17",
                     "end_date": "2028-12-16",
-                    "description": "ఒకే చాంద్రమాసంలో ధనుస్సు మరియు మకర సంక్రాంతులు రెండూ (2 సంక్రాంతులు) సంభవిస్తాయి. శుభకార్యాలు వర్జ్యం.",
-                    "shastra_verse": KALAMADHAVA_VERSE_TELUGU if lang == "telugu" else KALAMADHAVA_VERSE_DEVANAGARI
+                    "description": _get_kshaya_desc(lang),
+                    "shastra_verse": kalamadhava_verse
                 })
             # Year 2029: Adhika Chaitra
             elif yr == 2029:
@@ -322,8 +356,8 @@ def get_intercalary_months_range(
                     "sankranti_count": 0,
                     "start_date": "2029-03-15",
                     "end_date": "2029-04-13",
-                    "description": "ఒక చాంద్రమాసంలో సూర్యుని సంక్రాంతి లేదు (0 సంక్రాంతి - అసంక్రాంతం).",
-                    "shastra_verse": "సంక్రాంతి వర్జితో మాసః అధిమాసః ప్రకీర్తితః"
+                    "description": _get_adhika_desc(lang),
+                    "shastra_verse": asankranta_verse
                 })
             # Year 2031: Adhika Bhadrapada
             elif yr == 2031:
@@ -339,8 +373,8 @@ def get_intercalary_months_range(
                     "sankranti_count": 0,
                     "start_date": "2031-08-18",
                     "end_date": "2031-09-16",
-                    "description": "సూర్యుడు ఏ రాశి లోకీ ప్రవేశించకపోవడం వల్ల అధిక భాద్రపదం ఏర్పడుతుంది.",
-                    "shastra_verse": "సంక్రాంతి వర్జితో మాసః అధిమాసః ప్రకీర్తితః"
+                    "description": _get_adhika_desc(lang),
+                    "shastra_verse": asankranta_verse
                 })
             # Year 2034: Adhika Ashadha
             elif yr == 2034:
@@ -356,8 +390,8 @@ def get_intercalary_months_range(
                     "sankranti_count": 0,
                     "start_date": "2034-06-16",
                     "end_date": "2034-07-15",
-                    "description": "సూర్య సంక్రాంతి లేని అసంక్రాంత మాసం.",
-                    "shastra_verse": "సంక్రాంతి వర్జితో మాసః అధిమాసః ప్రకీర్తితః"
+                    "description": _get_adhika_desc(lang),
+                    "shastra_verse": asankranta_verse
                 })
 
         # 2. Drik Ganitha (Swiss Ephemeris Astronomical Mode)
@@ -435,7 +469,7 @@ def get_intercalary_status_for_date(
                 "sankranti_count": 0,
                 "prefix": "అధిక " if lang == "telugu" else transliterate_text("अधिक ", lang),
                 "badge_label": "అధిక మాసం" if lang == "telugu" else transliterate_text("अधिक मास", lang),
-                "shastra_name": "మలమాసం / అధిక జ్యేష్ఠ మాసం"
+                "shastra_name": "మలమాసం / అధిక జ్యేష్ఠ మాసం" if lang == "telugu" else transliterate_text("मलमास / अधिक ज्येष्ठ मास", lang)
             }
         # 2028 Samsarpa Kartika: 2028-10-18 to 2028-11-16
         if "2028-10-18" <= date_str <= "2028-11-16":
@@ -447,7 +481,7 @@ def get_intercalary_status_for_date(
                 "sankranti_count": 0,
                 "prefix": "సంసర్ప " if lang == "telugu" else transliterate_text("संसर्प ", lang),
                 "badge_label": "సంసర్ప మాసం" if lang == "telugu" else transliterate_text("संसर्प मास", lang),
-                "shastra_name": "సంసర్ప కార్తిక మాసం (ప్రథమ అధిక)"
+                "shastra_name": "సంసర్ప కార్తిక మాసం (ప్రథమ అధిక)" if lang == "telugu" else transliterate_text("संसर्प कार्तिक मास (प्रथम अधिक)", lang)
             }
         # 2028 Margashirsha-Pushya Kshaya: 2028-11-17 to 2028-12-16
         if "2028-11-17" <= date_str <= "2028-12-16":
@@ -459,7 +493,7 @@ def get_intercalary_status_for_date(
                 "sankranti_count": 2,
                 "prefix": "క్షయ " if lang == "telugu" else transliterate_text("क्षय ", lang),
                 "badge_label": "క్షయ మాసం" if lang == "telugu" else transliterate_text("क्षय मास (अंहस्पति)", lang),
-                "shastra_name": "మార్గశిర–పుష్య యుగళీభూత అంహస్పతి మాసం"
+                "shastra_name": "మార్గశిర–పుష్య యుగళీభూత అంహస్పతి మాసం" if lang == "telugu" else transliterate_text("मार्गशीर्ष–पौष युगलीभूत अंहस्पति मास", lang)
             }
         # 2029 Adhika Chaitra: 2029-03-15 to 2029-04-13
         if "2029-03-15" <= date_str <= "2029-04-13":
@@ -471,7 +505,7 @@ def get_intercalary_status_for_date(
                 "sankranti_count": 0,
                 "prefix": "అధిక " if lang == "telugu" else transliterate_text("अधिक ", lang),
                 "badge_label": "అధిక మాసం" if lang == "telugu" else transliterate_text("अधिक मास", lang),
-                "shastra_name": "అధిక చైత్ర మాసం"
+                "shastra_name": "అధిక చైత్ర మాసం" if lang == "telugu" else transliterate_text("अधिक चैत्र मास", lang)
             }
 
     # Default Normal Month (Nija Masa)
@@ -483,7 +517,7 @@ def get_intercalary_status_for_date(
         "sankranti_count": 1,
         "prefix": "నిజ " if lang == "telugu" else transliterate_text("निज ", lang),
         "badge_label": "సాధారణ మాసం" if lang == "telugu" else transliterate_text("शुद्ध मास", lang),
-        "shastra_name": "నిజ మాసం (శుద్ధ మాసం)"
+        "shastra_name": "నిజ మాసం (శుద్ధ మాసం)" if lang == "telugu" else transliterate_text("निज मास (शुद्ध मास)", lang)
     }
 
 

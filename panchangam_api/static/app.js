@@ -126,7 +126,207 @@ const UI_TEXT = {
     loaderText: "పంచాంగ వివరాలు లోడ్ అవుతున్నాయి...",
     geoCoordLabel: "భౌగోళిక స్థానం",
     dveepaLabel: "ద్వీపం",
-    khandaLabel: "ఖండం"
+    khandaLabel: "ఖండం",
+
+    prevDayTitle: "మునుపటి రోజు",
+    nextDayTitle: "తరువాతి రోజు",
+    maxWord: "గరిష్టం",
+    bannerPurePeriod: "శుద్ధ కాలం",
+    bannerTabooAuspicious: "శుభకార్యములు వర్జ్యం",
+    bannerTabooConstruction: "గృహారంభం నిషిద్ధం",
+    bannerAnnualScheduleBtn: "సంవత్సర పట్టిక & శాస్త్ర నియమాలు",
+    modalMoudhyamTitle: "🪔 సంవత్సర మౌఢ్య & కర్తరి నిర్ణయ పట్టిక",
+    modalMoudhyamSubtitle: "ఖగోళ నిరయణ గణితం • ధర్మశాస్త్ర ముహూర్త నిషేధాలు & ప్రాశస్త్యాలు",
+    timezoneLabel: "సమయ మండలం",
+    moudhyamTimesSubtitle: "🕒 సమయాలు: మీ స్థానిక సమయం & (IST భారత ప్రామాణిక సమయం)",
+    thPhase: "విభాగం (Phase)",
+    thTransit: "సూర్య సంచారం (Transit)",
+    thTiming: "ఖచ్చితమైన సమయం (Timing)",
+    thSignificance: "ప్రాముఖ్యత (Significance)",
+    moudhyamSectionTitle: "మౌఢ్యములు (గురు & శుక్ర అస్తమయాలు)",
+    moudhyamSectionSubtitle: "దేవగురు బృహస్పతి, దైత్యగురు శుక్రులు సూర్య సామీప్యంచే అస్తంగతులయ్యే కాలాలు.",
+    durationLabel: "వ్యవధి",
+    daysLabel: "రోజులు",
+    moudhyamStartLabel: "ఆరంభం (అస్తమయం):",
+    moudhyamEndLabel: "సమాప్తి (ఉదయం):",
+    vardhakyaLabel: "వార్ధక్య దోషం:",
+    balyaLabel: "బాల్య దోషం:",
+    prohibitionLabel: "నిషేధం:",
+    shastraDecisionsTitle: "ధర్మశాస్త్ర ముహూర్త నిర్ణయాలు (ఏవి చేయవచ్చు? ఏవి నిషిద్ధం?)",
+    moudhyamTaboosTitle: "మౌఢ్యంలో నిషిద్ధాలు:",
+    kartariTaboosTitle: "కర్తరిలో నిషిద్ధాలు:",
+    permittedKarmasTitle: "ఆచరించదగినవి:",
+    moudhyamLoading: "మౌఢ్య & కర్తరి నిర్ణయ పట్టిక లోడ్ అవుతోంది...",
+    moudhyamError: "పట్టిక లోడ్ చేయడంలో లోపం ఏర్పడింది. దయచేసి మళ్ళీ ప్రయత్నించండి.",
+    adhikaMasaBadge: "అధిక మాసం",
+    nijaMasaBadge: "సాధారణ మాసం",
+    kshayaMasaBadge: "క్షయ మాసం",
+    sankrantiWord: "సంక్రాంతులు",
+    shuklaPaksha: "శుక్ల పక్షము",
+    krishnaPaksha: "కృష్ణ పక్షము",
+    solarDaySuffix: "వ రోజు",
+    intercalaryHeroBadge: "🏛️ ధర్మశాస్త్రం & ఖగోళ సిద్ధాంతం • కాలమాధవీయం",
+    intercalaryHeroTitle: "అధిక మాసం & క్షయ మాస ఖగోళ-ధర్మశాస్త్ర విజ్ఞానం",
+    intercalaryHeroSubtitle: "సూర్యసిద్ధాంత స్పష్టగతి మరియు కాలమాధవీయ సూత్రాల ప్రకారం అధిక, క్షయ, సంసర్ప, మరియు అంహస్పతి మాసాల సమగ్ర కాలగణన.",
+    systemSuryaBtn: "📜 సూర్యసిద్ధాంతం (శాస్త్రం)",
+    systemDrikBtn: "🔭 దృక్సిద్ధాంతం (Swiss Ephemeris)",
+    suryaSystemBadge: "సూర్యసిద్ధాంత / ధర్మశాస్త్ర పద్ధతి",
+    drikSystemBadge: "దృక్సిద్ధాంత పద్ధతి (Swiss Ephemeris)",
+    kalamadhavaHeader: "కాలమాధవీయ పరమ ప్రామాణిక శ్లోకం (Kalamadhava Canonical Verse)",
+    kalamadhavaRuleDesc: "<strong>ధర్మశాస్త్ర నియమం:</strong> ఒకే సౌర సంవత్సరంలో రెండు అసంక్రాంత మాసాలు వస్తే, మొదటి దానిని <strong>సంసర్పం</strong> అంటారు. మధ్యలో వచ్చే ద్విసంక్రాంత మాసమే <strong>క్షయ మాసం (అంహస్పతి)</strong>. సంవత్సరాంతంలో వచ్చే రెండవ అసంక్రాంత మాసం <strong>అధిక మాసం</strong> అవుతుంది. సంసర్పంలో నిత్య నైమిత్తిక కర్మలు చేయవచ్చు; అంహస్పతి (క్షయ) మాసంలో వివాహాది శుభకార్యాలు వర్జ్యం.",
+    adhikaCardTitle: "అధిక మాసం (Asankranta)",
+    adhikaCardBadge: "0 సంక్రాంతులు",
+    adhikaCardFormula: "Ingresses = 0 (అసంక్రాంతం)",
+    adhikaCardDesc: "ఒక అమావాస్య నుండి తర్వాతి అమావాస్య వరకు సూర్యుడు ఏ రాశి లోకీ ప్రవేశించకపోతే అది అధిక మాసం (మలమాసం). ప్రతి ~32.5 నెలలకు ఒకసారి వస్తుంది.",
+    nijaCardTitle: "సాధారణ మాసం (Nija Masa)",
+    nijaCardBadge: "1 సంక్రాంతి",
+    nijaCardFormula: "Ingresses = 1 (సంక్రాంతం)",
+    nijaCardDesc: "ఒక చాంద్రమాసంలో ఖచ్చితంగా ఒకే సూర్య సంక్రమణం సంభవిస్తే అది నిజ లేదా శుద్ధ మాసం. అన్ని శుభకార్యాలకు ప్రశస్తమైన కాలం.",
+    kshayaCardTitle: "క్షయ మాసం (Dvi-Sankranta)",
+    kshayaCardBadge: "2 సంక్రాంతులు",
+    kshayaCardFormula: "Ingresses = 2 (ద్విసంక్రాంతం)",
+    kshayaCardDesc: "ఒకే చాంద్రమాసంలో సూర్యుని 2 సంక్రాంతులు సంభవిస్తే అది క్షయ మాసం (అంహస్పతి). రెండు నెలలు యుగళీభూతమై ఒకటిగా మారుతాయి.",
+    driftTitle: "📐 సౌర-చాంద్ర కాలగణన సూత్రాలు (Calendar Drift)",
+    driftSolarYr: "సౌర సంవత్సరం:",
+    driftLunarYr: "చాంద్ర సంవత్సరం (12 × 29.5):",
+    driftAnnual: "వార్షిక లోటు (Annual Drift):",
+    drift3Yr: "3 సంవత్సరాలలో చేరే లోటు:",
+    driftLagadhaRule: "✨ <strong>వేదాంగ జ్యోతిష నియమం (లగధ మహర్షి):</strong> పంచసంవత్సరాత్మక యుగంలో 60 సౌర మాసాలు = 62 చాంద్ర మాసాలు. అంటే ప్రతి 5 సంవత్సరాలకు సరిగ్గా 2 అధిక మాసాలు వస్తాయి.",
+    kaliyugaTitle: "🪐 కలియుగ మహాయుగ సమతుల్యత & క్షయ చక్రం",
+    perihelionRule: "💡 <strong>ఖగోళ పెరిహిలియన్ నియమం:</strong> సూర్యుడు భూమికి దగ్గరగా ఉండి పరమోచ్ఛ వేగంతో ధనుస్సు, మకర, కుంభ రాశులను దాటినప్పుడు మాత్రమే చాంద్రమాసంలో 2 సంక్రాంతులు వచ్చే అవకాశం ఉంటుంది.",
+    keelakaBadge: "ప్రత్యేక పరిశీలన",
+    keelakaTitle: "శ్రీ కీలక నామ సంవత్సరం (2028 – 2029) • క్షయ & సంసర్ప మాసాలు",
+    keelakaDesc: "హైదరాబాద్‌లోని గాంధీనగర్‌లో 23 మంది ప్రసిద్ధ సిద్ధాంతులు మరియు ధర్మశాస్త్ర పండితులతో జరిగిన <strong>'తెలంగాణ విద్వత్సభ' విద్వద్గోష్ఠి</strong> (ఆగస్టు 30, 2026) తీర్మానం ప్రకారం: <em>\"పూర్వసిద్ధాంతం సదా ఆచరణీయం\"</em> అనే సూత్రంపై, శ్రీ కీలక నామ సంవత్సరంలో <strong>సంసర్ప కార్తిక మాసం (అధికం)</strong> మరియు <strong>మార్గశిర-పుష్య యుగళీభూత అంహస్పతి మాసం (క్షయ మాసం)</strong> గా ఏకగ్రీవంగా నిర్ణయించబడింది.",
+    intercalaryTableTitle: "📅 రాబోయే 10 సంవత్సరాల అధిక / క్షయ మాసాల పట్టిక (2026 – 2036)",
+    intercalaryTableSubtitle: "ఎంచుకున్న సిద్ధాంత పద్ధతి ప్రకారం అమావాస్యాంత చాంద్రమాసాల ఫలితాలు",
+    thInterYr: "సంవత్సరం",
+    thInterSamvat: "తెలుగు సంవత్సరం",
+    thInterMasa: "మాసం పేరు",
+    thInterType: "రకం / హోదా",
+    thInterSankranti: "సంక్రాంతులు",
+    thInterSpan: "కాలం (ప్రారంభం – సమాప్తి)",
+    thInterRule: "శాస్త్ర వివరణ",
+    toDateSpan: "నుండి",
+    kdHeroBadge: "📊 వార్షిక కందదాయ గణితం",
+    kdMainHeading: "కందదాయ ఫలాలు & ఆదాయ వ్యయాలు",
+    kdMainSubtitle: "ద్వాదశ రాశుల ఆదాయ-వ్యయ, రాజపూజ్య-అవమానాలు మరియు 27 నక్షత్రాల త్రైమాసిక (ప్రథమ, ద్వితీయ, తృతీయ కందాయాల) ప్రామాణిక ఫలితాలు.",
+    kdCreatorBadge: "✍️ రూపకర్త: రామచంద్ర శాస్త్రి మునిమడుగు",
+    jumpToRashiKdBtn: "💰 రాశి కందదాయం",
+    jumpToNakshatraKdBtn: "⭐ నక్షత్ర కందాయాలు",
+    jumpToShastraKdBtn: "📜 శాస్త్ర గణన సూత్రాలు",
+    kdQuickT1Title: "🌱 ప్రథమ కందాయం",
+    kdQuickT1Span: "మొదటి 4 నెలలు",
+    kdQuickT1Months: "చైత్రం, వైశాఖం, జ్యేష్ఠం, ఆషాఢం",
+    kdQuickT1Max: "గరిష్ట పరిమితి: 8 భాగాలు (0–7 శేషం)",
+    kdQuickT2Title: "🌧️ ద్వితీయ కందాయం",
+    kdQuickT2Span: "రెండవ 4 నెలలు",
+    kdQuickT2Months: "శ్రావణం, భాద్రపదం, ఆశ్వయుజం, కార్తీకం",
+    kdQuickT2Max: "గరిష్ట పరిమితి: 3 భాగాలు (0–2 శేషం)",
+    kdQuickT3Title: "❄️ తృతీయ కందాయం",
+    kdQuickT3Span: "మూడవ 4 నెలలు",
+    kdQuickT3Months: "మార్గశిరం, పుష్యం, మాఘం, ఫాల్గుణం",
+    kdQuickT3Max: "గరిష్ట పరిమితి: 5 భాగాలు (0–4 శేషం)",
+    rashiKdSectionTitle: "💰 ద్వాదశ రాశి కందదాయం (ఆదాయం, వ్యయం, రాజపూజ్యం, అవమానం)",
+    rashiKdSectionSubtitle: "శ్రీ పరాభవ నామ సంవత్సర ద్వాదశ రాశుల సంపూర్ణ ఆర్థిక & సామాజిక గౌరవ స్థితిగతులు",
+    rashiKdViewCardsBtn: "కార్డులు",
+    rashiKdViewTableBtn: "పట్టిక",
+    thKdRashi: "రాశి",
+    thKdLord: "అధిపతి",
+    thKdAdayam: "ఆదాయం",
+    thKdVyayam: "వ్యయం",
+    thKdRajapujyam: "రాజపూజ్యం",
+    thKdAvamanam: "అవమానం",
+    thKdFinStatus: "ఆర్థిక స్థితి",
+    thKdSocStatus: "సామాజిక గౌరవం",
+    thKdVerdict: "సమగ్ర నిర్ణయం",
+    nakshatraSectionTitle: "⭐ 27 నక్షత్ర కందాయ ఫలాలు (త్రైమాసిక విభజన)",
+    nakshatraSectionSubtitle: "సంవత్సరంలోని 3 కందాయాల ప్రకారం మీ జన్మ నక్షత్ర ఫలితాలు తెలుసుకోండి",
+    nakshatraSelectLabel: "నక్షత్రం:",
+    nakshatraMasterTableTitle: "📋 సమగ్ర 27 నక్షత్రాల కందాయ పట్టిక (Master Table)",
+    nakshatraTableSearchInput: "నక్షత్రం పేరుతో వెతకండి...",
+    thNId: "క్ర.సం.",
+    thNName: "నక్షత్రం",
+    thNRashis: "రాశులు",
+    thNT1: "ప్రథమ (1–4 నెలలు)",
+    thNT2: "ద్వితీయ (5–8 నెలలు)",
+    thNT3: "తృతీయ (9–12 నెలలు)",
+    thNOverall: "వార్షిక స్థితి",
+    shastraKdTitle: "📜 కందదాయ గణిత విజ్ఞానము & శాస్త్ర ప్రమాణాలు (Shastric Rules & Trimester Science)",
+    shastraKdT1Title: "📅 సంవత్సర కాల విభజన (3 కందాయాలు)",
+    shastraKdT2Title: "⚖️ ద్వాదశ రాశి కందదాయ గణితం",
+    nakshatraWord: "నక్షత్రం",
+    spreadRashisPadasLabel: "వ్యాపించిన రాశులు / పాదాలు:",
+    annualCompositeStatusLabel: "సంవత్సర సమగ్ర స్థితి",
+    trimester1Title: "ప్రథమ కందాయం",
+    trimester1Months: "చైత్రం – ఆషాఢం (నెలలు 1–4)",
+    trimester1MaxLimit: "గరిష్ట పరిమితి: 8 భాగాలు",
+    trimester2Title: "ద్వితీయ కందాయం",
+    trimester2Months: "శ్రావణం – కార్తీకం (నెలలు 5–8)",
+    trimester2MaxLimit: "గరిష్ట పరిమితి: 3 భాగాలు",
+    trimester3Title: "తృతీయ కందాయం",
+    trimester3Months: "మార్గశిరం – ఫాల్గుణం (నెలలు 9–12)",
+    trimester3MaxLimit: "గరిష్ట పరిమితి: 5 భాగాలు",
+    annualSummaryAdviceLabel: "సంవత్సర ఫలిత సారాంశం & సూచన:",
+    noNakshatraFound: "నక్షత్ర ఫలితాలు ఏవీ కనుగొనబడలేదు",
+    rashiHeading: "రాశి ఫలాలు (Gochara Horoscope)",
+    rashiSubtitle: "ఖగోళ గోచార సంచారం, చంద్రబలం, తారాబలం మరియు పంచాంగ కందాయ సూత్రాల ఆధారిత ప్రామాణిక ఫలితాలు.",
+    rashiGocharaBadge: "♈ ద్వాదశ రాశి గోచారం",
+    moonTransitLabel: "చంద్ర సంచారం",
+    solarMonthLabel: "సౌర మాసం",
+    kandadayamTableLabel: "పంచాంగ కందాయ పట్టిక",
+    kdAdayam: "ఆదాయం",
+    kdVyayam: "వ్యయం",
+    kdRajapujyam: "రాజపూజ్యం",
+    kdAvamanam: "అవమానం",
+    statusAuspicious: "ఉత్తమం (Auspicious)",
+    statusFavorable: "అనుకూలం (Favorable)",
+    statusModerate: "మధ్యమం (Moderate)",
+    statusCaution: "అప్రమత్తత (Caution)",
+    footerOrgTitle: "వేద సంహిత • Vedic Samhita",
+    footerOrgSubtitle: "Vedic Astronomy & Dharma Shastra Computation System",
+    footerCreatorRole: "సిద్ధాంత & ఖగోళ కంప్యుటేషన్ రూపకర్త (System Architect & Creator)",
+    footerCreatorName: "రామచంద్ర శాస్త్రి మునిమడుగు",
+    footerCreatorDesc: "ఈ పంచాంగ గణనలు, వైదిక ఖగోళ సూత్రాలు, ధర్మశాస్త్ర నిర్ణయాలు మరియు సాంకేతిక క్రోడీకరణ సమగ్రంగా <strong class=\"text-amber-200 font-bold\">శ్రీ రామచంద్ర శాస్త్రి మునిమడుగు</strong> గారి పరిశోధన & రూపకల్పన ద్వారా రూపొందించబడినవి. <br class=\"hidden sm:inline\"/> All credits go to <strong class=\"text-amber-200 font-bold\">RAMACHANDRA SASTRY MUNIMADUGU</strong>.",
+    footerOfficialWebsiteLabel: "అధికారిక వెబ్‌సైట్:",
+    footerPoweredBy: "Swiss Ephemeris ఖగోళ గణనలు, జ్యోతిష ఇంజిన్ మరియు అక్షరముఖ బహుభాషా పరివర్తన ఆధారితం.",
+    chandrashtamaAlertTitle: "చంద్రాష్టమ హెచ్చరిక (Chandrashtama Active)",
+    chandrashtamaAlertDesc: "${t('chandrashtamaAlertDesc')}",
+    moonHouseLabel: "చంద్ర స్థానం",
+    houseSuffix: "వ ఇల్లు",
+    tarabalamLabel: "తారాబలం",
+    taraGood: "శుభ తార ✔️",
+    taraCaution: "అప్రమత్తత ⚠️",
+    luckyNumberLabel: "అదృష్ట సంఖ్య",
+    luckyColorLabel: "అదృష్ట రంగు",
+    luckyDirectionLabel: "అనుకూల దిశ",
+    sunTransitLabel: "సూర్య సంక్రమణం",
+    placeSuffix: "వ స్థానం",
+    sunFavorable: "అనుకూల సూర్య బలం (ఉపచయం) ☀️",
+    sunUnfavorable: "సూర్య ప్రతికూలత (ఓపిక అవసరం)",
+    monthlyHighlightsLabel: "మాస ముఖ్యాంశాలు",
+    guruBalamLabel: "గురు బలం",
+    guruBalamYes: "గురు బలం కలదు ✨",
+    guruBalamNo: "గురు శాంతి అవసరం",
+    shaniGocharaLabel: "శని గోచారం",
+    rahuKetuTransitLabel: "రాహు-కేతు సంచారం",
+    financialAnalysisLabel: "ఆర్థిక స్థితి విశ్లేషణ",
+    socialAnalysisLabel: "సామాజిక హోదా విశ్లేషణ",
+    rashiOverviewTitle: "సాధారణ సమీక్ష (General Overview)",
+    rashiCareerTitle: "ఉద్యోగం & వ్యాపారం (Career & Profession)",
+    rashiFinanceTitle: "ఆర్థిక స్థితి & ధన యోగం (Finance & Wealth)",
+    rashiHealthTitle: "ఆరోగ్యం & శక్తి (Health & Well-being)",
+    rashiFamilyTitle: "కుటుంబం & దాంపత్యం (Family & Relationships)",
+    rashiRemediesTitle: "శాంతి / దైవ పరిహారము (Remedies & Prayers)",
+    lordLabel: "అధిపతి:",
+    elementLabel: "తత్త్వం:",
+    compatibilityScoreLabel: "అనుకూలత స్కోర్",
+    chandrashtamaMiniBadge: "చంద్రాష్టమం",
+    sunShortLabel: "రవి",
+    incomeShort: "ఆ",
+    expenseShort: "వ్య",
+    gpsNotSupported: "మీ బ్రౌజర్‌లో GPS జియోలొకేషన్ సపోర్ట్ లేదు.",
+    gpsSuccess: "లొకేషన్ విజయవంతంగా గుర్తించబడింది",
+    gpsDenied: "లొకేషన్ అనుమతి లభించలేదు"
   },
   english: {
     appTitle: "Vedic Samhita • Panchangam",
@@ -223,7 +423,207 @@ const UI_TEXT = {
     loaderText: "Loading Panchangam details...",
     geoCoordLabel: "Geographic Location",
     dveepaLabel: "Dveepa",
-    khandaLabel: "Khanda"
+    khandaLabel: "Khanda",
+
+    prevDayTitle: "Previous Day",
+    nextDayTitle: "Next Day",
+    maxWord: "Max",
+    bannerPurePeriod: "Pure Period",
+    bannerTabooAuspicious: "Auspicious Ceremonies Prohibited",
+    bannerTabooConstruction: "Construction / Housewarming Prohibited",
+    bannerAnnualScheduleBtn: "Annual Schedule & Shastric Rules",
+    modalMoudhyamTitle: "🪔 Annual Moudhyam & Kartari Schedule",
+    modalMoudhyamSubtitle: "Nirayana Ephemeris Computation • Muhurtha Dharma Shastra Prohibitions & Allowances",
+    timezoneLabel: "Timezone",
+    moudhyamTimesSubtitle: "🕒 Timings: Your Local Time & (IST Indian Standard Time)",
+    thPhase: "Phase",
+    thTransit: "Solar Transit",
+    thTiming: "Exact Timing",
+    thSignificance: "Significance",
+    moudhyamSectionTitle: "Moudhyam Periods (Combustion of Jupiter & Venus)",
+    moudhyamSectionSubtitle: "Inauspicious periods when Jupiter or Venus are in deep celestial conjunction with the Sun.",
+    durationLabel: "Duration",
+    daysLabel: "days",
+    moudhyamStartLabel: "Start (Combustion / Set):",
+    moudhyamEndLabel: "End (Helical Rise):",
+    vardhakyaLabel: "Vardhakya Dosha:",
+    balyaLabel: "Balya Dosha:",
+    prohibitionLabel: "Prohibition:",
+    shastraDecisionsTitle: "Dharma Shastra Muhurtha Rules (Permitted vs Prohibited)",
+    moudhyamTaboosTitle: "Taboos in Moudhyam:",
+    kartariTaboosTitle: "Taboos in Kartari:",
+    permittedKarmasTitle: "Permitted Karmas:",
+    moudhyamLoading: "Loading Moudhyam & Kartari schedule...",
+    moudhyamError: "Error loading schedule. Please try again.",
+    adhikaMasaBadge: "Adhika Masa",
+    nijaMasaBadge: "Nija Masa",
+    kshayaMasaBadge: "Kshaya Masa",
+    sankrantiWord: "Sankrantis",
+    shuklaPaksha: "Shukla Paksha",
+    krishnaPaksha: "Krishna Paksha",
+    solarDaySuffix: "day",
+    intercalaryHeroBadge: "🏛️ Dharma Shastra & Astronomy • Kalamadhaviyam",
+    intercalaryHeroTitle: "Adhika & Kshaya Masas: Astronomy & Dharma Shastra Computation",
+    intercalaryHeroSubtitle: "Comprehensive calculation of Adhika, Kshaya, Samsarpa, and Amhaspati months according to Surya Siddhanta and Kalamadhaviya shastric canons.",
+    systemSuryaBtn: "📜 Surya Siddhanta (Shastra)",
+    systemDrikBtn: "🔭 Drik Siddhanta (Swiss Ephemeris)",
+    suryaSystemBadge: "Surya Siddhanta / Dharma Shastra Method",
+    drikSystemBadge: "Drik Siddhanta Method (Swiss Ephemeris)",
+    kalamadhavaHeader: "Kalamadhava Canonical Verse (Kalamadhaviyam)",
+    kalamadhavaRuleDesc: "<strong>Dharma Shastra Rule:</strong> When two asankranta (no solar ingress) months occur in a single solar year, the first is <strong>Samsarpa</strong>. The intermediate month with two ingresses is the <strong>Kshaya Masa (Amhaspati)</strong>. The subsequent asankranta month is the <strong>Adhika Masa</strong>. Routine (Nitya/Naimittika) rites are permitted in Samsarpa; auspicious events like weddings are strictly taboo in Amhaspati (Kshaya).",
+    adhikaCardTitle: "Adhika Masa (Asankranta)",
+    adhikaCardBadge: "0 Ingresses",
+    adhikaCardFormula: "Ingresses = 0 (Asankranta)",
+    adhikaCardDesc: "When the Sun does not transit into any new zodiac sign between two successive Amavasyas (New Moons), it is an Adhika Masa. Occurs every ~32.5 lunar months.",
+    nijaCardTitle: "Nija Masa (Normal Lunar Month)",
+    nijaCardBadge: "1 Ingress",
+    nijaCardFormula: "Ingresses = 1 (Sankranta)",
+    nijaCardDesc: "A standard lunar month containing exactly one solar ingress. Propitious for all auspicious events and Vedic sacraments.",
+    kshayaCardTitle: "Kshaya Masa (Dvi-Sankranta)",
+    kshayaCardBadge: "2 Ingresses",
+    kshayaCardFormula: "Ingresses = 2 (Dvi-Sankranta)",
+    kshayaCardDesc: "When two solar ingresses occur within a single lunar month, it is an expunged or Kshaya month (Amhaspati), fusing two months into one.",
+    driftTitle: "📐 Solar-Lunar Calendar Principles (Calendar Drift)",
+    driftSolarYr: "Solar Year:",
+    driftLunarYr: "Lunar Year (12 × 29.5):",
+    driftAnnual: "Annual Drift:",
+    drift3Yr: "Drift accumulated in 3 years:",
+    driftLagadhaRule: "✨ <strong>Vedanga Jyotisha Canon (Sage Lagadha):</strong> In a 5-year Yuga cycle, 60 Solar months equal 62 Lunar months. Exactly 2 Adhika Masas occur every 5 years.",
+    kaliyugaTitle: "🪐 Kaliyuga Cosmic Balance & Kshaya Recurrence Cycle",
+    perihelionRule: "💡 <strong>Astronomical Perihelion Rule:</strong> Two solar ingresses within one lunar month can only occur when Earth is near perihelion and the Sun transits rapidly through Sagittarius, Capricorn, or Aquarius.",
+    keelakaBadge: "Special Case Study",
+    keelakaTitle: "Sri Keelaka Samvatsara (2028–2029) • Kshaya & Samsarpa Months",
+    keelakaDesc: "According to the unanimous resolution of the <strong>'Telangana Vidwatsabha' Conference</strong> of 23 eminent Siddhantis and Vedic Scholars (Aug 30, 2026): In Sri Keelaka Samvatsara, Kartika is established as <strong>Samsarpa Kartika (Adhika)</strong>, followed by the combined Margashira-Pushya <strong>Amhaspati Masa (Kshaya Masa)</strong>.",
+    intercalaryTableTitle: "📅 10-Year Adhika & Kshaya Masas Schedule (2026–2036)",
+    intercalaryTableSubtitle: "Amanta lunar month calculations computed under the selected siddhanta system",
+    thInterYr: "Year",
+    thInterSamvat: "Samvatsara Name",
+    thInterMasa: "Month Name",
+    thInterType: "Type / Status",
+    thInterSankranti: "Ingresses",
+    thInterSpan: "Span (Start – End)",
+    thInterRule: "Shastric Rule",
+    toDateSpan: "to",
+    kdHeroBadge: "📊 Annual Kandadayam Computation",
+    kdMainHeading: "Kandadayam Results & Income-Expenditure",
+    kdMainSubtitle: "Canonical results for 12 Rashis (Income, Expense, Honor, Disgrace) and 27 Nakshatras across 3 Trimesters (Prathama, Dvitiya, Tritiya Kandayams).",
+    kdCreatorBadge: "✍️ Created by: Ramachandra Sastry Munimadugu",
+    jumpToRashiKdBtn: "💰 Rashi Kandadayam",
+    jumpToNakshatraKdBtn: "⭐ Nakshatra Trimesters",
+    jumpToShastraKdBtn: "📜 Shastric Computation Rules",
+    kdQuickT1Title: "🌱 First Trimester (Prathama)",
+    kdQuickT1Span: "Months 1–4",
+    kdQuickT1Months: "Chaitra, Vaishakha, Jyeshtha, Ashadha",
+    kdQuickT1Max: "Max Limit: 8 Units (Remainder 0–7)",
+    kdQuickT2Title: "🌧️ Second Trimester (Dvitiya)",
+    kdQuickT2Span: "Months 5–8",
+    kdQuickT2Months: "Shravana, Bhadrapada, Ashwayuja, Kartika",
+    kdQuickT2Max: "Max Limit: 3 Units (Remainder 0–2)",
+    kdQuickT3Title: "❄️ Third Trimester (Tritiya)",
+    kdQuickT3Span: "Months 9–12",
+    kdQuickT3Months: "Margashira, Pushya, Magha, Phalguna",
+    kdQuickT3Max: "Max Limit: 5 Units (Remainder 0–4)",
+    rashiKdSectionTitle: "💰 12 Rashi Kandadayam (Income, Expense, Honor, Disgrace)",
+    rashiKdSectionSubtitle: "Comprehensive financial and social status evaluation of all 12 Rashis",
+    rashiKdViewCardsBtn: "Cards",
+    rashiKdViewTableBtn: "Table",
+    thKdRashi: "Rashi",
+    thKdLord: "Lord",
+    thKdAdayam: "Income (Adayam)",
+    thKdVyayam: "Expense (Vyayam)",
+    thKdRajapujyam: "Honor (Rajapujyam)",
+    thKdAvamanam: "Disgrace (Avamanam)",
+    thKdFinStatus: "Financial Status",
+    thKdSocStatus: "Social Honor",
+    thKdVerdict: "Verdict",
+    nakshatraSectionTitle: "⭐ 27 Nakshatra Kandayam Results (Trimester Breakdown)",
+    nakshatraSectionSubtitle: "Discover your birth star results across the 3 trimester periods of the year",
+    nakshatraSelectLabel: "Nakshatra:",
+    nakshatraMasterTableTitle: "📋 Master Table: 27 Nakshatras Trimester Kandayam",
+    nakshatraTableSearchInput: "Search by star name...",
+    thNId: "S.No",
+    thNName: "Nakshatra",
+    thNRashis: "Rashis",
+    thNT1: "First (Months 1–4)",
+    thNT2: "Second (Months 5–8)",
+    thNT3: "Third (Months 9–12)",
+    thNOverall: "Annual Rating",
+    shastraKdTitle: "📜 Shastric Rules & Trimester Science of Kandadayam",
+    shastraKdT1Title: "📅 Year Division (3 Trimesters / Kandayams)",
+    shastraKdT2Title: "⚖️ 12 Rashi Kandadayam Mathematical Principles",
+    nakshatraWord: "Nakshatra",
+    spreadRashisPadasLabel: "Spread Rashis / Padas:",
+    annualCompositeStatusLabel: "Annual Composite Status",
+    trimester1Title: "First Trimester",
+    trimester1Months: "Chaitra – Ashadha (Months 1–4)",
+    trimester1MaxLimit: "Max limit: 8 units",
+    trimester2Title: "Second Trimester",
+    trimester2Months: "Shravana – Kartika (Months 5–8)",
+    trimester2MaxLimit: "Max limit: 3 units",
+    trimester3Title: "Third Trimester",
+    trimester3Months: "Margashira – Phalguna (Months 9–12)",
+    trimester3MaxLimit: "Max limit: 5 units",
+    annualSummaryAdviceLabel: "Annual Summary & Guidance:",
+    noNakshatraFound: "No nakshatra results found",
+    rashiHeading: "Rashi Phalalu (Gochara Horoscope)",
+    rashiSubtitle: "Authoritative predictions based on celestial transits, Chandrabalam, Tarabalam, and Panchangam Kandadayam principles.",
+    rashiGocharaBadge: "♈ 12 Rashis Gochara",
+    moonTransitLabel: "Moon Transit",
+    solarMonthLabel: "Solar Month",
+    kandadayamTableLabel: "Panchangam Kandadayam Table",
+    kdAdayam: "Income",
+    kdVyayam: "Expense",
+    kdRajapujyam: "Honor",
+    kdAvamanam: "Disgrace",
+    statusAuspicious: "Auspicious",
+    statusFavorable: "Favorable",
+    statusModerate: "Moderate",
+    statusCaution: "Caution",
+    footerOrgTitle: "Vedic Samhita • Vedic Samhita",
+    footerOrgSubtitle: "Vedic Astronomy & Dharma Shastra Computation System",
+    footerCreatorRole: "System Architect & Creator (Astronomical Siddhanta Computation)",
+    footerCreatorName: "Ramachandra Sastry Munimadugu",
+    footerCreatorDesc: "These panchangam algorithms, Vedic astronomical models, Dharma Shastra canons, and computational systems are authored and architected by <strong class=\"text-amber-200 font-bold\">RAMACHANDRA SASTRY MUNIMADUGU</strong>. <br class=\"hidden sm:inline\"/> All credits go to <strong class=\"text-amber-200 font-bold\">RAMACHANDRA SASTRY MUNIMADUGU</strong>.",
+    footerOfficialWebsiteLabel: "Official Website:",
+    footerPoweredBy: "Powered by Swiss Ephemeris astronomical computation engine and Aksharamukha script transliteration.",
+    chandrashtamaAlertTitle: "Chandrashtama Warning (Chandrashtama Active)",
+    chandrashtamaAlertDesc: "Today the Moon transits the 8th house from your Janma Rashi. Exercise utmost caution in arguments, financial dealings, and launching major new agreements. Worship of Lord Shiva is recommended.",
+    moonHouseLabel: "Moon House",
+    houseSuffix: "th House",
+    tarabalamLabel: "Tarabalam",
+    taraGood: "Auspicious Tara ✔️",
+    taraCaution: "Caution ⚠️",
+    luckyNumberLabel: "Lucky Number",
+    luckyColorLabel: "Lucky Color",
+    luckyDirectionLabel: "Lucky Direction",
+    sunTransitLabel: "Solar Transit",
+    placeSuffix: "th House",
+    sunFavorable: "Favorable Sun Strength (Upachaya) ☀️",
+    sunUnfavorable: "Sun Adversity (Patience required)",
+    monthlyHighlightsLabel: "Monthly Highlights",
+    guruBalamLabel: "Guru Balam",
+    guruBalamYes: "Guru Balam Present ✨",
+    guruBalamNo: "Guru Shanti Recommended",
+    shaniGocharaLabel: "Saturn Transit",
+    rahuKetuTransitLabel: "Rahu-Ketu Transit",
+    financialAnalysisLabel: "Financial Status Analysis",
+    socialAnalysisLabel: "Social Status Analysis",
+    rashiOverviewTitle: "General Overview",
+    rashiCareerTitle: "Career & Profession",
+    rashiFinanceTitle: "Finance & Wealth",
+    rashiHealthTitle: "Health & Well-being",
+    rashiFamilyTitle: "Family & Relationships",
+    rashiRemediesTitle: "Remedies & Prayers",
+    lordLabel: "Lord:",
+    elementLabel: "Element:",
+    compatibilityScoreLabel: "Compatibility Score",
+    chandrashtamaMiniBadge: "Chandrashtama",
+    sunShortLabel: "Sun",
+    incomeShort: "Inc",
+    expenseShort: "Exp",
+    gpsNotSupported: "GPS Geolocation is not supported by your browser.",
+    gpsSuccess: "Location detected successfully",
+    gpsDenied: "Location permission denied"
   },
   devanagari: {
     appTitle: "वैदिक संहिता • पञ्चाङ्गम्",
@@ -320,7 +720,207 @@ const UI_TEXT = {
     loaderText: "पञ्चाङ्ग विवरण लोड हो रहा है...",
     geoCoordLabel: "भौगोलिक स्थिति",
     dveepaLabel: "द्वीप",
-    khandaLabel: "खण्ड"
+    khandaLabel: "खण्ड",
+
+    prevDayTitle: "पिछला दिन",
+    nextDayTitle: "अगला दिन",
+    maxWord: "अधिकतम",
+    bannerPurePeriod: "शुद्ध काल",
+    bannerTabooAuspicious: "शुभकार्य वर्ज्य",
+    bannerTabooConstruction: "गृहारम्भ निषिद्ध",
+    bannerAnnualScheduleBtn: "वार्षिक सारणी एवं शास्त्रीय नियम",
+    modalMoudhyamTitle: "🪔 वार्षिक मौढ्य एवं कर्तरी निर्णय सारणी",
+    modalMoudhyamSubtitle: "खगोलीय निरयण गणित • धर्मशास्त्र मुहूर्त निषेध एवं प्राशस्त्य",
+    timezoneLabel: "समय मण्डल",
+    moudhyamTimesSubtitle: "🕒 समय: आपका स्थानीय समय एवं (IST भारतीय मानक समय)",
+    thPhase: "विभाग (Phase)",
+    thTransit: "सूर्य सञ्चार (Transit)",
+    thTiming: "सटीक समय (Timing)",
+    thSignificance: "महत्त्व (Significance)",
+    moudhyamSectionTitle: "मौढ्य काल (गुरु एवं शुक्र अस्त)",
+    moudhyamSectionSubtitle: "देवगुरु बृहस्पति एवं दैत्यगुरु शुक्र के सूर्य सान्निध्य से अस्त होने का काल।",
+    durationLabel: "अवधि",
+    daysLabel: "दिन",
+    moudhyamStartLabel: "आरम्भ (अस्त):",
+    moudhyamEndLabel: "समाप्ति (उदय):",
+    vardhakyaLabel: "वार्धक्य दोष:",
+    balyaLabel: "बाल्य दोष:",
+    prohibitionLabel: "निषेध:",
+    shastraDecisionsTitle: "धर्मशास्त्र मुहूर्त निर्णय (क्या करें? क्या वर्जित है?)",
+    moudhyamTaboosTitle: "मौढ्य में निषिद्ध:",
+    kartariTaboosTitle: "कर्तरी में निषिद्ध:",
+    permittedKarmasTitle: "अनुमोदित कर्म:",
+    moudhyamLoading: "मौढ्य एवं कर्तरी सारणी लोड हो रही है...",
+    moudhyamError: "सारणी लोड करने में त्रुटि हुई। कृपया पुनः प्रयास करें।",
+    adhikaMasaBadge: "अधिक मास",
+    nijaMasaBadge: "सामान्य मास",
+    kshayaMasaBadge: "क्षय मास",
+    sankrantiWord: "संक्रान्तियां",
+    shuklaPaksha: "शुक्ल पक्ष",
+    krishnaPaksha: "कृष्ण पक्ष",
+    solarDaySuffix: "वां दिन",
+    intercalaryHeroBadge: "🏛️ धर्मशास्त्र एवं खगोल सिद्धान्त • कालमाधवीयम्",
+    intercalaryHeroTitle: "अधिक मास एवं क्षय मास: खगोल-धर्मशास्त्र विज्ञान",
+    intercalaryHeroSubtitle: "सूर्यसिद्धान्त स्पष्टगति एवं कालमाधवीय सूत्रों के अनुसार अधिक, क्षय, संसर्प एवं अंहस्पति मासों की गणना।",
+    systemSuryaBtn: "📜 सूर्यसिद्धान्त (शास्त्र)",
+    systemDrikBtn: "🔭 दृक्सिद्धान्त (Swiss Ephemeris)",
+    suryaSystemBadge: "सूर्यसिद्धान्त / धर्मशास्त्र पद्धति",
+    drikSystemBadge: "दृक्सिद्धान्त पद्धति (Swiss Ephemeris)",
+    kalamadhavaHeader: "कालमाधवीय परम प्रामाणिक श्लोक",
+    kalamadhavaRuleDesc: "<strong>धर्मशास्त्र नियम:</strong> एक सौर वर्ष में यदि दो असंक्रान्त मास आएं, तो प्रथम को <strong>संसर्प</strong> कहते हैं। मध्य में आने वाला द्विसंक्रान्त मास <strong>क्षय मास (अंहस्पति)</strong> है। वर्षान्त में आने वाला द्वितीय असंक्रान्त मास <strong>अधिक मास</strong> होता है। संसर्प में नित्य-नैमित्तिक कर्म मान्य हैं; अंहस्पति (क्षय) मास में विवाहादि शुभकार्य वर्जित हैं।",
+    adhikaCardTitle: "अधिक मास (असंक्रान्त)",
+    adhikaCardBadge: "० संक्रान्ति",
+    adhikaCardFormula: "Ingresses = 0 (असंक्रान्त)",
+    adhikaCardDesc: "एक अमावस्या से अगली अमावस्या तक जब सूर्य किसी भी राशि में प्रवेश नहीं करता, वह अधिक मास (मलमास) कहलाता है। प्रति ~३२.५ चान्द्रमासों में आता है।",
+    nijaCardTitle: "सामान्य मास (निज मास)",
+    nijaCardBadge: "१ संक्रान्ति",
+    nijaCardFormula: "Ingresses = 1 (संक्रान्त)",
+    nijaCardDesc: "एक चान्द्रमास में जब ठीक एक ही सूर्य संक्रान्ति होती है, वह निज या शुद्ध मास कहलाता है। सभी शुभ कार्यों के लिए उपयुक्त।",
+    kshayaCardTitle: "क्षय मास (द्विसंक्रान्त)",
+    kshayaCardBadge: "२ संक्रान्तियां",
+    kshayaCardFormula: "Ingresses = 2 (द्विसंक्रान्त)",
+    kshayaCardDesc: "एक ही चान्द्रमास में जब सूर्य की दो संक्रान्तियां घटित हों, वह क्षय मास (अंहस्पति) कहलाता है। दो मास मिलकर एक हो जाते हैं।",
+    driftTitle: "📐 सौर-चान्द्र कालगणना सिद्धान्त (Calendar Drift)",
+    driftSolarYr: "सौर वर्ष:",
+    driftLunarYr: "चान्द्र वर्ष (12 × 29.5):",
+    driftAnnual: "वार्षिक अन्तर (Annual Drift):",
+    drift3Yr: "३ वर्षों में एकत्रित अन्तर:",
+    driftLagadhaRule: "✨ <strong>वेदाङ्ग ज्योतिष नियम (लगध महर्षि):</strong> पञ्चसंवत्सरात्मक युग में ६० सौर मास = ६२ चान्द्र मास। अर्थात् प्रति ५ वर्षों में ठीक २ अधिक मास आते हैं।",
+    kaliyugaTitle: "🪐 कलियुग महायुग सन्तुलन एवं क्षय चक्र",
+    perihelionRule: "💡 <strong>खगोलीय उपसौर (Perihelion) नियम:</strong> सूर्य जब पृथ्वी के निकटतम होकर तीव्र गति से धनु, मकर या कुम्भ राशियों को पार करता है, तभी एक चान्द्रमास में २ संक्रान्तियां संभव होती हैं।",
+    keelakaBadge: "विशेष अनुशीलन",
+    keelakaTitle: "श्री कीलक संवत्सर (2028–2029) • क्षय एवं संसर्प मास",
+    keelakaDesc: "२३ प्रसिद्ध सिद्धान्तियों एवं धर्मशास्त्र पण्डितों की 'तेलंगाना विद्वत्सभा' संगोष्ठी के सर्वसम्मत निर्णय के अनुसार: श्री कीलक संवत्सर में <strong>संसर्प कार्तिक मास (अधिक)</strong> तथा <strong>मार्गशीर्ष-पौष युगल अंहस्पति मास (क्षय मास)</strong> निश्चित किया गया है।",
+    intercalaryTableTitle: "📅 आगामी १० वर्षों की अधिक / क्षय मास सारणी (2026–2036)",
+    intercalaryTableSubtitle: "चयनित सिद्धान्त के अनुसार अमान्त चान्द्रमासों के परिणाम",
+    thInterYr: "वर्ष",
+    thInterSamvat: "संवत्सर नाम",
+    thInterMasa: "मास नाम",
+    thInterType: "प्रकार / स्थिति",
+    thInterSankranti: "संक्रान्तियां",
+    thInterSpan: "अवधि (आरम्भ – समाप्ति)",
+    thInterRule: "शास्त्र व्याख्या",
+    toDateSpan: "से",
+    kdHeroBadge: "📊 वार्षिक कन्ददाय गणित",
+    kdMainHeading: "कन्ददाय फलानि एवं आय-व्यय",
+    kdMainSubtitle: "द्वादश राशियों के आय-व्यय, राजपूज्य-अपमान एवं २७ नक्षत्रों के त्रैमासिक (प्रथम, द्वितीय, तृतीय कन्ददाय) प्रामाणिक फल।",
+    kdCreatorBadge: "✍️ निर्माता: रामचन्द्र शास्त्री मुनिमडुगु",
+    jumpToRashiKdBtn: "💰 राशि कन्ददाय",
+    jumpToNakshatraKdBtn: "⭐ नक्षत्र कन्ददाय",
+    jumpToShastraKdBtn: "📜 शास्त्रीय गणना सूत्र",
+    kdQuickT1Title: "🌱 प्रथम कन्ददाय",
+    kdQuickT1Span: "प्रथम ४ मास",
+    kdQuickT1Months: "चैत्र, वैशाख, ज्येष्ठ, आषाढ",
+    kdQuickT1Max: "अधिकतम सीमा: ८ भाग (शेष ०-७)",
+    kdQuickT2Title: "🌧️ द्वितीय कन्ददाय",
+    kdQuickT2Span: "द्वितीय ४ मास",
+    kdQuickT2Months: "श्रावण, भाद्रपद, आश्विन, कार्तिक",
+    kdQuickT2Max: "अधिकतम सीमा: ३ भाग (शेष ०-२)",
+    kdQuickT3Title: "❄️ तृतीय कन्ददाय",
+    kdQuickT3Span: "तृतीय ४ मास",
+    kdQuickT3Months: "मार्गशीर्ष, पौष, माघ, फाल्गुन",
+    kdQuickT3Max: "अधिकतम सीमा: ५ भाग (शेष ०-४)",
+    rashiKdSectionTitle: "💰 द्वादश राशि कन्ददाय (आय, व्यय, राजपूज्य, अपमान)",
+    rashiKdSectionSubtitle: "द्वादश राशियों की सम्पूर्ण आर्थिक एवं सामाजिक स्थिति",
+    rashiKdViewCardsBtn: "कार्ड",
+    rashiKdViewTableBtn: "सारणी",
+    thKdRashi: "राशि",
+    thKdLord: "स्वामी",
+    thKdAdayam: "आय",
+    thKdVyayam: "व्यय",
+    thKdRajapujyam: "राजपूज्य",
+    thKdAvamanam: "अपमान",
+    thKdFinStatus: "आर्थिक स्थिति",
+    thKdSocStatus: "सामाजिक प्रतिष्ठा",
+    thKdVerdict: "समग्र निर्णय",
+    nakshatraSectionTitle: "⭐ २७ नक्षत्र कन्ददाय फल (त्रैमासिक विभाजन)",
+    nakshatraSectionSubtitle: "वर्ष के ३ कन्ददायों के अनुसार अपने जन्म नक्षत्र का फल जानें",
+    nakshatraSelectLabel: "नक्षत्र:",
+    nakshatraMasterTableTitle: "📋 सम्पूर्ण २७ नक्षत्र कन्ददाय सारणी (Master Table)",
+    nakshatraTableSearchInput: "नक्षत्र नाम से खोजें...",
+    thNId: "क्र.सं.",
+    thNName: "नक्षत्र",
+    thNRashis: "राशियां",
+    thNT1: "प्रथम (१–४ मास)",
+    thNT2: "द्वितीय (५–८ मास)",
+    thNT3: "तृतीय (९–१२ मास)",
+    thNOverall: "वार्षिक स्थिति",
+    shastraKdTitle: "📜 कन्ददाय गणित विज्ञान एवं शास्त्रीय प्रमाण",
+    shastraKdT1Title: "📅 संवत्सर काल विभाजन (३ कन्ददाय)",
+    shastraKdT2Title: "⚖️ द्वादश राशि कन्ददाय गणित",
+    nakshatraWord: "नक्षत्र",
+    spreadRashisPadasLabel: "विस्तृत राशियां / पाद:",
+    annualCompositeStatusLabel: "वार्षिक समग्र स्थिति",
+    trimester1Title: "प्रथम कन्ददाय",
+    trimester1Months: "चैत्र – आषाढ (मास १–४)",
+    trimester1MaxLimit: "अधिकतम सीमा: ८ भाग",
+    trimester2Title: "द्वितीय कन्ददाय",
+    trimester2Months: "श्रावण – कार्तिक (मास ५–८)",
+    trimester2MaxLimit: "अधिकतम सीमा: ३ भाग",
+    trimester3Title: "तृतीय कन्ददाय",
+    trimester3Months: "मार्गशीर्ष – फाल्गुन (मास ९–१२)",
+    trimester3MaxLimit: "अधिकतम सीमा: ५ भाग",
+    annualSummaryAdviceLabel: "वार्षिक फल सारांश एवं मार्गदर्शन:",
+    noNakshatraFound: "कोई नक्षत्र परिणाम नहीं मिला",
+    rashiHeading: "राशि फल (गोचर होरोस्कोप)",
+    rashiSubtitle: "खगोलीय गोचर सञ्चार, चन्द्रबल, ताराबल एवं कन्ददाय सूत्रों पर आधारित प्रामाणिक फल।",
+    rashiGocharaBadge: "♈ द्वादश राशि गोचर",
+    moonTransitLabel: "चन्द्र सञ्चार",
+    solarMonthLabel: "सौर मास",
+    kandadayamTableLabel: "पञ्चाङ्ग कन्ददाय सारणी",
+    kdAdayam: "आय",
+    kdVyayam: "व्यय",
+    kdRajapujyam: "राजपूज्य",
+    kdAvamanam: "अपमान",
+    statusAuspicious: "उत्तम (Auspicious)",
+    statusFavorable: "अनुकूल (Favorable)",
+    statusModerate: "मध्यम (Moderate)",
+    statusCaution: "सावधानी (Caution)",
+    footerOrgTitle: "वैदिक संहिता • Vedic Samhita",
+    footerOrgSubtitle: "Vedic Astronomy & Dharma Shastra Computation System",
+    footerCreatorRole: "सिद्धान्त एवं खगोल संगणना निर्माता (System Architect & Creator)",
+    footerCreatorName: "रामचन्द्र शास्त्री मुनिमडुगु",
+    footerCreatorDesc: "ये पञ्चाङ्ग गणनाएं, वैदिक खगोलीय सूत्र, धर्मशास्त्र निर्णय एवं तकनीकी प्रणालियां <strong class=\"text-amber-200 font-bold\">श्री रामचन्द्र शास्त्री मुनिमडुगु</strong> के अनुसन्धान एवं रचना द्वारा निर्मित हैं। <br class=\"hidden sm:inline\"/> All credits go to <strong class=\"text-amber-200 font-bold\">RAMACHANDRA SASTRY MUNIMADUGU</strong>.",
+    footerOfficialWebsiteLabel: "आधिकारिक वेबसाइट:",
+    footerPoweredBy: "Swiss Ephemeris खगोलीय गणना, ज्योतिषीय इंजन एवं अक्षरामुख बहुभाषी लिप्यन्तरण पर आधारित।",
+    chandrashtamaAlertTitle: "चन्द्राष्टम चेतावनी (Chandrashtama Active)",
+    chandrashtamaAlertDesc: "आज चन्द्रमा आपकी जन्म राशि से ८वें भाव में गोचर कर रहे हैं। वाद-विवाद, वित्तीय लेन-देन तथा नए समझौतों में विशेष सावधानी बरतें। शिवोपासना शुभप्रद है।",
+    moonHouseLabel: "चन्द्र भाव",
+    houseSuffix: "वां भाव",
+    tarabalamLabel: "ताराबल",
+    taraGood: "शुभ तारा ✔️",
+    taraCaution: "सावधानी ⚠️",
+    luckyNumberLabel: "शुभ अंक",
+    luckyColorLabel: "शुभ रंग",
+    luckyDirectionLabel: "शुभ दिशा",
+    sunTransitLabel: "सूर्य संक्रान्ति",
+    placeSuffix: "वां स्थान",
+    sunFavorable: "अनुकूल सूर्य बल (उपचय) ☀️",
+    sunUnfavorable: "सूर्य प्रतिकूलता (धैर्य अपेक्षित)",
+    monthlyHighlightsLabel: "मासिक मुख्य बिन्दु",
+    guruBalamLabel: "गुरु बल",
+    guruBalamYes: "गुरु बल प्राप्त ✨",
+    guruBalamNo: "गुरु शान्ति अपेक्षित",
+    shaniGocharaLabel: "शनि गोचर",
+    rahuKetuTransitLabel: "राहु-केतु सञ्चार",
+    financialAnalysisLabel: "आर्थिक स्थिति विश्लेषण",
+    socialAnalysisLabel: "सामाजिक प्रतिष्ठा विश्लेषण",
+    rashiOverviewTitle: "सामान्य समीक्षा (General Overview)",
+    rashiCareerTitle: "आजीविका एवं व्यवसाय (Career & Profession)",
+    rashiFinanceTitle: "आर्थिक स्थिति एवं धन योग (Finance & Wealth)",
+    rashiHealthTitle: "स्वास्थ्य एवं ऊर्जा (Health & Well-being)",
+    rashiFamilyTitle: "परिवार एवं दाम्पत्य (Family & Relationships)",
+    rashiRemediesTitle: "शान्ति / दैवीय परिहार (Remedies & Prayers)",
+    lordLabel: "स्वामी:",
+    elementLabel: "तत्व:",
+    compatibilityScoreLabel: "अनुकूलता अंक",
+    chandrashtamaMiniBadge: "चन्द्राष्टम",
+    sunShortLabel: "सूर्य",
+    incomeShort: "आय",
+    expenseShort: "व्यय",
+    gpsNotSupported: "आपके ब्राउज़र में GPS जियोलोकेशन समर्थित नहीं है।",
+    gpsSuccess: "स्थान सफलतापूर्वक प्राप्त हुआ",
+    gpsDenied: "स्थान की अनुमति नहीं मिली"
   },
   tamil: {
     appTitle: "வேத சம்ஹிதை • பஞ்சாங்கம்",
@@ -417,7 +1017,207 @@ const UI_TEXT = {
     loaderText: "பஞ்சாங்க விவரங்கள் ஏற்றப்படுகின்றன...",
     geoCoordLabel: "புவியியல் இருப்பிடம்",
     dveepaLabel: "த்வீபம்",
-    khandaLabel: "கண்டம்"
+    khandaLabel: "கண்டம்",
+
+    prevDayTitle: "முந்தைய நாள்",
+    nextDayTitle: "அடுத்த நாள்",
+    maxWord: "அதிகபட்சம்",
+    bannerPurePeriod: "சுத்த காலம்",
+    bannerTabooAuspicious: "சுபகாரியங்கள் நிஷித்தம்",
+    bannerTabooConstruction: "கிருஹாரம்பம் நிஷித்தம்",
+    bannerAnnualScheduleBtn: "வருடாந்திர அட்டவணை & சாஸ்திர விதிகள்",
+    modalMoudhyamTitle: "🪔 வருடாந்திர மௌட்ய & கர்த்தரி அட்டவணை",
+    modalMoudhyamSubtitle: "வானியல் நிரயண கணிதம் • தர்மசாஸ்திர முகூர்த்த தடைகள் & சிறப்புக்கள்",
+    timezoneLabel: "நேர மண்டலம்",
+    moudhyamTimesSubtitle: "🕒 நேரங்கள்: உங்கள் உள்ளூர் நேரம் & (IST இந்திய நிலையான நேரம்)",
+    thPhase: "பிரிவு (Phase)",
+    thTransit: "சூரியப் பெயர்ச்சி (Transit)",
+    thTiming: "துல்லியமான நேரம் (Timing)",
+    thSignificance: "முக்கியத்துவம் (Significance)",
+    moudhyamSectionTitle: "மௌட்ய காலங்கள் (குரு & சுக்கிர அஸ்தமனம்)",
+    moudhyamSectionSubtitle: "தேவகுரு பிரகஸ்பதி, அசுரகுரு சுக்கிரன் சூரியனின் அருகாமையால் அஸ்தமனமாகும் காலங்கள்.",
+    durationLabel: "கால அளவு",
+    daysLabel: "நாட்கள்",
+    moudhyamStartLabel: "ஆரம்பம் (அஸ்தமனம்):",
+    moudhyamEndLabel: "முடிவு (உதயம்):",
+    vardhakyaLabel: "வார்த்தக்ய தோஷம்:",
+    balyaLabel: "பால்ய தோஷம்:",
+    prohibitionLabel: "தடை:",
+    shastraDecisionsTitle: "தர்மசாஸ்திர முகூர்த்த முடிவுகள் (செய்யத்தக்கவை & தவிர்க்கவேண்டியவை)",
+    moudhyamTaboosTitle: "மௌட்யத்தில் தவிர்க்கவேண்டியவை:",
+    kartariTaboosTitle: "கர்த்தரியில் தவிர்க்கவேண்டியவை:",
+    permittedKarmasTitle: "செய்யத்தக்க கர்மங்கள்:",
+    moudhyamLoading: "மௌட்ய & கர்த்தரி அட்டவணை ஏற்றப்படுகிறது...",
+    moudhyamError: "அட்டவணையை ஏற்றுவதில் பிழை ஏற்பட்டது. தயவுசெய்து மீண்டும் முயற்சிக்கவும்.",
+    adhikaMasaBadge: "அதிக மாதம்",
+    nijaMasaBadge: "நிஜ மாதம்",
+    kshayaMasaBadge: "க்ஷய மாதம்",
+    sankrantiWord: "சங்கிராந்திகள்",
+    shuklaPaksha: "சுக்ல பக்ஷம்",
+    krishnaPaksha: "கிருஷ்ண பக்ஷம்",
+    solarDaySuffix: "ஆம் நாள்",
+    intercalaryHeroBadge: "🏛️ தர்மசாஸ்திரம் & வானியல் கோட்பாடு • காலமாதவீயம்",
+    intercalaryHeroTitle: "அதிக மாதம் & க்ஷய மாத வானியல்-தர்மசாஸ்திர அறிவு",
+    intercalaryHeroSubtitle: "சூரியசித்தாந்தம் மற்றும் காலமாதவீய சூத்திரங்களின்படி அதிக, க்ஷய, சம்சர்ப்ப மற்றும் அங்ஹஸ்பதி மாதங்களின் துல்லியக் கணக்கீடு.",
+    systemSuryaBtn: "📜 சூரியசித்தாந்தம் (சாஸ்திரம்)",
+    systemDrikBtn: "🔭 திருக்கணக்கணிதம் (Swiss Ephemeris)",
+    suryaSystemBadge: "சூரியசித்தாந்த / தர்மசாஸ்திர முறை",
+    drikSystemBadge: "திருக்கணித முறை (Swiss Ephemeris)",
+    kalamadhavaHeader: "காலமாதவீய மூலப் பிரமாண சுலோகம்",
+    kalamadhavaRuleDesc: "<strong>தர்மசாஸ்திர விதி:</strong> ஒரே சௌர வருடத்தில் இரு அசங்கிராந்தி மாதங்கள் வந்தால், முதலாவது <strong>சம்சர்ப்பம்</strong> எனப்படும். நடுவில் வரும் இரு சங்கிராந்திகள் கொண்ட மாதம் <strong>க்ஷய மாதம் (அங்ஹஸ்பதி)</strong>. ஆண்டின் முடிவில் வரும் இரண்டாவது அசங்கிராந்தி மாதம் <strong>அதிக மாதம்</strong> ஆகும். சம்சர்ப்பத்தில் நித்ய நைமித்திக கர்மங்கள் செய்யலாம்; அங்ஹஸ்பதி (க்ஷய) மாதத்தில் விவாகம் உள்ளிட்ட சுபகாரியங்கள் நிஷித்தம்.",
+    adhikaCardTitle: "அதிக மாதம் (அசங்கிராந்தி)",
+    adhikaCardBadge: "0 சங்கிராந்திகள்",
+    adhikaCardFormula: "Ingresses = 0 (அசங்கிராந்தி)",
+    adhikaCardDesc: "ஒரு அமாவாசையிலிருந்து அடுத்த அமாவாசைக்குள் சூரியன் எந்த ராசியிலும் பிரவேசிக்காவிட்டால் அது அதிக மாதம் (மலமாதம்) ஆகும். ஒவ்வொரு ~32.5 மாதங்களுக்கும் ஒருமுறை வரும்.",
+    nijaCardTitle: "நிஜ மாதம் (இயல்பான மாதம்)",
+    nijaCardBadge: "1 சங்கிராந்தி",
+    nijaCardFormula: "Ingresses = 1 (சங்கிராந்தி)",
+    nijaCardDesc: "ஒரு சாந்திர மாதத்தில் சரியாக ஒரே ஒரு சூரிய சங்கிரமணம் நிகழ்ந்தால் அது நிஜ அல்லது சுத்த மாதம். அனைத்து சுபகாரியங்களுக்கும் ஏற்ற காலம்.",
+    kshayaCardTitle: "க்ஷய மாதம் (துவி-சங்கிராந்தி)",
+    kshayaCardBadge: "2 சங்கிராந்திகள்",
+    kshayaCardFormula: "Ingresses = 2 (துவி-சங்கிராந்தி)",
+    kshayaCardDesc: "ஒரே சாந்திர மாதத்தில் சூரியனின் 2 சங்கிராந்திகள் நிகழ்ந்தால் அது க்ஷய மாதம் (அங்ஹஸ்பதி). இரு மாதங்கள் இணைந்து ஒன்றாக மாறும்.",
+    driftTitle: "📐 சௌர-சாந்திர காலக்கணக்கீட்டு விதிகள் (Calendar Drift)",
+    driftSolarYr: "சௌர வருடம்:",
+    driftLunarYr: "சாந்திர வருடம் (12 × 29.5):",
+    driftAnnual: "வருடாந்திர இடைவெளி (Annual Drift):",
+    drift3Yr: "3 ஆண்டுகளில் சேரும் இடைவெளி:",
+    driftLagadhaRule: "✨ <strong>வேதாங்க ஜோதிட விதி (லகத மகரிஷி):</strong> ஐந்தாண்டு யுக சுழற்சியில் 60 சௌர மாதங்கள் = 62 சாந்திர மாதங்கள். அதாவது ஒவ்வொரு 5 ஆண்டுகளுக்கும் சரியாக 2 அதிக மாதங்கள் வருகின்றன.",
+    kaliyugaTitle: "🪐 கலியுக சமநிலை & க்ஷய சுழற்சி",
+    perihelionRule: "💡 <strong>வானியல் பெரிஹிலியன் விதி:</strong> சூரியன் பூமிக்கு மிக அருகில் இருந்து அதிவேகமாக தனுசு, மகரம், கும்ப ராசிகளைக் கடக்கும் போது மட்டுமே ஒரே சாந்திர மாதத்தில் 2 சங்கிராந்திகள் வர வாய்ப்புள்ளது.",
+    keelakaBadge: "சிறப்பு ஆய்வு",
+    keelakaTitle: "ஸ்ரீ கீலக நாம வருடம் (2028 – 2029) • க்ஷய & சம்சர்ப்ப மாதங்கள்",
+    keelakaDesc: "23 புகழ்பெற்ற சித்தாந்திகள் மற்றும் தர்மசாஸ்திர பண்டிதர்கள் கலந்து கொண்ட <strong>'தெலங்கானா வித்வத் சபை' மாநாட்டு</strong> தீர்மானத்தின்படி: ஸ்ரீ கீலக நாம வருடத்தில் <strong>சம்சர்ப்ப கார்த்திகை மாதம் (அதிகம்)</strong> மற்றும் <strong>மார்கழி-தை இணைந்த அங்ஹஸ்பதி மாதம் (க்ஷய மாதம்)</strong> என ஏகமனதாகத் தீர்மானிக்கப்பட்டது.",
+    intercalaryTableTitle: "📅 அடுத்த 10 ஆண்டுகளுக்கான அதிக / க்ஷய மாதங்கள் அட்டவணை (2026 – 2036)",
+    intercalaryTableSubtitle: "தேர்ந்தெடுக்கப்பட்ட சித்தாந்த முறைப்படியான அமாந்த சாந்திர மாதங்களின் கணக்கீடு",
+    thInterYr: "வருடம்",
+    thInterSamvat: "வருடப் பெயர்",
+    thInterMasa: "மாதப் பெயர்",
+    thInterType: "வகை / அந்தஸ்து",
+    thInterSankranti: "சங்கிராந்திகள்",
+    thInterSpan: "காலம் (தொடக்க – முடிவு)",
+    thInterRule: "சாஸ்திர விளக்கம்",
+    toDateSpan: "முதல்",
+    kdHeroBadge: "📊 வருடாந்திர கந்ததாயக் கணிதம்",
+    kdMainHeading: "கந்ததாய பலன்கள் & வரவு செலவுகள்",
+    kdMainSubtitle: "12 ராசிகளின் வரவு-செலவு, ராஜபூஜ்யம்-அவமானம் மற்றும் 27 நட்சத்திரங்களின் 3 பருவ (முதல், இரண்டாம், மூன்றாம் கந்ததாய) துல்லியப் பலன்கள்.",
+    kdCreatorBadge: "✍️ உருவாக்கியவர்: ராமசந்திர சாஸ்திரி முனிமடுகு",
+    jumpToRashiKdBtn: "💰 ராசி கந்ததாயம்",
+    jumpToNakshatraKdBtn: "⭐ நட்சத்திரக் கந்ததாயம்",
+    jumpToShastraKdBtn: "📜 சாஸ்திரக் கணக்கீட்டு விதிகள்",
+    kdQuickT1Title: "🌱 முதலாம் கந்ததாயம்",
+    kdQuickT1Span: "முதல் 4 மாதங்கள்",
+    kdQuickT1Months: "சித்திரை, வைகாசி, ஆனி, ஆடி",
+    kdQuickT1Max: "அதிகபட்ச அளவு: 8 பகுதிகள் (மீதி 0–7)",
+    kdQuickT2Title: "🌧️ இரண்டாம் கந்ததாயம்",
+    kdQuickT2Span: "இரண்டாம் 4 மாதங்கள்",
+    kdQuickT2Months: "ஆவணி, புரட்டாசி, ஐப்பசி, கார்த்திகை",
+    kdQuickT2Max: "அதிகபட்ச அளவு: 3 பகுதிகள் (மீதி 0–2)",
+    kdQuickT3Title: "❄️ மூன்றாம் கந்ததாயம்",
+    kdQuickT3Span: "மூன்றாம் 4 மாதங்கள்",
+    kdQuickT3Months: "மார்கழி, தை, மாசி, பங்குனி",
+    kdQuickT3Max: "அதிகபட்ச அளவு: 5 பகுதிகள் (மீதி 0–4)",
+    rashiKdSectionTitle: "💰 பன்னிரு ராசி கந்ததாயம் (வரவு, செலவு, ராஜபூஜ்யம், அவமானம்)",
+    rashiKdSectionSubtitle: "பன்னிரு ராசிகளின் முழுமையான நிதி மற்றும் சமூக கௌரவ நிலை",
+    rashiKdViewCardsBtn: "அட்டைகள்",
+    rashiKdViewTableBtn: "அட்டவணை",
+    thKdRashi: "ராசி",
+    thKdLord: "அதிபதி",
+    thKdAdayam: "வரவு",
+    thKdVyayam: "செலவு",
+    thKdRajapujyam: "ராஜபூஜ்யம்",
+    thKdAvamanam: "அவமானம்",
+    thKdFinStatus: "நிதி நிலை",
+    thKdSocStatus: "சமூக கௌரவம்",
+    thKdVerdict: "முழுமையான முடிவு",
+    nakshatraSectionTitle: "⭐ 27 நட்சத்திரக் கந்ததாய பலன்கள் (3 பருவப் பகுப்பு)",
+    nakshatraSectionSubtitle: "ஆண்டின் 3 பருவங்களின்படி உங்கள் ஜென்ம நட்சத்திர பலன்களை அறிந்துகொள்ளுங்கள்",
+    nakshatraSelectLabel: "நட்சத்திரம்:",
+    nakshatraMasterTableTitle: "📋 27 நட்சத்திரங்களின் முழுமையான கந்ததாய அட்டவணை (Master Table)",
+    nakshatraTableSearchInput: "நட்சத்திரப் பெயரால் தேடுங்கள்...",
+    thNId: "வ.எண்",
+    thNName: "நட்சத்திரம்",
+    thNRashis: "ராசிகள்",
+    thNT1: "முதலாம் (1–4 மாதங்கள்)",
+    thNT2: "இரண்டாம் (5–8 மாதங்கள்)",
+    thNT3: "மூன்றாம் (9–12 மாதங்கள்)",
+    thNOverall: "வருடாந்திர நிலை",
+    shastraKdTitle: "📜 கந்ததாயக் கணித அறிவும் சாஸ்திர பிரமாணங்களும்",
+    shastraKdT1Title: "📅 வருடப் பகுப்பு (3 கந்ததாயங்கள்)",
+    shastraKdT2Title: "⚖️ பன்னிரு ராசி கந்ததாயக் கணிதம்",
+    nakshatraWord: "நட்சத்திரம்",
+    spreadRashisPadasLabel: "வியாபித்துள்ள ராசிகள் / பாதங்கள்:",
+    annualCompositeStatusLabel: "வருடாந்திர ஒட்டுமொத்த நிலை",
+    trimester1Title: "முதலாம் கந்ததாயம்",
+    trimester1Months: "சித்திரை – ஆடி (மாதங்கள் 1–4)",
+    trimester1MaxLimit: "அதிகபட்ச அளவு: 8 பகுதிகள்",
+    trimester2Title: "இரண்டாம் கந்ததாயம்",
+    trimester2Months: "ஆவணி – கார்த்திகை (மாதங்கள் 5–8)",
+    trimester2MaxLimit: "அதிகபட்ச அளவு: 3 பகுதிகள்",
+    trimester3Title: "மூன்றாம் கந்ததாயம்",
+    trimester3Months: "மார்கழி – பங்குனி (மாதங்கள் 9–12)",
+    trimester3MaxLimit: "அதிகபட்ச அளவு: 5 பகுதிகள்",
+    annualSummaryAdviceLabel: "வருடாந்திர பலன் சுருக்கம் & வழிகாட்டல்:",
+    noNakshatraFound: "நட்சத்திரப் பலன்கள் எதுவும் காணப்படவில்லை",
+    rashiHeading: "ராசி பலன் (கோசார பலன்கள்)",
+    rashiSubtitle: "வானியல் கிரகப் பெயர்ச்சி, சந்திரபலம், தாராபலம் மற்றும் கந்ததாய விதிகள் அடிப்படையிலான துல்லியப் பலன்கள்.",
+    rashiGocharaBadge: "♈ பன்னிரு ராசி கோசாரம்",
+    moonTransitLabel: "சந்திர சஞ்சாரம்",
+    solarMonthLabel: "சூரிய மாதம்",
+    kandadayamTableLabel: "பஞ்சாங்கக் கந்ததாய அட்டவணை",
+    kdAdayam: "வரவு",
+    kdVyayam: "செலவு",
+    kdRajapujyam: "ராஜபூஜ்யம்",
+    kdAvamanam: "அவமானம்",
+    statusAuspicious: "உத்தமம் (Auspicious)",
+    statusFavorable: "அனுகூலம் (Favorable)",
+    statusModerate: "மத்திமம் (Moderate)",
+    statusCaution: "எச்சரிக்கை (Caution)",
+    footerOrgTitle: "வேத சம்ஹிதை • Vedic Samhita",
+    footerOrgSubtitle: "Vedic Astronomy & Dharma Shastra Computation System",
+    footerCreatorRole: "சித்தாந்த & வானியல் கணக்கீட்டு வடிவமைப்பாளர் (System Architect & Creator)",
+    footerCreatorName: "ராமசந்திர சாஸ்திரி முனிமடுகு",
+    footerCreatorDesc: "இந்த பஞ்சாங்கக் கணிதங்கள், வைதிக வானியல் விதிகள், தர்மசாஸ்திர முடிவுகள் மற்றும் தொழில்நுட்ப அமைப்புகள் அனைத்தும் <strong class=\"text-amber-200 font-bold\">ஸ்ரீ ராமசந்திர சாஸ்திரி முனிமடுகு</strong> அவர்களின் ஆராய்ச்சி மற்றும் வடிவமைப்பினால் உருவாக்கப்பட்டவை. <br class=\"hidden sm:inline\"/> All credits go to <strong class=\"text-amber-200 font-bold\">RAMACHANDRA SASTRY MUNIMADUGU</strong>.",
+    footerOfficialWebsiteLabel: "அதிகாரப்பூர்வ வலைத்தளம்:",
+    footerPoweredBy: "Swiss Ephemeris வானியல் கணக்கீடு, ஜோதிட எஞ்சின் மற்றும் அக்ஷரமுக பன்மொழி எழுத்துப்பெயர்ப்பு சார்ந்தது.",
+    chandrashtamaAlertTitle: "சந்திராஷ்டம எச்சரிக்கை (Chandrashtama Active)",
+    chandrashtamaAlertDesc: "இன்று சந்திரன் உங்கள் ஜென்ம ராசியிலிருந்து 8வது வீட்டில் சஞ்சரிக்கிறார். விவாதங்கள், நிதி பரிவர்த்தனைகள் மற்றும் புதிய ஒப்பந்தங்களைத் தொடங்குவதில் மிகுந்த எச்சரிக்கை தேவை. சிவ வழிபாடு நலம் தரும்.",
+    moonHouseLabel: "சந்திர நிலை",
+    houseSuffix: "ஆம் இடம்",
+    tarabalamLabel: "தாராபலம்",
+    taraGood: "சுப தாரை ✔️",
+    taraCaution: "எச்சரிக்கை ⚠️",
+    luckyNumberLabel: "அதிர்ஷ்ட எண்",
+    luckyColorLabel: "அதிர்ஷ்ட நிறம்",
+    luckyDirectionLabel: "அனுகூல திசை",
+    sunTransitLabel: "சூரியப் பெயர்ச்சி",
+    placeSuffix: "ஆம் இடம்",
+    sunFavorable: "அனுகூல சூரிய பலம் (உபசயம்) ☀️",
+    sunUnfavorable: "சூரியப் பின்னடைவு (பொறுமை தேவை)",
+    monthlyHighlightsLabel: "மாத முக்கிய அம்சங்கள்",
+    guruBalamLabel: "குரு பலம்",
+    guruBalamYes: "குரு பலம் உண்டு ✨",
+    guruBalamNo: "குரு சாந்தி தேவை",
+    shaniGocharaLabel: "சனி கோசாரம்",
+    rahuKetuTransitLabel: "ராகு-கேது சஞ்சாரம்",
+    financialAnalysisLabel: "நிதி நிலை பகுப்பாய்வு",
+    socialAnalysisLabel: "சமூக அந்தஸ்து பகுப்பாய்வு",
+    rashiOverviewTitle: "பொதுவான பார்வை (General Overview)",
+    rashiCareerTitle: "வேலை & தொழில் (Career & Profession)",
+    rashiFinanceTitle: "நிதி நிலை & தன யோகம் (Finance & Wealth)",
+    rashiHealthTitle: "உடல்நலம் & ஆற்றல் (Health & Well-being)",
+    rashiFamilyTitle: "குடும்பம் & தாம்பத்யம் (Family & Relationships)",
+    rashiRemediesTitle: "சாந்தி / தெய்வீகப் பரிகாரம் (Remedies & Prayers)",
+    lordLabel: "அதிபதி:",
+    elementLabel: "தத்துவம்:",
+    compatibilityScoreLabel: "பொருத்த மதிப்பெண்",
+    chandrashtamaMiniBadge: "சந்திராஷ்டமம்",
+    sunShortLabel: "சூரியன்",
+    incomeShort: "வர",
+    expenseShort: "செ",
+    gpsNotSupported: "உங்கள் உலாவியில் GPS இருப்பிட வசதி இல்லை.",
+    gpsSuccess: "இருப்பிடம் வெற்றிகரமாகக் கண்டறியப்பட்டது",
+    gpsDenied: "இருப்பிட அனுமதி கிடைக்கவில்லை"
   },
   kannada: {
     appTitle: "ವೇದ ಸಂಹಿತಾ • ಪಂಚಾಂಗ",
@@ -514,7 +1314,207 @@ const UI_TEXT = {
     loaderText: "ಪಂಚಾಂಗ ವಿವರಗಳು ಲೋಡ್ ಆಗುತ್ತಿವೆ...",
     geoCoordLabel: "ಭೌಗೋಳಿಕ ಸ್ಥಾನ",
     dveepaLabel: "ದ್ವೀಪ",
-    khandaLabel: "ಖಂಡ"
+    khandaLabel: "ಖಂಡ",
+
+    prevDayTitle: "ಹಿಂದಿನ ದಿನ",
+    nextDayTitle: "ಮುಂದಿನ ದಿನ",
+    maxWord: "ಗರಿಷ್ಠ",
+    bannerPurePeriod: "ಶುದ್ಧ ಕಾಲ",
+    bannerTabooAuspicious: "ಶುಭಕಾರ್ಯಗಳು ನಿಷಿದ್ಧ",
+    bannerTabooConstruction: "ಗೃಹಾರಂಭ ನಿಷಿದ್ಧ",
+    bannerAnnualScheduleBtn: "ವಾರ್ಷಿಕ ಪಟ್ಟಿ & ಶಾಸ್ತ್ರ ನಿಯಮಗಳು",
+    modalMoudhyamTitle: "🪔 ವಾರ್ಷಿಕ ಮೌಢ್ಯ & ಕರ್ತರಿ ನಿರ್ಣಯ ಪಟ್ಟಿ",
+    modalMoudhyamSubtitle: "ಖಗೋಳ ನಿರಯಣ ಗಣಿತ • ಧರ್ಮಶಾಸ್ತ್ರ ಮುಹೂರ್ತ ನಿಷೇಧಗಳು & ಪ್ರಾಶಸ್ತ್ಯಗಳು",
+    timezoneLabel: "ಸಮಯ ವಲಯ",
+    moudhyamTimesSubtitle: "🕒 ಸಮಯಗಳು: ನಿಮ್ಮ ಸ್ಥಳೀಯ ಸಮಯ & (IST ಭಾರತೀಯ ಪ್ರಮಾಣಿತ ಸಮಯ)",
+    thPhase: "ವಿಭಾಗ (Phase)",
+    thTransit: "ಸೂರ್ಯ ಸಂಚಾರ (Transit)",
+    thTiming: "ನಿಖರವಾದ ಸಮಯ (Timing)",
+    thSignificance: "ಪ್ರಾಮುಖ್ಯತೆ (Significance)",
+    moudhyamSectionTitle: "ಮೌಢ್ಯಗಳು (ಗುರು & ಶುಕ್ರ ಅಸ್ತಂಗತಗಳು)",
+    moudhyamSectionSubtitle: "ದೇವಗುರು ಬೃಹಸ್ಪತಿ ಮತ್ತು ಶುಕ್ರರು ಸೂರ್ಯನ ಸಾಮೀಪ್ಯದಿಂದ ಅಸ್ತಂಗತರಾಗುವ ಅವಧಿಗಳು.",
+    durationLabel: "ಅವಧಿ",
+    daysLabel: "ದಿನಗಳು",
+    moudhyamStartLabel: "ಆರಂಭ (ಅಸ್ತಂಗತ):",
+    moudhyamEndLabel: "ಸಮಾಪ್ತಿ (ಉದಯ):",
+    vardhakyaLabel: "ವಾರ್ಧಕ್ಯ ದೋಷ:",
+    balyaLabel: "ಬಾಲ್ಯ ದೋಷ:",
+    prohibitionLabel: "ನಿಷೇಧ:",
+    shastraDecisionsTitle: "ಧರ್ಮಶಾಸ್ತ್ರ ಮುಹೂರ್ತ ನಿರ್ಣಯಗಳು (ಯಾವುವು ಮಾಡಬಹುದು? ಯಾವುವು ನಿಷಿದ್ಧ?)",
+    moudhyamTaboosTitle: "ಮೌಢ್ಯದಲ್ಲಿ ನಿಷಿದ್ಧಗಳು:",
+    kartariTaboosTitle: "ಕರ್ತರಿಯಲ್ಲಿ ನಿಷಿದ್ಧಗಳು:",
+    permittedKarmasTitle: "ಆಚರಿಸಬಹುದಾದ ಕಾರ್ಯಗಳು:",
+    moudhyamLoading: "ಮೌಢ್ಯ & ಕರ್ತರಿ ನಿರ್ಣಯ ಪಟ್ಟಿ ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
+    moudhyamError: "ಪಟ್ಟಿ ಲೋಡ್ ಮಾಡುವಲ್ಲಿ ದೋಷ ಉಂಟಾಗಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    adhikaMasaBadge: "ಅಧಿಕ ಮಾಸ",
+    nijaMasaBadge: "ಸಾಮಾನ್ಯ ಮಾಸ",
+    kshayaMasaBadge: "ಕ್ಷಯ ಮಾಸ",
+    sankrantiWord: "ಸಂಕ್ರಾಂತಿಗಳು",
+    shuklaPaksha: "ಶುಕ್ಲ ಪಕ್ಷ",
+    krishnaPaksha: "ಕೃಷ್ಣ ಪಕ್ಷ",
+    solarDaySuffix: "ನೇ ದಿನ",
+    intercalaryHeroBadge: "🏛️ ಧರ್ಮಶಾಸ್ತ್ರ & ಖಗೋಳ ಸಿದ್ಧಾಂತ • ಕಾಲಮಾಧವೀಯಂ",
+    intercalaryHeroTitle: "ಅಧಿಕ ಮಾಸ & ಕ್ಷಯ ಮಾಸ ಖಗೋಳ-ಧರ್ಮಶಾಸ್ತ್ರ ವಿಜ್ಞಾನ",
+    intercalaryHeroSubtitle: "ಸೂರ್ಯಸಿದ್ಧಾಂತ ಮತ್ತು ಕಾಲಮಾಧವೀಯ ಸೂತ್ರಗಳ ಪ್ರಕಾರ ಅಧಿಕ, ಕ್ಷಯ, ಸಂಸರ್ಪ ಮತ್ತು ಅಂಹಸ್ಪತಿ ಮಾಸಗಳ ಸಮಗ್ರ ಗಣನೆ.",
+    systemSuryaBtn: "📜 ಸೂರ್ಯಸಿದ್ಧಾಂತ (ಶಾಸ್ತ್ರ)",
+    systemDrikBtn: "🔭 ದೃಕ್ಸಿದ್ಧಾಂತ (Swiss Ephemeris)",
+    suryaSystemBadge: "ಸೂರ್ಯಸಿದ್ಧಾಂತ / ಧರ್ಮಶಾಸ್ತ್ರ ಪದ್ಧತಿ",
+    drikSystemBadge: "ದೃಕ್ಸಿದ್ಧಾಂತ ಪದ್ಧತಿ (Swiss Ephemeris)",
+    kalamadhavaHeader: "ಕಾಲಮಾಧವೀಯ ಪರಮ ಪ್ರಾಮಾಣಿಕ ಶ್ಲೋಕ",
+    kalamadhavaRuleDesc: "<strong>ಧರ್ಮಶಾಸ್ತ್ರ ನಿಯಮ:</strong> ಒಂದೇ ಸೌರ ವರ್ಷದಲ್ಲಿ ಎರಡು ಅಸಂಕ್ರಾಂತ ಮಾಸಗಳು ಬಂದರೆ, ಮೊದಲನೆಯದನ್ನು <strong>ಸಂಸರ್ಪ</strong> ಎನ್ನುತ್ತಾರೆ. ಮಧ್ಯದಲ್ಲಿ ಬರುವ ದ್ವಿಸಂಕ್ರಾಂತ ಮಾಸವೇ <strong>ಕ್ಷಯ ಮಾಸ (ಅಂಹಸ್ಪತಿ)</strong>. ವರ್ಷಾಂತ್ಯದಲ್ಲಿ ಬರುವ ಎರಡನೇ ಅಸಂಕ್ರಾಂತ ಮಾಸ <strong>ಅಧಿಕ ಮಾಸ</strong>ವಾಗುತ್ತದೆ. ಸಂಸರ್ಪದಲ್ಲಿ ನಿತ್ಯ ನೈಮಿತ್ತಿಕ ಕರ್ಮಗಳನ್ನು ಮಾಡಬಹುದು; ಅಂಹಸ್ಪತಿ (ಕ್ಷಯ) ಮಾಸದಲ್ಲಿ ವಿವಾಹಾದಿ ಶುಭಕಾರ್ಯಗಳು ನಿಷಿದ್ಧ.",
+    adhikaCardTitle: "ಅಧಿಕ ಮಾಸ (ಅಸಂಕ್ರಾಂತ)",
+    adhikaCardBadge: "0 ಸಂಕ್ರಾಂತಿಗಳು",
+    adhikaCardFormula: "Ingresses = 0 (ಅಸಂಕ್ರಾಂತ)",
+    adhikaCardDesc: "ಒಂದು ಅಮಾವಾಸ್ಯೆಯಿಂದ ಮುಂದಿನ ಅಮಾವಾಸ್ಯೆಯವರೆಗೆ ಸೂರ್ಯನು ಯಾವುದೇ ರಾಶಿಗೆ ಪ್ರವೇಶಿಸದಿದ್ದರೆ ಅದು ಅಧಿಕ ಮಾಸ (ಮಲಮಾಸ). ಪ್ರತಿ ~32.5 ತಿಂಗಳಿಗೊಮ್ಮೆ ಬರುತ್ತದೆ.",
+    nijaCardTitle: "ಸಾಮಾನ್ಯ ಮಾಸ (ನಿಜ ಮಾಸ)",
+    nijaCardBadge: "1 ಸಂಕ್ರಾಂತಿ",
+    nijaCardFormula: "Ingresses = 1 (ಸಂಕ್ರಾಂತ)",
+    nijaCardDesc: "ಒಂದು ಚಾಂದ್ರಮಾಸದಲ್ಲಿ ಕರಾರುವಕ್ಕಾಗಿ ಒಂದೇ ಸೂರ್ಯ ಸಂಕ್ರಮಣ ಸಂಭವಿಸಿದರೆ ಅದು ನಿಜ ಅಥವಾ ಶುದ್ಧ ಮಾಸ. ಎಲ್ಲಾ ಶುಭಕಾರ್ಯಗಳಿಗೆ ಪ್ರಶಸ್ತವಾದ ಕಾಲ.",
+    kshayaCardTitle: "ಕ್ಷಯ ಮಾಸ (ದ್ವಿಸಂಕ್ರಾಂತ)",
+    kshayaCardBadge: "2 ಸಂಕ್ರಾಂತಿಗಳು",
+    kshayaCardFormula: "Ingresses = 2 (ದ್ವಿಸಂಕ್ರಾಂತ)",
+    kshayaCardDesc: "ಒಂದೇ ಚಾಂದ್ರಮಾಸದಲ್ಲಿ ಸೂರ್ಯನ 2 ಸಂಕ್ರಾಂತಿಗಳು ಸಂಭವಿಸಿದರೆ ಅದು ಕ್ಷಯ ಮಾಸ (ಅಂಹಸ್ಪತಿ). ಎರಡು ತಿಂಗಳುಗಳು ಒಂದಾಗಿ ಬೆರೆಯುತ್ತವೆ.",
+    driftTitle: "📐 ಸೌರ-ಚಾಂದ್ರ ಕಾಲಗಣನೆ ಸೂತ್ರಗಳು (Calendar Drift)",
+    driftSolarYr: "ಸೌರ ವರ್ಷ:",
+    driftLunarYr: "ಚಾಂದ್ರ ವರ್ಷ (12 × 29.5):",
+    driftAnnual: "ವಾರ್ಷಿಕ ವ್ಯತ್ಯಾಸ (Annual Drift):",
+    drift3Yr: "3 ವರ್ಷಗಳಲ್ಲಿ ಸೇರುವ ವ್ಯತ್ಯಾಸ:",
+    driftLagadhaRule: "✨ <strong>ವೇದಾಂಗ ಜ್ಯೋತಿಷ ನಿಯಮ (ಲಗಧ ಮಹರ್ಷಿ):</strong> ಪಂಚಸಂವತ್ಸರಾತ್ಮಕ ಯುಗದಲ್ಲಿ 60 ಸೌರ ಮಾಸಗಳು = 62 ಚಾಂದ್ರ ಮಾಸಗಳು. ಅಂದರೆ ಪ್ರತಿ 5 ವರ್ಷಗಳಿಗೆ ಸರಿಯಾಗಿ 2 ಅಧಿಕ ಮಾಸಗಳು ಬರುತ್ತವೆ.",
+    kaliyugaTitle: "🪐 ಕಲಿಯುಗ ಮಹಾಯುಗ ಸಮತೋಲನ & ಕ್ಷಯ ಚಕ್ರ",
+    perihelionRule: "💡 <strong>ಖಗೋಳ ಪೆರಿಹಿಲಿಯನ್ ನಿಯಮ:</strong> ಸೂರ್ಯನು ಭೂಮಿಗೆ ಹತ್ತಿರವಿದ್ದು ಅತಿವೇಗವಾಗಿ ಧನು, ಮಕರ, ಕುಂಭ ರಾಶಿಗಳನ್ನು ದಾಟಿದಾಗ ಮಾತ್ರ ಚಾಂದ್ರಮಾಸದಲ್ಲಿ 2 ಸಂಕ್ರಾಂತಿಗಳು ಬರುವ ಸಾಧ್ಯತೆ ಇರುತ್ತದೆ.",
+    keelakaBadge: "ವಿಶೇಷ ಪರಿಶೀಲನೆ",
+    keelakaTitle: "ಶ್ರೀ ಕೀಲಕ ನಾಮ ಸಂವತ್ಸರ (2028 – 2029) • ಕ್ಷಯ & ಸಂಸರ್ಪ ಮಾಸಗಳು",
+    keelakaDesc: "23 ಪ್ರಸಿದ್ಧ ಸಿದ್ಧಾಂತಿಗಳು ಮತ್ತು ಧರ್ಮಶಾಸ್ತ್ರ ವಿದ್ವಾಂಸರನ್ನೊಳಗೊಂಡ <strong>'ತೆಲಂಗಾಣ ವಿದ್ವತ್ಸಭೆ' ಗೋಷ್ಠಿ</strong> ನಿರ್ಣಯದ ಪ್ರಕಾರ: ಶ್ರೀ ಕೀಲಕ ನಾಮ ಸಂವತ್ಸರದಲ್ಲಿ <strong>ಸಂಸರ್ಪ ಕಾರ್ತಿಕ ಮಾಸ (ಅಧಿಕ)</strong> ಮತ್ತು <strong>ಮಾರ್ಗಶಿರ-ಪುಷ್ಯ ಯುಗಳ ಅಂಹಸ್ಪತಿ ಮಾಸ (ಕ್ಷಯ ಮಾಸ)</strong> ಎಂದು ಸರ್ವಾನುಮತದಿಂದ ನಿರ್ಣಯಿಸಲಾಗಿದೆ.",
+    intercalaryTableTitle: "📅 ಮುಂದಿನ 10 ವರ್ಷಗಳ ಅಧಿಕ / ಕ್ಷಯ ಮಾಸಗಳ ಪಟ್ಟಿ (2026 – 2036)",
+    intercalaryTableSubtitle: "ಆಯ್ಕೆಮಾಡಿದ ಸಿದ್ಧಾಂತ ಪದ್ಧತಿಯ ಪ್ರಕಾರ ಅಮಾಂತ ಚಾಂದ್ರಮಾಸಗಳ ಫಲಿತಾಂಶಗಳು",
+    thInterYr: "ವರ್ಷ",
+    thInterSamvat: "ಸಂವತ್ಸರದ ಹೆಸರು",
+    thInterMasa: "ಮಾಸದ ಹೆಸರು",
+    thInterType: "ವಿಧ / ಸ್ಥಾನಮಾನ",
+    thInterSankranti: "ಸಂಕ್ರಾಂತಿಗಳು",
+    thInterSpan: "ಅವಧಿ (ಆರಂಭ – ಮುಕ್ತಾಯ)",
+    thInterRule: "ಶಾಸ್ತ್ರ ವಿವರಣೆ",
+    toDateSpan: "ಇಂದ",
+    kdHeroBadge: "📊 ವಾರ್ಷಿಕ ಕಂದದಾಯ ಗಣಿತ",
+    kdMainHeading: "ಕಂದದಾಯ ಫಲಗಳು & ಆದಾಯ ವ್ಯಯಗಳು",
+    kdMainSubtitle: "ದ್ವಾದಶ ರಾಶಿಗಳ ಆದಾಯ-ವ್ಯಯ, ರಾಜಪೂಜ್ಯ-ಅವಮಾನ ಮತ್ತು 27 ನಕ್ಷತ್ರಗಳ ತ್ರೈಮಾಸಿಕ (ಪ್ರಥಮ, ದ್ವಿತೀಯ, ತೃತೀಯ ಕಂದಾಯಗಳ) ಪ್ರಮಾಣಿತ ಫಲಗಳು.",
+    kdCreatorBadge: "✍️ ಕರ್ತೃ: ರಾಮಚಂದ್ರ ಶಾಸ್ತ್ರಿ ಮುನಿಮಡುಗು",
+    jumpToRashiKdBtn: "💰 ರಾಶಿ ಕಂದದಾಯ",
+    jumpToNakshatraKdBtn: "⭐ ನಕ್ಷತ್ರ ಕಂದಾಯಗಳು",
+    jumpToShastraKdBtn: "📜 ಶಾಸ್ತ್ರ ಗಣನೆ ಸೂತ್ರಗಳು",
+    kdQuickT1Title: "🌱 ಪ್ರಥಮ ಕಂದಾಯ",
+    kdQuickT1Span: "ಮೊದಲ 4 ತಿಂಗಳುಗಳು",
+    kdQuickT1Months: "ಚೈತ್ರ, ವೈಶಾಖ, ಜ್ಯೇಷ್ಠ, ಆಷಾಢ",
+    kdQuickT1Max: "ಗರಿಷ್ಠ ಮಿತಿ: 8 ಭಾಗಗಳು (ಶೇಷ 0–7)",
+    kdQuickT2Title: "🌧️ ದ್ವಿತೀಯ ಕಂದಾಯ",
+    kdQuickT2Span: "ಎರಡನೇ 4 ತಿಂಗಳುಗಳು",
+    kdQuickT2Months: "ಶ್ರಾವಣ, ಭಾದ್ರಪದ, ಆಶ್ವಯುಜ, ಕಾರ್ತಿಕ",
+    kdQuickT2Max: "ಗರಿಷ್ಠ ಮಿತಿ: 3 ಭಾಗಗಳು (ಶೇಷ 0–2)",
+    kdQuickT3Title: "❄️ ತೃತೀಯ ಕಂದಾಯ",
+    kdQuickT3Span: "ಮೂರನೇ 4 ತಿಂಗಳುಗಳು",
+    kdQuickT3Months: "ಮಾರ್ಗಶಿರ, ಪುಷ್ಯ, ಮಾಘ, ಫಾಲ್ಗುಣ",
+    kdQuickT3Max: "ಗರಿಷ್ಠ ಮಿತಿ: 5 ಭಾಗಗಳು (ಶೇಷ 0–4)",
+    rashiKdSectionTitle: "💰 ದ್ವಾದಶ ರಾಶಿ ಕಂದದಾಯ (ಆದಾಯ, ವ್ಯಯ, ರಾಜಪೂಜ್ಯ, ಅವಮಾನ)",
+    rashiKdSectionSubtitle: "ದ್ವಾದಶ ರಾಶಿಗಳ ಸಂಪೂರ್ಣ ಆರ್ಥಿಕ ಮತ್ತು ಸಾಮಾಜಿಕ ಗೌರವ ಸ್ಥಿತಿಗತಿಗಳು",
+    rashiKdViewCardsBtn: "ಕಾರ್ಡ್‌ಗಳು",
+    rashiKdViewTableBtn: "ಕೋಷ್ಟಕ",
+    thKdRashi: "ರಾಶಿ",
+    thKdLord: "ಅಧಿಪತಿ",
+    thKdAdayam: "ಆದಾಯ",
+    thKdVyayam: "ವ್ಯಯ",
+    thKdRajapujyam: "ರಾಜಪೂಜ್ಯ",
+    thKdAvamanam: "ಅವಮಾನ",
+    thKdFinStatus: "ಆರ್ಥಿಕ ಸ್ಥಿತಿ",
+    thKdSocStatus: "ಸಾಮಾಜಿಕ ಗೌರವ",
+    thKdVerdict: "ಸಮಗ್ರ ತೀರ್ಮಾನ",
+    nakshatraSectionTitle: "⭐ 27 ನಕ್ಷತ್ರ ಕಂದಾಯ ಫಲಗಳು (ತ್ರೈಮಾಸಿಕ ವಿಭಜನೆ)",
+    nakshatraSectionSubtitle: "ವರ್ಷದ 3 ಕಂದಾಯಗಳ ಪ್ರಕಾರ ನಿಮ್ಮ ಜನ್ಮ ನಕ್ಷತ್ರದ ಫಲಗಳನ್ನು ತಿಳಿದುಕೊಳ್ಳಿ",
+    nakshatraSelectLabel: "ನಕ್ಷತ್ರ:",
+    nakshatraMasterTableTitle: "📋 ಸಮಗ್ರ 27 ನಕ್ಷತ್ರಗಳ ಕಂದಾಯ ಕೋಷ್ಟಕ (Master Table)",
+    nakshatraTableSearchInput: "ನಕ್ಷತ್ರದ ಹೆಸರಿನಿಂದ ಹುಡುಕಿ...",
+    thNId: "ಕ್ರ.ಸಂ.",
+    thNName: "ನಕ್ಷತ್ರ",
+    thNRashis: "ರಾಶಿಗಳು",
+    thNT1: "ಪ್ರಥಮ (1–4 ತಿಂಗಳು)",
+    thNT2: "ದ್ವಿತೀಯ (5–8 ತಿಂಗಳು)",
+    thNT3: "ತೃತೀಯ (9–12 ತಿಂಗಳು)",
+    thNOverall: "ವಾರ್ಷಿಕ ಸ್ಥಿತಿ",
+    shastraKdTitle: "📜 ಕಂದದಾಯ ಗಣಿತ ವಿಜ್ಞಾನ ಮತ್ತು ಶಾಸ್ತ್ರ ಪ್ರಮಾಣಗಳು",
+    shastraKdT1Title: "📅 ವರ್ಷದ ಕಾಲ ವಿಭಜನೆ (3 ಕಂದಾಯಗಳು)",
+    shastraKdT2Title: "⚖️ ದ್ವಾದಶ ರಾಶಿ ಕಂದದಾಯ ಗಣಿತ",
+    nakshatraWord: "ನಕ್ಷತ್ರ",
+    spreadRashisPadasLabel: "ವ್ಯಾಪಿಸಿದ ರಾಶಿಗಳು / ಪಾದಗಳು:",
+    annualCompositeStatusLabel: "ವಾರ್ಷಿಕ ಸಮಗ್ರ ಸ್ಥಿತಿ",
+    trimester1Title: "ಪ್ರಥಮ ಕಂದಾಯ",
+    trimester1Months: "ಚೈತ್ರ – ಆಷಾಢ (ತಿಂಗಳು 1–4)",
+    trimester1MaxLimit: "ಗರಿಷ್ಠ ಮಿತಿ: 8 ಭಾಗಗಳು",
+    trimester2Title: "ದ್ವಿತೀಯ ಕಂದಾಯ",
+    trimester2Months: "ಶ್ರಾವಣ – ಕಾರ್ತಿಕ (ತಿಂಗಳು 5–8)",
+    trimester2MaxLimit: "ಗರಿಷ್ಠ ಮಿತಿ: 3 ಭಾಗಗಳು",
+    trimester3Title: "ತೃತೀಯ ಕಂದಾಯ",
+    trimester3Months: "ಮಾರ್ಗಶಿರ – ಫಾಲ್ಗುಣ (ತಿಂಗಳು 9–12)",
+    trimester3MaxLimit: "ಗರಿಷ್ಠ ಮಿತಿ: 5 ಭಾಗಗಳು",
+    annualSummaryAdviceLabel: "ವಾರ್ಷಿಕ ಫಲ ಸಾರಾಂಶ & ಮಾರ್ಗದರ್ಶನ:",
+    noNakshatraFound: "ಯಾವುದೇ ನಕ್ಷತ್ರ ಫಲಗಳು ಕಂಡುಬಂದಿಲ್ಲ",
+    rashiHeading: "ರಾಶಿ ಫಲ (ಗೋಚಾರ ಫಲಗಳು)",
+    rashiSubtitle: "ಖಗೋಳ ಗೋಚಾರ ಸಂಚಾರ, ಚಂದ್ರಬಲ, ತಾರಾಬಲ ಮತ್ತು ಪಂಚಾಂಗ ಕಂದಾಯ ಸೂತ್ರಗಳ ಆಧಾರಿತ ಪ್ರಮಾಣಿತ ಫಲಗಳು.",
+    rashiGocharaBadge: "♈ ದ್ವಾದಶ ರಾಶಿ ಗೋಚಾರ",
+    moonTransitLabel: "ಚಂದ್ರ ಸಂಚಾರ",
+    solarMonthLabel: "ಸೌರ ಮಾಸ",
+    kandadayamTableLabel: "ಪಂಚಾಂಗ ಕಂದಾಯ ಕೋಷ್ಟಕ",
+    kdAdayam: "ಆದಾಯ",
+    kdVyayam: "ವ್ಯಯ",
+    kdRajapujyam: "ರಾಜಪೂಜ್ಯ",
+    kdAvamanam: "ಅವಮಾನ",
+    statusAuspicious: "ಉತ್ತಮ (Auspicious)",
+    statusFavorable: "ಅನುಕೂಲ (Favorable)",
+    statusModerate: "ಮಧ್ಯಮ (Moderate)",
+    statusCaution: "ಎಚ್ಚರಿಕೆ (Caution)",
+    footerOrgTitle: "ವೇದ ಸಂಹಿತಾ • Vedic Samhita",
+    footerOrgSubtitle: "Vedic Astronomy & Dharma Shastra Computation System",
+    footerCreatorRole: "ಸಿದ್ಧಾಂತ & ಖಗೋಳ ಕಂಪ್ಯೂಟೇಶನ್ ಕರ್ತೃ (System Architect & Creator)",
+    footerCreatorName: "ರಾಮಚಂದ್ರ ಶಾಸ್ತ್ರಿ ಮುನಿಮಡುಗು",
+    footerCreatorDesc: "ಈ ಪಂಚಾಂಗ ಗಣನೆಗಳು, ವೈದಿಕ ಖಗೋಳ ಸೂತ್ರಗಳು, ಧರ್ಮಶಾಸ್ತ್ರ ನಿರ್ಣಯಗಳು ಮತ್ತು ತಾಂತ್ರಿಕ ಕ್ರೋಡೀಕರಣವು ಸಮಗ್ರವಾಗಿ <strong class=\"text-amber-200 font-bold\">ಶ್ರೀ ರಾಮಚಂದ್ರ ಶಾಸ್ತ್ರಿ ಮುನಿಮಡುಗು</strong> ಅವರ ಸಂಶೋಧನೆ ಮತ್ತು ವಿನ್ಯಾಸದಿಂದ ರಚಿತವಾಗಿದೆ. <br class=\"hidden sm:inline\"/> All credits go to <strong class=\"text-amber-200 font-bold\">RAMACHANDRA SASTRY MUNIMADUGU</strong>.",
+    footerOfficialWebsiteLabel: "ಅಧಿಕೃತ ವೆಬ್‌ಸೈಟ್:",
+    footerPoweredBy: "Swiss Ephemeris ಖಗೋಳ ಗಣನೆಗಳು, ಜ್ಯೋತಿಷ ಎಂಜಿನ್ ಮತ್ತು ಅಕ್ಷರಮುಖ ಬಹುಭಾಷಾ ಲಿಪ್ಯಂತರ ಆಧಾರಿತ.",
+    chandrashtamaAlertTitle: "ಚಂದ್ರಾಷ್ಟಮ ಎಚ್ಚರಿಕೆ (Chandrashtama Active)",
+    chandrashtamaAlertDesc: "ಇಂದು ಚಂದ್ರನು ನಿಮ್ಮ ಜನ್ಮ ರಾಶಿಯಿಂದ 8ನೇ ಮನೆಯಲ್ಲಿ ಸಂಚರಿಸುತ್ತಿದ್ದಾನೆ. ವಾದ-ವಿವಾದಗಳು, ಹಣಕಾಸು ವ್ಯವಹಾರಗಳು ಮತ್ತು ಹೊಸ ಒಪ್ಪಂದಗಳನ್ನು ಪ್ರಾರಂಭಿಸುವಲ್ಲಿ ಹೆಚ್ಚಿನ ಎಚ್ಚರಿಕೆ ಅಗತ್ಯ. ಶಿವಾರಾಧನೆ ಶುಭಪ್ರದ.",
+    moonHouseLabel: "ಚಂದ್ರ ಸ್ಥಾನ",
+    houseSuffix: "ನೇ ಮನೆ",
+    tarabalamLabel: "ತಾರಾಬಲ",
+    taraGood: "ಶುಭ ತಾರೆ ✔️",
+    taraCaution: "ಎಚ್ಚರಿಕೆ ⚠️",
+    luckyNumberLabel: "ಅದೃಷ್ಟ ಸಂಖ್ಯೆ",
+    luckyColorLabel: "ಅದೃಷ್ಟ ಬಣ್ಣ",
+    luckyDirectionLabel: "ಅನುಕೂಲ ದಿಕ್ಕು",
+    sunTransitLabel: "ಸೂರ್ಯ ಸಂಕ್ರಮಣ",
+    placeSuffix: "ನೇ ಸ್ಥಾನ",
+    sunFavorable: "ಅನುಕೂಲ ಸೂರ್ಯ ಬಲ (ಉಪಚಯ) ☀️",
+    sunUnfavorable: "ಸೂರ್ಯ ಪ್ರತಿಕೂಲತೆ (ತಾಳ್ಮೆ ಅಗತ್ಯ)",
+    monthlyHighlightsLabel: "ಮಾಸಿಕ ಮುಖ್ಯಾಂಶಗಳು",
+    guruBalamLabel: "ಗುರು ಬಲ",
+    guruBalamYes: "ಗುರು ಬಲವಿದೆ ✨",
+    guruBalamNo: "ಗುರು ಶಾಂತಿ ಅಗತ್ಯ",
+    shaniGocharaLabel: "ಶನಿ ಗೋಚಾರ",
+    rahuKetuTransitLabel: "ರಾಹು-ಕೇತು ಸಂಚಾರ",
+    financialAnalysisLabel: "ಆರ್ಥಿಕ ಸ್ಥಿತಿ ವಿಶ್ಲೇಷಣೆ",
+    socialAnalysisLabel: "ಸಾಮಾಜಿಕ ಸ್ಥಾನಮಾನ ವಿಶ್ಲೇಷಣೆ",
+    rashiOverviewTitle: "ಸಾಮಾನ್ಯ ಅವಲೋಕನ (General Overview)",
+    rashiCareerTitle: "ಉದ್ಯೋಗ & ವ್ಯವಹಾರ (Career & Profession)",
+    rashiFinanceTitle: "ಆರ್ಥಿಕ ಸ್ಥಿತಿ & ಧನ ಯೋಗ (Finance & Wealth)",
+    rashiHealthTitle: "ಆರೋಗ್ಯ & ಚೈತನ್ಯ (Health & Well-being)",
+    rashiFamilyTitle: "ಕುಟುಂಬ & ದಾಂಪತ್ಯ (Family & Relationships)",
+    rashiRemediesTitle: "ಶಾಂತಿ / ದೈವಿಕ ಪರಿಹಾರ (Remedies & Prayers)",
+    lordLabel: "ಅಧಿಪತಿ:",
+    elementLabel: "ತತ್ತ್ವ:",
+    compatibilityScoreLabel: "ಹೊಂದಾಣಿಕೆ ಅಂಕ",
+    chandrashtamaMiniBadge: "ಚಂದ್ರಾಷ್ಟಮ",
+    sunShortLabel: "ರವಿ",
+    incomeShort: "ಆ",
+    expenseShort: "ವ್ಯ",
+    gpsNotSupported: "ನಿಮ್ಮ ಬ್ರೌಸರ್‌ನಲ್ಲಿ GPS ಜಿಯೋಲೊಕೇಶನ್ ಬೆಂಬಲವಿಲ್ಲ.",
+    gpsSuccess: "ಸ್ಥಳವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಗುರುತಿಸಲಾಗಿದೆ",
+    gpsDenied: "ಸ್ಥಳದ ಅನುಮತಿ ನಿರಾಕರಿಸಲಾಗಿದೆ"
   },
   malayalam: {
     appTitle: "വേദ സംഹിത • പഞ്ചാംഗം",
@@ -611,7 +1611,207 @@ const UI_TEXT = {
     loaderText: "പഞ്ചാംഗ വിവരങ്ങൾ ലോഡ് ചെയ്യുന്നു...",
     geoCoordLabel: "ഭൂമിശാസ്ത്രപരമായ സ്ഥാനം",
     dveepaLabel: "ദ്വീപ്",
-    khandaLabel: "ഖണ്ഡം"
+    khandaLabel: "ഖണ്ഡം",
+
+    prevDayTitle: "Previous Day",
+    nextDayTitle: "Next Day",
+    maxWord: "Max",
+    bannerPurePeriod: "Pure Period",
+    bannerTabooAuspicious: "Auspicious Ceremonies Prohibited",
+    bannerTabooConstruction: "Construction / Housewarming Prohibited",
+    bannerAnnualScheduleBtn: "Annual Schedule & Shastric Rules",
+    modalMoudhyamTitle: "🪔 Annual Moudhyam & Kartari Schedule",
+    modalMoudhyamSubtitle: "Nirayana Ephemeris Computation • Muhurtha Dharma Shastra Prohibitions & Allowances",
+    timezoneLabel: "Timezone",
+    moudhyamTimesSubtitle: "🕒 Timings: Your Local Time & (IST Indian Standard Time)",
+    thPhase: "Phase",
+    thTransit: "Solar Transit",
+    thTiming: "Exact Timing",
+    thSignificance: "Significance",
+    moudhyamSectionTitle: "Moudhyam Periods (Combustion of Jupiter & Venus)",
+    moudhyamSectionSubtitle: "Inauspicious periods when Jupiter or Venus are in deep celestial conjunction with the Sun.",
+    durationLabel: "Duration",
+    daysLabel: "days",
+    moudhyamStartLabel: "Start (Combustion / Set):",
+    moudhyamEndLabel: "End (Helical Rise):",
+    vardhakyaLabel: "Vardhakya Dosha:",
+    balyaLabel: "Balya Dosha:",
+    prohibitionLabel: "Prohibition:",
+    shastraDecisionsTitle: "Dharma Shastra Muhurtha Rules (Permitted vs Prohibited)",
+    moudhyamTaboosTitle: "Taboos in Moudhyam:",
+    kartariTaboosTitle: "Taboos in Kartari:",
+    permittedKarmasTitle: "Permitted Karmas:",
+    moudhyamLoading: "Loading Moudhyam & Kartari schedule...",
+    moudhyamError: "Error loading schedule. Please try again.",
+    adhikaMasaBadge: "Adhika Masa",
+    nijaMasaBadge: "Nija Masa",
+    kshayaMasaBadge: "Kshaya Masa",
+    sankrantiWord: "Sankrantis",
+    shuklaPaksha: "Shukla Paksha",
+    krishnaPaksha: "Krishna Paksha",
+    solarDaySuffix: "day",
+    intercalaryHeroBadge: "🏛️ Dharma Shastra & Astronomy • Kalamadhaviyam",
+    intercalaryHeroTitle: "Adhika & Kshaya Masas: Astronomy & Dharma Shastra Computation",
+    intercalaryHeroSubtitle: "Comprehensive calculation of Adhika, Kshaya, Samsarpa, and Amhaspati months according to Surya Siddhanta and Kalamadhaviya shastric canons.",
+    systemSuryaBtn: "📜 Surya Siddhanta (Shastra)",
+    systemDrikBtn: "🔭 Drik Siddhanta (Swiss Ephemeris)",
+    suryaSystemBadge: "Surya Siddhanta / Dharma Shastra Method",
+    drikSystemBadge: "Drik Siddhanta Method (Swiss Ephemeris)",
+    kalamadhavaHeader: "Kalamadhava Canonical Verse (Kalamadhaviyam)",
+    kalamadhavaRuleDesc: "<strong>Dharma Shastra Rule:</strong> When two asankranta (no solar ingress) months occur in a single solar year, the first is <strong>Samsarpa</strong>. The intermediate month with two ingresses is the <strong>Kshaya Masa (Amhaspati)</strong>. The subsequent asankranta month is the <strong>Adhika Masa</strong>. Routine (Nitya/Naimittika) rites are permitted in Samsarpa; auspicious events like weddings are strictly taboo in Amhaspati (Kshaya).",
+    adhikaCardTitle: "Adhika Masa (Asankranta)",
+    adhikaCardBadge: "0 Ingresses",
+    adhikaCardFormula: "Ingresses = 0 (Asankranta)",
+    adhikaCardDesc: "When the Sun does not transit into any new zodiac sign between two successive Amavasyas (New Moons), it is an Adhika Masa. Occurs every ~32.5 lunar months.",
+    nijaCardTitle: "Nija Masa (Normal Lunar Month)",
+    nijaCardBadge: "1 Ingress",
+    nijaCardFormula: "Ingresses = 1 (Sankranta)",
+    nijaCardDesc: "A standard lunar month containing exactly one solar ingress. Propitious for all auspicious events and Vedic sacraments.",
+    kshayaCardTitle: "Kshaya Masa (Dvi-Sankranta)",
+    kshayaCardBadge: "2 Ingresses",
+    kshayaCardFormula: "Ingresses = 2 (Dvi-Sankranta)",
+    kshayaCardDesc: "When two solar ingresses occur within a single lunar month, it is an expunged or Kshaya month (Amhaspati), fusing two months into one.",
+    driftTitle: "📐 Solar-Lunar Calendar Principles (Calendar Drift)",
+    driftSolarYr: "Solar Year:",
+    driftLunarYr: "Lunar Year (12 × 29.5):",
+    driftAnnual: "Annual Drift:",
+    drift3Yr: "Drift accumulated in 3 years:",
+    driftLagadhaRule: "✨ <strong>Vedanga Jyotisha Canon (Sage Lagadha):</strong> In a 5-year Yuga cycle, 60 Solar months equal 62 Lunar months. Exactly 2 Adhika Masas occur every 5 years.",
+    kaliyugaTitle: "🪐 Kaliyuga Cosmic Balance & Kshaya Recurrence Cycle",
+    perihelionRule: "💡 <strong>Astronomical Perihelion Rule:</strong> Two solar ingresses within one lunar month can only occur when Earth is near perihelion and the Sun transits rapidly through Sagittarius, Capricorn, or Aquarius.",
+    keelakaBadge: "Special Case Study",
+    keelakaTitle: "Sri Keelaka Samvatsara (2028–2029) • Kshaya & Samsarpa Months",
+    keelakaDesc: "According to the unanimous resolution of the <strong>'Telangana Vidwatsabha' Conference</strong> of 23 eminent Siddhantis and Vedic Scholars (Aug 30, 2026): In Sri Keelaka Samvatsara, Kartika is established as <strong>Samsarpa Kartika (Adhika)</strong>, followed by the combined Margashira-Pushya <strong>Amhaspati Masa (Kshaya Masa)</strong>.",
+    intercalaryTableTitle: "📅 10-Year Adhika & Kshaya Masas Schedule (2026–2036)",
+    intercalaryTableSubtitle: "Amanta lunar month calculations computed under the selected siddhanta system",
+    thInterYr: "Year",
+    thInterSamvat: "Samvatsara Name",
+    thInterMasa: "Month Name",
+    thInterType: "Type / Status",
+    thInterSankranti: "Ingresses",
+    thInterSpan: "Span (Start – End)",
+    thInterRule: "Shastric Rule",
+    toDateSpan: "to",
+    kdHeroBadge: "📊 Annual Kandadayam Computation",
+    kdMainHeading: "Kandadayam Results & Income-Expenditure",
+    kdMainSubtitle: "Canonical results for 12 Rashis (Income, Expense, Honor, Disgrace) and 27 Nakshatras across 3 Trimesters (Prathama, Dvitiya, Tritiya Kandayams).",
+    kdCreatorBadge: "✍️ Created by: Ramachandra Sastry Munimadugu",
+    jumpToRashiKdBtn: "💰 Rashi Kandadayam",
+    jumpToNakshatraKdBtn: "⭐ Nakshatra Trimesters",
+    jumpToShastraKdBtn: "📜 Shastric Computation Rules",
+    kdQuickT1Title: "🌱 First Trimester (Prathama)",
+    kdQuickT1Span: "Months 1–4",
+    kdQuickT1Months: "Chaitra, Vaishakha, Jyeshtha, Ashadha",
+    kdQuickT1Max: "Max Limit: 8 Units (Remainder 0–7)",
+    kdQuickT2Title: "🌧️ Second Trimester (Dvitiya)",
+    kdQuickT2Span: "Months 5–8",
+    kdQuickT2Months: "Shravana, Bhadrapada, Ashwayuja, Kartika",
+    kdQuickT2Max: "Max Limit: 3 Units (Remainder 0–2)",
+    kdQuickT3Title: "❄️ Third Trimester (Tritiya)",
+    kdQuickT3Span: "Months 9–12",
+    kdQuickT3Months: "Margashira, Pushya, Magha, Phalguna",
+    kdQuickT3Max: "Max Limit: 5 Units (Remainder 0–4)",
+    rashiKdSectionTitle: "💰 12 Rashi Kandadayam (Income, Expense, Honor, Disgrace)",
+    rashiKdSectionSubtitle: "Comprehensive financial and social status evaluation of all 12 Rashis",
+    rashiKdViewCardsBtn: "Cards",
+    rashiKdViewTableBtn: "Table",
+    thKdRashi: "Rashi",
+    thKdLord: "Lord",
+    thKdAdayam: "Income (Adayam)",
+    thKdVyayam: "Expense (Vyayam)",
+    thKdRajapujyam: "Honor (Rajapujyam)",
+    thKdAvamanam: "Disgrace (Avamanam)",
+    thKdFinStatus: "Financial Status",
+    thKdSocStatus: "Social Honor",
+    thKdVerdict: "Verdict",
+    nakshatraSectionTitle: "⭐ 27 Nakshatra Kandayam Results (Trimester Breakdown)",
+    nakshatraSectionSubtitle: "Discover your birth star results across the 3 trimester periods of the year",
+    nakshatraSelectLabel: "Nakshatra:",
+    nakshatraMasterTableTitle: "📋 Master Table: 27 Nakshatras Trimester Kandayam",
+    nakshatraTableSearchInput: "Search by star name...",
+    thNId: "S.No",
+    thNName: "Nakshatra",
+    thNRashis: "Rashis",
+    thNT1: "First (Months 1–4)",
+    thNT2: "Second (Months 5–8)",
+    thNT3: "Third (Months 9–12)",
+    thNOverall: "Annual Rating",
+    shastraKdTitle: "📜 Shastric Rules & Trimester Science of Kandadayam",
+    shastraKdT1Title: "📅 Year Division (3 Trimesters / Kandayams)",
+    shastraKdT2Title: "⚖️ 12 Rashi Kandadayam Mathematical Principles",
+    nakshatraWord: "Nakshatra",
+    spreadRashisPadasLabel: "Spread Rashis / Padas:",
+    annualCompositeStatusLabel: "Annual Composite Status",
+    trimester1Title: "First Trimester",
+    trimester1Months: "Chaitra – Ashadha (Months 1–4)",
+    trimester1MaxLimit: "Max limit: 8 units",
+    trimester2Title: "Second Trimester",
+    trimester2Months: "Shravana – Kartika (Months 5–8)",
+    trimester2MaxLimit: "Max limit: 3 units",
+    trimester3Title: "Third Trimester",
+    trimester3Months: "Margashira – Phalguna (Months 9–12)",
+    trimester3MaxLimit: "Max limit: 5 units",
+    annualSummaryAdviceLabel: "Annual Summary & Guidance:",
+    noNakshatraFound: "No nakshatra results found",
+    rashiHeading: "Rashi Phalalu (Gochara Horoscope)",
+    rashiSubtitle: "Authoritative predictions based on celestial transits, Chandrabalam, Tarabalam, and Panchangam Kandadayam principles.",
+    rashiGocharaBadge: "♈ 12 Rashis Gochara",
+    moonTransitLabel: "Moon Transit",
+    solarMonthLabel: "Solar Month",
+    kandadayamTableLabel: "Panchangam Kandadayam Table",
+    kdAdayam: "Income",
+    kdVyayam: "Expense",
+    kdRajapujyam: "Honor",
+    kdAvamanam: "Disgrace",
+    statusAuspicious: "Auspicious",
+    statusFavorable: "Favorable",
+    statusModerate: "Moderate",
+    statusCaution: "Caution",
+    footerOrgTitle: "Vedic Samhita • Vedic Samhita",
+    footerOrgSubtitle: "Vedic Astronomy & Dharma Shastra Computation System",
+    footerCreatorRole: "System Architect & Creator (Astronomical Siddhanta Computation)",
+    footerCreatorName: "Ramachandra Sastry Munimadugu",
+    footerCreatorDesc: "These panchangam algorithms, Vedic astronomical models, Dharma Shastra canons, and computational systems are authored and architected by <strong class=\"text-amber-200 font-bold\">RAMACHANDRA SASTRY MUNIMADUGU</strong>. <br class=\"hidden sm:inline\"/> All credits go to <strong class=\"text-amber-200 font-bold\">RAMACHANDRA SASTRY MUNIMADUGU</strong>.",
+    footerOfficialWebsiteLabel: "Official Website:",
+    footerPoweredBy: "Powered by Swiss Ephemeris astronomical computation engine and Aksharamukha script transliteration.",
+    chandrashtamaAlertTitle: "Chandrashtama Warning (Chandrashtama Active)",
+    chandrashtamaAlertDesc: "Today the Moon transits the 8th house from your Janma Rashi. Exercise utmost caution in arguments, financial dealings, and launching major new agreements. Worship of Lord Shiva is recommended.",
+    moonHouseLabel: "Moon House",
+    houseSuffix: "th House",
+    tarabalamLabel: "Tarabalam",
+    taraGood: "Auspicious Tara ✔️",
+    taraCaution: "Caution ⚠️",
+    luckyNumberLabel: "Lucky Number",
+    luckyColorLabel: "Lucky Color",
+    luckyDirectionLabel: "Lucky Direction",
+    sunTransitLabel: "Solar Transit",
+    placeSuffix: "th House",
+    sunFavorable: "Favorable Sun Strength (Upachaya) ☀️",
+    sunUnfavorable: "Sun Adversity (Patience required)",
+    monthlyHighlightsLabel: "Monthly Highlights",
+    guruBalamLabel: "Guru Balam",
+    guruBalamYes: "Guru Balam Present ✨",
+    guruBalamNo: "Guru Shanti Recommended",
+    shaniGocharaLabel: "Saturn Transit",
+    rahuKetuTransitLabel: "Rahu-Ketu Transit",
+    financialAnalysisLabel: "Financial Status Analysis",
+    socialAnalysisLabel: "Social Status Analysis",
+    rashiOverviewTitle: "General Overview",
+    rashiCareerTitle: "Career & Profession",
+    rashiFinanceTitle: "Finance & Wealth",
+    rashiHealthTitle: "Health & Well-being",
+    rashiFamilyTitle: "Family & Relationships",
+    rashiRemediesTitle: "Remedies & Prayers",
+    lordLabel: "Lord:",
+    elementLabel: "Element:",
+    compatibilityScoreLabel: "Compatibility Score",
+    chandrashtamaMiniBadge: "Chandrashtama",
+    sunShortLabel: "Sun",
+    incomeShort: "Inc",
+    expenseShort: "Exp",
+    gpsNotSupported: "GPS Geolocation is not supported by your browser.",
+    gpsSuccess: "Location detected successfully",
+    gpsDenied: "Location permission denied"
   },
   gujarati: {
     appTitle: "વૈદિક સંહિતા • પંચાંગ",
@@ -708,7 +1908,207 @@ const UI_TEXT = {
     loaderText: "પંચાંગ વિગતો લોડ થઈ રહી છે...",
     geoCoordLabel: "ભૌગોલિક સ્થાન",
     dveepaLabel: "દ્વીપ",
-    khandaLabel: "ખંડ"
+    khandaLabel: "ખંડ",
+
+    prevDayTitle: "Previous Day",
+    nextDayTitle: "Next Day",
+    maxWord: "Max",
+    bannerPurePeriod: "Pure Period",
+    bannerTabooAuspicious: "Auspicious Ceremonies Prohibited",
+    bannerTabooConstruction: "Construction / Housewarming Prohibited",
+    bannerAnnualScheduleBtn: "Annual Schedule & Shastric Rules",
+    modalMoudhyamTitle: "🪔 Annual Moudhyam & Kartari Schedule",
+    modalMoudhyamSubtitle: "Nirayana Ephemeris Computation • Muhurtha Dharma Shastra Prohibitions & Allowances",
+    timezoneLabel: "Timezone",
+    moudhyamTimesSubtitle: "🕒 Timings: Your Local Time & (IST Indian Standard Time)",
+    thPhase: "Phase",
+    thTransit: "Solar Transit",
+    thTiming: "Exact Timing",
+    thSignificance: "Significance",
+    moudhyamSectionTitle: "Moudhyam Periods (Combustion of Jupiter & Venus)",
+    moudhyamSectionSubtitle: "Inauspicious periods when Jupiter or Venus are in deep celestial conjunction with the Sun.",
+    durationLabel: "Duration",
+    daysLabel: "days",
+    moudhyamStartLabel: "Start (Combustion / Set):",
+    moudhyamEndLabel: "End (Helical Rise):",
+    vardhakyaLabel: "Vardhakya Dosha:",
+    balyaLabel: "Balya Dosha:",
+    prohibitionLabel: "Prohibition:",
+    shastraDecisionsTitle: "Dharma Shastra Muhurtha Rules (Permitted vs Prohibited)",
+    moudhyamTaboosTitle: "Taboos in Moudhyam:",
+    kartariTaboosTitle: "Taboos in Kartari:",
+    permittedKarmasTitle: "Permitted Karmas:",
+    moudhyamLoading: "Loading Moudhyam & Kartari schedule...",
+    moudhyamError: "Error loading schedule. Please try again.",
+    adhikaMasaBadge: "Adhika Masa",
+    nijaMasaBadge: "Nija Masa",
+    kshayaMasaBadge: "Kshaya Masa",
+    sankrantiWord: "Sankrantis",
+    shuklaPaksha: "Shukla Paksha",
+    krishnaPaksha: "Krishna Paksha",
+    solarDaySuffix: "day",
+    intercalaryHeroBadge: "🏛️ Dharma Shastra & Astronomy • Kalamadhaviyam",
+    intercalaryHeroTitle: "Adhika & Kshaya Masas: Astronomy & Dharma Shastra Computation",
+    intercalaryHeroSubtitle: "Comprehensive calculation of Adhika, Kshaya, Samsarpa, and Amhaspati months according to Surya Siddhanta and Kalamadhaviya shastric canons.",
+    systemSuryaBtn: "📜 Surya Siddhanta (Shastra)",
+    systemDrikBtn: "🔭 Drik Siddhanta (Swiss Ephemeris)",
+    suryaSystemBadge: "Surya Siddhanta / Dharma Shastra Method",
+    drikSystemBadge: "Drik Siddhanta Method (Swiss Ephemeris)",
+    kalamadhavaHeader: "Kalamadhava Canonical Verse (Kalamadhaviyam)",
+    kalamadhavaRuleDesc: "<strong>Dharma Shastra Rule:</strong> When two asankranta (no solar ingress) months occur in a single solar year, the first is <strong>Samsarpa</strong>. The intermediate month with two ingresses is the <strong>Kshaya Masa (Amhaspati)</strong>. The subsequent asankranta month is the <strong>Adhika Masa</strong>. Routine (Nitya/Naimittika) rites are permitted in Samsarpa; auspicious events like weddings are strictly taboo in Amhaspati (Kshaya).",
+    adhikaCardTitle: "Adhika Masa (Asankranta)",
+    adhikaCardBadge: "0 Ingresses",
+    adhikaCardFormula: "Ingresses = 0 (Asankranta)",
+    adhikaCardDesc: "When the Sun does not transit into any new zodiac sign between two successive Amavasyas (New Moons), it is an Adhika Masa. Occurs every ~32.5 lunar months.",
+    nijaCardTitle: "Nija Masa (Normal Lunar Month)",
+    nijaCardBadge: "1 Ingress",
+    nijaCardFormula: "Ingresses = 1 (Sankranta)",
+    nijaCardDesc: "A standard lunar month containing exactly one solar ingress. Propitious for all auspicious events and Vedic sacraments.",
+    kshayaCardTitle: "Kshaya Masa (Dvi-Sankranta)",
+    kshayaCardBadge: "2 Ingresses",
+    kshayaCardFormula: "Ingresses = 2 (Dvi-Sankranta)",
+    kshayaCardDesc: "When two solar ingresses occur within a single lunar month, it is an expunged or Kshaya month (Amhaspati), fusing two months into one.",
+    driftTitle: "📐 Solar-Lunar Calendar Principles (Calendar Drift)",
+    driftSolarYr: "Solar Year:",
+    driftLunarYr: "Lunar Year (12 × 29.5):",
+    driftAnnual: "Annual Drift:",
+    drift3Yr: "Drift accumulated in 3 years:",
+    driftLagadhaRule: "✨ <strong>Vedanga Jyotisha Canon (Sage Lagadha):</strong> In a 5-year Yuga cycle, 60 Solar months equal 62 Lunar months. Exactly 2 Adhika Masas occur every 5 years.",
+    kaliyugaTitle: "🪐 Kaliyuga Cosmic Balance & Kshaya Recurrence Cycle",
+    perihelionRule: "💡 <strong>Astronomical Perihelion Rule:</strong> Two solar ingresses within one lunar month can only occur when Earth is near perihelion and the Sun transits rapidly through Sagittarius, Capricorn, or Aquarius.",
+    keelakaBadge: "Special Case Study",
+    keelakaTitle: "Sri Keelaka Samvatsara (2028–2029) • Kshaya & Samsarpa Months",
+    keelakaDesc: "According to the unanimous resolution of the <strong>'Telangana Vidwatsabha' Conference</strong> of 23 eminent Siddhantis and Vedic Scholars (Aug 30, 2026): In Sri Keelaka Samvatsara, Kartika is established as <strong>Samsarpa Kartika (Adhika)</strong>, followed by the combined Margashira-Pushya <strong>Amhaspati Masa (Kshaya Masa)</strong>.",
+    intercalaryTableTitle: "📅 10-Year Adhika & Kshaya Masas Schedule (2026–2036)",
+    intercalaryTableSubtitle: "Amanta lunar month calculations computed under the selected siddhanta system",
+    thInterYr: "Year",
+    thInterSamvat: "Samvatsara Name",
+    thInterMasa: "Month Name",
+    thInterType: "Type / Status",
+    thInterSankranti: "Ingresses",
+    thInterSpan: "Span (Start – End)",
+    thInterRule: "Shastric Rule",
+    toDateSpan: "to",
+    kdHeroBadge: "📊 Annual Kandadayam Computation",
+    kdMainHeading: "Kandadayam Results & Income-Expenditure",
+    kdMainSubtitle: "Canonical results for 12 Rashis (Income, Expense, Honor, Disgrace) and 27 Nakshatras across 3 Trimesters (Prathama, Dvitiya, Tritiya Kandayams).",
+    kdCreatorBadge: "✍️ Created by: Ramachandra Sastry Munimadugu",
+    jumpToRashiKdBtn: "💰 Rashi Kandadayam",
+    jumpToNakshatraKdBtn: "⭐ Nakshatra Trimesters",
+    jumpToShastraKdBtn: "📜 Shastric Computation Rules",
+    kdQuickT1Title: "🌱 First Trimester (Prathama)",
+    kdQuickT1Span: "Months 1–4",
+    kdQuickT1Months: "Chaitra, Vaishakha, Jyeshtha, Ashadha",
+    kdQuickT1Max: "Max Limit: 8 Units (Remainder 0–7)",
+    kdQuickT2Title: "🌧️ Second Trimester (Dvitiya)",
+    kdQuickT2Span: "Months 5–8",
+    kdQuickT2Months: "Shravana, Bhadrapada, Ashwayuja, Kartika",
+    kdQuickT2Max: "Max Limit: 3 Units (Remainder 0–2)",
+    kdQuickT3Title: "❄️ Third Trimester (Tritiya)",
+    kdQuickT3Span: "Months 9–12",
+    kdQuickT3Months: "Margashira, Pushya, Magha, Phalguna",
+    kdQuickT3Max: "Max Limit: 5 Units (Remainder 0–4)",
+    rashiKdSectionTitle: "💰 12 Rashi Kandadayam (Income, Expense, Honor, Disgrace)",
+    rashiKdSectionSubtitle: "Comprehensive financial and social status evaluation of all 12 Rashis",
+    rashiKdViewCardsBtn: "Cards",
+    rashiKdViewTableBtn: "Table",
+    thKdRashi: "Rashi",
+    thKdLord: "Lord",
+    thKdAdayam: "Income (Adayam)",
+    thKdVyayam: "Expense (Vyayam)",
+    thKdRajapujyam: "Honor (Rajapujyam)",
+    thKdAvamanam: "Disgrace (Avamanam)",
+    thKdFinStatus: "Financial Status",
+    thKdSocStatus: "Social Honor",
+    thKdVerdict: "Verdict",
+    nakshatraSectionTitle: "⭐ 27 Nakshatra Kandayam Results (Trimester Breakdown)",
+    nakshatraSectionSubtitle: "Discover your birth star results across the 3 trimester periods of the year",
+    nakshatraSelectLabel: "Nakshatra:",
+    nakshatraMasterTableTitle: "📋 Master Table: 27 Nakshatras Trimester Kandayam",
+    nakshatraTableSearchInput: "Search by star name...",
+    thNId: "S.No",
+    thNName: "Nakshatra",
+    thNRashis: "Rashis",
+    thNT1: "First (Months 1–4)",
+    thNT2: "Second (Months 5–8)",
+    thNT3: "Third (Months 9–12)",
+    thNOverall: "Annual Rating",
+    shastraKdTitle: "📜 Shastric Rules & Trimester Science of Kandadayam",
+    shastraKdT1Title: "📅 Year Division (3 Trimesters / Kandayams)",
+    shastraKdT2Title: "⚖️ 12 Rashi Kandadayam Mathematical Principles",
+    nakshatraWord: "Nakshatra",
+    spreadRashisPadasLabel: "Spread Rashis / Padas:",
+    annualCompositeStatusLabel: "Annual Composite Status",
+    trimester1Title: "First Trimester",
+    trimester1Months: "Chaitra – Ashadha (Months 1–4)",
+    trimester1MaxLimit: "Max limit: 8 units",
+    trimester2Title: "Second Trimester",
+    trimester2Months: "Shravana – Kartika (Months 5–8)",
+    trimester2MaxLimit: "Max limit: 3 units",
+    trimester3Title: "Third Trimester",
+    trimester3Months: "Margashira – Phalguna (Months 9–12)",
+    trimester3MaxLimit: "Max limit: 5 units",
+    annualSummaryAdviceLabel: "Annual Summary & Guidance:",
+    noNakshatraFound: "No nakshatra results found",
+    rashiHeading: "Rashi Phalalu (Gochara Horoscope)",
+    rashiSubtitle: "Authoritative predictions based on celestial transits, Chandrabalam, Tarabalam, and Panchangam Kandadayam principles.",
+    rashiGocharaBadge: "♈ 12 Rashis Gochara",
+    moonTransitLabel: "Moon Transit",
+    solarMonthLabel: "Solar Month",
+    kandadayamTableLabel: "Panchangam Kandadayam Table",
+    kdAdayam: "Income",
+    kdVyayam: "Expense",
+    kdRajapujyam: "Honor",
+    kdAvamanam: "Disgrace",
+    statusAuspicious: "Auspicious",
+    statusFavorable: "Favorable",
+    statusModerate: "Moderate",
+    statusCaution: "Caution",
+    footerOrgTitle: "Vedic Samhita • Vedic Samhita",
+    footerOrgSubtitle: "Vedic Astronomy & Dharma Shastra Computation System",
+    footerCreatorRole: "System Architect & Creator (Astronomical Siddhanta Computation)",
+    footerCreatorName: "Ramachandra Sastry Munimadugu",
+    footerCreatorDesc: "These panchangam algorithms, Vedic astronomical models, Dharma Shastra canons, and computational systems are authored and architected by <strong class=\"text-amber-200 font-bold\">RAMACHANDRA SASTRY MUNIMADUGU</strong>. <br class=\"hidden sm:inline\"/> All credits go to <strong class=\"text-amber-200 font-bold\">RAMACHANDRA SASTRY MUNIMADUGU</strong>.",
+    footerOfficialWebsiteLabel: "Official Website:",
+    footerPoweredBy: "Powered by Swiss Ephemeris astronomical computation engine and Aksharamukha script transliteration.",
+    chandrashtamaAlertTitle: "Chandrashtama Warning (Chandrashtama Active)",
+    chandrashtamaAlertDesc: "Today the Moon transits the 8th house from your Janma Rashi. Exercise utmost caution in arguments, financial dealings, and launching major new agreements. Worship of Lord Shiva is recommended.",
+    moonHouseLabel: "Moon House",
+    houseSuffix: "th House",
+    tarabalamLabel: "Tarabalam",
+    taraGood: "Auspicious Tara ✔️",
+    taraCaution: "Caution ⚠️",
+    luckyNumberLabel: "Lucky Number",
+    luckyColorLabel: "Lucky Color",
+    luckyDirectionLabel: "Lucky Direction",
+    sunTransitLabel: "Solar Transit",
+    placeSuffix: "th House",
+    sunFavorable: "Favorable Sun Strength (Upachaya) ☀️",
+    sunUnfavorable: "Sun Adversity (Patience required)",
+    monthlyHighlightsLabel: "Monthly Highlights",
+    guruBalamLabel: "Guru Balam",
+    guruBalamYes: "Guru Balam Present ✨",
+    guruBalamNo: "Guru Shanti Recommended",
+    shaniGocharaLabel: "Saturn Transit",
+    rahuKetuTransitLabel: "Rahu-Ketu Transit",
+    financialAnalysisLabel: "Financial Status Analysis",
+    socialAnalysisLabel: "Social Status Analysis",
+    rashiOverviewTitle: "General Overview",
+    rashiCareerTitle: "Career & Profession",
+    rashiFinanceTitle: "Finance & Wealth",
+    rashiHealthTitle: "Health & Well-being",
+    rashiFamilyTitle: "Family & Relationships",
+    rashiRemediesTitle: "Remedies & Prayers",
+    lordLabel: "Lord:",
+    elementLabel: "Element:",
+    compatibilityScoreLabel: "Compatibility Score",
+    chandrashtamaMiniBadge: "Chandrashtama",
+    sunShortLabel: "Sun",
+    incomeShort: "Inc",
+    expenseShort: "Exp",
+    gpsNotSupported: "GPS Geolocation is not supported by your browser.",
+    gpsSuccess: "Location detected successfully",
+    gpsDenied: "Location permission denied"
   },
   bengali: {
     appTitle: "বৈদিক সংহিতা • পঞ্চাঙ্গ",
@@ -805,7 +2205,207 @@ const UI_TEXT = {
     loaderText: "পঞ্চাঙ্গ বিবরণ লোড হচ্ছে...",
     geoCoordLabel: "ভৌগোলিক অবস্থান",
     dveepaLabel: "দ্বীপ",
-    khandaLabel: "খণ্ড"
+    khandaLabel: "খণ্ড",
+
+    prevDayTitle: "Previous Day",
+    nextDayTitle: "Next Day",
+    maxWord: "Max",
+    bannerPurePeriod: "Pure Period",
+    bannerTabooAuspicious: "Auspicious Ceremonies Prohibited",
+    bannerTabooConstruction: "Construction / Housewarming Prohibited",
+    bannerAnnualScheduleBtn: "Annual Schedule & Shastric Rules",
+    modalMoudhyamTitle: "🪔 Annual Moudhyam & Kartari Schedule",
+    modalMoudhyamSubtitle: "Nirayana Ephemeris Computation • Muhurtha Dharma Shastra Prohibitions & Allowances",
+    timezoneLabel: "Timezone",
+    moudhyamTimesSubtitle: "🕒 Timings: Your Local Time & (IST Indian Standard Time)",
+    thPhase: "Phase",
+    thTransit: "Solar Transit",
+    thTiming: "Exact Timing",
+    thSignificance: "Significance",
+    moudhyamSectionTitle: "Moudhyam Periods (Combustion of Jupiter & Venus)",
+    moudhyamSectionSubtitle: "Inauspicious periods when Jupiter or Venus are in deep celestial conjunction with the Sun.",
+    durationLabel: "Duration",
+    daysLabel: "days",
+    moudhyamStartLabel: "Start (Combustion / Set):",
+    moudhyamEndLabel: "End (Helical Rise):",
+    vardhakyaLabel: "Vardhakya Dosha:",
+    balyaLabel: "Balya Dosha:",
+    prohibitionLabel: "Prohibition:",
+    shastraDecisionsTitle: "Dharma Shastra Muhurtha Rules (Permitted vs Prohibited)",
+    moudhyamTaboosTitle: "Taboos in Moudhyam:",
+    kartariTaboosTitle: "Taboos in Kartari:",
+    permittedKarmasTitle: "Permitted Karmas:",
+    moudhyamLoading: "Loading Moudhyam & Kartari schedule...",
+    moudhyamError: "Error loading schedule. Please try again.",
+    adhikaMasaBadge: "Adhika Masa",
+    nijaMasaBadge: "Nija Masa",
+    kshayaMasaBadge: "Kshaya Masa",
+    sankrantiWord: "Sankrantis",
+    shuklaPaksha: "Shukla Paksha",
+    krishnaPaksha: "Krishna Paksha",
+    solarDaySuffix: "day",
+    intercalaryHeroBadge: "🏛️ Dharma Shastra & Astronomy • Kalamadhaviyam",
+    intercalaryHeroTitle: "Adhika & Kshaya Masas: Astronomy & Dharma Shastra Computation",
+    intercalaryHeroSubtitle: "Comprehensive calculation of Adhika, Kshaya, Samsarpa, and Amhaspati months according to Surya Siddhanta and Kalamadhaviya shastric canons.",
+    systemSuryaBtn: "📜 Surya Siddhanta (Shastra)",
+    systemDrikBtn: "🔭 Drik Siddhanta (Swiss Ephemeris)",
+    suryaSystemBadge: "Surya Siddhanta / Dharma Shastra Method",
+    drikSystemBadge: "Drik Siddhanta Method (Swiss Ephemeris)",
+    kalamadhavaHeader: "Kalamadhava Canonical Verse (Kalamadhaviyam)",
+    kalamadhavaRuleDesc: "<strong>Dharma Shastra Rule:</strong> When two asankranta (no solar ingress) months occur in a single solar year, the first is <strong>Samsarpa</strong>. The intermediate month with two ingresses is the <strong>Kshaya Masa (Amhaspati)</strong>. The subsequent asankranta month is the <strong>Adhika Masa</strong>. Routine (Nitya/Naimittika) rites are permitted in Samsarpa; auspicious events like weddings are strictly taboo in Amhaspati (Kshaya).",
+    adhikaCardTitle: "Adhika Masa (Asankranta)",
+    adhikaCardBadge: "0 Ingresses",
+    adhikaCardFormula: "Ingresses = 0 (Asankranta)",
+    adhikaCardDesc: "When the Sun does not transit into any new zodiac sign between two successive Amavasyas (New Moons), it is an Adhika Masa. Occurs every ~32.5 lunar months.",
+    nijaCardTitle: "Nija Masa (Normal Lunar Month)",
+    nijaCardBadge: "1 Ingress",
+    nijaCardFormula: "Ingresses = 1 (Sankranta)",
+    nijaCardDesc: "A standard lunar month containing exactly one solar ingress. Propitious for all auspicious events and Vedic sacraments.",
+    kshayaCardTitle: "Kshaya Masa (Dvi-Sankranta)",
+    kshayaCardBadge: "2 Ingresses",
+    kshayaCardFormula: "Ingresses = 2 (Dvi-Sankranta)",
+    kshayaCardDesc: "When two solar ingresses occur within a single lunar month, it is an expunged or Kshaya month (Amhaspati), fusing two months into one.",
+    driftTitle: "📐 Solar-Lunar Calendar Principles (Calendar Drift)",
+    driftSolarYr: "Solar Year:",
+    driftLunarYr: "Lunar Year (12 × 29.5):",
+    driftAnnual: "Annual Drift:",
+    drift3Yr: "Drift accumulated in 3 years:",
+    driftLagadhaRule: "✨ <strong>Vedanga Jyotisha Canon (Sage Lagadha):</strong> In a 5-year Yuga cycle, 60 Solar months equal 62 Lunar months. Exactly 2 Adhika Masas occur every 5 years.",
+    kaliyugaTitle: "🪐 Kaliyuga Cosmic Balance & Kshaya Recurrence Cycle",
+    perihelionRule: "💡 <strong>Astronomical Perihelion Rule:</strong> Two solar ingresses within one lunar month can only occur when Earth is near perihelion and the Sun transits rapidly through Sagittarius, Capricorn, or Aquarius.",
+    keelakaBadge: "Special Case Study",
+    keelakaTitle: "Sri Keelaka Samvatsara (2028–2029) • Kshaya & Samsarpa Months",
+    keelakaDesc: "According to the unanimous resolution of the <strong>'Telangana Vidwatsabha' Conference</strong> of 23 eminent Siddhantis and Vedic Scholars (Aug 30, 2026): In Sri Keelaka Samvatsara, Kartika is established as <strong>Samsarpa Kartika (Adhika)</strong>, followed by the combined Margashira-Pushya <strong>Amhaspati Masa (Kshaya Masa)</strong>.",
+    intercalaryTableTitle: "📅 10-Year Adhika & Kshaya Masas Schedule (2026–2036)",
+    intercalaryTableSubtitle: "Amanta lunar month calculations computed under the selected siddhanta system",
+    thInterYr: "Year",
+    thInterSamvat: "Samvatsara Name",
+    thInterMasa: "Month Name",
+    thInterType: "Type / Status",
+    thInterSankranti: "Ingresses",
+    thInterSpan: "Span (Start – End)",
+    thInterRule: "Shastric Rule",
+    toDateSpan: "to",
+    kdHeroBadge: "📊 Annual Kandadayam Computation",
+    kdMainHeading: "Kandadayam Results & Income-Expenditure",
+    kdMainSubtitle: "Canonical results for 12 Rashis (Income, Expense, Honor, Disgrace) and 27 Nakshatras across 3 Trimesters (Prathama, Dvitiya, Tritiya Kandayams).",
+    kdCreatorBadge: "✍️ Created by: Ramachandra Sastry Munimadugu",
+    jumpToRashiKdBtn: "💰 Rashi Kandadayam",
+    jumpToNakshatraKdBtn: "⭐ Nakshatra Trimesters",
+    jumpToShastraKdBtn: "📜 Shastric Computation Rules",
+    kdQuickT1Title: "🌱 First Trimester (Prathama)",
+    kdQuickT1Span: "Months 1–4",
+    kdQuickT1Months: "Chaitra, Vaishakha, Jyeshtha, Ashadha",
+    kdQuickT1Max: "Max Limit: 8 Units (Remainder 0–7)",
+    kdQuickT2Title: "🌧️ Second Trimester (Dvitiya)",
+    kdQuickT2Span: "Months 5–8",
+    kdQuickT2Months: "Shravana, Bhadrapada, Ashwayuja, Kartika",
+    kdQuickT2Max: "Max Limit: 3 Units (Remainder 0–2)",
+    kdQuickT3Title: "❄️ Third Trimester (Tritiya)",
+    kdQuickT3Span: "Months 9–12",
+    kdQuickT3Months: "Margashira, Pushya, Magha, Phalguna",
+    kdQuickT3Max: "Max Limit: 5 Units (Remainder 0–4)",
+    rashiKdSectionTitle: "💰 12 Rashi Kandadayam (Income, Expense, Honor, Disgrace)",
+    rashiKdSectionSubtitle: "Comprehensive financial and social status evaluation of all 12 Rashis",
+    rashiKdViewCardsBtn: "Cards",
+    rashiKdViewTableBtn: "Table",
+    thKdRashi: "Rashi",
+    thKdLord: "Lord",
+    thKdAdayam: "Income (Adayam)",
+    thKdVyayam: "Expense (Vyayam)",
+    thKdRajapujyam: "Honor (Rajapujyam)",
+    thKdAvamanam: "Disgrace (Avamanam)",
+    thKdFinStatus: "Financial Status",
+    thKdSocStatus: "Social Honor",
+    thKdVerdict: "Verdict",
+    nakshatraSectionTitle: "⭐ 27 Nakshatra Kandayam Results (Trimester Breakdown)",
+    nakshatraSectionSubtitle: "Discover your birth star results across the 3 trimester periods of the year",
+    nakshatraSelectLabel: "Nakshatra:",
+    nakshatraMasterTableTitle: "📋 Master Table: 27 Nakshatras Trimester Kandayam",
+    nakshatraTableSearchInput: "Search by star name...",
+    thNId: "S.No",
+    thNName: "Nakshatra",
+    thNRashis: "Rashis",
+    thNT1: "First (Months 1–4)",
+    thNT2: "Second (Months 5–8)",
+    thNT3: "Third (Months 9–12)",
+    thNOverall: "Annual Rating",
+    shastraKdTitle: "📜 Shastric Rules & Trimester Science of Kandadayam",
+    shastraKdT1Title: "📅 Year Division (3 Trimesters / Kandayams)",
+    shastraKdT2Title: "⚖️ 12 Rashi Kandadayam Mathematical Principles",
+    nakshatraWord: "Nakshatra",
+    spreadRashisPadasLabel: "Spread Rashis / Padas:",
+    annualCompositeStatusLabel: "Annual Composite Status",
+    trimester1Title: "First Trimester",
+    trimester1Months: "Chaitra – Ashadha (Months 1–4)",
+    trimester1MaxLimit: "Max limit: 8 units",
+    trimester2Title: "Second Trimester",
+    trimester2Months: "Shravana – Kartika (Months 5–8)",
+    trimester2MaxLimit: "Max limit: 3 units",
+    trimester3Title: "Third Trimester",
+    trimester3Months: "Margashira – Phalguna (Months 9–12)",
+    trimester3MaxLimit: "Max limit: 5 units",
+    annualSummaryAdviceLabel: "Annual Summary & Guidance:",
+    noNakshatraFound: "No nakshatra results found",
+    rashiHeading: "Rashi Phalalu (Gochara Horoscope)",
+    rashiSubtitle: "Authoritative predictions based on celestial transits, Chandrabalam, Tarabalam, and Panchangam Kandadayam principles.",
+    rashiGocharaBadge: "♈ 12 Rashis Gochara",
+    moonTransitLabel: "Moon Transit",
+    solarMonthLabel: "Solar Month",
+    kandadayamTableLabel: "Panchangam Kandadayam Table",
+    kdAdayam: "Income",
+    kdVyayam: "Expense",
+    kdRajapujyam: "Honor",
+    kdAvamanam: "Disgrace",
+    statusAuspicious: "Auspicious",
+    statusFavorable: "Favorable",
+    statusModerate: "Moderate",
+    statusCaution: "Caution",
+    footerOrgTitle: "Vedic Samhita • Vedic Samhita",
+    footerOrgSubtitle: "Vedic Astronomy & Dharma Shastra Computation System",
+    footerCreatorRole: "System Architect & Creator (Astronomical Siddhanta Computation)",
+    footerCreatorName: "Ramachandra Sastry Munimadugu",
+    footerCreatorDesc: "These panchangam algorithms, Vedic astronomical models, Dharma Shastra canons, and computational systems are authored and architected by <strong class=\"text-amber-200 font-bold\">RAMACHANDRA SASTRY MUNIMADUGU</strong>. <br class=\"hidden sm:inline\"/> All credits go to <strong class=\"text-amber-200 font-bold\">RAMACHANDRA SASTRY MUNIMADUGU</strong>.",
+    footerOfficialWebsiteLabel: "Official Website:",
+    footerPoweredBy: "Powered by Swiss Ephemeris astronomical computation engine and Aksharamukha script transliteration.",
+    chandrashtamaAlertTitle: "Chandrashtama Warning (Chandrashtama Active)",
+    chandrashtamaAlertDesc: "Today the Moon transits the 8th house from your Janma Rashi. Exercise utmost caution in arguments, financial dealings, and launching major new agreements. Worship of Lord Shiva is recommended.",
+    moonHouseLabel: "Moon House",
+    houseSuffix: "th House",
+    tarabalamLabel: "Tarabalam",
+    taraGood: "Auspicious Tara ✔️",
+    taraCaution: "Caution ⚠️",
+    luckyNumberLabel: "Lucky Number",
+    luckyColorLabel: "Lucky Color",
+    luckyDirectionLabel: "Lucky Direction",
+    sunTransitLabel: "Solar Transit",
+    placeSuffix: "th House",
+    sunFavorable: "Favorable Sun Strength (Upachaya) ☀️",
+    sunUnfavorable: "Sun Adversity (Patience required)",
+    monthlyHighlightsLabel: "Monthly Highlights",
+    guruBalamLabel: "Guru Balam",
+    guruBalamYes: "Guru Balam Present ✨",
+    guruBalamNo: "Guru Shanti Recommended",
+    shaniGocharaLabel: "Saturn Transit",
+    rahuKetuTransitLabel: "Rahu-Ketu Transit",
+    financialAnalysisLabel: "Financial Status Analysis",
+    socialAnalysisLabel: "Social Status Analysis",
+    rashiOverviewTitle: "General Overview",
+    rashiCareerTitle: "Career & Profession",
+    rashiFinanceTitle: "Finance & Wealth",
+    rashiHealthTitle: "Health & Well-being",
+    rashiFamilyTitle: "Family & Relationships",
+    rashiRemediesTitle: "Remedies & Prayers",
+    lordLabel: "Lord:",
+    elementLabel: "Element:",
+    compatibilityScoreLabel: "Compatibility Score",
+    chandrashtamaMiniBadge: "Chandrashtama",
+    sunShortLabel: "Sun",
+    incomeShort: "Inc",
+    expenseShort: "Exp",
+    gpsNotSupported: "GPS Geolocation is not supported by your browser.",
+    gpsSuccess: "Location detected successfully",
+    gpsDenied: "Location permission denied"
   }
 };
 
@@ -881,8 +2481,8 @@ function updateStaticLabels() {
   setPh('citySearchInput', t('searchPlaceholder'));
   setTxt('gpsBtnText', t('gpsBtn'));
   setTxt('todayBtn', t('todayBtn'));
-  setTitle('prevDayBtn', STATE.lang === 'english' ? 'Previous Day' : (STATE.lang === 'devanagari' ? 'पिछला दिन' : 'మునుపటి రోజు'));
-  setTitle('nextDayBtn', STATE.lang === 'english' ? 'Next Day' : (STATE.lang === 'devanagari' ? 'अगला दिन' : 'తరువాति రోజు'));
+  setTitle('prevDayBtn', t('prevDayTitle'));
+  setTitle('nextDayBtn', t('nextDayTitle'));
 
   // Hero Card
   setTxt('heroEraBadge', t('heroEra'));
@@ -970,6 +2570,114 @@ function updateStaticLabels() {
   setTxt('sankalpaLangBadge', t('sankalpaLangBadge'));
   setTxt('copySankalpaBtnText', t('copyBtnText'));
   setTxt('sankalpaSaBadge', t('sankalpaSaBadge'));
+
+  // Intercalary Tab
+  setTxt('intercalaryHeroBadge', t('intercalaryHeroBadge'));
+  setTxt('intercalaryHeroTitle', t('intercalaryHeroTitle'));
+  setTxt('intercalaryHeroSubtitle', t('intercalaryHeroSubtitle'));
+  setTxt('systemSuryaBtn', t('systemSuryaBtn'));
+  setTxt('systemDrikBtn', t('systemDrikBtn'));
+  setTxt('kalamadhavaHeader', t('kalamadhavaHeader'));
+  setHtml('kalamadhavaRuleDesc', t('kalamadhavaRuleDesc'));
+  setTxt('adhikaCardTitle', t('adhikaCardTitle'));
+  setTxt('adhikaCardBadge', t('adhikaCardBadge'));
+  setTxt('adhikaCardFormula', t('adhikaCardFormula'));
+  setTxt('adhikaCardDesc', t('adhikaCardDesc'));
+  setTxt('nijaCardTitle', t('nijaCardTitle'));
+  setTxt('nijaCardBadge', t('nijaCardBadge'));
+  setTxt('nijaCardFormula', t('nijaCardFormula'));
+  setTxt('nijaCardDesc', t('nijaCardDesc'));
+  setTxt('kshayaCardTitle', t('kshayaCardTitle'));
+  setTxt('kshayaCardBadge', t('kshayaCardBadge'));
+  setTxt('kshayaCardFormula', t('kshayaCardFormula'));
+  setTxt('kshayaCardDesc', t('kshayaCardDesc'));
+  setTxt('driftTitle', t('driftTitle'));
+  setTxt('driftSolarYr', t('driftSolarYr'));
+  setTxt('driftLunarYr', t('driftLunarYr'));
+  setTxt('driftAnnual', t('driftAnnual'));
+  setTxt('drift3Yr', t('drift3Yr'));
+  setHtml('driftLagadhaRule', t('driftLagadhaRule'));
+  setTxt('kaliyugaTitle', t('kaliyugaTitle'));
+  setHtml('perihelionRule', t('perihelionRule'));
+  setTxt('keelakaBadge', t('keelakaBadge'));
+  setTxt('keelakaTitle', t('keelakaTitle'));
+  setHtml('keelakaDesc', t('keelakaDesc'));
+  setTxt('intercalaryTableTitle', t('intercalaryTableTitle'));
+  setTxt('intercalaryTableSubtitle', t('intercalaryTableSubtitle'));
+  setTxt('thInterYr', t('thInterYr'));
+  setTxt('thInterSamvat', t('thInterSamvat'));
+  setTxt('thInterMasa', t('thInterMasa'));
+  setTxt('thInterType', t('thInterType'));
+  setTxt('thInterSankranti', t('thInterSankranti'));
+  setTxt('thInterSpan', t('thInterSpan'));
+  setTxt('thInterRule', t('thInterRule'));
+
+  // Kandadayam Tab
+  setTxt('kdHeroBadge', t('kdHeroBadge'));
+  setTxt('kdMainHeading', t('kdMainHeading'));
+  setTxt('kdMainSubtitle', t('kdMainSubtitle'));
+  setTxt('kdCreatorBadge', t('kdCreatorBadge'));
+  setTxt('jumpToRashiKdBtn', t('jumpToRashiKdBtn'));
+  setTxt('jumpToNakshatraKdBtn', t('jumpToNakshatraKdBtn'));
+  setTxt('jumpToShastraKdBtn', t('jumpToShastraKdBtn'));
+  setTxt('kdQuickT1Title', t('kdQuickT1Title'));
+  setTxt('kdQuickT1Span', t('kdQuickT1Span'));
+  setTxt('kdQuickT1Months', t('kdQuickT1Months'));
+  setTxt('kdQuickT1Max', t('kdQuickT1Max'));
+  setTxt('kdQuickT2Title', t('kdQuickT2Title'));
+  setTxt('kdQuickT2Span', t('kdQuickT2Span'));
+  setTxt('kdQuickT2Months', t('kdQuickT2Months'));
+  setTxt('kdQuickT2Max', t('kdQuickT2Max'));
+  setTxt('kdQuickT3Title', t('kdQuickT3Title'));
+  setTxt('kdQuickT3Span', t('kdQuickT3Span'));
+  setTxt('kdQuickT3Months', t('kdQuickT3Months'));
+  setTxt('kdQuickT3Max', t('kdQuickT3Max'));
+  setTxt('rashiKdSectionTitle', t('rashiKdSectionTitle'));
+  setTxt('rashiKdSectionSubtitle', t('rashiKdSectionSubtitle'));
+  setTxt('rashiKdViewCardsBtn', t('rashiKdViewCardsBtn'));
+  setTxt('rashiKdViewTableBtn', t('rashiKdViewTableBtn'));
+  setTxt('thKdRashi', t('thKdRashi'));
+  setTxt('thKdLord', t('thKdLord'));
+  setTxt('thKdAdayam', t('thKdAdayam'));
+  setTxt('thKdVyayam', t('thKdVyayam'));
+  setTxt('thKdRajapujyam', t('thKdRajapujyam'));
+  setTxt('thKdAvamanam', t('thKdAvamanam'));
+  setTxt('thKdFinStatus', t('thKdFinStatus'));
+  setTxt('thKdSocStatus', t('thKdSocStatus'));
+  setTxt('thKdVerdict', t('thKdVerdict'));
+  setTxt('nakshatraSectionTitle', t('nakshatraSectionTitle'));
+  setTxt('nakshatraSectionSubtitle', t('nakshatraSectionSubtitle'));
+  setTxt('nakshatraSelectLabel', t('nakshatraSelectLabel'));
+  setTxt('nakshatraMasterTableTitle', t('nakshatraMasterTableTitle'));
+  setPh('nakshatraTableSearchInput', t('nakshatraTableSearchInput'));
+  setTxt('thNId', t('thNId'));
+  setTxt('thNName', t('thNName'));
+  setTxt('thNRashis', t('thNRashis'));
+  setTxt('thNT1', t('thNT1'));
+  setTxt('thNT2', t('thNT2'));
+  setTxt('thNT3', t('thNT3'));
+  setTxt('thNOverall', t('thNOverall'));
+  setTxt('shastraKdTitle', t('shastraKdTitle'));
+  setTxt('shastraKdT1Title', t('shastraKdT1Title'));
+  setTxt('shastraKdT2Title', t('shastraKdT2Title'));
+
+  // Rashi Tab
+  setTxt('rashiHeading', t('rashiHeading'));
+  setTxt('rashiSubtitle', t('rashiSubtitle'));
+  setTxt('rashiGocharaBadge', t('rashiGocharaBadge'));
+
+  // Modal
+  setTxt('modalMoudhyamTitle', t('modalMoudhyamTitle'));
+  setTxt('modalMoudhyamSubtitle', t('modalMoudhyamSubtitle'));
+
+  // Footer
+  setTxt('footerOrgTitle', t('footerOrgTitle'));
+  setTxt('footerOrgSubtitle', t('footerOrgSubtitle'));
+  setTxt('footerCreatorRole', t('footerCreatorRole'));
+  setTxt('footerCreatorName', t('footerCreatorName'));
+  setHtml('footerCreatorDesc', t('footerCreatorDesc'));
+  setTxt('footerOfficialWebsiteLabel', t('footerOfficialWebsiteLabel'));
+  setTxt('footerPoweredBy', t('footerPoweredBy'));
 
   // Loader
   setTxt('loaderText', t('loaderText'));
@@ -1183,10 +2891,10 @@ function renderDaily(data) {
   document.getElementById('cmPurnimanta').innerText = cm.purnimanta_masa.name;
   const pakshaRaw = cm.paksha_name || cm.paksha || '';
   let pakshaDisplay = pakshaRaw;
-  if (STATE.lang === 'telugu' || !STATE.lang) {
-    if (pakshaRaw === 'Shukla') pakshaDisplay = 'శుక్ల పక్షము';
-    else if (pakshaRaw === 'Krishna') pakshaDisplay = 'కృష్ణ పక్షము';
-    else if (!pakshaRaw.includes('పక్షము') && (pakshaRaw === 'శుక్ల' || pakshaRaw === 'కృష్ణ')) pakshaDisplay = `${pakshaRaw} పక్షము`;
+  if (pakshaRaw === 'Shukla' || pakshaRaw === 'శుక్ల' || (typeof pakshaRaw === 'string' && pakshaRaw.toLowerCase().includes('shukla'))) {
+    pakshaDisplay = t('shuklaPaksha');
+  } else if (pakshaRaw === 'Krishna' || pakshaRaw === 'కృష్ణ' || (typeof pakshaRaw === 'string' && pakshaRaw.toLowerCase().includes('krishna'))) {
+    pakshaDisplay = t('krishnaPaksha');
   }
   document.getElementById('cmPaksha').innerText = pakshaDisplay || '---';
 
@@ -1194,7 +2902,7 @@ function renderDaily(data) {
   const cmStatus = document.getElementById('cmMasaStatus');
   if (cmBadge) {
     const classification = cm.amanta_masa.masa_classification || (cm.amanta_masa.is_adhika ? 'ADHIKA' : 'NIJA');
-    const badgeText = cm.amanta_masa.badge_label || (classification === 'ADHIKA' ? 'అధిక మాసం' : 'సాధారణ మాసం');
+    const badgeText = cm.amanta_masa.badge_label || (classification === 'ADHIKA' ? t('adhikaMasaBadge') : (classification === 'KSHAYA' ? t('kshayaMasaBadge') : t('nijaMasaBadge')));
     cmBadge.innerText = badgeText;
     if (classification === 'KSHAYA') {
       cmBadge.className = 'text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-900 border border-rose-300 shadow-2xs animate-pulse';
@@ -1206,7 +2914,8 @@ function renderDaily(data) {
   }
   if (cmStatus) {
     const sc = cm.amanta_masa.sankranti_count !== undefined ? cm.amanta_masa.sankranti_count : (cm.amanta_masa.is_adhika ? 0 : 1);
-    cmStatus.innerText = `${cm.amanta_masa.badge_label || (sc === 0 ? 'అధిక' : (sc === 2 ? 'క్షయ' : 'నిజ'))} (${sc} సంక్రాంతి${sc === 1 ? '' : 'లు'})`;
+    const typeLabel = cm.amanta_masa.badge_label || (sc === 0 ? t('adhikaMasaBadge') : (sc === 2 ? t('kshayaMasaBadge') : t('nijaMasaBadge')));
+    cmStatus.innerText = `${typeLabel} (${sc} ${t('sankrantiWord')})`;
   }
 
   // Sauramana
@@ -1215,7 +2924,7 @@ function renderDaily(data) {
   let smSolarText = smSolar.name;
   if (!smSolarText) {
     const rName = smSolar.rashi_name || '';
-    const dayVal = smSolar.day ? `${smSolar.day}వ రోజు` : '';
+    const dayVal = smSolar.day ? (STATE.lang === 'english' ? `Day ${smSolar.day}` : `${smSolar.day} ${t('solarDaySuffix')}`) : '';
     smSolarText = (rName && dayVal) ? `${rName} (${dayVal})` : (rName || '---');
   }
   document.getElementById('smSolarMonth').innerText = smSolarText || '---';
@@ -1435,20 +3144,20 @@ function renderMoudhyamKartariBanner(mk) {
   let bgClasses = "bg-gradient-to-r from-emerald-50/90 to-amber-50/60 border-emerald-300 text-emerald-950";
   let iconHtml = "✨";
   let iconBg = "bg-emerald-100 border-emerald-300 text-emerald-700";
-  let pillHtml = `<span class="text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-900 border border-emerald-300">శుద్ధ కాలం</span>`;
+  let pillHtml = `<span class="text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-900 border border-emerald-300">✨ ${t('bannerPurePeriod')}</span>`;
   let btnClasses = "bg-emerald-700 hover:bg-emerald-800 text-white";
 
   if (isMoudhyam) {
     bgClasses = "bg-gradient-to-r from-rose-50/95 via-rose-100/40 to-orange-50/60 border-rose-300 text-rose-950 shadow-xs";
     iconHtml = "⚠️";
     iconBg = "bg-rose-100 border-rose-300 text-rose-700";
-    pillHtml = `<span class="text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-rose-100 text-rose-900 border border-rose-300 animate-pulse">శుభకార్యములు వర్జ్యం</span>`;
+    pillHtml = `<span class="text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-rose-100 text-rose-900 border border-rose-300 animate-pulse">⚠️ ${t('bannerTabooAuspicious')}</span>`;
     btnClasses = "bg-rose-700 hover:bg-rose-800 text-white";
   } else if (isKartari) {
     bgClasses = "bg-gradient-to-r from-amber-50/95 via-orange-50/50 to-amber-100/40 border-amber-300 text-amber-950 shadow-xs";
     iconHtml = "🔥";
     iconBg = "bg-amber-100 border-amber-300 text-amber-800";
-    pillHtml = `<span class="text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-amber-100 text-amber-900 border border-amber-300">గృహారంభం నిషిద్ధం</span>`;
+    pillHtml = `<span class="text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-amber-100 text-amber-900 border border-amber-300">🔥 ${t('bannerTabooConstruction')}</span>`;
     btnClasses = "bg-amber-700 hover:bg-amber-800 text-white";
   }
 
@@ -1472,7 +3181,7 @@ function renderMoudhyamKartariBanner(mk) {
         id="openMoudhyamModalBtn" 
         class="shrink-0 px-4 py-2 rounded-xl text-xs font-bold ${btnClasses} shadow-md transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer"
       >
-        <span>📅</span> <span>సంవత్సర పట్టిక & శాస్త్ర నియమాలు</span>
+        <span>📅</span> <span>${t('bannerAnnualScheduleBtn')}</span>
       </button>
     </div>
   `;
@@ -1498,7 +3207,7 @@ async function openAnnualMoudhyamModal() {
   body.innerHTML = `
     <div class="flex flex-col items-center justify-center py-10">
       <div class="w-8 h-8 border-4 border-amber-600 border-t-transparent rounded-full animate-spin"></div>
-      <p class="text-xs text-amber-900 mt-2 font-medium">మౌఢ్య & కర్తరి నిర్ణయ పట్టిక లోడ్ అవుతోంది...</p>
+      <p class="text-xs text-amber-900 mt-2 font-medium">${t('moudhyamLoading')}</p>
     </div>
   `;
 
@@ -1510,7 +3219,7 @@ async function openAnnualMoudhyamModal() {
     renderAnnualMoudhyamModalBody(data);
   } catch (err) {
     console.error('Error fetching annual moudhyam data:', err);
-    body.innerHTML = `<div class="text-rose-700 p-4 text-center">పట్టిక లోడ్ చేయడంలో లోపం ఏర్పడింది. దయచేసి మళ్ళీ ప్రయత్నించండి.</div>`;
+    body.innerHTML = `<div class="text-rose-700 p-4 text-center">${t('moudhyamError')}</div>`;
   }
 }
 
@@ -1529,11 +3238,11 @@ function renderAnnualMoudhyamModalBody(data) {
         <span class="text-lg">📍</span>
         <div>
           <span class="font-bold text-amber-950 text-sm font-serif-te">${STATE.city}, ${STATE.country}</span>
-          <span class="text-[11px] text-stone-600 font-mono ml-2 bg-white/80 px-2 py-0.5 rounded border border-amber-200">సమయ మండలం: ${tz}</span>
+          <span class="text-[11px] text-stone-600 font-mono ml-2 bg-white/80 px-2 py-0.5 rounded border border-amber-200">${t('timezoneLabel')}: ${tz}</span>
         </div>
       </div>
       <div class="text-[11px] text-amber-900 bg-amber-100/70 border border-amber-300/80 px-2.5 py-1 rounded-lg font-medium">
-        🕒 సమయాలు: మీ స్థానిక సమయం &amp; (IST భారత ప్రామాణిక సమయం)
+        ${t('moudhyamTimesSubtitle')}
       </div>
     </div>
   `;
@@ -1556,25 +3265,25 @@ function renderAnnualMoudhyamModalBody(data) {
           <span>⚠️</span> <span>${m.type}</span>
         </h5>
         <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-rose-100 text-rose-900 border border-rose-300">
-          వ్యవధి: ~${m.duration_days} రోజులు
+          ${t('durationLabel')}: ~${m.duration_days} ${t('daysLabel')}
         </span>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
         <div class="p-2.5 bg-white rounded-lg border border-rose-200/80 shadow-2xs">
-          <span class="text-stone-500 block text-[11px] font-medium">ఆరంభం (అస్తమయం):</span>
+          <span class="text-stone-500 block text-[11px] font-medium">${t('moudhyamStartLabel')}</span>
           <span class="font-mono font-bold text-rose-900 text-xs sm:text-sm">${m.start}</span>
         </div>
         <div class="p-2.5 bg-white rounded-lg border border-emerald-200/80 shadow-2xs">
-          <span class="text-stone-500 block text-[11px] font-medium">సమాప్తి (ఉదయం):</span>
+          <span class="text-stone-500 block text-[11px] font-medium">${t('moudhyamEndLabel')}</span>
           <span class="font-mono font-bold text-emerald-900 text-xs sm:text-sm">${m.end}</span>
         </div>
       </div>
       <div class="text-xs text-stone-700 bg-white/70 p-2.5 rounded-lg border border-rose-100 flex flex-col sm:flex-row justify-between gap-1">
-        <span><strong>వార్ధక్య దోషం:</strong> ${m.vardhakya_start}</span>
-        <span><strong>బాల్య దోషం:</strong> ${m.balya_end}</span>
+        <span><strong>${t('vardhakyaLabel')}</strong> ${m.vardhakya_start}</span>
+        <span><strong>${t('balyaLabel')}</strong> ${m.balya_end}</span>
       </div>
       <p class="text-xs text-rose-800 font-semibold pt-1">
-        <strong>నిషేధం:</strong> ${m.prohibition}
+        <strong>${t('prohibitionLabel')}</strong> ${m.prohibition}
       </p>
     </div>
   `).join('');
@@ -1600,10 +3309,10 @@ function renderAnnualMoudhyamModalBody(data) {
         <table class="w-full text-left text-xs border-collapse">
           <thead>
             <tr class="bg-amber-100/80 text-amber-950 font-bold border-b border-amber-200">
-              <th class="p-2.5">విభాగం (Phase)</th>
-              <th class="p-2.5">సూర్య సంచారం (Transit)</th>
-              <th class="p-2.5">ఖచ్చితమైన సమయం (Timing)</th>
-              <th class="p-2.5">ప్రాముఖ్యత (Significance)</th>
+              <th class="p-2.5">${t('thPhase')}</th>
+              <th class="p-2.5">${t('thTransit')}</th>
+              <th class="p-2.5">${t('thTiming')}</th>
+              <th class="p-2.5">${t('thSignificance')}</th>
             </tr>
           </thead>
           <tbody>
@@ -1618,8 +3327,8 @@ function renderAnnualMoudhyamModalBody(data) {
       <div class="flex items-center gap-2 border-b border-rose-200 pb-2">
         <span class="text-2xl">🪐</span>
         <div>
-          <h4 class="font-bold text-rose-950 text-base font-serif-te">మౌఢ్యములు (గురు & శుక్ర అస్తమయాలు)</h4>
-          <p class="text-xs text-stone-600">దేవగురు బృహస్పతి, దైత్యగురు శుక్రులు సూర్య సామీప్యంచే అస్తంగతులయ్యే కాలాలు.</p>
+          <h4 class="font-bold text-rose-950 text-base font-serif-te">${t('moudhyamSectionTitle')}</h4>
+          <p class="text-xs text-stone-600">${t('moudhyamSectionSubtitle')}</p>
         </div>
       </div>
       <div class="space-y-3">
@@ -1630,19 +3339,19 @@ function renderAnnualMoudhyamModalBody(data) {
     <!-- Section C: Dharmashastric Guidelines -->
     <div class="pt-2">
       <h4 class="font-bold text-stone-900 text-sm font-serif-te mb-2.5 flex items-center gap-1.5">
-        <span>📜</span> <span>ధర్మశాస్త్ర ముహూర్త నిర్ణయాలు (ఏవి చేయవచ్చు? ఏవి నిషిద్ధం?)</span>
+        <span>📜</span> <span>${t('shastraDecisionsTitle')}</span>
       </h4>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
         <div class="p-3 bg-rose-50/70 border border-rose-200 rounded-xl space-y-1.5">
-          <span class="font-bold text-rose-900 block border-b border-rose-200 pb-1">మౌఢ్యంలో నిషిద్ధాలు:</span>
+          <span class="font-bold text-rose-900 block border-b border-rose-200 pb-1">${t('moudhyamTaboosTitle')}</span>
           <ul class="space-y-1 text-stone-700">${taboosMoudhyamList}</ul>
         </div>
         <div class="p-3 bg-amber-50/70 border border-amber-200 rounded-xl space-y-1.5">
-          <span class="font-bold text-amber-900 block border-b border-amber-200 pb-1">కర్తరిలో నిషిద్ధాలు:</span>
+          <span class="font-bold text-amber-900 block border-b border-amber-200 pb-1">${t('kartariTaboosTitle')}</span>
           <ul class="space-y-1 text-stone-700">${taboosKartariList}</ul>
         </div>
         <div class="p-3 bg-emerald-50/70 border border-emerald-200 rounded-xl space-y-1.5">
-          <span class="font-bold text-emerald-900 block border-b border-emerald-200 pb-1">ఆచరించదగినవి:</span>
+          <span class="font-bold text-emerald-900 block border-b border-emerald-200 pb-1">${t('permittedKarmasTitle')}</span>
           <ul class="space-y-1 text-stone-700">${permittedList}</ul>
         </div>
       </div>
@@ -1850,7 +3559,7 @@ function selectCity(cityObj) {
 // GPS Auto-detect
 function handleGPSDetect() {
   if (!navigator.geolocation) {
-    alert("మీ బ్రౌజర్‌లో GPS జియోలొకేషన్ సపోర్ట్ లేదు.");
+    alert(t('gpsNotSupported'));
     return;
   }
   const btn = document.getElementById('gpsBtn');
@@ -1870,7 +3579,7 @@ function handleGPSDetect() {
           lon: lon,
           tz: nearestCity.tz
         });
-        alert(`లొకేషన్ విజయవంతంగా గుర్తించబడింది: ${nearestCity.name}, ${nearestCity.country} (${lat.toFixed(4)}°, ${lon.toFixed(4)}°)`);
+        alert(`${t('gpsSuccess')}: ${nearestCity.name}, ${nearestCity.country} (${lat.toFixed(4)}°, ${lon.toFixed(4)}°)`);
       }
     } catch (err) {
       console.error(err);
@@ -1879,7 +3588,7 @@ function handleGPSDetect() {
     }
   }, (err) => {
     btn.classList.remove('opacity-50');
-    alert("లొకేషన్ అనుమతి లభించలేదు: " + err.message);
+    alert(`${t('gpsDenied')}: ` + err.message);
   });
 }
 
@@ -1949,13 +3658,13 @@ function renderRashiView() {
   if (infoBadge) {
     if (curPeriod === 'daily') {
       infoBadge.innerText = `📅 ${data.date} (${data.weekday})`;
-      if (activePlanet) activePlanet.innerText = `🌙 చంద్ర సంచారం: ${data.moon_rashi}`;
+      if (activePlanet) activePlanet.innerText = `🌙 ${t('moonTransitLabel')}: ${data.moon_rashi}`;
     } else if (curPeriod === 'monthly') {
       infoBadge.innerText = `🗓️ ${data.year} / ${String(data.month).padStart(2, '0')} (${data.solar_month})`;
-      if (activePlanet) activePlanet.innerText = `☀️ సౌర మాసం: ${data.solar_month}`;
+      if (activePlanet) activePlanet.innerText = `☀️ ${t('solarMonthLabel')}: ${data.solar_month}`;
     } else {
       infoBadge.innerText = `🪐 ${data.samvatsara} (${data.year})`;
-      if (activePlanet) activePlanet.innerText = `✨ పంచాంగ కందాయ పట్టిక`;
+      if (activePlanet) activePlanet.innerText = `✨ ${t('kandadayamTableLabel')}`;
     }
   }
 
@@ -1981,17 +3690,17 @@ function renderRashiCardsGrid(rashis) {
     let miniBadge = '';
     if (STATE.activeRashiPeriod === 'daily') {
       if (isChandrashtama) {
-        miniBadge = `<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-100 text-rose-800 border border-rose-300">⚠️ చంద్రాష్టమం</span>`;
+        miniBadge = `<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-100 text-rose-800 border border-rose-300">⚠️ ${t('chandrashtamaMiniBadge')}</span>`;
       } else {
         const bgCls = score >= 75 ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : 'bg-amber-100 text-amber-800 border-amber-300';
         miniBadge = `<span class="text-[10px] font-bold px-1.5 py-0.5 rounded ${bgCls}">${score}%</span>`;
       }
     } else if (STATE.activeRashiPeriod === 'monthly') {
-      miniBadge = `<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300">${score}% అనుకూలం</span>`;
+      miniBadge = `<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300">${score}%</span>`;
     } else {
       // Yearly: show aadhayam / vyayam
       const kd = item.kandadayam;
-      miniBadge = `<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300 font-mono">ఆ:${kd.aadhayam} వ్య:${kd.vyayam}</span>`;
+      miniBadge = `<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300 font-mono">${t('incomeShort')}:${kd.aadhayam} ${t('expenseShort')}:${kd.vyayam}</span>`;
     }
 
     const cardClasses = isSelected
@@ -2042,9 +3751,9 @@ function renderRashiDetails(item, curPeriod) {
         <div class="p-4 rounded-xl bg-gradient-to-r from-rose-50 to-red-100 border-l-4 border-rose-600 text-rose-900 shadow-sm flex items-start gap-3">
           <span class="text-2xl">⚠️</span>
           <div>
-            <div class="font-bold text-sm text-rose-900 uppercase tracking-wide">చంద్రాష్టమ హెచ్చరిక (Chandrashtama Active)</div>
+            <div class="font-bold text-sm text-rose-900 uppercase tracking-wide">${t('chandrashtamaAlertTitle')}</div>
             <div class="text-xs text-rose-800 mt-0.5 leading-relaxed">
-              ఈ రోజు చంద్రుడు మీ జన్మ రాశి నుండి 8వ స్థానంలో సంచరిస్తున్నారు. ఆందోళనలు, ఆర్థిక లావాదేవీలు, వాదనలు మరియు ముఖ్యమైన నూతన ఒప్పందాల ప్రారంభాలలో అత్యంత జాగ్రత్త అవసరం. శివారాధన శుభప్రదం.
+              ${t('chandrashtamaAlertDesc')}
             </div>
           </div>
         </div>
@@ -2055,25 +3764,25 @@ function renderRashiDetails(item, curPeriod) {
     transitAlertHtml += `
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5">
         <div class="p-3 bg-white rounded-xl border border-amber-200 shadow-xs text-center">
-          <div class="text-[10px] text-stone-500 font-bold uppercase">చంద్ర స్థానం</div>
-          <div class="text-xs font-extrabold text-amber-950 mt-0.5">${item.moon_house}వ ఇల్లు</div>
+          <div class="text-[10px] text-stone-500 font-bold uppercase">${t('moonHouseLabel')}</div>
+          <div class="text-xs font-extrabold text-amber-950 mt-0.5">${item.moon_house} ${t('houseSuffix')}</div>
           <div class="text-[10px] text-amber-700 mt-0.5">${item.chandra_bala_status.split('(')[0]}</div>
         </div>
         <div class="p-3 bg-white rounded-xl border border-amber-200 shadow-xs text-center">
-          <div class="text-[10px] text-stone-500 font-bold uppercase">తారాబలం</div>
+          <div class="text-[10px] text-stone-500 font-bold uppercase">${t('tarabalamLabel')}</div>
           <div class="text-xs font-extrabold text-amber-950 mt-0.5">${item.tara_bala_name.split('(')[0]}</div>
-          <div class="text-[10px] ${item.is_tara_bala_good ? 'text-emerald-600' : 'text-rose-600'} font-bold mt-0.5">${item.is_tara_bala_good ? 'శుభ తార ✔️' : 'అప్రమత్తత ⚠️'}</div>
+          <div class="text-[10px] ${item.is_tara_bala_good ? 'text-emerald-600' : 'text-rose-600'} font-bold mt-0.5">${item.is_tara_bala_good ? t('taraGood') : t('taraCaution')}</div>
         </div>
         <div class="p-3 bg-white rounded-xl border border-amber-200 shadow-xs text-center">
-          <div class="text-[10px] text-stone-500 font-bold uppercase">అదృష్ట సంఖ్య</div>
+          <div class="text-[10px] text-stone-500 font-bold uppercase">${t('luckyNumberLabel')}</div>
           <div class="text-lg font-extrabold text-amber-800 leading-tight mt-0.5 font-mono">${item.lucky_number}</div>
         </div>
         <div class="p-3 bg-white rounded-xl border border-amber-200 shadow-xs text-center">
-          <div class="text-[10px] text-stone-500 font-bold uppercase">అదృష్ట రంగు</div>
+          <div class="text-[10px] text-stone-500 font-bold uppercase">${t('luckyColorLabel')}</div>
           <div class="text-xs font-bold text-stone-800 mt-1">${item.lucky_color}</div>
         </div>
         <div class="p-3 bg-white rounded-xl border border-amber-200 shadow-xs text-center col-span-2 sm:col-span-1">
-          <div class="text-[10px] text-stone-500 font-bold uppercase">అనుకూల దిశ</div>
+          <div class="text-[10px] text-stone-500 font-bold uppercase">${t('luckyDirectionLabel')}</div>
           <div class="text-xs font-bold text-stone-800 mt-1">${item.lucky_direction}</div>
         </div>
       </div>
@@ -2083,12 +3792,12 @@ function renderRashiDetails(item, curPeriod) {
     transitAlertHtml = `
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div class="p-3.5 bg-white rounded-xl border border-amber-200 shadow-xs">
-          <div class="text-[10px] text-stone-500 font-bold uppercase">సూర్య సంక్రమణం</div>
-          <div class="text-sm font-extrabold text-amber-950 mt-1">${item.sun_house}వ స్థానం</div>
-          <div class="text-xs text-amber-800 mt-0.5">${item.is_sun_favorable ? 'అనుకూల సూర్య బలం (ఉపచయం) ☀️' : 'సూర్య ప్రతికూలత (ఓపిక అవసరం)'}</div>
+          <div class="text-[10px] text-stone-500 font-bold uppercase">${t('sunTransitLabel')}</div>
+          <div class="text-sm font-extrabold text-amber-950 mt-1">${item.sun_house} ${t('placeSuffix')}</div>
+          <div class="text-xs text-amber-800 mt-0.5">${item.is_sun_favorable ? t('sunFavorable') : t('sunUnfavorable')}</div>
         </div>
         <div class="p-3.5 bg-white rounded-xl border border-amber-200 shadow-xs sm:col-span-2">
-          <div class="text-[10px] text-stone-500 font-bold uppercase mb-1">మాస ముఖ్యాంశాలు</div>
+          <div class="text-[10px] text-stone-500 font-bold uppercase mb-1">${t('monthlyHighlightsLabel')}</div>
           <ul class="text-xs text-stone-700 space-y-1">
             ${item.highlights.map(h => `<li class="flex items-center gap-1.5"><span class="text-amber-500 font-bold">•</span> <span>${h}</span></li>`).join('')}
           </ul>
@@ -2103,24 +3812,24 @@ function renderRashiDetails(item, curPeriod) {
         <!-- Kandadayam 4-card metric -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
           <div class="p-4 rounded-2xl bg-gradient-to-br from-emerald-50 to-emerald-100/60 border border-emerald-300 shadow-xs text-center">
-            <div class="text-[11px] font-bold text-emerald-800 uppercase tracking-wide">💰 ఆదాయం (Income)</div>
+            <div class="text-[11px] font-bold text-emerald-800 uppercase tracking-wide">💰 ${t('kdAdayam')} (Income)</div>
             <div class="text-3xl font-extrabold text-emerald-950 font-mono mt-1">${kd.aadhayam}</div>
-            <div class="text-[10px] text-emerald-700 mt-1">గరిష్టం: 14</div>
+            <div class="text-[10px] text-emerald-700 mt-1">${t('maxWord')}: 14</div>
           </div>
           <div class="p-4 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-100/60 border border-amber-300 shadow-xs text-center">
-            <div class="text-[11px] font-bold text-amber-800 uppercase tracking-wide">💸 వ్యయం (Expenditure)</div>
+            <div class="text-[11px] font-bold text-amber-800 uppercase tracking-wide">💸 ${t('kdVyayam')} (Expenditure)</div>
             <div class="text-3xl font-extrabold text-amber-950 font-mono mt-1">${kd.vyayam}</div>
-            <div class="text-[10px] text-amber-700 mt-1">గరిష్టం: 14</div>
+            <div class="text-[10px] text-amber-700 mt-1">${t('maxWord')}: 14</div>
           </div>
           <div class="p-4 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100/60 border border-blue-300 shadow-xs text-center">
-            <div class="text-[11px] font-bold text-blue-800 uppercase tracking-wide">👑 రాజపూజ్యం (Honor)</div>
+            <div class="text-[11px] font-bold text-blue-800 uppercase tracking-wide">👑 ${t('kdRajapujyam')} (Honor)</div>
             <div class="text-3xl font-extrabold text-blue-950 font-mono mt-1">${kd.rajapujyam}</div>
-            <div class="text-[10px] text-blue-700 mt-1">గరిష్టం: 8</div>
+            <div class="text-[10px] text-blue-700 mt-1">${t('maxWord')}: 8</div>
           </div>
           <div class="p-4 rounded-2xl bg-gradient-to-br from-rose-50 to-rose-100/60 border border-rose-300 shadow-xs text-center">
-            <div class="text-[11px] font-bold text-rose-800 uppercase tracking-wide">🛡️ అవమానం (Disgrace)</div>
+            <div class="text-[11px] font-bold text-rose-800 uppercase tracking-wide">🛡️ ${t('kdAvamanam')} (Disgrace)</div>
             <div class="text-3xl font-extrabold text-rose-950 font-mono mt-1">${kd.avamanam}</div>
-            <div class="text-[10px] text-rose-700 mt-1">గరిష్టం: 8</div>
+            <div class="text-[10px] text-rose-700 mt-1">${t('maxWord')}: 8</div>
           </div>
         </div>
 
@@ -2129,14 +3838,14 @@ function renderRashiDetails(item, curPeriod) {
           <div class="p-3 bg-white rounded-xl border border-amber-200 shadow-xs flex items-center gap-2.5">
             <span class="text-xl">📊</span>
             <div>
-              <div class="text-[10px] text-stone-500 font-bold uppercase">ఆర్థిక స్థితి విశ్లేషణ</div>
+              <div class="text-[10px] text-stone-500 font-bold uppercase">${t('financialAnalysisLabel')}</div>
               <div class="text-xs font-extrabold text-amber-900">${kd.finance_status}</div>
             </div>
           </div>
           <div class="p-3 bg-white rounded-xl border border-amber-200 shadow-xs flex items-center gap-2.5">
             <span class="text-xl">🎖️</span>
             <div>
-              <div class="text-[10px] text-stone-500 font-bold uppercase">సామాజిక హోదా విశ్లేషణ</div>
+              <div class="text-[10px] text-stone-500 font-bold uppercase">${t('socialAnalysisLabel')}</div>
               <div class="text-xs font-extrabold text-amber-900">${kd.social_status}</div>
             </div>
           </div>
@@ -2145,15 +3854,15 @@ function renderRashiDetails(item, curPeriod) {
         <!-- Planetary Positions -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div class="p-3 bg-amber-50/80 rounded-xl border border-amber-200 text-center">
-            <div class="text-[10px] text-stone-500 font-bold uppercase">గురు బలం (${item.jupiter_house}వ స్థానం)</div>
-            <div class="text-xs font-bold text-amber-950 mt-0.5">${item.has_guru_balam ? 'గురు బలం కలదు ✨' : 'గురు శాంతి అవసరం'}</div>
+            <div class="text-[10px] text-stone-500 font-bold uppercase">${t('guruBalamLabel')} (${item.jupiter_house} ${t('placeSuffix')})</div>
+            <div class="text-xs font-bold text-amber-950 mt-0.5">${item.has_guru_balam ? t('guruBalamYes') : t('guruBalamNo')}</div>
           </div>
           <div class="p-3 bg-amber-50/80 rounded-xl border border-amber-200 text-center">
-            <div class="text-[10px] text-stone-500 font-bold uppercase">శని గోచారం (${item.saturn_house}వ స్థానం)</div>
+            <div class="text-[10px] text-stone-500 font-bold uppercase">${t('shaniGocharaLabel')} (${item.saturn_house} ${t('placeSuffix')})</div>
             <div class="text-xs font-bold text-amber-950 mt-0.5">${item.sade_sati_status}</div>
           </div>
           <div class="p-3 bg-amber-50/80 rounded-xl border border-amber-200 text-center">
-            <div class="text-[10px] text-stone-500 font-bold uppercase">రాహు-కేతు సంచారం</div>
+            <div class="text-[10px] text-stone-500 font-bold uppercase">${t('rahuKetuTransitLabel')}</div>
             <div class="text-xs font-bold text-amber-950 mt-0.5">${item.rahu_ketu_status}</div>
           </div>
         </div>
@@ -2168,7 +3877,7 @@ function renderRashiDetails(item, curPeriod) {
       <div class="vedic-card p-4.5 bg-white border border-amber-200/90 shadow-xs">
         <div class="flex items-center gap-2 text-amber-900 font-bold text-sm mb-2">
           <span class="text-xl">🔮</span>
-          <h4>సాధారణ సమీక్ష (General Overview)</h4>
+          <h4>${t('rashiOverviewTitle')}</h4>
         </div>
         <p class="text-xs text-stone-700 leading-relaxed font-normal">${preds.general}</p>
       </div>
@@ -2176,7 +3885,7 @@ function renderRashiDetails(item, curPeriod) {
       <div class="vedic-card p-4.5 bg-white border border-amber-200/90 shadow-xs">
         <div class="flex items-center gap-2 text-amber-900 font-bold text-sm mb-2">
           <span class="text-xl">💼</span>
-          <h4>ఉద్యోగం & వ్యాపారం (Career & Profession)</h4>
+          <h4>${t('rashiCareerTitle')}</h4>
         </div>
         <p class="text-xs text-stone-700 leading-relaxed font-normal">${preds.career}</p>
       </div>
@@ -2184,7 +3893,7 @@ function renderRashiDetails(item, curPeriod) {
       <div class="vedic-card p-4.5 bg-white border border-amber-200/90 shadow-xs">
         <div class="flex items-center gap-2 text-amber-900 font-bold text-sm mb-2">
           <span class="text-xl">💰</span>
-          <h4>ఆర్థిక స్థితి & ధన యోగం (Finance & Wealth)</h4>
+          <h4>${t('rashiFinanceTitle')}</h4>
         </div>
         <p class="text-xs text-stone-700 leading-relaxed font-normal">${preds.finance}</p>
       </div>
@@ -2192,7 +3901,7 @@ function renderRashiDetails(item, curPeriod) {
       <div class="vedic-card p-4.5 bg-white border border-amber-200/90 shadow-xs">
         <div class="flex items-center gap-2 text-amber-900 font-bold text-sm mb-2">
           <span class="text-xl">🩺</span>
-          <h4>ఆరోగ్యం & శక్తి (Health & Well-being)</h4>
+          <h4>${t('rashiHealthTitle')}</h4>
         </div>
         <p class="text-xs text-stone-700 leading-relaxed font-normal">${preds.health}</p>
       </div>
@@ -2200,7 +3909,7 @@ function renderRashiDetails(item, curPeriod) {
       <div class="vedic-card p-4.5 bg-white border border-amber-200/90 shadow-xs md:col-span-2">
         <div class="flex items-center gap-2 text-amber-900 font-bold text-sm mb-2">
           <span class="text-xl">👨‍👩‍👧</span>
-          <h4>కుటుంబం & దాంపత్యం (Family & Relationships)</h4>
+          <h4>${t('rashiFamilyTitle')}</h4>
         </div>
         <p class="text-xs text-stone-700 leading-relaxed font-normal">${preds.family}</p>
       </div>
@@ -2212,7 +3921,7 @@ function renderRashiDetails(item, curPeriod) {
     <div class="p-5 rounded-2xl bg-gradient-to-br from-amber-900 via-amber-950 to-stone-950 text-amber-100 border border-amber-500/40 shadow-md">
       <div class="flex items-center gap-2.5 mb-2">
         <span class="text-2xl">🪔</span>
-        <h4 class="font-extrabold text-sm text-amber-200 uppercase tracking-wide">శాంతి / దైవ పరిహారము (Remedies & Prayers)</h4>
+        <h4 class="font-extrabold text-sm text-amber-200 uppercase tracking-wide">${t('rashiRemediesTitle')}</h4>
       </div>
       <p class="text-xs text-stone-300 leading-relaxed font-normal">${item.remedy}</p>
     </div>
@@ -2236,16 +3945,16 @@ function renderRashiDetails(item, curPeriod) {
               <span class="text-xs font-semibold text-stone-500">(${rashi.name_english})</span>
             </div>
             <div class="flex items-center gap-2 text-xs text-stone-600 mt-1 font-medium">
-              <span>అధిపతి: <strong class="text-amber-900">${rashi.lord}</strong></span>
+              <span>${t('lordLabel')} <strong class="text-amber-900">${rashi.lord}</strong></span>
               <span>•</span>
-              <span>తత్త్వం: <strong class="text-amber-900">${rashi.element}</strong></span>
+              <span>${t('elementLabel')} <strong class="text-amber-900">${rashi.element}</strong></span>
             </div>
           </div>
         </div>
 
         <!-- Score Meter -->
         <div class="flex flex-col items-end sm:items-center">
-          <div class="text-[10px] text-stone-500 font-bold uppercase tracking-wider mb-1">అనుకూలత స్కోర్</div>
+          <div class="text-[10px] text-stone-500 font-bold uppercase tracking-wider mb-1">${t('compatibilityScoreLabel')}</div>
           <div class="flex items-center gap-2">
             <span class="text-2xl font-black font-mono text-amber-950">${score}%</span>
             <span class="text-xs font-extrabold px-2.5 py-1 rounded-full border ${scoreColor}">
@@ -2303,7 +4012,7 @@ function switchIntercalarySystem(sys) {
     if (btnSurya) btnSurya.className = "px-4 py-2 rounded-xl text-xs font-bold text-white bg-amber-600 shadow transition-all";
     if (btnDrik) btnDrik.className = "px-4 py-2 rounded-xl text-xs font-bold text-amber-200 hover:text-white transition-all";
     if (badge) {
-      badge.innerText = "సూర్యసిద్ధాంత / ధర్మశాస్త్ర పద్ధతి";
+      badge.innerText = t('suryaSystemBadge');
       badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300";
     }
     if (keelakaCallout) keelakaCallout.classList.remove('hidden');
@@ -2311,7 +4020,7 @@ function switchIntercalarySystem(sys) {
     if (btnDrik) btnDrik.className = "px-4 py-2 rounded-xl text-xs font-bold text-white bg-amber-600 shadow transition-all";
     if (btnSurya) btnSurya.className = "px-4 py-2 rounded-xl text-xs font-bold text-amber-200 hover:text-white transition-all";
     if (badge) {
-      badge.innerText = "దృక్సిద్ధాంత పద్ధతి (Swiss Ephemeris)";
+      badge.innerText = t('drikSystemBadge');
       badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-900 border border-sky-300";
     }
     if (keelakaCallout) keelakaCallout.classList.add('hidden');
@@ -2341,11 +4050,11 @@ function renderIntercalary(data) {
     return `
       <tr class="${rowBg} transition border-b border-stone-200 last:border-0">
         <td class="p-3 font-bold text-stone-900 whitespace-nowrap">${m.year}</td>
-        <td class="p-3 font-semibold text-amber-950 whitespace-nowrap font-serif-te">${m.samvatsara_name_telugu || m.samvatsara_name}</td>
+        <td class="p-3 font-semibold text-amber-950 whitespace-nowrap font-serif-te">${m.samvatsara_name || m.samvatsara_name_telugu}</td>
         <td class="p-3 font-bold text-amber-900">${m.full_display_name}</td>
         <td class="p-3 text-center whitespace-nowrap">${typeBadge}</td>
         <td class="p-3 text-center font-mono font-bold text-stone-800">${m.sankranti_count}</td>
-        <td class="p-3 font-mono text-stone-700 whitespace-nowrap">${m.start_date} నుండి ${m.end_date}</td>
+        <td class="p-3 font-mono text-stone-700 whitespace-nowrap">${m.start_date} ${t('toDateSpan')} ${m.end_date}</td>
         <td class="p-3 text-xs text-stone-600 max-w-xs">
           <div>${m.description}</div>
           ${m.shastra_verse ? `<div class="mt-1 text-[11px] font-serif-te font-semibold text-amber-800 italic">"${m.shastra_verse}"</div>` : ''}
@@ -2444,8 +4153,8 @@ function renderRashiKandadayam(rashis) {
             <div class="space-y-2 text-xs">
               <div>
                 <div class="flex justify-between font-bold mb-1">
-                  <span class="text-emerald-800">ఆదాయం: <span class="font-mono text-sm">${item.aadhayam}</span>/14</span>
-                  <span class="text-rose-800">వ్యయం: <span class="font-mono text-sm">${item.vyayam}</span>/14</span>
+                  <span class="text-emerald-800">${t('kdAdayam')}: <span class="font-mono text-sm">${item.aadhayam}</span>/14</span>
+                  <span class="text-rose-800">${t('kdVyayam')}: <span class="font-mono text-sm">${item.vyayam}</span>/14</span>
                 </div>
                 <!-- Dual Comparative Progress Bar -->
                 <div class="h-2 w-full bg-stone-100 rounded-full overflow-hidden flex">
@@ -2457,8 +4166,8 @@ function renderRashiKandadayam(rashis) {
               <!-- Scores: Honor vs Disgrace -->
               <div class="pt-1">
                 <div class="flex justify-between font-bold mb-1">
-                  <span class="text-purple-800">రాజపూజ్యం: <span class="font-mono text-sm">${item.rajapujyam}</span>/8</span>
-                  <span class="text-orange-800">అవమానం: <span class="font-mono text-sm">${item.avamanam}</span>/8</span>
+                  <span class="text-purple-800">${t('kdRajapujyam')}: <span class="font-mono text-sm">${item.rajapujyam}</span>/8</span>
+                  <span class="text-orange-800">${t('kdAvamanam')}: <span class="font-mono text-sm">${item.avamanam}</span>/8</span>
                 </div>
                 <div class="h-2 w-full bg-stone-100 rounded-full overflow-hidden flex">
                   <div class="bg-purple-500 h-full" style="width: ${(item.rajapujyam / 8) * 100}%"></div>
@@ -2565,14 +4274,16 @@ function renderNakshatraSpotlight(item) {
   if (!container || !item) return;
 
   const getStatusBadge = (status) => {
-    if (status.includes("ఉత్తమం") || status.includes("Excellent")) {
-      return `<span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-900 border border-emerald-300">ఉత్తమం (Auspicious)</span>`;
-    } else if (status.includes("అనుకూలం") || status.includes("Good")) {
-      return `<span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-sky-100 text-sky-900 border border-sky-300">అనుకూలం (Favorable)</span>`;
-    } else if (status.includes("మధ్యమం") || status.includes("Moderate")) {
-      return `<span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-amber-100 text-amber-900 border border-amber-300">మధ్యమం (Moderate)</span>`;
+    if (!status) return '';
+    const s = status.toLowerCase();
+    if (s.includes("ఉత్తమం") || s.includes("ಉತ್ತಮ") || s.includes("உத்தமம்") || s.includes("उत्तम") || s.includes("excellent") || s.includes("auspicious")) {
+      return `<span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-900 border border-emerald-300">${status}</span>`;
+    } else if (s.includes("అనుకూలం") || s.includes("ಅನುಕೂಲ") || s.includes("அனுகூலம்") || s.includes("अनुकूल") || s.includes("good") || s.includes("favorable")) {
+      return `<span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-sky-100 text-sky-900 border border-sky-300">${status}</span>`;
+    } else if (s.includes("మధ్యమం") || s.includes("ಮಧ್ಯಮ") || s.includes("மத்திமம்") || s.includes("मध्यम") || s.includes("moderate")) {
+      return `<span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-amber-100 text-amber-900 border border-amber-300">${status}</span>`;
     } else {
-      return `<span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-rose-100 text-rose-900 border border-rose-300">అప్రమత్తత (Caution)</span>`;
+      return `<span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-rose-100 text-rose-900 border border-rose-300">${status}</span>`;
     }
   };
 
@@ -2585,18 +4296,18 @@ function renderNakshatraSpotlight(item) {
             #${item.id}
           </span>
           <h3 class="text-xl md:text-2xl font-extrabold text-amber-950 font-serif-te">
-            ${item.name} నక్షత్రం
+            ${item.name} ${t('nakshatraWord')}
           </h3>
         </div>
         <p class="text-xs font-semibold text-stone-600 mt-1 flex items-center gap-1">
-          <span>వ్యాపించిన రాశులు / పాదాలు:</span>
+          <span>${t('spreadRashisPadasLabel')}</span>
           <span class="font-bold text-amber-900">${item.rashi_names.join(', ')}</span>
         </p>
       </div>
 
       <!-- Composite Annual Status -->
       <div class="bg-white px-4 py-2.5 rounded-xl border border-amber-200 shadow-sm text-left md:text-right">
-        <div class="text-[10px] text-stone-500 font-bold uppercase tracking-wider">సంవత్సర సమగ్ర స్థితి</div>
+        <div class="text-[10px] text-stone-500 font-bold uppercase tracking-wider">${t('annualCompositeStatusLabel')}</div>
         <div class="font-extrabold text-amber-950 text-sm mt-0.5">${item.overall_rating}</div>
       </div>
     </div>
@@ -2608,8 +4319,8 @@ function renderNakshatraSpotlight(item) {
         <div>
           <div class="flex items-center justify-between border-b border-amber-100 pb-2 mb-3">
             <div>
-              <h4 class="font-extrabold text-amber-950 text-sm">ప్రథమ కందాయం</h4>
-              <p class="text-[11px] font-semibold text-stone-500">చైత్రం – ఆషాఢం (నెలలు 1–4)</p>
+              <h4 class="font-extrabold text-amber-950 text-sm">${t('trimester1Title')}</h4>
+              <p class="text-[11px] font-semibold text-stone-500">${t('trimester1Months')}</p>
             </div>
             <div class="w-10 h-10 rounded-full bg-amber-50 border border-amber-300 flex items-center justify-center font-mono font-extrabold text-amber-900 text-lg shadow-2xs">
               ${item.trimester_1.score}
@@ -2623,7 +4334,7 @@ function renderNakshatraSpotlight(item) {
           </p>
         </div>
         <div class="mt-4 pt-2 border-t border-stone-100 text-[10px] font-semibold text-stone-400">
-          గరిష్ట పరిమితి: 8 భాగాలు
+          ${t('trimester1MaxLimit')}
         </div>
       </div>
 
@@ -2632,8 +4343,8 @@ function renderNakshatraSpotlight(item) {
         <div>
           <div class="flex items-center justify-between border-b border-orange-100 pb-2 mb-3">
             <div>
-              <h4 class="font-extrabold text-amber-950 text-sm">ద్వితీయ కందాయం</h4>
-              <p class="text-[11px] font-semibold text-stone-500">శ్రావణం – కార్తీకం (నెలలు 5–8)</p>
+              <h4 class="font-extrabold text-amber-950 text-sm">${t('trimester2Title')}</h4>
+              <p class="text-[11px] font-semibold text-stone-500">${t('trimester2Months')}</p>
             </div>
             <div class="w-10 h-10 rounded-full bg-orange-50 border border-orange-300 flex items-center justify-center font-mono font-extrabold text-orange-950 text-lg shadow-2xs">
               ${item.trimester_2.score}
@@ -2647,7 +4358,7 @@ function renderNakshatraSpotlight(item) {
           </p>
         </div>
         <div class="mt-4 pt-2 border-t border-stone-100 text-[10px] font-semibold text-stone-400">
-          గరిష్ట పరిమితి: 3 భాగాలు
+          ${t('trimester2MaxLimit')}
         </div>
       </div>
 
@@ -2656,8 +4367,8 @@ function renderNakshatraSpotlight(item) {
         <div>
           <div class="flex items-center justify-between border-b border-emerald-100 pb-2 mb-3">
             <div>
-              <h4 class="font-extrabold text-amber-950 text-sm">తృతీయ కందాయం</h4>
-              <p class="text-[11px] font-semibold text-stone-500">మార్గశిరం – ఫాల్గుణం (నెలలు 9–12)</p>
+              <h4 class="font-extrabold text-amber-950 text-sm">${t('trimester3Title')}</h4>
+              <p class="text-[11px] font-semibold text-stone-500">${t('trimester3Months')}</p>
             </div>
             <div class="w-10 h-10 rounded-full bg-emerald-50 border border-emerald-300 flex items-center justify-center font-mono font-extrabold text-emerald-950 text-lg shadow-2xs">
               ${item.trimester_3.score}
@@ -2671,7 +4382,7 @@ function renderNakshatraSpotlight(item) {
           </p>
         </div>
         <div class="mt-4 pt-2 border-t border-stone-100 text-[10px] font-semibold text-stone-400">
-          గరిష్ట పరిమితి: 5 భాగాలు
+          ${t('trimester3MaxLimit')}
         </div>
       </div>
     </div>
@@ -2680,7 +4391,7 @@ function renderNakshatraSpotlight(item) {
     <div class="p-4 rounded-xl bg-amber-50/80 border border-amber-200 text-xs text-amber-950 font-medium leading-relaxed flex items-start gap-2.5">
       <span class="text-xl">💡</span>
       <div>
-        <strong class="font-bold">సంవత్సర ఫలిత సారాంశం & సూచన:</strong> ${item.overall_status}
+        <strong class="font-bold">${t('annualSummaryAdviceLabel')}</strong> ${item.overall_status}
       </div>
     </div>
   `;
@@ -2695,7 +4406,7 @@ function renderNakshatrasMasterTable(nakshatras, filterTerm = '') {
     : nakshatras;
 
   if (filtered.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-stone-400 italic">నక్షత్ర ఫలితాలు ఏవీ కనుగొనబడలేదు</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-stone-400 italic">${t('noNakshatraFound')}</td></tr>`;
     return;
   }
 
