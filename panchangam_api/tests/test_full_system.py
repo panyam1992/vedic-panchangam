@@ -398,19 +398,52 @@ class TestVedicMuhurtamCalculator:
         assert len(picks[0]["family_compatibility"]["members"]) == 2
 
     def test_muhurtam_events_catalog(self):
-        """Verify catalog of all supported Vedic Muhurtam ceremonies."""
+        """Verify catalog of all 36 supported Vedic Muhurtam ceremonies."""
         resp = client.get("/api/v1/muhurtam/event-types")
         assert resp.status_code == 200
         data = resp.json()
         assert data["status"] == "success"
         assert "pariharams" in data
         assert "samskaras" in data
+        assert data["total_events"] == 36
         all_codes = [e["code"] for e in data["pariharams"]] + [e["code"] for e in data["samskaras"]]
         assert "naga_pratishtha" in all_codes
         assert "kuja_shanti_subrahmanya" in all_codes
         assert "santana_gopala" in all_codes
         assert "vivaha" in all_codes
         assert "grihapravesha" in all_codes
+        # New additions
+        assert "aksharabhyasa" in all_codes
+        assert "shanku_sthapana" in all_codes
+        assert "dwara_bandha" in all_codes
+        assert "bhoomi_puja" in all_codes
+        assert "borewell_kupa" in all_codes
+        assert "udyoga_pravesha" in all_codes
+        assert "runa_vimukthi" in all_codes
+        assert "swarnabharana_dharana" in all_codes
+        assert "satyanarayana_vratam" in all_codes
+        assert "mrityunjaya_ayushya" in all_codes
+        assert "devata_pratishtha" in all_codes
+
+    def test_muhurtam_new_events_calculation(self):
+        """Verify calculation for newly added Muhurtams (Aksharabhyasa & Shanku Sthapana)."""
+        payload = {
+            "event_type": "aksharabhyasa",
+            "start_date": "2026-10-01",
+            "days_range": 30,
+            "latitude": 17.3850,
+            "longitude": 78.4867,
+            "timezone_offset": 5.5,
+            "native_nakshatra_index": 3,
+            "native_rashi_index": 1,
+            "limit": 3
+        }
+        resp = client.post("/api/v1/muhurtam/calculate", json=payload)
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["status"] == "success"
+        assert len(data["data"]["top_muhurtams"]) > 0
+        assert "అక్షరాభ్యాసం" in data["data"]["event_title_te"]
 
 
 # ==============================================================================
