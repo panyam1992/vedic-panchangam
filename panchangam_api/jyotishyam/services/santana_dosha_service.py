@@ -132,6 +132,14 @@ def analyze_santana_and_pregnancy_doshas(
     # Detect specific Santana Doshas
     doshas_detected = []
 
+    gender_clean = (gender or "").strip().lower()
+    is_male = gender_clean in ["male", "m", "పురుషుడు", "పురుష", "boy", "man"]
+
+    if is_male:
+        analysis_title = "పుత్రభావ & సంతాన యోగ పరిశీలన (5th House Progeny & Putra Bhava Analysis)"
+    else:
+        analysis_title = "సంతాన, క్షేత్ర బల & గర్భ రక్షా పరిశీలన (Womb Fertility & Progeny Analysis)"
+
     # 1. SARPA SHAAPA / NAGA DOSHA (సర్ప శాపం / నాగ దోషం)
     # Rahu in 5th or aspecting 5th, or Rahu conjunct 5th lord, or Mars/Saturn in 5th with Rahu
     rahu_in_5th = rahu.get("bhava") == 5
@@ -157,31 +165,52 @@ def analyze_santana_and_pregnancy_doshas(
             }
         })
 
-    # 2. KUJA-KETU GARBHASRAVA DOSHA (గర్భస్రావ దోషం / Miscarriage & Heat Affliction)
+    # 2. KUJA-KETU PROGENY OBSTACLE / GARBHASRAVA DOSHA
     # Mars in 5th or aspecting 5th with Ketu / Rahu / Sun
     mars_in_5th = mars.get("bhava") == 5
     mars_aspects_5th = mars.get("bhava") in [2, 10, 11] # 4th, 7th, 8th aspects on 5th
     ketu_in_5th = ketu.get("bhava") == 5
     if (mars_in_5th or (mars_aspects_5th and (rahu_in_5th or ketu_in_5th))) or (mars_in_5th and ketu.get("rashi_index") == mars.get("rashi_index")):
-        doshas_detected.append({
-            "code": "garbhasrava_dosha",
-            "name_te": "కుజ-కేతు గర్భస్రావ దోషం (Garbhasrava / Miscarriage Risk)",
-            "impact_te": "గర్భం ధరించినప్పటికీ 1 నుండి 3వ నెలలోపు నిలవకపోవడం (గర్భస్రావం), రక్త/ఉష్ణ సంబంధిత సమస్యలు.",
-            "astrological_reason": f"పంచమ స్థానంలో లేదా పంచమంపై కుజ-కేతువుల ఉష్ణ ప్రభావం ఉన్నది (కుజుడు: {mars.get('bhava')}వ భావం). శాస్త్ర ప్రకారం కుజుడు రక్తకారకుడు, కేతువు ఛేదనకారకుడు.",
-            "shastra_authority": "జాతకాభరణం (గర్భధారణ ప్రకరణం) & ఫలదీపిక",
-            "primary_remedy": {
-                "name": "సుబ్రహ్మణ్య షష్ఠి వ్రతం & కుజ శాంతి (Subrahmanya Shashti)",
-                "event_type": "kuja_shanti_subrahmanya",
-                "procedure": "శుక్లపక్ష షష్ఠి తిథి నాడు సుబ్రహ్మణ్యేశ్వర స్వామి సన్నిధిలో పంచామృతాభిషేకం మరియు కుజ శాంతి హోమం నిర్వహించాలి.",
-                "mantra": "శ్రీ గర్భరక్షాంబికా స్తోత్రం & సుబ్రహ్మణ్యాష్టకం",
-                "japa_count": "కుజ జపం 10,000 సార్లు"
-            },
-            "secondary_remedy": {
-                "name": "గర్భరక్షాంబికా అమ్మవారి ఆరాధన",
-                "event_type": "kuja_shanti_subrahmanya",
-                "procedure": "రోజూ నెయ్యి దీపారాధన చేసి గర్భరక్షాంబికా స్తోత్రం పఠించడం వల్ల గర్భం సంరక్షించబడుతుంది."
-            }
-        })
+        if is_male:
+            doshas_detected.append({
+                "code": "garbhasrava_dosha",
+                "name_te": "కుజ-కేతు సంతాన ప్రతిబంధక దోషం (Mars-Ketu Putra Bhava Affliction / Progeny Delay)",
+                "impact_te": "సంతాన ప్రాప్తిలో జాప్యం, శుక్ర/రక్త ధాతువులలో అధిక ఉష్ణ ప్రభావం మరియు వంశాభివృద్ధిలో ఆటంకాలు.",
+                "astrological_reason": f"పంచమ స్థానంలో లేదా పంచమంపై కుజ-కేతువుల ఉష్ణ ప్రభావం ఉన్నది (కుజుడు: {mars.get('bhava')}వ భావం). శాస్త్ర ప్రకారం కుజుడు రక్తకారకుడు, కేతువు ఛేదనకారకుడు.",
+                "shastra_authority": "బృహత్ పరాశర హోరాశాస్త్రం (పుత్రభావ అధ్యాయం) & ఫలదీపిక",
+                "primary_remedy": {
+                    "name": "సుబ్రహ్మణ్యారాధన & కుజ శాంతి (Subrahmanya Puja)",
+                    "event_type": "kuja_shanti_subrahmanya",
+                    "procedure": "శుక్లపక్ష షష్ఠి లేదా మంగళవారం నాడు సుబ్రహ్మణ్యేశ్వర స్వామి సన్నిధిలో పంచామృతాభిషేకం మరియు కుజ శాంతి నిర్వహించాలి.",
+                    "mantra": "శ్రీ సుబ్రహ్మణ్యాష్టకం & కుజ గాయత్రి మంత్రం",
+                    "japa_count": "కుజ జపం 10,000 సార్లు"
+                },
+                "secondary_remedy": {
+                    "name": "కుమార స్వామి ఆలయ దర్శనం",
+                    "event_type": "kuja_shanti_subrahmanya",
+                    "procedure": "మంగళవారం నాడు సుబ్రహ్మణ్య స్వామికి ఎర్రటి పూలతో పూజ చేసి కందుల దానం చేయాలి."
+                }
+            })
+        else:
+            doshas_detected.append({
+                "code": "garbhasrava_dosha",
+                "name_te": "కుజ-కేతు గర్భస్రావ దోషం (Garbhasrava / Miscarriage Risk)",
+                "impact_te": "గర్భం ధరించినప్పటికీ 1 నుండి 3వ నెలలోపు నిలవకపోవడం (గర్భస్రావం), రక్త/ఉష్ణ సంబంధిత సమస్యలు.",
+                "astrological_reason": f"పంచమ స్థానంలో లేదా పంచమంపై కుజ-కేతువుల ఉష్ణ ప్రభావం ఉన్నది (కుజుడు: {mars.get('bhava')}వ భావం). శాస్త్ర ప్రకారం కుజుడు రక్తకారకుడు, కేతువు ఛేదనకారకుడు.",
+                "shastra_authority": "జాతకాభరణం (గర్భధారణ ప్రకరణం) & ఫలదీపిక",
+                "primary_remedy": {
+                    "name": "సుబ్రహ్మణ్య షష్ఠి వ్రతం & కుజ శాంతి (Subrahmanya Shashti)",
+                    "event_type": "kuja_shanti_subrahmanya",
+                    "procedure": "శుక్లపక్ష షష్ఠి తిథి నాడు సుబ్రహ్మణ్యేశ్వర స్వామి సన్నిధిలో పంచామృతాభిషేకం మరియు కుజ శాంతి హోమం నిర్వహించాలి.",
+                    "mantra": "శ్రీ గర్భరక్షాంబికా స్తోత్రం & సుబ్రహ్మణ్యాష్టకం",
+                    "japa_count": "కుజ జపం 10,000 సార్లు"
+                },
+                "secondary_remedy": {
+                    "name": "గర్భరక్షాంబికా అమ్మవారి ఆరాధన",
+                    "event_type": "kuja_shanti_subrahmanya",
+                    "procedure": "రోజూ నెయ్యి దీపారాధన చేసి గర్భరక్షాంబికా స్తోత్రం పఠించడం వల్ల గర్భం సంరక్షించబడుతుంది."
+                }
+            })
 
     # 3. GURU-CHANDAL / PUTRAKARAKA AFFLICTION (గురు-చాండాల / సంతాన కారక పీడ)
     # Jupiter in 6, 8, 12 or debilitated (Capricorn) or combust or conjunct Rahu
@@ -261,20 +290,39 @@ def analyze_santana_and_pregnancy_doshas(
     if len(doshas_detected) == 0:
         overall_status_te = "సంతాన యోగం అనుకూలం (Favorable Progeny Indicators)"
         overall_badge = "success"
-        overall_desc = f"5వ భావం ({RASHIS[fifth_rashi]['name_te']} రాశి, అధిపతి: {fifth_lord_te}) మరియు గురు బలం శుభప్రదంగా ఉన్నాయి. తీవ్రమైన సర్ప లేదా గర్భస్రావ దోషాలు లేవు. సాధారణ ఇష్టదైవ ప్రార్థనతో సత్సంతాన ప్రాప్తి కలుగును."
+        overall_desc = f"5వ భావం ({RASHIS[fifth_rashi]['name_te']} రాశి, అధిపతి: {fifth_lord_te}) మరియు గురు బలం శుభప్రదంగా ఉన్నాయి. తీవ్రమైన సర్ప లేదా సంతాన ప్రతిబంధక దోషాలు లేవు. సాధారణ ఇష్టదైవ ప్రార్థనతో సత్సంతాన ప్రాప్తి కలుగును."
         primary_recommended_parihara = "సంతాన గోపాల కృష్ణార్చన"
         recommended_event_type = "santana_gopala"
     else:
         overall_status_te = "శాస్త్రోక్త శాంతి పరిహారాలు ఆవశ్యకం (Parihara Recommended)"
         overall_badge = "warning"
-        overall_desc = "జాతకంలో కొన్ని విశిష్ట సర్ప/కుజ/గురు ప్రతిబంధకాలు ఉన్నందున శాస్త్రోక్తమైన నాగ ప్రతిష్ఠ, ఆశ్లేషా బలి, లేదా సంతాన గోపాల హోమాన్ని శుభ ముహూర్తంలో ఆచరించడం ద్వారా గర్భ రక్షణ మరియు సంతాన సౌఖ్యం సిద్ధిస్తాయి."
+        if is_male:
+            overall_desc = "జాతకంలో కొన్ని విశిష్ట సర్ప/కుజ/గురు ప్రతిబంధకాలు ఉన్నందున శాస్త్రోక్తమైన నాగ ప్రతిష్ఠ, ఆశ్లేషా బలి, లేదా సంతాన గోపాల హోమాన్ని శుభ ముహూర్తంలో ఆచరించడం ద్వారా సంతాన సౌఖ్యం మరియు వంశాభివృద్ధి సిద్ధిస్తాయి."
+        else:
+            overall_desc = "జాతకంలో కొన్ని విశిష్ట సర్ప/కుజ/గురు ప్రతిబంధకాలు ఉన్నందున శాస్త్రోక్తమైన నాగ ప్రతిష్ఠ, ఆశ్లేషా బలి, లేదా సంతాన గోపాల హోమాన్ని శుభ ముహూర్తంలో ఆచరించడం ద్వారా గర్భ రక్షణ మరియు సంతాన సౌఖ్యం సిద్ధిస్తాయి."
         primary_recommended_parihara = doshas_detected[0]["primary_remedy"]["name"]
         recommended_event_type = doshas_detected[0]["primary_remedy"]["event_type"]
 
     # Calculate Beeja / Kshetra Sphutas
     sphutas = calculate_beeja_and_kshetra_sphuta(planets)
+    sphutas["gender"] = gender
+    sphutas["is_male"] = is_male
+    sphutas["relevant_sphuta"] = "beeja" if is_male else "kshetra"
+    sphutas["spouse_sphuta"] = "kshetra" if is_male else "beeja"
+
+    if is_male:
+        sphutas["beeja_sphuta"]["applicable"] = True
+        sphutas["kshetra_sphuta"]["applicable"] = False
+        sphutas["kshetra_sphuta"]["applicability_note"] = "శాస్త్ర ప్రకారం క్షేత్ర స్పష్టం కేవలం స్త్రీ జాతకానికి (ధర్మపత్నికి) మాత్రమే వర్తిస్తుంది. వివాహానంతరం భార్యాభర్తల ఇరువురి జాతకాలను సమగ్రంగా విశ్లేషించడానికి '👫 దంపతుల జాతకం (Husband & Wife Joint Analysis)' విభాగాన్ని ఉపయోగించండి."
+    else:
+        sphutas["kshetra_sphuta"]["applicable"] = True
+        sphutas["beeja_sphuta"]["applicable"] = False
+        sphutas["beeja_sphuta"]["applicability_note"] = "శాస్త్ర ప్రకారం బీజ స్పష్టం కేవలం పురుష జాతకానికి (భర్తకు) మాత్రమే వర్తిస్తుంది. వివాహానంతరం భార్యాభర్తల సంయుక్త సంతాన విశ్లేషణ కొరకు '👫 దంపతుల జాతకం' విభాగాన్ని చూడండి."
 
     return {
+        "analysis_title": analysis_title,
+        "gender": gender,
+        "is_male": is_male,
         "fifth_house_info": {
             "rashi_name_te": RASHIS[fifth_rashi]["name_te"],
             "lord_te": fifth_lord_te,

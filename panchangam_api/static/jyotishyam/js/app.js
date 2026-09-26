@@ -1236,11 +1236,14 @@ function renderDoshas(data) {
       `;
     }
 
+    const isMale = (data.input && (data.input.gender === "male" || data.input.gender === "M" || data.input.gender === "పురుషుడు" || data.input.gender === "పురుష"));
+    const titleText = sa.analysis_title || (isMale ? "పుత్రభావ & సంతాన యోగ పరిశీలన (5th House Progeny & Putra Bhava Analysis)" : "సంతాన, క్షేత్ర బల & గర్భ రక్షా పరిశీలన (Womb Fertility & Progeny Analysis)");
+
     santanaCard.className = `dosha-card ${sa.overall_badge === 'success' ? 'card-dosha-none' : 'card-dosha-present'}`;
     santanaCard.innerHTML = `
       <div class="dosha-card-header">
         <div class="dosha-title">
-          <span>🪷</span> సంతాన, పుత్రభావ & గర్భస్రావ దోష విశ్లేషణ (Progeny & Pregnancy Loss Shastric Analysis)
+          <span>🪷</span> ${titleText}
         </div>
         <span class="dignity-tag ${overallBadgeClass}">${sa.overall_status_te}</span>
       </div>
@@ -1266,11 +1269,12 @@ function renderDoshas(data) {
       <!-- Classical Beeja & Kshetra Sphuta Analysis Grid -->
       <div style="margin-bottom: 16px;">
         <h4 style="color: #4A0E17; font-size: 1.05rem; font-weight: bold; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
-          <span>🧬</span> శాస్త్రోక్త బీజ & క్షేత్ర స్పష్ట బలం (Beeja & Kshetra Sphuta - Phaladeepika Ch. 12):
+          <span>🧬</span> శాస్త్రోక్త సంతాన శక్తి పరిశీలన (Beeja / Kshetra Sphuta - Phaladeepika Ch. 12):
         </h4>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
           
           <!-- Beeja Sphuta (Male) -->
+          ${isMale ? `
           <div style="background: #FFF; border: 1px solid #BBDEFB; border-top: 4px solid #1976D2; border-radius: 8px; padding: 12px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
               <strong style="color: #0D47A1; font-size: 0.98rem;">👨 పురుష బీజ స్పష్టం (Virility & Vitality)</strong>
@@ -1286,8 +1290,23 @@ function renderDoshas(data) {
             </div>
             <p style="margin: 0; font-size: 0.88rem; color: #555; line-height: 1.5;">${beeja.description || '—'}</p>
           </div>
+          ` : `
+          <div style="background: #F8FBFF; border: 1.5px dashed #90CAF9; border-top: 4px solid #1976D2; border-radius: 8px; padding: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <strong style="color: #0D47A1; font-size: 0.98rem;">👨 పురుష బీజ స్పష్టం (Virility & Vitality)</strong>
+              <span class="dignity-tag" style="background: #E3F2FD; color: #0D47A1; font-size: 0.78rem;">భర్తకు వర్తిస్తుంది</span>
+            </div>
+            <div style="font-size: 0.88rem; color: #37474F; line-height: 1.6; margin-bottom: 8px;">
+              📜 <strong>ప్రాచీన ఫలదీపిక ప్రమాణం:</strong> బీజ స్పష్టం (వీర్య/సంతానోత్పత్తి బలం) కేవలం పురుష జాతకానికి (భర్తకు) మాత్రమే వర్తిస్తుంది. ఇది వ్యక్తిగత స్త్రీ జాతకానికి వర్తించదు.
+            </div>
+            <div style="background: #FFF; border: 1px solid #BBDEFB; border-radius: 6px; padding: 8px 10px; font-size: 0.84rem; color: #1565C0; line-height: 1.5;">
+              💡 <strong>ముఖ్య గమనిక:</strong> వివాహానంతరం భార్యాభర్తల సంయుక్త సంతాన విశ్లేషణ కొరకు పైనున్న <strong>'👫 దంపతుల జాతకం (Husband & Wife Joint Analysis)'</strong> ట్యాబ్‌ను ఉపయోగించండి.
+            </div>
+          </div>
+          `}
 
           <!-- Kshetra Sphuta (Female) -->
+          ${!isMale ? `
           <div style="background: #FFF; border: 1px solid #F8BBD0; border-top: 4px solid #C2185B; border-radius: 8px; padding: 12px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
               <strong style="color: #880E4F; font-size: 0.98rem;">👩 స్త్రీ క్షేత్ర స్పష్టం (Womb & Fertility Energy)</strong>
@@ -1303,6 +1322,20 @@ function renderDoshas(data) {
             </div>
             <p style="margin: 0; font-size: 0.88rem; color: #555; line-height: 1.5;">${kshetra.description || '—'}</p>
           </div>
+          ` : `
+          <div style="background: #FFF9F9; border: 1.5px dashed #F48FB1; border-top: 4px solid #C2185B; border-radius: 8px; padding: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <strong style="color: #880E4F; font-size: 0.98rem;">👩 స్త్రీ క్షేత్ర స్పష్టం (Womb & Fertility Energy)</strong>
+              <span class="dignity-tag" style="background: #FCE4EC; color: #880E4F; font-size: 0.78rem;">భార్యకు వర్తిస్తుంది</span>
+            </div>
+            <div style="font-size: 0.88rem; color: #5D4037; line-height: 1.6; margin-bottom: 8px;">
+              📜 <strong>ప్రాచీన ఫలదీపిక & పరాశర శాస్త్ర ప్రమాణం:</strong> క్షేత్ర స్పష్టం (గర్భాశయ/గర్భధారణ శక్తి) కేవలం స్త్రీ జాతకానికి (ధర్మపత్నికి) మాత్రమే వర్తిస్తుంది. ఇది వ్యక్తిగత పురుష జాతకానికి వర్తించదు.
+            </div>
+            <div style="background: #FFF; border: 1px solid #F8BBD0; border-radius: 6px; padding: 8px 10px; font-size: 0.84rem; color: #AD1457; line-height: 1.5;">
+              💡 <strong>ముఖ్య గమనిక:</strong> వివాహానంతరం భార్యాభర్తల ఇరువురి జాతకాలను సమగ్రంగా విశ్లేషించి, సంతాన ప్రతిబంధకాలు ఎవరివైపు ఉన్నాయో తెలుసుకోవడానికి పైనున్న <strong>'👫 దంపతుల జాతకం (Husband & Wife Joint Analysis)'</strong> ట్యాబ్‌ను ఉపయోగించండి.
+            </div>
+          </div>
+          `}
 
         </div>
       </div>

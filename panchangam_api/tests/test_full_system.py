@@ -275,7 +275,23 @@ class TestJyotishyamKundaliEngine:
         assert "sphutas" in data["santana_analysis"]
         assert "beeja_sphuta" in data["santana_analysis"]["sphutas"]
         assert "kshetra_sphuta" in data["santana_analysis"]["sphutas"]
+        assert data["santana_analysis"]["is_male"] is True
+        assert data["santana_analysis"]["sphutas"]["beeja_sphuta"]["applicable"] is True
+        assert data["santana_analysis"]["sphutas"]["kshetra_sphuta"]["applicable"] is False
+        assert "దంపతుల జాతకం" in data["santana_analysis"]["sphutas"]["kshetra_sphuta"]["applicability_note"]
+        assert "పుత్రభావ & సంతాన యోగ" in data["santana_analysis"]["analysis_title"]
         assert "recommended_muhurtams" in data
+
+        # Also verify female native gets Kshetra Sphuta as applicable and Beeja as spouse's
+        payload_female = dict(payload)
+        payload_female["gender"] = "female"
+        resp_f = client.post("/api/v1/muhurtam/santana-analysis", json=payload_female)
+        assert resp_f.status_code == 200
+        data_f = resp_f.json()
+        assert data_f["santana_analysis"]["is_male"] is False
+        assert data_f["santana_analysis"]["sphutas"]["kshetra_sphuta"]["applicable"] is True
+        assert data_f["santana_analysis"]["sphutas"]["beeja_sphuta"]["applicable"] is False
+        assert "సంతాన, క్షేత్ర బల & గర్భ రక్షా" in data_f["santana_analysis"]["analysis_title"]
 
     def test_remedy_audit_verification(self):
         """Verify Shastric Remedy Verification & Recheck engine."""
