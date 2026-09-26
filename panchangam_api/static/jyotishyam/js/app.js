@@ -160,9 +160,20 @@ function setupCityAutocomplete(inputId, suggestionsBoxId, latId, lonId, tzId, fe
       return;
     }
 
+    if (feedbackChip) {
+      feedbackChip.innerHTML = `⏳ <strong>${q}</strong> కొరకు స్థల వివరాలు వెతుకుతున్నాము...`;
+    }
+
     debounceTimer = setTimeout(async () => {
       currentCities = await resolveCityOnline(q);
       renderSuggestions(currentCities);
+      if (currentCities && currentCities.length > 0) {
+        const top = currentCities[0];
+        const qLower = q.toLowerCase();
+        if (top.name.toLowerCase() === qLower || (top.aliases && top.aliases.some(a => a.toLowerCase() === qLower))) {
+          selectCity(top);
+        }
+      }
     }, 200);
   });
 
