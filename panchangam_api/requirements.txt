@@ -25,6 +25,7 @@ geocoder>=1.38.0
 geopy>=2.4.0
 
 # Indic Transliteration & Sanskrit
+aksharamukha>=2.3
 indic_transliteration>=2.3.70
 sanskrit_data>=0.8.10
 regex>=2024.1.0

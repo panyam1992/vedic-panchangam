@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>జ్యోతిష్యం (Jyotishyam) - సంపూర్ణ వైదిక జాతక పరిశీలన వేదిక</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Noto+Sans+Telugu:wght@400;500;600;700;800&family=Noto+Serif+Telugu:wght@500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Noto+Serif+Devanagari:wght@500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800&family=Noto+Sans+Kannada:wght@400;500;600;700;800&family=Noto+Sans+Malayalam:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700;800&family=Noto+Sans+Gujarati:wght@400;500;600;700;800&family=Noto+Sans+Oriya:wght@400;500;600;700;800&family=Noto+Sans+Gurmukhi:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/static/jyotishyam/css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="vedic-header">
+    <div class="header-inner">
+      <h1>జ్యోతిష్యం • వైదిక జాతక వేదిక</h1>
+      <p class="tagline">Swiss Ephemeris Astronomical Precision • పరాశర, జైమిని, తాజిక సంప్రదాయ వైదిక పరిశీలన • Worldwide Coverage</p>
+    </div>
+
+    <!-- Indic Language / Script Switcher (Aksharamukha Multi-Language) -->
+    <div class="lang-selector-container">
+      <label for="scriptSelector" class="lang-selector-label">
+        <span class="globe-icon">🌐</span>
+        <span class="lang-title">భాష / Script:</span>
+      </label>
+      <select id="scriptSelector" class="script-select">
+        <option value="Telugu" selected>తెలుగు (Telugu - Original)</option>
+        <option value="Devanagari">हिन्दी / संस्कृत (Hindi / Sanskrit / Marathi)</option>
+        <option value="Tamil">தமிழ் (Tamil)</option>
+        <option value="Kannada">ಕನ್ನಡ (Kannada)</option>
+        <option value="Malayalam">മലയാളം (Malayalam)</option>
+        <option value="Bengali">বাংলা (Bengali)</option>
+        <option value="Gujarati">ગુજરાતી (Gujarati)</option>
+        <option value="Oriya">ଓଡ଼ିଆ (Odia)</option>
+        <option value="Gurmukhi">ਪੰਜਾਬੀ (Punjabi)</option>
+        <option value="IAST">English (IAST Romanized)</option>
+      </select>
+    </div>
+
+    <!-- Global Feature Navigation Bar -->
+    <nav class="global-module-nav">
+      <a href="/" class="global-nav-btn" style="background: linear-gradient(135deg, #FF6F00, #E65100); color: white; text-decoration: none; border-color: #FFA000; font-weight: 800; display: inline-flex; align-items: center; gap: 6px;">
+        <span>📜</span> పంచాంగం (Panchangam)
+      </a>
+      <button type="button" class="global-nav-btn active" data-module="moduleKundali">
+        <span>🪷</span> జన్మ కుండలి (Birth Horoscope)
+      </button>
+      <button type="button" class="global-nav-btn" data-module="modulePrashna">
+        <span>🔮</span> ప్రశ్న జ్యోతిష్యం (Horary Astrology)
+      </button>
+      <button type="button" class="global-nav-btn" data-module="moduleShishu">
+        <span>👶</span> నవశిశు జాతకం (Newborn Horoscope)
+      </button>
+      <button type="button" class="global-nav-btn" data-module="moduleEclipses">
+        <span>🌘</span> గ్రహణ దర్శిని (Worldwide Eclipses)
+      </button>
+      <button type="button" class="global-nav-btn" data-module="moduleMuhurtam">
+        <span>⏱️</span> ముహూర్త నిర్ణయం (Muhurtam Calculator)
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-container">
+
+    <!-- ======================================================= -->
+    <!-- MODULE 1: BIRTH KUNDALI (జన్మ కుండలి)                     -->
+    <!-- ======================================================= -->
+    <div id="moduleKundali" class="global-module-view active">
+      
+      <!-- Input Form Card -->
+      <section class="input-card">
+        <div class="card-title">
+          <span>📜</span>
+          <h2>జాతక వివరాలను నమోదు చేయండి (Vedic Horoscopy & Dosha Audit)</h2>
+        </div>
+
+        <!-- Scope / Mode Selector -->
+        <div class="analysis-mode-selector">
+          <button type="button" class="analysis-mode-btn active" data-mode="individual">
+            <span>👤</span> వ్యక్తిగత జాతకం (Individual Horoscope)
+          </button>
+          <button type="button" class="analysis-mode-btn" data-mode="couple">
+            <span>👫</span> దంపతుల జాతకం (Husband & Wife Joint Analysis)
+          </button>
+          <button type="button" class="analysis-mode-btn" data-mode="family">
+            <span>👨‍👩‍👧‍👦</span> సకుటుంబ జాతకం (Whole Family Dosha Audit)
+          </button>
+        </div>
+
+        <!-- Mode 1: Individual Form Wrapper -->
+        <div id="individualFormWrapper">
+          <form id="kundaliForm">
+            <div class="form-grid">
+              
+              <!-- Name -->
+              <div class="form-group">
+                <label for="nameInput">పూర్తి పేరు (Full Name)</label>
+                <input type="text" id="nameInput" class="form-control" placeholder="ఉదా: రామకృష్ణ లేదా లక్ష్మి" value="రామకృష్ణ" required>
+              </div>
+
+              <!-- Gender (Sex: Male / Female) -->
+              <div class="form-group">
+                <label>లింగం (Gender / Sex) <small style="color: #996515;">*శాస్త్ర విశ్లేషణకు ప్రాధాన్యం</small></label>
+                <div class="gender-toggle">
+                  <button type="button" class="gender-btn active" data-val="male">
+                    <span>👨</span> పురుషుడు (Male)
+                  </button>
+                  <button type="button" class="gender-btn" data-val="female">
+                    <span>👩</span> స్త్రీ (Female)
+                  </button>
+                </div>
+                <input type="hidden" id="genderInput" value="male">
+              </div>
+
+              <!-- Date of Birth -->
+              <div class="form-group">
+                <label for="dobInput">జన్మ తేదీ (Date of Birth)</label>
+                <input type="date" id="dobInput" class="form-control" value="1995-10-24" required>
+              </div>
+
+              <!-- Time of Birth -->
+              <div class="form-group">
+                <label for="tobInput">జన్మ సమయం (Time of Birth - 24hr / AM/PM)</label>
+                <input type="time" id="tobInput" class="form-control" value="21:55" step="1" required>
+              </div>
+
+              <!-- Place of Birth (Worldwide Support) -->
+              <div class="form-group">
+                <label for="placeInput">జన్మ స్థలం / నగరం (Worldwide City / Place)</label>
+                <input type="text" id="placeInput" class="form-control" placeholder="నగరం పేరును టైప్ చేయండి (ఉదా: Guntur, Proddatur, Hyderabad, Dallas...)" value="Guntur, Andhra Pradesh" autocomplete="off" required>
+                <div id="citySuggestions" class="city-suggestions"></div>
+                <div id="placeCityFeedback" class="city-feedback-chip">📍 స్థలం: <strong>Guntur, Andhra Pradesh</strong> (16.31° N, 80.44° E, IST +5:30)</div>
+                
+                <!-- Hidden Coords & TZ -->
+                <input type="hidden" id="latInput" value="16.3067">
+                <input type="hidden" id="lonInput" value="80.4365">
+                <input type="hidden" id="tzInput" value="5.5">
+              </div>
+
+              <!-- Ayanamsa -->
+              <div class="form-group">
+                <label for="ayanamsaSelect">అయనాంశ (Ayanamsa System)</label>
+                <select id="ayanamsaSelect" class="form-control">
+                  <option value="lahiri" selected>లాహిరి / చిత్రపక్ష (Lahiri - సంప్రదాయం)</option>
+                  <option value="kp">కృష్ణమూర్తి పద్ధతి (KP Ayanamsa)</option>
+                  <option value="raman">బి.వి. రామన్ (BV Raman)</option>
+                </select>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" id="btnGenerate" class="btn-submit">
+                <span>🕉️</span> జాతక చక్రాన్ని రూపొందించండి (Generate Jatakam)
+              </button>
+
+            </div>
+          </form>
+        </div>
+
+        <!-- Mode 2: Couple Form Wrapper -->
+        <div id="coupleFormWrapper" style="display: none;">
+          <form id="coupleForm">
+            <div class="couple-inputs-grid">
+              
+              <!-- Husband Card -->
+              <div class="couple-partner-card">
+                <div class="partner-card-header">
+                  <span class="partner-icon">👨</span>
+                  <h3>భర్త వివరాలు (Husband Birth Details)</h3>
+                </div>
+                <div class="form-grid">
+                  <div class="form-group" style="grid-column: span 2;">
+                    <label for="coupleHusbandName">భర్త పూర్తి పేరు (Husband Name)</label>
+                    <input type="text" id="coupleHusbandName" class="form-control" value="రామకృష్ణ" placeholder="ఉదా: రామకృష్ణ" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="coupleHusbandDob">జన్మ తేదీ (Date of Birth)</label>
+                    <input type="date" id="coupleHusbandDob" class="form-control" value="1992-06-15" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="coupleHusbandTob">జన్మ సమయం (Time of Birth)</label>
+                    <input type="time" id="coupleHusbandTob" class="form-control" value="08:30" step="1" required>
+                  </div>
+                  <div class="form-group" style="grid-column: span 2;">
+                    <label for="coupleHusbandPlace">జన్మ స్థలం / నగరం (Birth Place)</label>
+                    <input type="text" id="coupleHusbandPlace" class="form-control" value="Guntur, Andhra Pradesh" placeholder="నగరం టైప్ చేయండి" autocomplete="off" required>
+                    <div id="coupleHusbandCitySuggestions" class="city-suggestions"></div>
+                    <div id="coupleHusbandPlaceFeedback" class="city-feedback-chip">📍 స్థలం: <strong>Guntur, Andhra Pradesh</strong> (16.31° N, 80.44° E, IST +5:30)</div>
+                    <input type="hidden" id="coupleHusbandLat" value="16.3067">
+                    <input type="hidden" id="coupleHusbandLon" value="80.4365">
+                    <input type="hidden" id="coupleHusbandTz" value="5.5">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Wife Card -->
+              <div class="couple-partner-card">
+                <div class="partner-card-header">
+                  <span class="partner-icon">👩</span>
+                  <h3>భార్య వివరాలు (Wife Birth Details)</h3>
+                </div>
+                <div class="form-grid">
+                  <div class="form-group" style="grid-column: span 2;">
+                    <label for="coupleWifeName">భార్య పూర్తి పేరు (Wife Name)</label>
+                    <input type="text" id="coupleWifeName" class="form-control" value="లక్ష్మి" placeholder="ఉదా: లక్ష్మి" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="coupleWifeDob">జన్మ తేదీ (Date of Birth)</label>
+                    <input type="date" id="coupleWifeDob" class="form-control" value="1995-10-24" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="coupleWifeTob">జన్మ సమయం (Time of Birth)</label>
+                    <input type="time" id="coupleWifeTob" class="form-control" value="21:55" step="1" required>
+                  </div>
+                  <div class="form-group" style="grid-column: span 2;">
+                    <label for="coupleWifePlace">జన్మ స్థలం / నగరం (Birth Place)</label>
+                    <input type="text" id="coupleWifePlace" class="form-control" value="Hyderabad, Telangana" placeholder="నగరం టైప్ చేయండి" autocomplete="off" required>
+                    <div id="coupleWifeCitySuggestions" class="city-suggestions"></div>
+                    <div id="coupleWifePlaceFeedback" class="city-feedback-chip">📍 స్థలం: <strong>Hyderabad, Telangana</strong> (17.39° N, 78.49° E, IST +5:30)</div>
+                    <input type="hidden" id="coupleWifeLat" value="17.3850">
+                    <input type="hidden" id="coupleWifeLon" value="78.4867">
+                    <input type="hidden" id="coupleWifeTz" value="5.5">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Couple Focus & Submit -->
+            <div class="couple-options-bar">
+              <div class="form-group" style="flex: 1;">
+                <label for="coupleFocusSelect">విశ్లేషణ ప్రాధాన్యత (Focus Area)</label>
+                <select id="coupleFocusSelect" class="form-control">
+                  <option value="general" selected>సమగ్ర దంపతుల విశ్లేషణ (Santana, Kuja Samyam & All Doshas)</option>
+                  <option value="santana">సంతాన లేమి, గర్భస్రావ దోషం & బీజ-క్షేత్ర స్పష్టాలు (Santana & Miscarriage)</option>
+                  <option value="marriage">వివాహ పొంతన & కుజ దోష సామ్య విచారణ (Marriage & Kuja Samyam)</option>
+                </select>
+              </div>
+              <div class="form-group" style="flex: 1;">
+                <label for="coupleAyanamsaSelect">అయనాంశ (Ayanamsa)</label>
+                <select id="coupleAyanamsaSelect" class="form-control">
+                  <option value="lahiri" selected>లాహిరి / చిత్రపక్ష (Lahiri - సంప్రదాయం)</option>
+                  <option value="kp">కృష్ణమూర్తి పద్ధతి (KP Ayanamsa)</option>
+                  <option value="raman">బి.వి. రామన్ (BV Raman)</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" id="btnCoupleGenerate" class="btn-submit" style="margin-top: 20px;">
+              <span>👫</span> దంపతుల సంయుక్త జాతక విశ్లేషణ & దోష నిర్ణయం (Analyze Couple Charts)
+            </button>
+          </form>
+        </div>
+
+        <!-- Mode 3: Family Form Wrapper -->
+        <div id="familyFormWrapper" style="display: none;">
+          <form id="familyForm">
+            <div class="form-grid" style="margin-bottom: 20px;">
+              <div class="form-group">
+                <label for="familyDisplayName">కుటుంబం పేరు / ఇంటి పేరు (Family Name)</label>
+                <input type="text" id="familyDisplayName" class="form-control" value="శ్రీ వెంకటేశ్వర కుటుంబం" placeholder="ఉదా: శ్రీ వేంకటేశ్వర కుటుంబం" required>
+              </div>
+              <div class="form-group">
+                <label for="familyPurposeSelect">పరిశీలన ఉద్దేశ్యం (Family Purpose / Sankalpam)</label>
+                <select id="familyPurposeSelect" class="form-control">
+                  <option value="all" selected>సమగ్ర సకుటుంబ దోష విశ్లేషణ (Comprehensive Family Dosha Audit)</option>
+                  <option value="santana">సంతాన ప్రాప్తి & వంశాభివృద్ధి విచారణ</option>
+                  <option value="grihapravesha">గృహప్రవేశం / వాస్తు శాంతి దోష విచారణ</option>
+                  <option value="sarpa_pitru">సర్ప & పితృ శాంతి విచారణ</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="family-members-header">
+              <h3 style="color: #4A0E17; font-size: 1.15rem; font-weight: 700; margin-bottom: 6px;"><span>👨‍👩‍👧‍👦</span> కుటుంబ సభ్యుల వివరాలు (Family Members List)</h3>
+              <p class="section-desc">ప్రతి కుటుంబ సభ్యుని జనన వివరాలను నమోదు చేయండి; కుటుంబంలో ఎవరికి ఏ దోషం ఉన్నదో విశ్లేషించబడుతుంది:</p>
+            </div>
+
+            <div id="familyMembersListContainer" class="family-members-container">
+              <!-- Dynamically populated member cards -->
+            </div>
+
+            <div class="family-actions-bar" style="margin-top: 15px; display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+              <button type="button" id="btnAddFamilyMember" class="btn-secondary-action">
+                <span>➕</span> నూతన కుటుంబ సభ్యుడిని చేర్చండి (Add Family Member)
+              </button>
+            </div>
+
+            <button type="submit" id="btnFamilyGenerate" class="btn-submit" style="margin-top: 25px;">
+              <span>👨‍👩‍👧‍👦</span> సకుటుంబ దోష సమగ్ర పరిశీలన & పరిహార నిర్ణయం (Audit Family Horoscopes)
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Results Section (Hidden until generated) -->
+      <div id="resultsContainer" style="display: none;">
+
+        <!-- Contextual Navigation Return Banner (Shown when viewing Husband, Wife, or Family Member Full Kundali) -->
+        <div id="contextualReturnBanner" class="contextual-return-banner" style="display: none;">
+          <div id="contextualReturnText" style="font-weight: 700; color: #4A0E17; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+            <span>👁️</span> <span>సంపూర్ణ జాతక పరిశీలన</span>
+          </div>
+          <button type="button" id="btnContextualReturn" class="btn-contextual-return" onclick="window.returnFromFullKundaliView()">
+            <span>🔙</span> <span>నివేదికకు తిరిగి వెళ్ళండి</span>
+          </button>
+        </div>
+
+        <!-- Native Summary Banner -->
+        <section class="native-summary-banner">
+          <div class="native-info">
+            <div class="native-avatar">🪷</div>
+            <div class="native-details">
+              <h2 id="summaryName">రామకృష్ణ</h2>
+              <div class="native-badges">
+                <span id="summaryGenderBadge" class="badge badge-gender">👨 పురుష జాతకం</span>
+                <span id="summaryPlaceBadge" class="badge badge-place">📍 స్థలం: Guntur, Andhra Pradesh</span>
+                <span id="summaryLagnaBadge" class="badge badge-lagna">లగ్నం: మిథునం</span>
+                <span id="summaryRashiBadge" class="badge badge-rashi">రాశి: తుల</span>
+                <span id="summaryNakshatraBadge" class="badge badge-nakshatra">నక్షత్రం: స్వాతి-3</span>
+                <span id="summaryDashaBadge" class="badge badge-dasha">ప్రస్తుత దశ: గురు మహాదశ</span>
+              </div>
+            </div>
+          </div>
+          <div class="banner-actions">
+            <button type="button" id="btnPrintBooklet" class="btn-print" title="సమగ్ర నివేదికను ప్రింట్ లేదా PDF గా భద్రపరచుకోండి">
+              <span>🖨️</span> PDF / ప్రింట్ రిపోర్ట్
+            </button>
+          </div>
+        </section>
+
+        <!-- Navigation Tabs -->
+        <div class="vedic-tabs">
+          <button type="button" class="tab-btn active" data-tab="tabKundali">
+            <span>☸️</span> కుండలి చక్రాలు
+          </button>
+          <button type="button" class="tab-btn" data-tab="tabBhavaSphuta">
+            <span>📐</span> ద్వాదశ భావ స్పష్టాలు
+          </button>
+          <button type="button" class="tab-btn" data-tab="tabPanchangam">
+            <span>📜</span> పంచాంగం & అవకహడ
+          </button>
+          <button type="button" class="tab-btn" data-tab="tabClassical">
+            <span>🪷</span> ఘాత, అదృష్ట & జైమిని
+          </button>
+          <button type="button" class="tab-btn" data-tab="tabAspects">
+            <span>👁️</span> గ్రహ & భావ వీక్షణలు
+          </button>
+          <button type="button" class="tab-btn" data-tab="tabAshtakavarga">
+            <span>🔢</span> సర్వాష్టకవర్గ (SAV)
+          </button>
+          <button type="button" class="tab-btn" data-tab="tabDasha">
+            <span>⏳</span> దశాంతర్దశ ఫలితాలు
+          </button>
+          <button type="button" class="tab-btn" data-tab="tabYogas">
+            <span>🌟</span> దోషాలు & యోగాలు
+          </button>
+          <button type="button" class="tab-btn" data-tab="tabVastuGems">
+            <span>💎</span> రత్న, రుద్రాక్ష & వాస్తు
+          </button>
+          <button type="button" class="tab-btn" data-tab="tabGocharam">
+            <span>🪐</span> గోచారం & ఏలినాటి శని
+          </button>
+          <button type="button" class="tab-btn" data-tab="tabPhalitalu">
+            <span>📖</span> సమగ్ర జాతక ఫలాలు
+          </button>
+        </div>
+
+        <!-- Tab 1: Kundali Charts -->
+        <div id="tabKundali" class="tab-content active">
+          <div class="chart-controls">
+            <div class="chart-toggle-group">
+              <button type="button" class="chart-toggle-btn chart-fmt-btn active" data-fmt="south">సాంప్రదాయ దక్షిణ భారత చక్రం</button>
+              <button type="button" class="chart-toggle-btn chart-fmt-btn" data-fmt="north">ఉత్తర భారత వజ్ర చక్రం</button>
+            </div>
+            <div class="chart-toggle-group">
+              <button type="button" class="chart-toggle-btn chart-type-btn active" data-type="d1">D1 రాశి చక్రం</button>
+              <button type="button" class="chart-toggle-btn chart-type-btn" data-type="d9">D9 నవాంశ చక్రం</button>
+              <button type="button" class="chart-toggle-btn chart-type-btn" data-type="chalit">భావ చలిత చక్రం (Chalit)</button>
+            </div>
+          </div>
+
+          <div class="chart-wrapper">
+            <div id="chartSvgWrapper" class="kundali-svg-container"></div>
+          </div>
+
+          <!-- 🪐 Tatkala Graha Positions & Dignity in Tab 1 Kundali -->
+          <div class="tatkala-graha-card" id="tatkalaGrahaKundaliSection">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; border-bottom: 1.5px solid #EADBCE; padding-bottom: 12px;">
+              <div>
+                <h3 class="card-title" style="margin: 0; font-size: 1.25rem;">
+                  <span>🪐</span> తాత్కాలిక గ్రహ సంపత్తి (Tatkala Graha Positions & Dignity)
+                </h3>
+                <p class="section-desc" style="margin: 4px 0 0 0; font-size: 0.92rem; color: #5D4037;">
+                  జనన క్షణంలో లగ్నం మరియు నవగ్రహాల రాశి, స్పష్ట డిగ్రీలు (DMS), నక్షత్ర పాదం, నవాంశ రాశి, స్థాన భావం మరియు శాస్త్రోక్త గౌరవ బలం:
+                </p>
+              </div>
+              <div class="chart-toggle-group tatkala-toggle-group">
+                <button type="button" id="btnTatkalaPositions" class="chart-toggle-btn active" onclick="window.switchTatkalaKundaliView('positions')">
+                  <span>📋</span> గ్రహ స్పష్ట స్థితి
+                </button>
+                <button type="button" id="btnTatkalaMaitri" class="chart-toggle-btn" onclick="window.switchTatkalaKundaliView('maitri')">
+                  <span>🤝</span> తాత్కాలిక మైత్రి చక్రం
+                </button>
+              </div>
+            </div>
+
+            <!-- Summary Chips / Status Highlights -->
+            <div id="tatkalaGrahaSummaryChips" class="tatkala-summary-chips-grid"></div>
+
+            <!-- Table 1: Planetary Positions & Dignity -->
+            <div id="tatkalaPositionsView" class="table-responsive">
+              <table class="vedic-table">
+                <thead>
+                  <tr>
+                    <th>గ్రహం (Planet)</th>
+                    <th>ఆంగ్ల నామం</th>
+                    <th>రాశి (Sign)</th>
+                    <th>స్పష్ట డిగ్రీలు</th>
+                    <th>నక్షత్రం & పాదం</th>
+                    <th>నవాంశ రాశి</th>
+                    <th>భావం (House)</th>
+                    <th>గ్రహ స్థితి / గౌరవం (Dignity)</th>
+                  </tr>
+                </thead>
+                <tbody id="tatkalaGrahaKundaliTableBody"></tbody>
+              </table>
+            </div>
+
+            <!-- Table 2: Tatkalika Maitri Matrix (Temporal Friendship) -->
+            <div id="tatkalaMaitriView" class="table-responsive" style="display: none;">
+              <p class="section-desc" style="margin-bottom: 12px; font-size: 0.9rem; color: #4A0E17; background: #FFF9E6; padding: 10px 14px; border-radius: 8px; border-left: 4px solid #D4AF37;">
+                <strong>బృహత్ పరాశర హోరాశాస్త్ర ప్రమాణం (తాత్కాలిక మైత్రి):</strong> గ్రహం ఉన్న స్థానం నుండి 2, 3, 4, 10, 11, 12 రాశులలో ఉన్న గ్రహాలు <strong style="color: #2E7D32;">తాత్కాలిక మిత్రులు</strong>; 1, 5, 6, 7, 8, 9 రాశులలో ఉన్న గ్రహాలు <strong style="color: #C62828;">తాత్కాలిక శత్రువులు</strong>.
+              </p>
+              <table class="vedic-table" id="tatkalaMaitriTable">
+                <thead>
+                  <tr id="tatkalaMaitriTableHeader"></tr>
+                </thead>
+                <tbody id="tatkalaMaitriTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Dvadasa Bhava Sphuta -->
+        <div id="tabBhavaSphuta" class="tab-content">
+          <h3 class="card-title"><span>📐</span> ద్వాదశ భావ స్పష్ట పట్టిక (House Cusps & Planetary Spans)</h3>
+          <p class="section-desc">శ్రీపతి పద్ధతి ఆధారంగా ప్రతి భావ ప్రారంభ (ఆరంభ), మధ్యమ (Cusp), మరియు అంత్య బిందువులు:</p>
+          <div class="table-responsive">
+            <table class="vedic-table">
+              <thead>
+                <tr>
+                  <th>భావం (House)</th>
+                  <th>రాశి (Sign)</th>
+                  <th>ప్రారంభ స్పష్టం (Start)</th>
+                  <th>మధ్యమ స్పష్టం (Cusp / Mid)</th>
+                  <th>అంత్య స్పష్టం (End)</th>
+                  <th>భావాధిపతి (Lord)</th>
+                  <th>భావంలో ఉన్న గ్రహాలు (Occupants)</th>
+                </tr>
+              </thead>
+              <tbody id="bhavaSphutaTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 3: Panchangam & Avakahada Chakra -->
+        <div id="tabPanchangam" class="tab-content">
+          <div class="avakahada-card-wrapper">
+            <h3 class="card-title"><span>🪷</span> అవకహడా చక్రం (Avakahada Chakra)</h3>
+            <p class="section-desc">వివాహ పొంతన, నామకరణం, మరియు వ్యక్తిత్వ ధర్మ నిర్ణయానికి ప్రామాణికమైన అవకహడా తత్వాలు:</p>
+            <div class="table-responsive">
+              <table class="vedic-table avakahada-table">
+                <tbody id="avakahadaTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <h3 class="card-title" style="margin-top: 30px;"><span>🕉️</span> జనన సమయ పంచాంగ తత్వాలు</h3>
+          <div id="panchangamGrid" class="panchangam-grid"></div>
+
+          <h3 class="card-title" style="margin-top: 30px;"><span>🪐</span> గ్రహ స్పష్ట పట్టిక (Planetary Positions & Dignity)</h3>
+          <div class="table-responsive">
+            <table class="vedic-table">
+              <thead>
+                <tr>
+                  <th>గ్రహం (Planet)</th>
+                  <th>ఆంగ్ల నామం</th>
+                  <th>రాశి (Sign)</th>
+                  <th>స్పష్ట డిగ్రీలు</th>
+                  <th>నక్షత్రం & పాదం</th>
+                  <th>నవాంశ రాశి</th>
+                  <th>భావం (House)</th>
+                  <th>గ్రహ స్థితి (Dignity)</th>
+                </tr>
+              </thead>
+              <tbody id="planetsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 4: Classical Tables (Ghata, Lucky, Jaimini, Maitri) -->
+        <div id="tabClassical" class="tab-content">
+          <div class="two-column-grid">
+            <!-- Ghata Chakra -->
+            <div class="column-card">
+              <h3 class="card-title"><span>⚠️</span> ఘాత చక్రం (Ghata Chakra)</h3>
+              <p class="section-desc">జన్మ రాశి ఆధారంగా నిషిద్ధమైన కాలాలు మరియు జాగ్రత్తలు:</p>
+              <div class="table-responsive">
+                <table class="vedic-table">
+                  <tbody id="ghataTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Lucky Factors -->
+            <div class="column-card">
+              <h3 class="card-title"><span>✨</span> అదృష్ట విషయాలు (Lucky Factors)</h3>
+              <p class="section-desc">లగ్న మరియు రాశి ఆధారంగా అనుకూల అంశాలు:</p>
+              <div class="table-responsive">
+                <table class="vedic-table">
+                  <tbody id="luckyTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jaimini Chara Karakas -->
+          <h3 class="card-title" style="margin-top: 35px;"><span>👑</span> జైమిని చర కారకాలు (Jaimini Chara Karakas)</h3>
+          <p class="section-desc">గ్రహ డిగ్రీల అవరోహణ క్రమం ఆధారంగా ఆత్మకారకుడు నుండి దారకారకుడు వరకు:</p>
+          <div class="table-responsive">
+            <table class="vedic-table">
+              <thead>
+                <tr>
+                  <th>కారకత్వం</th>
+                  <th>కారకుడు</th>
+                  <th>గ్రహం (Planet)</th>
+                  <th>రాశి & డిగ్రీలు</th>
+                  <th>శాస్త్ర ప్రాధాన్యం (Signification)</th>
+                </tr>
+              </thead>
+              <tbody id="jaiminiTableBody"></tbody>
+            </table>
+          </div>
+
+          <!-- Maitri Chakra -->
+          <h3 class="card-title" style="margin-top: 35px;"><span>🤝</span> పంచధా మైత్రి చక్రం (Compound Friendship Matrix)</h3>
+          <p class="section-desc">నైసర్గిక మరియు తాత్కాలిక సంబంధాల సమన్వయంతో ఏర్పడిన పంచధా మిత్రత్వ పట్టిక:</p>
+          <div class="table-responsive">
+            <table class="vedic-table" id="maitriTable">
+              <thead>
+                <tr id="maitriTableHeader"></tr>
+              </thead>
+              <tbody id="maitriTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 5: Aspects (గ్రహ & భావ వీక్షణలు) -->
+        <div id="tabAspects" class="tab-content">
+          <div class="two-column-grid">
+            <!-- Planet Aspects -->
+            <div class="column-card">
+              <h3 class="card-title"><span>👁️</span> గ్రహ వీక్షణలు (Planet Aspects)</h3>
+              <p class="section-desc">ప్రతి గ్రహం వీక్షిస్తున్న భావాలు (ప్రత్యేక దృష్టితో సహా):</p>
+              <div class="table-responsive">
+                <table class="vedic-table">
+                  <thead>
+                    <tr>
+                      <th>గ్రహం</th>
+                      <th>స్థితి భావం</th>
+                      <th>వీక్షిస్తున్న భావాలు</th>
+                    </tr>
+                  </thead>
+                  <tbody id="planetAspectsTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- House Aspects -->
+            <div class="column-card">
+              <h3 class="card-title"><span>🏛️</span> భావ వీక్షణలు (House Aspects)</h3>
+              <p class="section-desc">ప్రతి భావాన్ని వీక్షిస్తున్న శుభ/పాప గ్రహాలు:</p>
+              <div class="table-responsive">
+                <table class="vedic-table">
+                  <thead>
+                    <tr>
+                      <th>భావం (House)</th>
+                      <th>వీక్షిస్తున్న గ్రహాలు</th>
+                    </tr>
+                  </thead>
+                  <tbody id="houseAspectsTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 6: Sarvashtakavarga (SAV) -->
+        <div id="tabAshtakavarga" class="tab-content">
+          <div class="ashtakavarga-header-card">
+            <div class="ashtakavarga-summary-stats">
+              <div class="stat-box">
+                <span class="stat-num">337</span>
+                <span class="stat-label">మొత్తం SAV బిందువులు</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-num">28.08</span>
+                <span class="stat-label">సగటు బిందువులు</span>
+              </div>
+              <div class="stat-box" id="statWealthBox">
+                <span class="stat-num" id="statWealthVal">11 vs 12</span>
+                <span class="stat-label">లాభ / వ్యయ నిష్పత్తి</span>
+              </div>
+            </div>
+            <div id="ashtakavargaInsightBanner" class="sav-insight-banner"></div>
+          </div>
+
+          <div class="sav-layout-grid">
+            <div class="sav-chart-column">
+              <h4 class="sub-card-title"><span>🕉️</span> సర్వాష్టకవర్గ చతురస్ర చక్రం (SAV Chart)</h4>
+              <div id="ashtakavargaSvgWrapper" class="kundali-svg-container"></div>
+            </div>
+            <div class="sav-table-column">
+              <h4 class="sub-card-title"><span>📊</span> రాశి & భావ బిందువుల వివరాలు</h4>
+              <div class="table-responsive">
+                <table class="vedic-table">
+                  <thead>
+                    <tr>
+                      <th>రాశి / భావం</th>
+                      <th>బిందువులు (Points)</th>
+                      <th>శాస్త్ర బలం (Strength)</th>
+                    </tr>
+                  </thead>
+                  <tbody id="savRashiTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <h4 class="sub-card-title" style="margin-top: 30px;"><span>🪐</span> సప్త గ్రహ భిన్నాష్టకవర్గ పట్టిక (BAV Table)</h4>
+          <p class="section-desc">రవి నుండి శని వరకు 7 గ్రహాల రాశివారీ శుభ బిందువులు:</p>
+          <div class="table-responsive">
+            <table class="vedic-table bav-matrix-table">
+              <thead>
+                <tr id="bavTableHeader"></tr>
+              </thead>
+              <tbody id="bavTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 7: Vimshottari Dasha-Antardasha -->
+        <div id="tabDasha" class="tab-content">
+          <div id="dashaBalanceBanner" class="dasha-balance-banner"></div>
+          <div id="currentDashaHero" class="current-dasha-hero"></div>
+
+          <div id="dashaPredictionsWrapper" class="dasha-predictions-container">
+            <div id="mahadashaDetailCard" class="prediction-card"></div>
+            <h3 class="card-title" style="margin-top: 30px;">
+              <span>⏳</span> ప్రస్తుత మహాదశలోని అంతర్దశల (భుక్తుల) సమగ్ర ఫలితాలు
+            </h3>
+            <p class="section-desc">ప్రతి అంతర్దశా కాలం, స్థితి, మరియు బృహత్ పరాశర హోరా శాస్త్రోక్త దశాంతర్దశ ఫలితాలు:</p>
+            <div id="bhuktisListContainer" class="bhuktis-list-container"></div>
+          </div>
+
+          <h3 class="card-title" style="margin-top: 35px;"><span>⏳</span> సమగ్ర వింశోత్తరి మహాదశల కాలక్రమం (120 సంవత్సరాలు)</h3>
+          <div class="table-responsive">
+            <table class="vedic-table">
+              <thead>
+                <tr>
+                  <th>మహాదశాధిపతి</th>
+                  <th>మొత్తం కాలం</th>
+                  <th>ప్రారంభ తేదీ</th>
+                  <th>ముగింపు తేదీ</th>
+                  <th>స్థితి</th>
+                </tr>
+              </thead>
+              <tbody id="dashaTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 8: Yogas & Doshas -->
+        <div id="tabYogas" class="tab-content">
+          <div id="kujaDoshaCard" class="dosha-card"></div>
+          <div id="kalaSarpaCard" class="dosha-card" style="margin-top: 20px;"></div>
+          <div id="santanaDoshaCard" class="dosha-card" style="margin-top: 20px;"></div>
+          <div id="remedyVerificationContainer" class="puja-recheck-interactive-container"></div>
+          <h3 class="card-title" style="margin-top: 35px;"><span>🌟</span> జాతక చక్రంలో గుర్తించబడిన విశేష శుభ యోగాలు</h3>
+          <div id="yogasContainer"></div>
+        </div>
+
+        <!-- Tab 9: Gemstones, Rudraksha & Vastu -->
+        <div id="tabVastuGems" class="tab-content">
+          <div class="two-column-grid">
+            <!-- Gemstones & Rudraksha -->
+            <div class="column-card">
+              <h3 class="card-title"><span>💎</span> రత్న & రుద్రాక్ష సూచన (Gemstones & Rudraksha)</h3>
+              <div id="gemstonesContainer" class="gemstones-wrapper"></div>
+            </div>
+
+            <!-- Vastu House Facing -->
+            <div class="column-card">
+              <h3 class="card-title"><span>🏛️</span> గృహ ముఖద్వారం & వాస్తు సూచనలు (Vastu Facing)</h3>
+              <div id="vastuContainer" class="vastu-wrapper"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 10: Gocharam & Sade Sati -->
+        <div id="tabGocharam" class="tab-content">
+          <h3 class="card-title"><span>🪐</span> ప్రస్తుత గ్రహ సంచారం (Live Gocharam)</h3>
+          <div id="gocharamCardsContainer"></div>
+        </div>
+
+        <!-- Tab 11: Comprehensive Predictions -->
+        <div id="tabPhalitalu" class="tab-content">
+          <h3 class="card-title"><span>📖</span> సమగ్ర జాతక ఫలాలు (Classical Telugu Predictions)</h3>
+          <p class="section-desc">బృహత్ పరాశర హోరా శాస్త్రం, ఫలదీపిక ఆధారంగా లగ్న, రాశి, నక్షత్ర ఫలాలు:</p>
+          <div id="predictionsContainer" class="predictions-wrapper"></div>
+        </div>
+
+      </div>
+
+      <!-- ======================================================= -->
+      <!-- COUPLE RESULTS CONTAINER (దంపతుల సంయుక్త నివేదిక)         -->
+      <!-- ======================================================= -->
+      <div id="coupleResultsContainer" style="display: none;">
+        
+        <!-- Couple Summary Banner -->
+        <section class="couple-summary-banner">
+          <div class="couple-hero-grid">
+            <!-- Husband Hero Box -->
+            <div class="partner-hero-box husband-box">
+              <div class="partner-badge-header">
+                <span class="avatar">👨</span>
+                <div>
+                  <h3 id="coupleHusbandSummaryName">రామకృష్ణ</h3>
+                  <span class="sub-label">భర్త (Husband)</span>
+                </div>
+              </div>
+              <div class="partner-stats-grid">
+                <div class="stat-pill"><span class="k">లగ్నం:</span> <strong id="coupleHusbandLagna">--</strong></div>
+                <div class="stat-pill"><span class="k">రాశి:</span> <strong id="coupleHusbandRashi">--</strong></div>
+                <div class="stat-pill"><span class="k">నక్షత్రం:</span> <strong id="coupleHusbandNakshatra">--</strong></div>
+                <div class="stat-pill"><span class="k">దశ:</span> <strong id="coupleHusbandDasha">--</strong></div>
+              </div>
+            </div>
+
+            <!-- VS / Union Emblem -->
+            <div class="couple-union-emblem">
+              <span class="ring-icon">💍</span>
+              <span class="union-text">దంపతుల ఐకమత్యం</span>
+              <div id="coupleKartaBadge" class="karta-designation-badge">సంకల్ప కర్త: ఉభయులు</div>
+            </div>
+
+            <!-- Wife Hero Box -->
+            <div class="partner-hero-box wife-box">
+              <div class="partner-badge-header">
+                <span class="avatar">👩</span>
+                <div>
+                  <h3 id="coupleWifeSummaryName">లక్ష్మి</h3>
+                  <span class="sub-label">భార్య (Wife)</span>
+                </div>
+              </div>
+              <div class="partner-stats-grid">
+                <div class="stat-pill"><span class="k">లగ్నం:</span> <strong id="coupleWifeLagna">--</strong></div>
+                <div class="stat-pill"><span class="k">రాశి:</span> <strong id="coupleWifeRashi">--</strong></div>
+                <div class="stat-pill"><span class="k">నక్షత్రం:</span> <strong id="coupleWifeNakshatra">--</strong></div>
+                <div class="stat-pill"><span class="k">దశ:</span> <strong id="coupleWifeDasha">--</strong></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Couple View Switcher: Joint vs Husband vs Wife Full Kundali -->
+        <div class="couple-view-switcher">
+          <button type="button" id="btnCoupleViewJoint" class="couple-tab-btn active" onclick="window.switchCoupleView('joint')">
+            <span>🌟</span> ఉమ్మడి సంయుక్త నివేదిక (Joint Analysis)
+          </button>
+          <button type="button" id="btnCoupleViewHusband" class="couple-tab-btn" onclick="window.switchCoupleView('husband')">
+            <span>👨</span> భర్త సంపూర్ణ జాతకం (Husband Full Kundali)
+          </button>
+          <button type="button" id="btnCoupleViewWife" class="couple-tab-btn" onclick="window.switchCoupleView('wife')">
+            <span>👩</span> భార్య సంపూర్ణ జాతకం (Wife Full Kundali)
+          </button>
+        </div>
+
+        <!-- Couple Report Content -->
+        <div id="coupleReportContent" class="couple-report-wrapper">
+          
+          <!-- 1. Santana & Beeja/Kshetra Sphuta Section -->
+          <div id="coupleSantanaSection" class="couple-section-card"></div>
+
+          <!-- 2. Kuja Dosha Samyam Section -->
+          <div id="coupleKujaSamyaSection" class="couple-section-card" style="margin-top: 25px;"></div>
+
+          <!-- 3. Comparative Matrix Table -->
+          <div id="coupleMatrixSection" class="couple-section-card" style="margin-top: 25px;"></div>
+
+          <!-- 4. Prescribed Unified Pariharas & Karta Section -->
+          <div id="couplePariharasSection" class="couple-section-card" style="margin-top: 25px;"></div>
+
+        </div>
+
+      </div>
+
+      <!-- ======================================================= -->
+      <!-- FAMILY RESULTS CONTAINER (సకుటుంబ సమగ్ర నివేదిక)          -->
+      <!-- ======================================================= -->
+      <div id="familyResultsContainer" style="display: none;">
+        
+        <!-- Family Summary Banner -->
+        <section class="family-summary-banner">
+          <div class="family-banner-content">
+            <div class="family-title-row">
+              <span class="family-icon">👨‍👩‍👧‍👦</span>
+              <div>
+                <h2 id="familySummaryTitle">శ్రీ వేంకటేశ్వర కుటుంబం</h2>
+                <p id="familySummarySubtitle" class="section-desc">శాస్త్రోక్త సకుటుంబ దోష పరిశీలన & సంకల్ప పరిహార నివేదిక</p>
+              </div>
+            </div>
+            
+            <div class="family-stats-grid">
+              <div class="family-stat-box">
+                <span class="stat-number" id="familyTotalMembersCount">0</span>
+                <span class="stat-label">మొత్తం సభ్యులు</span>
+              </div>
+              <div class="family-stat-box stat-afflicted">
+                <span class="stat-number" id="familyAfflictedCount">0</span>
+                <span class="stat-label">🚩 దోష ప్రభావం కలవారు</span>
+              </div>
+              <div class="family-stat-box stat-safe">
+                <span class="stat-number" id="familySafeCount">0</span>
+                <span class="stat-label">🌿 దోష రహిత సభ్యులు</span>
+              </div>
+              <div class="family-stat-box stat-karta">
+                <span class="stat-karta-name" id="familyKartaName">--</span>
+                <span class="stat-label">🪔 శాస్త్రోక్త కుటుంబ కర్త</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Family Audit Details -->
+        <div class="family-report-wrapper">
+          
+          <!-- Audit Table -->
+          <div class="family-section-card">
+            <h3 class="card-title"><span>📊</span> సకుటుంబ సభ్యుల సమగ్ర దోష పరిశీలన పట్టిక (Family Dosha Matrix)</h3>
+            <p class="section-desc">కుటుంబంలో ఎవరి జాతకంలో ఏ గ్రహ దోషం ఉన్నదో స్పష్టమైన వర్గీకరణ:</p>
+            <div class="table-responsive">
+              <table class="vedic-table family-matrix-table">
+                <thead>
+                  <tr>
+                    <th>కుటుంబ సభ్యుడు & సంబంధం</th>
+                    <th>లగ్నం / రాశి / నక్షత్రం</th>
+                    <th>సర్ప / నాగ దోషం</th>
+                    <th>కుజ దోషం</th>
+                    <th>కాలసర్పం</th>
+                    <th>పితృ దోషం</th>
+                    <th>శని / ఏలినాటి శని</th>
+                    <th>గండాంతం</th>
+                    <th>పరిశీలన & పరిహారం</th>
+                    <th>సంపూర్ణ జాతకం</th>
+                  </tr>
+                </thead>
+                <tbody id="familyAuditTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Prescribed Family Pariharas -->
+          <div id="familyPariharasSection" class="family-section-card" style="margin-top: 25px;"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- MODULE 2: PRASHNA JYOTISHYAM (ప్రశ్న జ్యోతిష్యం)           -->
+    <!-- ======================================================= -->
+    <div id="modulePrashna" class="global-module-view" style="display: none;">
+      <section class="input-card">
+        <div class="card-title">
+          <span>🔮</span>
+          <h2>ప్రశ్న జ్యోతిష్యం (Classical Vedic & Tajika Horary)</h2>
+        </div>
+        <p class="section-desc">జనన వివరాలు లేకపోయినా, ప్రశ్న అడిగిన సమయం & ప్రదేశం ఆధారంగా ఇత్థశాల తదితర 16 తాజిక యోగాలతో ప్రత్యక్ష కార్యసిద్ధి సమాధానం:</p>
+
+        <form id="prashnaForm">
+          <div class="form-grid">
+            <!-- Category -->
+            <div class="form-group" style="grid-column: span 2;">
+              <label for="prashnaCategorySelect">మీ ప్రశ్నను ఎంచుకోండి (Select Your Question)</label>
+              <select id="prashnaCategorySelect" class="form-control" required>
+                <option value="job">ఉద్యోగ అవకాశాలు / పదోన్నతి / ఇంటర్వ్యూ</option>
+                <option value="marriage">వివాహ పురోగతి / సంబంధం కుదురుట</option>
+                <option value="health">ఆరోగ్య స్వస్థత / రోగ నివారణ</option>
+                <option value="lost_item">పోయిన వస్తువు తిరిగి లభించునా?</option>
+                <option value="court_case">కోర్టు కేసులు / వివాదాలలో జయము</option>
+                <option value="foreign_travel">విదేశీ ప్రయాణం / వీసా ఆమోదం</option>
+                <option value="business">నూతన వ్యాపారం / ఒప్పందాలు</option>
+                <option value="wealth">ధన లాభం / ఋణ సమస్యల పరిష్కారం</option>
+                <option value="progeny">సంతాన ప్రాప్తి / పిల్లల అభివృద్ధి</option>
+                <option value="education">పరీక్షలలో విజయం / ప్రవేశం</option>
+                <option value="property">భూమి / గృహ / వాహన కొనుగోలు</option>
+                <option value="general_success">తలపెట్టిన కార్యం విజయవంతమవుతుందా?</option>
+              </select>
+            </div>
+
+            <!-- Use Current Time Button -->
+            <div class="form-group" style="grid-column: span 2;">
+              <button type="button" id="btnPrashnaNow" class="btn-time-now">
+                <span>⏱️</span> ప్రస్తుత క్షణ సమయాన్ని వాడండి (Use Current Exact Time)
+              </button>
+            </div>
+
+            <!-- Date -->
+            <div class="form-group">
+              <label for="prashnaDate">ప్రశ్న తేదీ (Date)</label>
+              <input type="date" id="prashnaDate" class="form-control" required>
+            </div>
+
+            <!-- Time -->
+            <div class="form-group">
+              <label for="prashnaTime">ప్రశ్న సమయం (Time - HH:MM:SS)</label>
+              <input type="time" id="prashnaTime" class="form-control" step="1" required>
+            </div>
+
+            <!-- Location -->
+            <div class="form-group">
+              <label for="prashnaPlace">ప్రశ్న అడిగిన స్థలం (Worldwide City)</label>
+              <input type="text" id="prashnaPlace" class="form-control" placeholder="నగరం పేరును టైప్ చేయండి (ఉదా: Hyderabad, Proddatur...)" value="Hyderabad, Telangana" autocomplete="off" required>
+              <div id="prashnaCitySuggestions" class="city-suggestions"></div>
+              <div id="prashnaCityFeedback" class="city-feedback-chip">📍 స్థలం: <strong>Hyderabad, Telangana</strong> (17.39° N, 78.49° E, IST +5:30)</div>
+              <input type="hidden" id="prashnaLat" value="17.3850">
+              <input type="hidden" id="prashnaLon" value="78.4867">
+              <input type="hidden" id="prashnaTz" value="5.5">
+            </div>
+
+            <!-- Ayanamsa -->
+            <div class="form-group">
+              <label for="prashnaAyanamsa">అయనాంశ (Ayanamsa)</label>
+              <select id="prashnaAyanamsa" class="form-control">
+                <option value="lahiri" selected>లాహిరి / చిత్రపక్ష (Lahiri)</option>
+                <option value="kp">కృష్ణమూర్తి (KP)</option>
+              </select>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" id="btnSubmitPrashna" class="btn-submit">
+              <span>🔮</span> ప్రశ్న విశ్లేషణ చేయండి (Evaluate Prashna)
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Prashna Result Container -->
+      <div id="prashnaResultContainer" style="display: none; margin-top: 25px;"></div>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- MODULE 3: NEWBORN HOROSCOPE (నవశిశు జాతకం)               -->
+    <!-- ======================================================= -->
+    <div id="moduleShishu" class="global-module-view" style="display: none;">
+      <section class="input-card">
+        <div class="card-title">
+          <span>👶</span>
+          <h2>నవశిశు జాతకం & సమగ్ర శిశు దోష పరిశీలన (Newborn Horoscope)</h2>
+        </div>
+        <p class="section-desc">నక్షత్ర పాద నామాక్షరాలు, సమగ్ర బాలారిష్ట దోషం & భంగం, గండాంతాలు, మూల/జ్యేష్ఠ నక్షత్ర దోషాలు మరియు శాంతి పరిహారాలు:</p>
+
+        <form id="shishuForm">
+          <div class="form-grid">
+            <!-- Baby Name -->
+            <div class="form-group">
+              <label for="shishuName">శిశువు పేరు (Baby Name / Temporary Name)</label>
+              <input type="text" id="shishuName" class="form-control" value="చిరంజీవి" required>
+            </div>
+
+            <!-- Gender -->
+            <div class="form-group">
+              <label>లింగం (Gender)</label>
+              <div class="gender-toggle">
+                <button type="button" class="gender-btn active" data-val="male">
+                  <span>👶</span> బాలుడు (Boy)
+                </button>
+                <button type="button" class="gender-btn" data-val="female">
+                  <span>👧</span> బాలిక (Girl)
+                </button>
+              </div>
+              <input type="hidden" id="shishuGender" value="male">
+            </div>
+
+            <!-- DOB -->
+            <div class="form-group">
+              <label for="shishuDob">జన్మ తేదీ (Date of Birth)</label>
+              <input type="date" id="shishuDob" class="form-control" required>
+            </div>
+
+            <!-- TOB -->
+            <div class="form-group">
+              <label for="shishuTob">జన్మ సమయం (Time of Birth)</label>
+              <input type="time" id="shishuTob" class="form-control" step="1" required>
+            </div>
+
+            <!-- Place -->
+            <div class="form-group">
+              <label for="shishuPlace">జన్మ స్థలం / నగరం (Worldwide City)</label>
+              <input type="text" id="shishuPlace" class="form-control" placeholder="నగరం పేరును టైప్ చేయండి (ఉదా: Hyderabad, Proddatur...)" value="Hyderabad, Telangana" autocomplete="off" required>
+              <div id="shishuCitySuggestions" class="city-suggestions"></div>
+              <div id="shishuCityFeedback" class="city-feedback-chip">📍 స్థలం: <strong>Hyderabad, Telangana</strong> (17.39° N, 78.49° E, IST +5:30)</div>
+              <input type="hidden" id="shishuLat" value="17.3850">
+              <input type="hidden" id="shishuLon" value="78.4867">
+              <input type="hidden" id="shishuTz" value="5.5">
+            </div>
+
+            <!-- Ayanamsa -->
+            <div class="form-group">
+              <label for="shishuAyanamsa">అయనాంశ (Ayanamsa)</label>
+              <select id="shishuAyanamsa" class="form-control">
+                <option value="lahiri" selected>లాహిరి (Lahiri)</option>
+                <option value="kp">కృష్ణమూర్తి (KP)</option>
+              </select>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" id="btnSubmitShishu" class="btn-submit">
+              <span>👶</span> శిశు జాతకాన్ని పరిశీలించండి (Generate Shishu Jatakam)
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Shishu Result Container -->
+      <div id="shishuResultContainer" style="display: none; margin-top: 25px;"></div>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- MODULE 4: WORLDWIDE ECLIPSES (గ్రహణ దర్శిని)             -->
+    <!-- ======================================================= -->
+    <div id="moduleEclipses" class="global-module-view" style="display: none;">
+      <section class="input-card">
+        <div class="card-title">
+          <span>🌘</span>
+          <h2>సూర్య & చంద్ర గ్రహణ దర్శిని (Worldwide Solar & Lunar Eclipses)</h2>
+        </div>
+        <p class="section-desc">ప్రపంచంలో మీరు నివసిస్తున్న నగరాన్ని ఎంచుకుని, ఆ నగరంలో సంభవించే ఖచ్చితమైన సూర్య-చంద్ర గ్రహణాల స్థానిక సమయాలు (Local Sparsha, Madhya, Moksha), దృశ్యత, సూతక కాలం మరియు రాశి ప్రభావాలను పరిశీలించండి:</p>
+
+        <!-- City Eclipse Application Form -->
+        <form id="cityEclipseForm" style="margin-top: 20px;">
+          <h3 style="color: #ffb74d; font-size: 1.15rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+            <span>📍</span> మీ నగరంలో గ్రహణ సమయాలను చెక్ చేయండి (Check Eclipse Timings in Your City)
+          </h3>
+
+          <div class="form-grid">
+            <!-- Year -->
+            <div class="form-group">
+              <label for="eclipseYear">సంవత్సరం (Year)</label>
+              <select id="eclipseYear" class="form-control">
+                <option value="2028" selected>2028</option>
+                <option value="2027">2027</option>
+                <option value="2026">2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+              </select>
+            </div>
+
+            <!-- Country -->
+            <div class="form-group">
+              <label for="eclipseCountry">దేశం (Country)</label>
+              <select id="eclipseCountry" class="form-control">
+                <option value="US" selected>యునైటెడ్ స్టేట్స్ (US)</option>
+                <option value="IN">భారతదేశం (India)</option>
+                <option value="GB">యునైటెడ్ కింగ్‌డమ్ (UK)</option>
+                <option value="CA">కెనడా (Canada)</option>
+                <option value="AU">ఆస్ట్రేలియా (Australia)</option>
+                <option value="AE">యునైటెడ్ అరబ్ ఎమిరేట్స్ (UAE)</option>
+                <option value="OTHER">ఇతర దేశాలు (Other Countries)</option>
+              </select>
+            </div>
+
+            <!-- City with Autocomplete -->
+            <div class="form-group">
+              <label for="eclipseCity">నగరం (City)</label>
+              <input type="text" id="eclipseCity" class="form-control" placeholder="నగరం పేరును టైప్ చేయండి (ఉదా: McKinney, Proddatur, London...)" value="McKinney" autocomplete="off" required>
+              <div id="eclipseCitySuggestions" class="city-suggestions"></div>
+              <div id="eclipseCityFeedback" class="city-feedback-chip">📍 నగరం: <strong>McKinney, Texas, USA</strong> (33.20° N, -96.62° E, -6.0)</div>
+            </div>
+
+            <!-- Longitude -->
+            <div class="form-group">
+              <label for="eclipseLon">రేఖాంశం (Longitude)</label>
+              <input type="number" id="eclipseLon" class="form-control" step="0.0001" value="-96.6178" required>
+            </div>
+
+            <!-- Latitude -->
+            <div class="form-group">
+              <label for="eclipseLat">అక్షాంశం (Latitude)</label>
+              <input type="number" id="eclipseLat" class="form-control" step="0.0001" value="33.1976" required>
+            </div>
+
+            <!-- Timezone -->
+            <div class="form-group">
+              <label for="eclipseTz">సమయ మండలం (Timezone)</label>
+              <input type="text" id="eclipseTz" class="form-control" value="America/Chicago" placeholder="ఉదా: America/Chicago, Asia/Kolkata..." required>
+              <input type="hidden" id="eclipseTzOffset" value="-5.0">
+            </div>
+
+            <!-- Language -->
+            <div class="form-group">
+              <label for="eclipseLang">ఫలితాల భాష (Language)</label>
+              <select id="eclipseLang" class="form-control">
+                <option value="te" selected>Telugu (తెలుగు)</option>
+                <option value="en">English (ఆంగ్లం)</option>
+              </select>
+            </div>
+
+            <!-- Eclipse Type -->
+            <div class="form-group">
+              <label for="eclipseType">గ్రహణ రకం (Eclipse Type)</label>
+              <select id="eclipseType" class="form-control" style="font-weight: 600; color: #ffb74d;">
+                <option value="all" selected>✨ అన్నీ (సూర్య & చంద్ర గ్రహణాలు)</option>
+                <option value="lunar">🌕 చంద్ర గ్రహణాలు మాత్రమే (Lunar Eclipses Only)</option>
+                <option value="solar">☀️ సూర్య గ్రహణాలు మాత్రమే (Solar Eclipses Only)</option>
+              </select>
+            </div>
+
+            <!-- Visible Only Option -->
+            <div class="form-group" style="grid-column: 1 / -1; margin-top: -4px; margin-bottom: 4px;">
+              <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #81c784; font-size: 0.95rem; font-weight: 600;">
+                <input type="checkbox" id="eclipseVisibleOnly" checked style="width: 18px; height: 18px; accent-color: #4caf50; cursor: pointer;">
+                <span>👁️ మీ నగరంలో కనిపించే గ్రహణాలను మాత్రమే చూపించు (Show only eclipses visible in this location)</span>
+              </label>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group" style="display: flex; align-items: flex-end;">
+              <button type="submit" id="btnSubmitCityEclipse" class="btn-submit" style="width: 100%;">
+                <span>🔍</span> గ్రహణ సమయాలను శోధించండి (Check Timings)
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Eclipses Result List -->
+      <div id="eclipsesResultContainer" style="margin-top: 25px;"></div>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- MODULE 5: MUHURTAM CALCULATOR (ముహూర్త నిర్ణయం)          -->
+    <!-- ======================================================= -->
+    <div id="moduleMuhurtam" class="global-module-view" style="display: none;">
+      <section class="input-card">
+        <div class="card-title">
+          <span>⏱️</span>
+          <h2>అత్యంత ఖచ్చితమైన వైదిక ముహూర్త నిర్ణయం (High-Precision Vedic Muhurtam Calculator)</h2>
+        </div>
+        <p class="section-desc">
+          స్విస్ ఎఫెమెరిస్ (Swiss Ephemeris) ఖగోళ గణితం ఆధారంగా — రాహుకాలం, యమగండం, దుర్ముహూర్తం, వర్జ్యం (విష ఘడియలు) పూర్తి నిషేధంతో, అభిజిత్ ముహూర్తం, అమృత ఘడియలు, జన్మ తారాబలం, చంద్రబలం, శివ/అగ్ని వాసాల సంపూర్ణ సమన్వయంతో శాస్త్రోక్త ముహూర్తాల ఎంపిక:
+        </p>
+
+        <!-- Priest & User Standalone Guide Banner -->
+        <div class="muhurta-priest-guide-banner" style="background: linear-gradient(135deg, #FFF9E6, #FFF3E0); border: 1.5px solid #FFB74D; border-left: 6px solid #D4AF37; border-radius: 10px; padding: 14px 18px; margin-top: 15px; margin-bottom: 20px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 1.4rem;">🕉️</span>
+              <h3 style="margin: 0; color: #4A0E17; font-size: 1.1rem; font-weight: 800;">
+                జాతకం (DOB/TOB) లేకపోయినా శాస్త్రోక్త ముహూర్త నిర్ణయం (Direct Muhurtam Mode)
+              </h3>
+            </div>
+            <span style="background: #2E7D32; color: #FFF; font-size: 0.78rem; font-weight: 700; padding: 3px 10px; border-radius: 12px;">
+              సిద్ధాంత & పురోహిత పద్ధతి (Priest Friendly)
+            </span>
+          </div>
+          <p style="margin: 8px 0 0 0; color: #5D4037; font-size: 0.92rem; line-height: 1.6;">
+            పుట్టిన సమయం, తేదీ (DOB / TOB) లేనివారికి పురోహితులు 3 శాస్త్రోక్త పద్ధతులలో ముహూర్తాన్ని నిర్ణయించవచ్చు:
+            <br>
+            <strong>1. నామ నక్షత్రం:</strong> పేరు టైప్ చేయగానే (అవకహడా చక్రం) నామ నక్షత్రం, రాశి స్వయంచాలకంగా గుర్తింపబడతాయి.
+            <br>
+            <strong>2. తెలిసిన నక్షత్రం/రాశి:</strong> నక్షత్రం లేదా రాశి మాత్రమే తెలిసినచో నేరుగా ఎంచుకోవచ్చు.
+            <br>
+            <strong>3. ఏ వివరాలూ లేనిచో:</strong> ఎటువంటి వివరాలు లేకపోయినా సార్వత్రిక శుభ లగ్నం, అమృత ఘడియలు మరియు సర్వదోష నివారిణి <strong>అభిజిత్ ముహూర్తం</strong> ఆధారంగా శాస్త్రోక్త ముహూర్తం లభిస్తుంది.
+          </p>
+        </div>
+
+        <!-- Muhurtam Form -->
+        <form id="muhurtamForm" style="margin-top: 10px;">
+          <div class="form-grid">
+
+            <!-- Dynamic Jathakam-Based Remedy Recommendation Assistant -->
+            <div id="muhurtamJatakamDoshaAssistant" style="grid-column: 1 / -1; margin-bottom: 10px;">
+              <!-- Populated by JS: displays Native's actual detected doshas and 1-click remedy actions -->
+            </div>
+            
+            <!-- Event Selection -->
+            <div class="form-group" style="grid-column: 1 / -1;">
+              <label for="muhurtamEventType">ముహూర్త కార్యం లేదా శాంతి పరిహారం (Select Event or Parihara Homa)</label>
+              <select id="muhurtamEventType" class="form-control" style="font-weight: 700; color: #4A0E17; font-size: 1.05rem;">
+                <optgroup label="🪷 సంతాన & దోష నివారణ పరిహారాలు (Parihara Homas & Pujas)">
+                  <option value="naga_pratishtha" selected>🐍 నాగ ప్రతిష్ఠ (Naga Pratishtha - సర్ప దోష & సంతాన ప్రాప్తి)</option>
+                  <option value="ashlesha_bali">🌾 ఆశ్లేషా బలి పూజ (Ashlesha Bali - సర్ప శాప నివారణ)</option>
+                  <option value="rudra_pashupatam">🔱 రుద్ర పాశుపత హోమం / అభిషేకం (Rudra Pashupatam - శని & కర్మ దోషం)</option>
+                  <option value="chandi_homam">🔥 చండీ హోమం / దుర్గా సప్తశతి (Chandi Homa - సర్వ గ్రహ పీడలు & సంతానం)</option>
+                  <option value="santana_gopala">🪷 సంతాన గోపాల హోమం / కృష్ణార్చన (Santana Gopala - వంశాభివృద్ధి)</option>
+                  <option value="kuja_shanti_subrahmanya">🦚 సుబ్రహ్మణ్య షష్ఠి / కుజ శాంతి (Garbhasrava / గర్భ రక్షణ)</option>
+                  <option value="tila_homa_narayana_bali">🌾 నారాయణ బలి / తిల హోమం (Pithru Shanti - పితృ శాప నివారణ)</option>
+                  <option value="navagraha_shanti">🪐 నవగ్రహ శాంతి హోమం (Navagraha Shanti - సమస్త గ్రహానుగ్రహం)</option>
+                </optgroup>
+                <optgroup label="✨ శుభకార్య సంస్కారాలు (Auspicious Life Events)">
+                  <option value="vivaha">💒 వివాహ ముహూర్తం (Marriage Muhurtam)</option>
+                  <option value="grihapravesha">🏠 గృహ ప్రవేశ ముహూర్తం (Housewarming)</option>
+                  <option value="namakarana">👶 నామకరణ ముహూర్తం (Baby Naming)</option>
+                  <option value="annaprashana">🥣 అన్నప్రాశన ముహూర్తం (First Solid Feeding)</option>
+                  <option value="upanayana">📿 ఉపనయన ముహూర్తం (Sacred Thread Ceremony)</option>
+                  <option value="vyapara_arambha">💼 నూతన వ్యాపార ప్రారంభం (Business Launch)</option>
+                  <option value="vahana_purchase">🚗 నూతన వాహన కొనుగోలు (Vehicle Purchase)</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <!-- Dynamic Contextual Shastric Indications & Kundali Match Card -->
+            <div id="muhurtamEventContextCard" style="grid-column: 1 / -1; margin-top: -6px; margin-bottom: 14px;"></div>
+
+            <!-- Start Date -->
+            <div class="form-group">
+              <label for="muhurtamStartDate">ప్రారంభ తేదీ (Search From Date)</label>
+              <input type="date" id="muhurtamStartDate" class="form-control" required>
+            </div>
+
+            <!-- Days Range -->
+            <div class="form-group">
+              <label for="muhurtamDaysRange">పరిశీలించవలసిన రోజుల సంఖ్య (Search Range)</label>
+              <select id="muhurtamDaysRange" class="form-control">
+                <option value="15">15 రోజులు (Next 15 Days)</option>
+                <option value="30" selected>30 రోజులు (Next 1 Month)</option>
+                <option value="60">60 రోజులు (Next 2 Months)</option>
+                <option value="90">90 రోజులు (Next 3 Months)</option>
+                <option value="120">120 రోజులు (Next 4 Months - శాస్త్రోక్త వ్యవధి)</option>
+                <option value="180">180 రోజులు (Next 6 Months - గరిష్ఠ వ్యవధి)</option>
+              </select>
+            </div>
+
+            <!-- Place of Muhurtam -->
+            <div class="form-group">
+              <label for="muhurtamPlace">ప్రదేశం / నగరం (Location / City)</label>
+              <input type="text" id="muhurtamPlace" class="form-control" placeholder="నగరం పేరు (ఉదా: Hyderabad, Guntur, Dallas...)" value="Hyderabad, Telangana" autocomplete="off" required>
+              <div id="muhurtamCitySuggestions" class="city-suggestions"></div>
+              <div id="muhurtamCityFeedback" class="city-feedback-chip">📍 ప్రదేశం: <strong>Hyderabad, Telangana</strong> (17.38° N, 78.49° E, IST +5:30)</div>
+              
+              <!-- Hidden Coords & TZ -->
+              <input type="hidden" id="muhurtamLat" value="17.3850">
+              <input type="hidden" id="muhurtamLon" value="78.4867">
+              <input type="hidden" id="muhurtamTz" value="5.5">
+            </div>
+
+            <!-- Participant Mode Selector -->
+            <div class="form-group" style="grid-column: 1 / -1; margin-top: 5px;">
+              <label style="font-weight: 700; color: #4A0E17; margin-bottom: 8px; display: block;">
+                👥 ముహూర్త పరిశీలన విధానం (Participant Mode - ఏక వ్యక్తి / దంపతులు / కుటుంబం)
+              </label>
+              <div class="participant-mode-toggle" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button type="button" class="gender-btn participant-mode-btn active" data-mode="individual">
+                  <span>👤</span> ఏక వ్యక్తి (Individual Native)
+                </button>
+                <button type="button" class="gender-btn participant-mode-btn" data-mode="couple">
+                  <span>👫</span> దంపతులు (Husband & Wife)
+                </button>
+                <button type="button" class="gender-btn participant-mode-btn" data-mode="family">
+                  <span>👨‍👩‍👧‍👦</span> సంపూర్ణ కుటుంబం (Whole Family)
+                </button>
+              </div>
+              <input type="hidden" id="muhurtamParticipantMode" value="individual">
+            </div>
+
+            <!-- Panel 1: Single Native -->
+            <div id="panelParticipantIndividual" class="participant-panel" style="grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; background: #FAF5EB; padding: 18px; border-radius: 10px; border: 1.5px solid #EADBCE;">
+              <div style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 4px;">
+                <span style="font-weight: 700; color: #4A0E17; font-size: 0.95rem;">వ్యక్తి వివరాల నమోదు పద్ధతి (Identification Mode):</span>
+                <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                  <button type="button" class="chart-toggle-btn active" id="btnIndivModeName" onclick="window.switchIndividualInputMode('name')" style="font-size: 0.8rem; padding: 4px 10px;">
+                    🔤 పేరు ద్వారా (నామ నక్షత్రం)
+                  </button>
+                  <button type="button" class="chart-toggle-btn" id="btnIndivModeDirect" onclick="window.switchIndividualInputMode('direct')" style="font-size: 0.8rem; padding: 4px 10px;">
+                    ⭐ జన్మ నక్షత్రం & రాశి
+                  </button>
+                  <button type="button" class="chart-toggle-btn" id="btnIndivModeGeneral" onclick="window.switchIndividualInputMode('general')" style="font-size: 0.8rem; padding: 4px 10px;">
+                    🕉️ వివరాలు లేవు (అభిజిత్ శుద్ధి)
+                  </button>
+                </div>
+              </div>
+
+              <!-- Name Field with live Avakahada Detection -->
+              <div class="form-group" id="groupIndivName" style="grid-column: 1 / -1; margin: 0;">
+                <label for="muhurtaNativeName">వ్యక్తి పేరు (Name - తెలుగు లేదా ఇంగ్లీషులో టైప్ చేయండి):</label>
+                <input type="text" id="muhurtaNativeName" class="form-control" placeholder="ఉదా: రాముడు, లక్ష్మి, శివ, వెంకటేశ్వర్లు, Suresh..." autocomplete="off">
+                <div id="indivNameFeedback" style="margin-top: 6px; font-size: 0.85rem; font-weight: 700; color: #2E7D32; display: none;"></div>
+              </div>
+
+              <div class="form-group" style="margin: 0;">
+                <label for="muhurtamNativeNak">నక్షత్రం (Nakshatra - తారాబలం కొరకు):</label>
+                <select id="muhurtamNativeNak" class="form-control">
+                  <option value="" selected>-- వర్తించదు / సాధారణ ముహూర్తం --</option>
+                  <option value="0">1. అశ్విని (Ashwini)</option>
+                  <option value="1">2. భరణి (Bharani)</option>
+                  <option value="2">3. కృత్తిక (Krittika)</option>
+                  <option value="3">4. రోహిణి (Rohini)</option>
+                  <option value="4">5. మృగశిర (Mrigashira)</option>
+                  <option value="5">6. ఆరుద్ర (Ardra)</option>
+                  <option value="6">7. పునర్వసు (Punarvasu)</option>
+                  <option value="7">8. పుష్యమి (Pushya)</option>
+                  <option value="8">9. ఆశ్లేష (Ashlesha)</option>
+                  <option value="9">10. మఖ (Magha)</option>
+                  <option value="10">11. పూర్వఫల్గుణి / పుబ్బ (Pubba)</option>
+                  <option value="11">12. ఉత్తరఫల్గుణి / ఉత్తర (Uttara)</option>
+                  <option value="12">13. హస్త (Hasta)</option>
+                  <option value="13">14. చిత్త (Chitra)</option>
+                  <option value="14">15. స్వాతి (Swati)</option>
+                  <option value="15">16. విశాఖ (Vishakha)</option>
+                  <option value="16">17. అనూరాధ (Anuradha)</option>
+                  <option value="17">18. జ్యేష్ఠ (Jyeshtha)</option>
+                  <option value="18">19. మూల (Moola)</option>
+                  <option value="19">20. పూర్వాషాఢ (Purvashadha)</option>
+                  <option value="20">21. ఉత్తరాషాఢ (Uttarashadha)</option>
+                  <option value="21">22. శ్రవణం (Shravana)</option>
+                  <option value="22">23. ధనిష్ఠ (Dhanishta)</option>
+                  <option value="23">24. శతభిషం (Shatabhisha)</option>
+                  <option value="24">25. పూర్వాభాద్ర (Purvabhadra)</option>
+                  <option value="25">26. ఉత్తరాభాద్ర (Uttarabhadra)</option>
+                  <option value="26">27. రేవతి (Revati)</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin: 0;">
+                <label for="muhurtamNativeRashi">వ్యక్తి జన్మ రాశి (Native Moon Sign - చంద్రబలం కొరకు)</label>
+                <select id="muhurtamNativeRashi" class="form-control">
+                  <option value="" selected>-- వర్తించదు / సాధారణ ముహూర్తం --</option>
+                  <option value="0">1. మేషం (Aries)</option>
+                  <option value="1">2. వృషభం (Taurus)</option>
+                  <option value="2">3. మిథునం (Gemini)</option>
+                  <option value="3">4. కర్కాటకం (Cancer)</option>
+                  <option value="4">5. సింహం (Leo)</option>
+                  <option value="5">6. కన్య (Virgo)</option>
+                  <option value="6">7. తుల (Libra)</option>
+                  <option value="7">8. వృశ్చికం (Scorpio)</option>
+                  <option value="8">9. ధనుస్సు (Sagittarius)</option>
+                  <option value="9">10. మకరం (Capricorn)</option>
+                  <option value="10">11. కుంభం (Aquarius)</option>
+                  <option value="11">12. మీనం (Pisces)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Panel 2: Couple (Dampatulu) Mode -->
+            <div id="panelParticipantCouple" class="participant-panel" style="grid-column: 1 / -1; display: none; background: #FFF8F0; padding: 18px; border-radius: 10px; border: 1.5px solid #FFCC80;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #8D4004; font-weight: 700; font-size: 1.05rem;">
+                <span>👫</span> దంపతుల జన్మ నక్షత్ర & రాశి వివరాలు (Couple Birth Details)
+              </div>
+              <p style="font-size: 0.88rem; color: #795548; margin: 0 0 15px 0; line-height: 1.5;">
+                📜 <strong>కాలామృతమ్ & ముహూర్త రత్నావళి ప్రామాణికం:</strong> సంతాన గోపాల హోమం, నాగ ప్రతిష్ఠ, గర్భ రక్షా హోమం, వివాహం మరియు గృహప్రవేశ కార్యాలకు భర్త మరియు భార్య ఇరువురికీ తారాబలం అనుకూలంగా ఉండాలి. ఎవరికీ <strong>అష్టమ చంద్ర దోషం</strong> (8వ చంద్రుడు) లేదా <strong>నైధన తార</strong> (7వ మృత్యు తార) ఉండరాదు.
+              </p>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px;">
+                <!-- Husband Box -->
+                <div style="background: #FFF; padding: 15px; border-radius: 8px; border: 1px solid #FFE0B2; box-shadow: 0 1px 4px rgba(0,0,0,0.03);">
+                  <div style="font-weight: 700; color: #4A0E17; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+                    <span>👨</span> భర్త వివరాలు (Husband)
+                  </div>
+                  <div class="form-group" style="margin-bottom: 10px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                      <label for="muhurtaHusbandName" style="margin: 0;">భర్త పేరు (Name):</label>
+                      <button type="button" onclick="window.clearCoupleDetails('husband')" style="background: none; border: none; color: #8D4004; font-size: 0.78rem; cursor: pointer; text-decoration: underline;">వివరాలు లేవు (సాధారణ)</button>
+                    </div>
+                    <input type="text" id="muhurtaHusbandName" class="form-control" placeholder="ఉదా: వెంకటేశ్వర్లు, రమేష్, Suresh..." value="భర్త (Husband)">
+                    <div id="husbandNameFeedback" style="margin-top: 5px; font-size: 0.82rem; font-weight: 700; color: #2E7D32; display: none;"></div>
+                  </div>
+                  <div class="form-group" style="margin-bottom: 10px;">
+                    <label for="muhurtaHusbandNak">జన్మ నక్షత్రం (Nakshatra)</label>
+                    <select id="muhurtaHusbandNak" class="form-control">
+                      <option value="" selected>-- నక్షత్రం ఎంచుకోండి --</option>
+                      <option value="0">1. అశ్విని (Ashwini)</option>
+                      <option value="1">2. భరణి (Bharani)</option>
+                      <option value="2">3. కృత్తిక (Krittika)</option>
+                      <option value="3">4. రోహిణి (Rohini)</option>
+                      <option value="4">5. మృగశిర (Mrigashira)</option>
+                      <option value="5">6. ఆరుద్ర (Ardra)</option>
+                      <option value="6">7. పునర్వసు (Punarvasu)</option>
+                      <option value="7">8. పుష్యమి (Pushya)</option>
+                      <option value="8">9. ఆశ్లేష (Ashlesha)</option>
+                      <option value="9">10. మఖ (Magha)</option>
+                      <option value="10">11. పూర్వఫల్గుణి / పుబ్బ (Pubba)</option>
+                      <option value="11">12. ఉత్తరఫల్గుణి / ఉత్తర (Uttara)</option>
+                      <option value="12">13. హస్త (Hasta)</option>
+                      <option value="13">14. చిత్త (Chitra)</option>
+                      <option value="14">15. స్వాతి (Swati)</option>
+                      <option value="15">16. విశాఖ (Vishakha)</option>
+                      <option value="16">17. అనూరాధ (Anuradha)</option>
+                      <option value="17">18. జ్యేష్ఠ (Jyeshtha)</option>
+                      <option value="18">19. మూల (Moola)</option>
+                      <option value="19">20. పూర్వాషాఢ (Purvashadha)</option>
+                      <option value="20">21. ఉత్తరాషాఢ (Uttarashadha)</option>
+                      <option value="21">22. శ్రవణం (Shravana)</option>
+                      <option value="22">23. ధనిష్ఠ (Dhanishta)</option>
+                      <option value="23">24. శతభిషం (Shatabhisha)</option>
+                      <option value="24">25. పూర్వాభాద్ర (Purvabhadra)</option>
+                      <option value="25">26. ఉత్తరాభాద్ర (Uttarabhadra)</option>
+                      <option value="26">27. రేవతి (Revati)</option>
+                    </select>
+                  </div>
+                  <div class="form-group" style="margin: 0;">
+                    <label for="muhurtaHusbandRashi">జన్మ రాశి (Moon Rashi)</label>
+                    <select id="muhurtaHusbandRashi" class="form-control">
+                      <option value="" selected>-- రాశి ఎంచుకోండి --</option>
+                      <option value="0">1. మేషం (Aries)</option>
+                      <option value="1">2. వృషభం (Taurus)</option>
+                      <option value="2">3. మిథునం (Gemini)</option>
+                      <option value="3">4. కర్కాటకం (Cancer)</option>
+                      <option value="4">5. సింహం (Leo)</option>
+                      <option value="5">6. కన్య (Virgo)</option>
+                      <option value="6">7. తుల (Libra)</option>
+                      <option value="7">8. వృశ్చికం (Scorpio)</option>
+                      <option value="8">9. ధనుస్సు (Sagittarius)</option>
+                      <option value="9">10. మకరం (Capricorn)</option>
+                      <option value="10">11. కుంభం (Aquarius)</option>
+                      <option value="11">12. మీనం (Pisces)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Wife Box -->
+                <div style="background: #FFF; padding: 15px; border-radius: 8px; border: 1px solid #FFE0B2; box-shadow: 0 1px 4px rgba(0,0,0,0.03);">
+                  <div style="font-weight: 700; color: #4A0E17; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+                    <span>👩</span> భార్య వివరాలు (Wife)
+                  </div>
+                  <div class="form-group" style="margin-bottom: 10px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                      <label for="muhurtaWifeName" style="margin: 0;">భార్య పేరు (Name):</label>
+                      <button type="button" onclick="window.clearCoupleDetails('wife')" style="background: none; border: none; color: #8D4004; font-size: 0.78rem; cursor: pointer; text-decoration: underline;">వివరాలు లేవు (సాధారణ)</button>
+                    </div>
+                    <input type="text" id="muhurtaWifeName" class="form-control" placeholder="ఉదా: లక్ష్మి, రాధిక, Pooja..." value="భార్య (Wife)">
+                    <div id="wifeNameFeedback" style="margin-top: 5px; font-size: 0.82rem; font-weight: 700; color: #2E7D32; display: none;"></div>
+                  </div>
+                  <div class="form-group" style="margin-bottom: 10px;">
+                    <label for="muhurtaWifeNak">జన్మ నక్షత్రం (Nakshatra)</label>
+                    <select id="muhurtaWifeNak" class="form-control">
+                      <option value="" selected>-- నక్షత్రం ఎంచుకోండి --</option>
+                      <option value="0">1. అశ్విని (Ashwini)</option>
+                      <option value="1">2. భరణి (Bharani)</option>
+                      <option value="2">3. కృత్తిక (Krittika)</option>
+                      <option value="3">4. రోహిణి (Rohini)</option>
+                      <option value="4">5. మృగశిర (Mrigashira)</option>
+                      <option value="5">6. ఆరుద్ర (Ardra)</option>
+                      <option value="6">7. పునర్వసు (Punarvasu)</option>
+                      <option value="7">8. పుష్యమి (Pushya)</option>
+                      <option value="8">9. ఆశ్లేష (Ashlesha)</option>
+                      <option value="9">10. మఖ (Magha)</option>
+                      <option value="10">11. పూర్వఫల్గుణి / పుబ్బ (Pubba)</option>
+                      <option value="11">12. ఉత్తరఫల్గుణి / ఉత్తర (Uttara)</option>
+                      <option value="12">13. హస్త (Hasta)</option>
+                      <option value="13">14. చిత్త (Chitra)</option>
+                      <option value="14">15. స్వాతి (Swati)</option>
+                      <option value="15">16. విశాఖ (Vishakha)</option>
+                      <option value="16">17. అనూరాధ (Anuradha)</option>
+                      <option value="17">18. జ్యేష్ఠ (Jyeshtha)</option>
+                      <option value="18">19. మూల (Moola)</option>
+                      <option value="19">20. పూర్వాషాఢ (Purvashadha)</option>
+                      <option value="20">21. ఉత్తరాషాఢ (Uttarashadha)</option>
+                      <option value="21">22. శ్రవణం (Shravana)</option>
+                      <option value="22">23. ధనిష్ఠ (Dhanishta)</option>
+                      <option value="23">24. శతభిషం (Shatabhisha)</option>
+                      <option value="24">25. పూర్వాభాద్ర (Purvabhadra)</option>
+                      <option value="25">26. ఉత్తరాభాద్ర (Uttarabhadra)</option>
+                      <option value="26">27. రేవతి (Revati)</option>
+                    </select>
+                  </div>
+                  <div class="form-group" style="margin: 0;">
+                    <label for="muhurtaWifeRashi">జన్మ రాశి (Moon Rashi)</label>
+                    <select id="muhurtaWifeRashi" class="form-control">
+                      <option value="" selected>-- రాశి ఎంచుకోండి --</option>
+                      <option value="0">1. మేషం (Aries)</option>
+                      <option value="1">2. వృషభం (Taurus)</option>
+                      <option value="2">3. మిథునం (Gemini)</option>
+                      <option value="3">4. కర్కాటకం (Cancer)</option>
+                      <option value="4">5. సింహం (Leo)</option>
+                      <option value="5">6. కన్య (Virgo)</option>
+                      <option value="6">7. తుల (Libra)</option>
+                      <option value="7">8. వృశ్చికం (Scorpio)</option>
+                      <option value="8">9. ధనుస్సు (Sagittarius)</option>
+                      <option value="9">10. మకరం (Capricorn)</option>
+                      <option value="10">11. కుంభం (Aquarius)</option>
+                      <option value="11">12. మీనం (Pisces)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 3: Whole Family Mode -->
+            <div id="panelParticipantFamily" class="participant-panel" style="grid-column: 1 / -1; display: none; background: #F1F8E9; padding: 18px; border-radius: 10px; border: 1.5px solid #C8E6C9;">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 8px;">
+                <div style="display: flex; align-items: center; gap: 8px; color: #2E7D32; font-weight: 700; font-size: 1.05rem;">
+                  <span>👨‍👩‍👧‍👦</span> సంపూర్ణ కుటుంబ సభ్యుల వివరాలు (Whole Family Members)
+                </div>
+                <button type="button" id="btnAddFamilyMember" style="padding: 6px 14px; font-size: 0.88rem; background: #2E7D32; color: #FFF; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-weight: 600;">
+                  <span>➕</span> సభ్యుని జోడించండి (Add Member)
+                </button>
+              </div>
+              
+              <p style="font-size: 0.88rem; color: #33691E; margin: 0 0 12px 0; line-height: 1.5;">
+                📜 <strong>శాస్త్రోక్త కుటుంబ సమన్వయం:</strong> గృహప్రవేశం, చండీ హోమం, రుద్ర పాశుపతం, నవగ్రహ శాంతి వంటి సమస్త కుటుంబ కార్యాలలో కుటుంబ సభ్యులందరి తారాబలం మరియు చంద్రబలాలు ఏకకాలంలో పరిశీలించబడతాయి. ఎవరికీ అష్టమ చంద్రుడు లేని శుభ ముహూర్తం నిర్ణయించబడుతుంది.
+              </p>
+
+              <div class="table-responsive" style="max-height: 320px; overflow-y: auto;">
+                <table class="vedic-table" style="background: #FFF; font-size: 0.9rem; width: 100%;">
+                  <thead>
+                    <tr style="background: #E8F5E9; color: #1B5E20;">
+                      <th style="min-width: 140px;">పేరు (Name)</th>
+                      <th style="min-width: 120px;">సంబంధం (Role)</th>
+                      <th style="min-width: 150px;">జన్మ నక్షత్రం (Nakshatra)</th>
+                      <th style="min-width: 130px;">జన్మ రాశి (Moon Rashi)</th>
+                      <th style="width: 50px; text-align: center;">చర్య</th>
+                    </tr>
+                  </thead>
+                  <tbody id="familyMembersTableBody">
+                    <!-- Dynamic rows rendered by JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group" style="grid-column: 1 / -1; margin-top: 10px;">
+              <button type="submit" id="btnSubmitMuhurtam" class="btn-submit" style="width: 100%;">
+                <span>⏱️</span> అత్యుత్తమ శుభ ముహూర్తాలను గణించండి (Calculate Optimal Muhurtams)
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Muhurtam Results Container -->
+      <div id="muhurtamResultContainer" style="margin-top: 25px;"></div>
+    </div>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="/static/jyotishyam/js/chart_renderer.js"></script>
+  <script src="/static/jyotishyam/js/app.js"></script>
+
+</body>
+</html>

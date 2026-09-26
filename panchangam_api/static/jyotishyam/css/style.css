@@ -1,0 +1,2566 @@
+/* 
+ * Jyotishyam Web Platform Stylesheet
+ * Traditional Vedic Temple & Modern Professional Aesthetic
+ */
+
+:root {
+  --primary-maroon: #4A0E17;
+  --secondary-maroon: #6B1426;
+  --accent-gold: #D4AF37;
+  --gold-light: #F3E5AB;
+  --gold-dark: #996515;
+  --cosmic-navy: #0A1128;
+  --bg-cream: #FAF7F2;
+  --card-bg: #FFFFFF;
+  --text-dark: #2B2118;
+  --text-muted: #6C5D53;
+  --border-gold: rgba(212, 175, 55, 0.35);
+  --shadow-sm: 0 2px 8px rgba(74, 14, 23, 0.08);
+  --shadow-md: 0 4px 20px rgba(74, 14, 23, 0.12);
+  --shadow-lg: 0 8px 30px rgba(74, 14, 23, 0.18);
+  --font-heading: 'Noto Serif Telugu', 'Cinzel', Georgia, 'Gautami', serif;
+  --font-body: 'Noto Sans Telugu', 'Poppins', 'Gautami', 'Nirmala UI', -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  font-size: 16px;
+  background-image: radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+                    radial-gradient(circle at 90% 80%, rgba(107, 20, 38, 0.05) 0%, transparent 40%);
+  min-height: 100vh;
+}
+
+/* Header */
+.vedic-header {
+  background: linear-gradient(135deg, var(--primary-maroon), var(--secondary-maroon));
+  color: var(--gold-light);
+  padding: 24px 20px;
+  text-align: center;
+  border-bottom: 3px solid var(--accent-gold);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.vedic-header::before {
+  content: "🕉";
+  font-size: 2.2rem;
+  color: var(--accent-gold);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.vedic-header h1 {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--gold-light);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  margin-bottom: 6px;
+}
+
+.vedic-header .tagline {
+  font-size: 0.95rem;
+  color: #E2D4B7;
+  font-weight: 300;
+}
+
+/* Container */
+.main-container {
+  max-width: 1280px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* Form Card */
+.input-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-gold);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 35px;
+  position: relative;
+  overflow: visible;
+}
+
+.input-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-maroon), var(--accent-gold), var(--primary-maroon));
+  border-radius: 16px 16px 0 0;
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  color: var(--primary-maroon);
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-title span {
+  font-size: 1.2rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-group label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--primary-maroon);
+  margin-bottom: 6px;
+}
+
+.form-control {
+  padding: 12px 14px;
+  border: 1.5px solid #D8CFC4;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  background: #FFF;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+}
+
+/* Gender Selector Toggle */
+.gender-toggle {
+  display: flex;
+  gap: 10px;
+}
+
+.gender-btn {
+  flex: 1;
+  padding: 11px;
+  border: 1.5px solid #D8CFC4;
+  border-radius: 8px;
+  background: #FFF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: all 0.2s ease;
+  color: var(--text-dark);
+}
+
+.gender-btn.active {
+  background: var(--primary-maroon);
+  color: var(--gold-light);
+  border-color: var(--primary-maroon);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-group:focus-within {
+  z-index: 1000;
+}
+
+/* City Autocomplete Dropdown */
+.city-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1.5px solid var(--accent-gold);
+  border-radius: 8px;
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 1001;
+  box-shadow: var(--shadow-lg);
+  display: none;
+}
+
+.city-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid #F0EAE1;
+  font-size: 0.9rem;
+  transition: all 0.15s ease;
+}
+
+.city-item:hover, .city-item.active-highlight {
+  background: #FFF2D6;
+  color: var(--primary-maroon);
+  border-left: 4px solid var(--accent-gold);
+}
+
+.city-item small {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+/* Real-time City Selection Feedback Chip */
+.city-feedback-chip {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #2E5B37;
+  background: #EFF8F1;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #C4E5C9;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+  font-weight: 500;
+}
+
+.badge-place {
+  background: #FDF4E7;
+  color: #7B4425;
+  border: 1px solid #DFCCB7;
+}
+
+/* Submit Button */
+.btn-submit {
+  grid-column: 1 / -1;
+  padding: 15px 30px;
+  background: linear-gradient(135deg, var(--secondary-maroon), var(--primary-maroon));
+  color: var(--gold-light);
+  border: 1.5px solid var(--accent-gold);
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(107, 20, 38, 0.3);
+  background: linear-gradient(135deg, #821930, var(--primary-maroon));
+}
+
+/* Native Profile Banner */
+.native-summary-banner {
+  background: linear-gradient(135deg, #FFF9F0, #FFF);
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  box-shadow: var(--shadow-sm);
+}
+
+.native-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.native-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--primary-maroon);
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  border: 2px solid var(--accent-gold);
+}
+
+.native-details h2 {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: var(--primary-maroon);
+}
+
+.native-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge-gender { background: #F3E5AB; color: var(--gold-dark); }
+.badge-lagna { background: #E8F5E9; color: #2E7D32; }
+.badge-rashi { background: #E3F2FD; color: #1565C0; }
+.badge-nakshatra { background: #FCE4EC; color: #C2185B; }
+.badge-dasha { background: var(--primary-maroon); color: var(--gold-light); }
+
+/* Tabs */
+.tabs-header, .vedic-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-bottom: 2px solid #E5DEC9;
+  margin-bottom: 25px;
+  background: #FFFDF9;
+  padding: 8px 10px 0;
+  border-radius: 8px 8px 0 0;
+}
+
+.tab-btn {
+  padding: 10px 18px;
+  background: #FFFFFF;
+  border: 1.5px solid #EADBCE;
+  border-radius: 8px 8px 0 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #5D4037;
+  cursor: pointer;
+  border-bottom: 2px solid #EADBCE;
+  margin-bottom: -2px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  color: var(--primary-maroon);
+  background: #FFF8E7;
+  border-color: var(--accent-gold);
+}
+
+.tab-btn.active {
+  color: var(--primary-maroon);
+  background: #FFFDF4;
+  border-color: #D4AF37;
+  border-bottom-color: #FFFDF4;
+  font-weight: 700;
+  box-shadow: 0 -2px 6px rgba(183, 83, 0, 0.08);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Kundali Chart View */
+.chart-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+.chart-toggle-group {
+  display: flex;
+  background: #EAE3D2;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.chart-toggle-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  transition: all 0.2s;
+}
+
+.chart-toggle-btn.active {
+  background: white;
+  color: var(--primary-maroon);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.chart-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.kundali-svg-container {
+  width: 100%;
+  max-width: 580px;
+  aspect-ratio: 1 / 1;
+  background: #FFFDF9;
+  border: 2px solid var(--accent-gold);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  padding: 10px;
+}
+
+/* Stree / Purusha Highlight Box */
+.gender-highlight-card {
+  background: #FFF9F2;
+  border-left: 5px solid var(--accent-gold);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 20px 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.gender-highlight-card h4 {
+  color: var(--primary-maroon);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Panchangam Cards Grid */
+.panchangam-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.panchangam-card {
+  background: white;
+  border: 1px solid #EADCBA;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s;
+}
+
+.panchangam-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-gold);
+}
+
+.panchangam-card .card-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.panchangam-card .card-val {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-maroon);
+}
+
+.panchangam-card .card-sub {
+  font-size: 0.78rem;
+  color: var(--gold-dark);
+  margin-top: 4px;
+}
+
+/* Tables */
+.table-responsive {
+  overflow-x: auto;
+  background: white;
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 25px;
+}
+
+.vedic-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.vedic-table th {
+  background: #F8F3E6;
+  color: var(--primary-maroon);
+  padding: 14px 16px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent-gold);
+}
+
+.vedic-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #F0EAE1;
+  font-size: 0.9rem;
+}
+
+.vedic-table tr:hover {
+  background: #FFFCF7;
+}
+
+.dignity-tag {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.dignity-exalted { background: #E8F5E9; color: #1B5E20; }
+.dignity-own { background: #E3F2FD; color: #0D47A1; }
+.dignity-debilitated { background: #FFEBEE; color: #B71C1C; }
+.dignity-friend { background: #FFF8E1; color: #F57F17; }
+.dignity-neutral { background: #ECEFF1; color: #455A64; }
+.dignity-enemy { background: #FFEBEE; color: #C62828; }
+
+.status-tag {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: 4px;
+}
+.tag-vakra { background: #FFF3E0; color: #E65100; border: 1px solid #FFE0B2; }
+.tag-asta { background: #EDE7F6; color: #4A148C; border: 1px solid #D1C4E9; }
+
+/* Tatkala Graha Card & Summary Chips */
+.tatkala-graha-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 20px 24px;
+  border: 1.5px solid #EADBCE;
+  box-shadow: var(--shadow-sm);
+  margin-top: 25px;
+}
+
+.tatkala-summary-chips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.tatkala-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+.tatkala-chip-lagna {
+  background: #FFF9C4;
+  color: #5D4037;
+  border-color: #FBC02D;
+}
+
+.tatkala-chip-exalted {
+  background: #E8F5E9;
+  color: #1B5E20;
+  border-color: #A5D6A7;
+}
+
+.tatkala-chip-own {
+  background: #E3F2FD;
+  color: #0D47A1;
+  border-color: #90CAF9;
+}
+
+.tatkala-chip-vakra {
+  background: #FFF3E0;
+  color: #E65100;
+  border-color: #FFCC80;
+}
+
+.tatkala-chip-asta {
+  background: #EDE7F6;
+  color: #4A148C;
+  border-color: #CE93D8;
+}
+
+.tatkala-chip-debilitated {
+  background: #FFEBEE;
+  color: #B71C1C;
+  border-color: #EF9A9A;
+}
+
+/* Dasha Timeline */
+.dasha-balance-banner {
+  background: #F4ECE1;
+  border-left: 4px solid var(--secondary-maroon);
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-maroon);
+  margin-bottom: 25px;
+}
+
+.current-dasha-hero {
+  background: linear-gradient(135deg, var(--primary-maroon), #2E050D);
+  color: var(--gold-light);
+  border: 1px solid var(--accent-gold);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.current-dasha-hero h3 {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  font-family: var(--font-heading);
+}
+
+.current-dasha-hero p {
+  color: #FFFDF0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Yogas Cards */
+.yoga-card {
+  background: white;
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s;
+}
+
+.yoga-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-gold);
+}
+
+.yoga-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.yoga-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary-maroon);
+  font-family: var(--font-heading);
+}
+
+.yoga-source {
+  font-size: 0.8rem;
+  color: var(--gold-dark);
+  font-style: italic;
+}
+
+/* Gocharam Cards */
+.gocharam-card {
+  background: white;
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  padding: 22px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.gocharam-card.severe {
+  border-left: 6px solid #C62828;
+}
+
+.gocharam-card.auspicious {
+  border-left: 6px solid #2E7D32;
+}
+
+/* Chat Section ("సిద్ధాంత కర్త / జ్యోతిష్య బ్రహ్మ") */
+.chat-section-container {
+  background: white;
+  border: 2px solid var(--accent-gold);
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  margin-top: 35px;
+}
+
+.chat-header {
+  background: linear-gradient(135deg, var(--primary-maroon), var(--secondary-maroon));
+  color: var(--gold-light);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--accent-gold);
+}
+
+.chat-header-info h3 {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  margin-bottom: 4px;
+}
+
+.chat-header-info p {
+  font-size: 0.85rem;
+  color: #E2D4B7;
+}
+
+.chat-body {
+  height: 480px;
+  overflow-y: auto;
+  padding: 24px;
+  background: #FAF7F2;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chat-msg {
+  max-width: 82%;
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  box-shadow: var(--shadow-sm);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-msg.user {
+  align-self: flex-end;
+  background: var(--primary-maroon);
+  color: white;
+  border-bottom-right-radius: 2px;
+}
+
+.chat-msg.assistant {
+  align-self: flex-start;
+  background: white;
+  color: var(--text-dark);
+  border: 1px solid #EADCBA;
+  border-bottom-left-radius: 2px;
+}
+
+.citation-badge {
+  display: inline-block;
+  background: #FFF3E0;
+  color: #E65100;
+  border: 1px solid #FFE0B2;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-right: 6px;
+  margin-top: 6px;
+}
+
+.remedy-box {
+  background: #F1F8E9;
+  border-left: 3px solid #558B2F;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-top: 10px;
+  font-size: 0.88rem;
+}
+
+/* Quick prompt chips */
+.quick-chips-wrapper {
+  padding: 12px 20px;
+  background: #FFF;
+  border-top: 1px solid #EFE8DA;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quick-chip {
+  background: #F5EFE6;
+  border: 1px solid #DACAB5;
+  color: var(--primary-maroon);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.quick-chip:hover {
+  background: var(--accent-gold);
+  color: white;
+  border-color: var(--accent-gold);
+}
+
+/* Chat Input Bar */
+.chat-input-bar {
+  display: flex;
+  padding: 14px 20px;
+  background: white;
+  border-top: 1px solid #E8DFCE;
+  gap: 10px;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1.5px solid #D8CFC4;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.chat-input:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+}
+
+.btn-send {
+  background: var(--primary-maroon);
+  color: var(--gold-light);
+  border: none;
+  border-radius: 25px;
+  padding: 0 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-send:hover {
+  background: var(--secondary-maroon);
+}
+
+/* Loading Spinner */
+.spinner {
+  border: 3px solid rgba(212, 175, 55, 0.2);
+  border-top: 3px solid var(--accent-gold);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .vedic-header h1 { font-size: 1.6rem; }
+  .form-grid { grid-template-columns: 1fr; }
+  .native-summary-banner { flex-direction: column; align-items: flex-start; }
+  .tabs-header { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 5px; }
+  .chat-msg { max-width: 92%; }
+}
+
+/* Settings Button & Modal */
+.btn-settings {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--accent-gold);
+  color: var(--gold-light);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-settings:hover {
+  background: var(--accent-gold);
+  color: var(--primary-maroon);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(10, 17, 40, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: white;
+  border: 2px solid var(--accent-gold);
+  border-radius: 14px;
+  max-width: 520px;
+  width: 90%;
+  padding: 26px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  animation: fadeIn 0.25s ease;
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #888;
+}
+
+.btn-save-key {
+  background: var(--primary-maroon);
+  color: var(--gold-light);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+/* -------------------------------------------------------------
+ * OnlineJyotish Style Components & Booklet Print Styling
+ * ----------------------------------------------------------- */
+
+/* Print Report Button in Banner */
+.banner-actions {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.btn-print {
+  background: linear-gradient(135deg, #1B5E20, #2E7D32);
+  color: #FFF;
+  border: 1.5px solid #A5D6A7;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-print:hover {
+  background: linear-gradient(135deg, #144617, #1B5E20);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(46, 125, 50, 0.35);
+}
+
+.section-desc {
+  font-size: 0.92rem;
+  color: #6C5D53;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* Avakahada Chakra Table & Card Wrapper */
+.avakahada-card-wrapper {
+  background: #FFFDF8;
+  border: 1.5px solid var(--border-gold);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.avakahada-table tr:hover {
+  background: #FFFDF5;
+}
+
+.avakahada-table td {
+  padding: 10px 14px;
+  vertical-align: middle;
+}
+
+.bhukti-prediction-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.bhukti-prediction-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.avakahada-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.avakahada-card {
+  background: #FFF;
+  border: 1px solid #E8DFD0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.avakahada-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--accent-gold);
+}
+
+.avakahada-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--secondary-maroon);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.avakahada-val {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 4px;
+}
+
+.avakahada-desc {
+  font-size: 0.78rem;
+  color: #795548;
+  line-height: 1.3;
+}
+
+/* Bhava Sphuta Occupant Tag */
+.occupant-tag {
+  display: inline-block;
+  background: #FFF8E7;
+  color: #4A0E17;
+  border: 1px solid #D4AF37;
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin: 2px;
+}
+
+/* Ashtakavarga Header & Stats */
+.ashtakavarga-header-card {
+  background: #FFFDF8;
+  border: 1.5px solid var(--border-gold);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.ashtakavarga-summary-stats {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.stat-box {
+  flex: 1;
+  min-width: 140px;
+  background: #FFF;
+  border: 1.5px solid #E5D7B7;
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-num {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--primary-maroon);
+  font-family: 'Cinzel', serif;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.sav-insight-banner {
+  background: #FFF9E6;
+  border-left: 4px solid var(--accent-gold);
+  padding: 14px 18px;
+  border-radius: 6px;
+}
+
+.sav-pill-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.sav-pill {
+  background: #FFF;
+  border: 1px solid #D4AF37;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  color: #4A0E17;
+}
+
+/* SAV Grid Layout */
+.sav-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 900px) {
+  .sav-layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sub-card-title {
+  font-family: var(--font-heading);
+  color: var(--primary-maroon);
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sav-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.badge-high {
+  background: #C8E6C9;
+  color: #1B5E20;
+}
+
+.badge-medium {
+  background: #DCEDC8;
+  color: #33691E;
+}
+
+.badge-low {
+  background: #FFCDD2;
+  color: #B71C1C;
+}
+
+.bav-matrix-table td {
+  text-align: center;
+}
+
+/* Doshas Cards */
+.dosha-card {
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.card-dosha-none {
+  background: #F1F8E9;
+  border: 1.5px solid #81C784;
+}
+
+.card-dosha-cancelled {
+  background: #FFFDE7;
+  border: 1.5px solid #FFD54F;
+}
+
+.card-dosha-present {
+  background: #FFEBEE;
+  border: 1.5px solid #E57373;
+}
+
+.dosha-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.dosha-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-maroon);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dosha-sub-box {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1px dashed rgba(0,0,0,0.15);
+}
+
+/* Predictions Styling */
+.predictions-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.prediction-card {
+  background: #FFF;
+  border: 1.5px solid var(--border-gold);
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+}
+
+.prediction-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid #F0E6D2;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pred-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-maroon);
+  font-family: var(--font-heading);
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  color: var(--primary-maroon);
+  font-size: 1.25rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.section-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.pred-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pred-field strong {
+  color: #4A0E17;
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.98rem;
+}
+
+.pred-field p {
+  color: #333;
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+
+.alert-guidance {
+  background: #FFF8E1;
+  border-left: 4px solid #FFA000;
+  padding: 12px 16px;
+  border-radius: 0 8px 8px 0;
+}
+
+/* -------------------------------------------------------------
+ * Comprehensive Book / PDF Print Stylesheet (@media print)
+ * ----------------------------------------------------------- */
+@media print {
+  /* Hide non-printable elements */
+  .vedic-header,
+  .input-card,
+  .tabs-header,
+  .chart-controls,
+  .banner-actions,
+  .btn-settings,
+  .chat-section-container,
+  .modal-overlay,
+  #btnGenerate {
+    display: none !important;
+  }
+
+  body {
+    background: #FFF !important;
+    color: #000 !important;
+    font-size: 11pt !important;
+  }
+
+  .main-container {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #resultsContainer {
+    display: block !important;
+  }
+
+  /* Make all tab contents visible sequentially for full report printing */
+  .tab-content {
+    display: block !important;
+    page-break-after: always;
+    margin-bottom: 25px;
+    opacity: 1 !important;
+  }
+
+  .native-summary-banner {
+    border: 2px solid #4A0E17 !important;
+    background: #FAF7F2 !important;
+    page-break-after: avoid;
+    margin-bottom: 20px;
+  }
+
+  .chart-wrapper {
+    page-break-inside: avoid;
+  }
+
+  .kundali-svg {
+    max-width: 440px !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  .vedic-table {
+    font-size: 9.5pt !important;
+    page-break-inside: avoid;
+  }
+
+  .vedic-table th, .vedic-table td {
+    padding: 6px 8px !important;
+  }
+
+  .prediction-card,
+  .dosha-card,
+  .avakahada-card-wrapper,
+  .ashtakavarga-header-card {
+    page-break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #CCC !important;
+    margin-bottom: 16px !important;
+  }
+
+  .sav-layout-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* ============================================================ */
+/* GLOBAL FEATURE MODULE NAVIGATION                             */
+/* ============================================================ */
+.global-module-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.global-nav-btn {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--gold-light, #F9F1DC);
+  border: 1.5px solid rgba(212, 175, 55, 0.5);
+  border-radius: 25px;
+  padding: 8px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+}
+
+.global-nav-btn:hover {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: var(--accent-gold, #D4AF37);
+  transform: translateY(-2px);
+  color: #FFF;
+}
+
+.global-nav-btn.active {
+  background: linear-gradient(135deg, #D4AF37 0%, #AA8010 100%);
+  color: #4A0E17;
+  border-color: #FFE082;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.4);
+  font-weight: 700;
+}
+
+/* Two-column layout helper */
+.two-column-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.column-card {
+  background: #FFF;
+  border: 1px solid #EFE4D2;
+  border-radius: 10px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Prashna Jyotish Elements */
+.btn-time-now {
+  background: #F4ECE1;
+  color: #6A1B29;
+  border: 1.5px dashed #CBB18B;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-time-now:hover {
+  background: #E8D9C5;
+  border-color: #AA8010;
+}
+
+.prashna-verdict-card {
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  color: #1A1A1A;
+}
+
+.verdict-success {
+  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+  border: 2px solid #43A047;
+}
+
+.verdict-warning {
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+  border: 2px solid #FFA000;
+}
+
+.verdict-danger {
+  background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+  border: 2px solid #E53935;
+}
+
+.verdict-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.verdict-badge {
+  display: inline-block;
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+.verdict-badge.badge-success { background: #2E7D32; color: white; }
+.verdict-badge.badge-warning { background: #E65100; color: white; }
+.verdict-badge.badge-danger { background: #C62828; color: white; }
+
+.prashna-score-meter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 15px 0;
+}
+
+.meter-track {
+  flex: 1;
+  height: 12px;
+  background: #DDD;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.meter-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.8s ease;
+}
+
+.meter-fill.fill-success { background: linear-gradient(90deg, #66BB6A, #2E7D32); }
+.meter-fill.fill-warning { background: linear-gradient(90deg, #FFA726, #EF6C00); }
+.meter-fill.fill-danger { background: linear-gradient(90deg, #EF5350, #C62828); }
+
+.tajika-yoga-tag {
+  display: inline-block;
+  background: #FFF3E0;
+  color: #E65100;
+  border: 1px solid #FFCC80;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-right: 6px;
+  margin-bottom: 6px;
+}
+
+/* Shishu Jatakam Elements */
+.naming-syllables-box {
+  background: linear-gradient(135deg, #FFF9C4 0%, #FFF59D 100%);
+  border: 2px solid #FBC02D;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.syllables-grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.syllable-badge {
+  background: white;
+  border: 1.5px solid #D4AF37;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #4A0E17;
+}
+
+.syllable-badge.primary-syllable {
+  background: #4A0E17;
+  color: #FFE082;
+  border-color: #AA8010;
+  box-shadow: 0 3px 8px rgba(74, 14, 23, 0.3);
+  transform: scale(1.08);
+}
+
+.shishu-dosha-item {
+  background: #FFF;
+  border-radius: 8px;
+  padding: 16px;
+  border-left: 4px solid #CCC;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.shishu-dosha-item.border-danger { border-left-color: #D32F2F; background: #FFFBFA; }
+.shishu-dosha-item.border-warning { border-left-color: #F57C00; background: #FFFDF9; }
+.shishu-dosha-item.border-success { border-left-color: #388E3C; background: #F9FCF9; }
+
+/* Eclipse Cards & Elements */
+.eclipse-year-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.year-tab-btn {
+  background: #FAF6EE;
+  border: 1.5px solid #D2C2A8;
+  color: #4A0E17;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.year-tab-btn.active {
+  background: var(--primary-maroon, #4A0E17);
+  color: #FFF;
+  border-color: var(--primary-maroon, #4A0E17);
+}
+
+.eclipse-card {
+  background: #FFF;
+  border: 1px solid #E5D8C3;
+  border-radius: 12px;
+  padding: 22px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.eclipse-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-bottom: 1.5px solid #EFE4D2;
+  padding-bottom: 12px;
+  margin-bottom: 15px;
+}
+
+.eclipse-type-badge {
+  background: #EDE7F6;
+  color: #4527A0;
+  border: 1px solid #B39DDB;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.88rem;
+}
+
+.visibility-tag {
+  background: #E0F2F1;
+  color: #00695C;
+  border: 1px solid #80CBC4;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.rashi-tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin: 3px;
+}
+
+.rashi-subha { background: #E8F5E9; color: #2E7D32; border: 1px solid #A5D6A7; }
+.rashi-madhyama { background: #FFF9C4; color: #F57F17; border: 1px solid #FFF176; }
+.rashi-arishta { background: #FFEBEE; color: #C62828; border: 1px solid #EF9A9A; }
+
+/* Gemstones and Vastu Styling */
+.gem-card-item {
+  background: #FAF8F5;
+  border: 1px solid #EAE0CE;
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.gem-title {
+  color: var(--primary-maroon, #4A0E17);
+  font-weight: 700;
+  font-size: 0.98rem;
+  margin-bottom: 4px;
+}
+
+.vastu-compass-box {
+  background: linear-gradient(135deg, #F0F4C3 0%, #DCEDC8 100%);
+  border: 2px solid #9CCC65;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.vastu-facing-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #33691E;
+}
+
+/* ========================================================= */
+/* Indic Script Switcher (Aksharamukha Multi-Language)       */
+/* ========================================================= */
+.lang-selector-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 12px auto 16px auto;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 6px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  width: fit-content;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.lang-selector-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #F5DEB3;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.script-select {
+  background: #FFF8E7;
+  color: #4A0E17;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1.5px solid #D4AF37;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transition: all 0.2s ease;
+}
+
+.script-select:hover, .script-select:focus {
+  background: #FFFFFF;
+  border-color: #FFA000;
+  box-shadow: 0 0 10px rgba(255, 179, 0, 0.6);
+}
+
+/* Indic Script Font Overrides */
+body.script-Devanagari, body.script-Devanagari * {
+  font-family: 'Noto Sans Devanagari', 'Noto Serif Devanagari', sans-serif;
+}
+body.script-Tamil, body.script-Tamil * {
+  font-family: 'Noto Sans Tamil', sans-serif;
+}
+body.script-Kannada, body.script-Kannada * {
+  font-family: 'Noto Sans Kannada', sans-serif;
+}
+body.script-Malayalam, body.script-Malayalam * {
+  font-family: 'Noto Sans Malayalam', sans-serif;
+}
+body.script-Bengali, body.script-Bengali * {
+  font-family: 'Noto Sans Bengali', sans-serif;
+}
+body.script-Gujarati, body.script-Gujarati * {
+  font-family: 'Noto Sans Gujarati', sans-serif;
+}
+body.script-Oriya, body.script-Oriya * {
+  font-family: 'Noto Sans Oriya', sans-serif;
+}
+body.script-Gurmukhi, body.script-Gurmukhi * {
+  font-family: 'Noto Sans Gurmukhi', sans-serif;
+}
+
+/* ============================================================ */
+/* VEDIC REMEDY VERIFICATION & PUJA RECHECK STYLES             */
+/* ============================================================ */
+
+.recheck-audit-card {
+  background: #FFFDF9;
+  border: 1.5px solid #E2D7C5;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+}
+
+.recheck-audit-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: #D4AF37;
+}
+
+.recheck-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #EFE6D7;
+  margin-bottom: 14px;
+}
+
+.recheck-card-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #4A0E17;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.recheck-verdict-banner {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.verdict-success {
+  background: #E8F5E9;
+  color: #1B5E20;
+  border: 1.5px solid #81C784;
+}
+
+.verdict-info {
+  background: #FFFDE7;
+  color: #795548;
+  border: 1.5px solid #FFD54F;
+}
+
+.verdict-warning {
+  background: #FFF3E0;
+  color: #B75300;
+  border: 1.5px solid #FFB74D;
+}
+
+.verdict-danger {
+  background: #FFEBEE;
+  color: #B71C1C;
+  border: 1.5px solid #EF9A9A;
+}
+
+.recheck-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.recheck-detail-box {
+  background: #FFFFFF;
+  border: 1px solid #EADBCE;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.recheck-detail-label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.recheck-detail-box p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #2B2118;
+  margin: 0;
+}
+
+.recheck-zero-cost-box {
+  background: #F1F8E9;
+  border: 1.5px solid #A5D6A7;
+  border-radius: 8px;
+  padding: 14px;
+  margin-top: 10px;
+}
+
+.recheck-warning-box {
+  background: #FFF8E1;
+  border-left: 4px solid #FFA000;
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  color: #5D4037;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.prohibited-gems-wrapper {
+  margin-top: 25px;
+  background: #FFF5F5;
+  border: 1.5px solid #FFCDD2;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.prohibited-gem-card {
+  background: #FFFFFF;
+  border: 1px solid #FFCDD2;
+  border-left: 5px solid #D32F2F;
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.prohibited-gem-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #B71C1C;
+  margin-bottom: 4px;
+}
+
+.prohibited-gem-reason {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #424242;
+  margin: 0;
+}
+
+.puja-recheck-interactive-container {
+  background: #FAF6EF;
+  border: 2px solid #D4AF37;
+  border-radius: 14px;
+  padding: 22px;
+  margin-top: 30px;
+}
+
+.puja-select-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.puja-select-btn {
+  padding: 8px 14px;
+  background: #FFF;
+  border: 1px solid #D4AF37;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #4A0E17;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.puja-select-btn:hover, .puja-select-btn.active {
+  background: #4A0E17;
+  color: #FFF8E7;
+  border-color: #4A0E17;
+  box-shadow: 0 2px 6px rgba(74, 14, 23, 0.3);
+}
+
+/* ========================================================================== */
+/* MUHURTAM CALCULATOR & SANTANA DOSHA PARIHARAM STYLES                       */
+/* ========================================================================== */
+
+.muhurtam-slot-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.muhurtam-slot-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+}
+
+.btn-calculate-muhurtam {
+  padding: 8px 18px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #FF6F00, #E65100);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(230, 81, 0, 0.3);
+}
+
+.btn-calculate-muhurtam:hover {
+  background: linear-gradient(135deg, #FF8F00, #EF6C00);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(230, 81, 0, 0.4);
+}
+
+/* ========================================================================== */
+/* COUPLE & FAMILY HOROSCOPE AUDIT STYLES                                      */
+/* ========================================================================== */
+
+.analysis-mode-selector {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  background: rgba(212, 175, 55, 0.08);
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  flex-wrap: wrap;
+}
+
+.analysis-mode-btn {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 18px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: var(--primary-maroon);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.analysis-mode-btn:hover {
+  background: #FFF8E7;
+  border-color: var(--accent-gold);
+  transform: translateY(-1px);
+}
+
+.analysis-mode-btn.active {
+  background: linear-gradient(135deg, var(--primary-maroon), var(--secondary-maroon));
+  color: #FFF8E7;
+  border-color: #D4AF37;
+  box-shadow: 0 3px 10px rgba(74, 14, 23, 0.25);
+}
+
+/* Couple Inputs Grid */
+.couple-inputs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 850px) {
+  .couple-inputs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.couple-partner-card {
+  background: #FFFDF9;
+  border: 1.5px solid rgba(212, 175, 55, 0.35);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.partner-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid rgba(212, 175, 55, 0.2);
+}
+
+.partner-card-header .partner-icon {
+  font-size: 1.5rem;
+}
+
+.partner-card-header h3 {
+  font-size: 1.15rem;
+  color: var(--primary-maroon);
+  font-weight: 700;
+}
+
+.couple-options-bar {
+  display: flex;
+  gap: 20px;
+  background: rgba(212, 175, 55, 0.08);
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+@media (max-width: 700px) {
+  .couple-options-bar {
+    flex-direction: column;
+  }
+}
+
+/* Couple Summary Banner */
+.couple-summary-banner {
+  background: linear-gradient(135deg, #2D0A12, #4A0E17);
+  border: 2px solid #D4AF37;
+  border-radius: 16px;
+  padding: 24px;
+  color: #FFF8E7;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow-md);
+}
+
+.couple-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .couple-hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.partner-hero-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.partner-badge-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.partner-badge-header .avatar {
+  font-size: 2rem;
+}
+
+.partner-badge-header h3 {
+  color: #F3E5AB;
+  font-size: 1.25rem;
+  margin-bottom: 2px;
+}
+
+.partner-badge-header .sub-label {
+  font-size: 0.85rem;
+  color: #E2D4B7;
+}
+
+.partner-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.stat-pill {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-pill .k {
+  color: #D4AF37;
+}
+
+.couple-union-emblem {
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.couple-union-emblem .ring-icon {
+  font-size: 2.2rem;
+}
+
+.couple-union-emblem .union-text {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #F3E5AB;
+  letter-spacing: 0.5px;
+}
+
+.karta-designation-badge {
+  background: linear-gradient(135deg, #D4AF37, #AA771C);
+  color: #2D0A12;
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin-top: 4px;
+}
+
+/* Section Cards */
+.couple-section-card, .family-section-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.side-by-side-sphutas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .side-by-side-sphutas {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sphuta-box {
+  background: #FFFDF9;
+  border: 1px solid #E2D4B7;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.sphuta-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: var(--primary-maroon);
+}
+
+/* Family Members List */
+.family-member-card {
+  background: #FFFFFF;
+  border: 1.5px solid #E2D4B7;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.2s ease;
+}
+
+.family-member-card:hover {
+  border-color: var(--accent-gold);
+}
+
+.family-member-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #E2D4B7;
+}
+
+.family-member-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-maroon);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-remove-member {
+  background: #FFEBEE;
+  color: #C62828;
+  border: 1px solid #EF9A9A;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-remove-member:hover {
+  background: #C62828;
+  color: white;
+}
+
+.btn-secondary-action {
+  background: #FFF8E7;
+  color: var(--primary-maroon);
+  border: 1.5px dashed var(--accent-gold);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary-action:hover {
+  background: #FAF0D6;
+  border-style: solid;
+  transform: translateY(-1px);
+}
+
+/* Family Summary Banner */
+.family-summary-banner {
+  background: linear-gradient(135deg, #1B2A4A, #0A1128);
+  border: 2px solid #D4AF37;
+  border-radius: 16px;
+  padding: 24px;
+  color: #FFF8E7;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow-md);
+}
+
+.family-title-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.family-title-row .family-icon {
+  font-size: 2.2rem;
+}
+
+.family-title-row h2 {
+  font-size: 1.6rem;
+  color: #F3E5AB;
+}
+
+.family-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+@media (max-width: 850px) {
+  .family-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.family-stat-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.family-stat-box .stat-number {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #F3E5AB;
+}
+
+.family-stat-box .stat-label {
+  font-size: 0.85rem;
+  color: #E2D4B7;
+  margin-top: 4px;
+}
+
+.family-stat-box.stat-afflicted .stat-number {
+  color: #FF8A80;
+}
+
+.family-stat-box.stat-safe .stat-number {
+  color: #B9F6CA;
+}
+
+.family-stat-box.stat-karta {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: #D4AF37;
+}
+
+.family-stat-box .stat-karta-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #FFE57F;
+}
+
+/* Family Matrix Table */
+.family-matrix-table td {
+  vertical-align: middle;
+  font-size: 0.92rem;
+}
+
+.badge-afflicted {
+  background: #FFEBEE;
+  color: #C62828;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  display: inline-block;
+  font-size: 0.82rem;
+  border: 1px solid #FFCDD2;
+}
+
+.badge-safe {
+  background: #E8F5E9;
+  color: #2E7D32;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  display: inline-block;
+  font-size: 0.82rem;
+  border: 1px solid #C8E6C9;
+}
+
+/* Couple View Switcher Tabs */
+.couple-view-switcher {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.couple-tab-btn {
+  background: #FAF7F2;
+  border: 2px solid #D4AF37;
+  color: #4A0E17;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.couple-tab-btn:hover {
+  background: #FFF8E7;
+  border-color: #B38F24;
+  transform: translateY(-2px);
+}
+
+.couple-tab-btn.active {
+  background: linear-gradient(135deg, #4A0E17, #7A1C28);
+  color: #FFF8E7;
+  border-color: #D4AF37;
+  box-shadow: 0 4px 12px rgba(74, 14, 23, 0.3);
+}
+
+/* Contextual Kundali Return Banner */
+.contextual-return-banner {
+  background: linear-gradient(135deg, #FFFDF8, #FFF5E5);
+  border: 2px solid #D4AF37;
+  border-radius: 10px;
+  padding: 14px 22px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+}
+
+.btn-contextual-return {
+  background: #4A0E17;
+  color: #FFF8E7;
+  border: 1.5px solid #D4AF37;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-contextual-return:hover {
+  background: #7A1C28;
+  transform: translateY(-1px);
+}
+
+/* Family Table Action Button */
+.btn-view-member-kundali {
+  background: linear-gradient(135deg, #4A0E17, #6A1A24);
+  color: #FFF8E7;
+  border: 1px solid #D4AF37;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.btn-view-member-kundali:hover {
+  background: #7A1C28;
+  box-shadow: 0 2px 8px rgba(74, 14, 23, 0.25);
+}
+
+/* Permissible Timeframe Badge in Parihara Cards */
+.parihara-timeframe-chip {
+  background: #FFF3E0;
+  color: #E65100;
+  border: 1px solid #FFE0B2;
+  border-radius: 16px;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+

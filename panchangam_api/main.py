@@ -24,26 +24,30 @@ for p in [CURRENT_DIR, JYOTISHA_DIR]:
 
 from config import SUPPORTED_LANGUAGES, DEFAULT_LANG
 from routers import panchangam, cities, sankalpam, rashi
+from jyotishyam.routers import kundali as j_kundali
+from jyotishyam.routers import prashna as j_prashna
+from jyotishyam.routers import shishu as j_shishu
+from jyotishyam.routers import eclipses as j_eclipses
+from jyotishyam.routers import languages as j_languages
+from jyotishyam.routers import chat as j_chat
+from jyotishyam.routers import muhurtam as j_muhurtam
 
 app = FastAPI(
-    title="Vedic Samhita - Panchangam & Vedic Computation API",
+    title="Vedic Samhita - Panchangam & Jyotishyam Unified Vedic Platform API",
     description="""
-**Vedic Astronomy & Dharma Shastra Computation System • [www.vedicsamhita.com](https://www.vedicsamhita.com)**
+**Vedic Astronomy, Panchangam & Jyotishyam Computation System • [www.vedicsamhita.com](https://www.vedicsamhita.com)**
 
 Created & Formulated by: **RAMACHANDRA SASTRY MUNIMADUGU** (శ్రీ రామచంద్ర శాస్త్రి మునిమడుగు)
 *All credits for research, astronomical computations, Dharma Shastra correlation, and algorithmic architecture go to RAMACHANDRA SASTRY MUNIMADUGU.*
 
 Key Capabilities:
-- **బహుభాషా (All Indian Languages)**: Telugu, Devanagari (Hindi/Sanskrit), Tamil, Kannada, Malayalam, Gujarati, Bengali, and English/IAST.
-- **3 Traditional Mana Systems**: 
-  1. చాంద్రమానం (Chandramana) - Amanta & Purnimanta, Samvatsara, Adhika/Nija/Kshaya
-  2. సౌరమానం (Sauramana) - Tamil, Malayalam (Kollam), Bengali, Odia solar dates & Sankranti
-  3. బార్హస్పత్యమానం (Barhaspatyamana) - Jupiter Jovian 60-year & 12-year Maha-Masa cycle, Sacred River Pushkaram
-- **Full 5 Angas**: Tithi, Nakshatra, Yoga, Karana, Classical Vedic Vasaram names with exact sunrise and end times
-- **Auspicious & Inauspicious Periods**: Rahu Kalam, Yama Gandam, Gulika Kalam, Durmuhurtham, Abhijit, Varjyam, Amrita Kalam
-- **24-Hour Lagna Schedule**: Complete 12 ascendants with Pushkara Navamsha timings
-- **Vedic Deśa-Kāla Sankalpam**: Geographically accurate puja sankalpa for India, Americas, Europe, and worldwide
-- **Global Cities**: Fast search across 500+ worldwide cities with coordinate resolution
+- **పంచాంగం (Panchangam)**: 5 Angas, 3 Traditional Mana Systems, Lagna Schedule, Auspicious & Inauspicious Periods, Deśa-Kāla Sankalpam.
+- **జన్మ కుండలి (Horoscope)**: D1 & D9 Chakras, Bhava Sphuta, Vimshottari Dasha-Bhukti, Gocharam & Sade Sati, Classical Yogas, Santana & Pregnancy Dosha Audit.
+- **ముహూర్త నిర్ణయం (Vedic Muhurtam)**: Avakahada Pada Name detection, Direct Nakshatra pick, Universal Panchanga & Abhijit Shuddhi, Muhurta Lagna & Ashtama Shuddhi, Couple & Family harmony, Print Muhurta Patrika & WhatsApp sharing.
+- **శిశు జాతకం (Newborn)**: Baby naming syllables, Moola/Gandanta Dosha audit, Nakshatra Paya.
+- **ప్రశ్న జ్యోతిష్యం (Horary)**: 1-249 KP / Vedic Prashna query resolution.
+- **గ్రహణ దర్శిని (Eclipses)**: Solar & Lunar eclipses with Sparsha, Madhya, Moksha timings worldwide.
+- **బహుభాషా (All Indian Languages)**: Telugu, Devanagari (Hindi/Sanskrit), Tamil, Kannada, Malayalam, Gujarati, Bengali, Odia, Punjabi, and English/IAST.
     """,
     version="1.0.0",
     docs_url="/docs",
@@ -63,11 +67,20 @@ app.add_middleware(
 if os.path.isdir(STATIC_DIR):
     app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
-# Include API Routers
+# Include Panchangam API Routers
 app.include_router(panchangam.router)
 app.include_router(cities.router)
 app.include_router(sankalpam.router)
 app.include_router(rashi.router)
+
+# Include Jyotishyam API Routers
+app.include_router(j_kundali.router)
+app.include_router(j_prashna.router)
+app.include_router(j_shishu.router)
+app.include_router(j_eclipses.router)
+app.include_router(j_languages.router)
+app.include_router(j_chat.router)
+app.include_router(j_muhurtam.router)
 
 
 @app.get("/", tags=["General"])
@@ -83,10 +96,11 @@ def root(request: Request):
         return FileResponse(index_path)
 
     return {
-        "service": "Vedic Panchangam Global API",
+        "service": "Vedic Samhita Unified Panchangam & Jyotishyam API",
         "version": "1.0.0",
         "status": "online",
         "web_app": "/",
+        "jyotishyam_app": "/jyotishyam",
         "documentation": "/docs",
         "supported_languages": list(SUPPORTED_LANGUAGES.keys()),
         "mana_systems": [
@@ -96,20 +110,35 @@ def root(request: Request):
         ],
         "endpoints": {
             "web_app": "/",
+            "jyotishyam_app": "/jyotishyam",
             "daily_panchangam": "/api/v1/panchangam/daily?city=Frisco&language=telugu",
             "monthly_panchangam": "/api/v1/panchangam/monthly?city=Frisco&year=2026&month=3&language=telugu",
             "search_cities": "/api/v1/cities/search?q=Frisco",
             "popular_cities": "/api/v1/cities/popular",
-            "sankalpam": "/api/v1/sankalpam/generate?city=Frisco&language=telugu&gotra=Kashyapa"
+            "sankalpam": "/api/v1/sankalpam/generate?city=Frisco&language=telugu&gotra=Kashyapa",
+            "generate_kundali": "POST /api/v1/kundali/generate",
+            "calculate_muhurtam": "POST /api/v1/muhurtam/calculate",
+            "shishu_jatakam": "POST /api/v1/shishu/generate",
+            "prashna_kundali": "POST /api/v1/prashna/calculate"
         }
     }
 
 
 @app.get("/app", tags=["General"])
 def serve_app():
-    """Direct URL to open the Web App."""
+    """Direct URL to open the Panchangam Web App."""
     index_path = os.path.join(STATIC_DIR, "index.html")
     return FileResponse(index_path)
+
+
+@app.get("/jyotishyam", tags=["Jyotishyam"])
+@app.get("/jyotishyam/", tags=["Jyotishyam"])
+def serve_jyotishyam():
+    """Direct endpoint to serve Jyotishyam Web Platform."""
+    jyotishyam_index = os.path.join(STATIC_DIR, "jyotishyam", "index.html")
+    if os.path.exists(jyotishyam_index):
+        return FileResponse(jyotishyam_index)
+    return JSONResponse(status_code=404, content={"detail": "Jyotishyam UI not found"})
 
 
 @app.get("/health", tags=["General"])
