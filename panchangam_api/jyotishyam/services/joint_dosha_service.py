@@ -244,6 +244,38 @@ def analyze_couple_joint(husband_kundali: Dict[str, Any], wife_kundali: Dict[str
     h_name = husband_kundali.get("input", {}).get("name", "భర్త")
     w_name = wife_kundali.get("input", {}).get("name", "భార్య")
 
+    # 0. Ashtakoota & Dashakoota Guna Milan (36-Point Compatibility)
+    from jyotishyam.services.guna_milan_service import calculate_ashtakoota_milan
+
+    h_panch = husband_kundali.get("panchangam", {})
+    w_panch = wife_kundali.get("panchangam", {})
+
+    h_nak_idx = h_panch.get("nakshatra_index", h_panch.get("moon_nakshatra_index", 0))
+    w_nak_idx = w_panch.get("nakshatra_index", w_panch.get("moon_nakshatra_index", 0))
+
+    h_rashi_idx = h_panch.get("janma_rashi_index", 0)
+    w_rashi_idx = w_panch.get("janma_rashi_index", 0)
+
+    def parse_pada(pada_str):
+        if not pada_str:
+            return 1
+        for ch in str(pada_str):
+            if ch.isdigit():
+                return int(ch)
+        return 1
+
+    h_pada = parse_pada(h_panch.get("pada", "1"))
+    w_pada = parse_pada(w_panch.get("pada", "1"))
+
+    guna_milan = calculate_ashtakoota_milan(
+        groom_nak_idx=h_nak_idx,
+        groom_rashi_idx=h_rashi_idx,
+        bride_nak_idx=w_nak_idx,
+        bride_rashi_idx=w_rashi_idx,
+        groom_pada=h_pada,
+        bride_pada=w_pada
+    )
+
     # 1. Santana & Beeja / Kshetra Sphutas
     h_santana = husband_kundali.get("santana_analysis", {})
     w_santana = wife_kundali.get("santana_analysis", {})
@@ -485,7 +517,8 @@ def analyze_couple_joint(husband_kundali: Dict[str, Any], wife_kundali: Dict[str
         ],
         "joint_pariharas": joint_pariharas,
         "primary_action_karta": santana_karta if santana_joint_badge in ["warning", "danger"] else "దంపతులు సంయుక్తంగా",
-        "primary_recommended_event_type": joint_pariharas[0]["event_type"] if joint_pariharas else "santana_gopala"
+        "primary_recommended_event_type": joint_pariharas[0]["event_type"] if joint_pariharas else "santana_gopala",
+        "guna_milan": guna_milan
     }
 
 

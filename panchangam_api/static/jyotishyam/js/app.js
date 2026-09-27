@@ -4985,6 +4985,122 @@ function renderCoupleResults(data) {
     kartaBadge.innerHTML = `🪔 సంకల్ప కర్త: <strong>${ja.primary_action_karta}</strong>`;
   }
 
+  // 1. Ashtakoota Guna Milan (36-Point Compatibility) & Dashakoota
+  const gunaEl = document.getElementById("coupleGunaMilanSection");
+  if (gunaEl && ja.guna_milan) {
+    const gm = ja.guna_milan;
+    const score = gm.total_points_obtained;
+    const maxScore = gm.total_points_max || 36.0;
+    const pct = gm.percentage || Math.round((score / maxScore) * 100);
+    const badgeBg = gm.verdict_badge === "success" ? "#E8F5E9" : (gm.verdict_badge === "warning" ? "#FFF3E0" : "#FFEBEE");
+    const badgeCol = gm.verdict_badge === "success" ? "#1B5E20" : (gm.verdict_badge === "warning" ? "#E65100" : "#B71C1C");
+
+    const kootaRows = (gm.kootas || []).map(k => {
+      const isFull = k.obtained === k.max;
+      const isZero = k.obtained === 0;
+      const ptsClass = isFull ? "badge-safe" : (isZero ? "badge-afflicted" : "dignity-friend");
+      return `
+        <tr>
+          <td><strong>${k.name_te}</strong></td>
+          <td>${k.groom_attr || '--'}</td>
+          <td>${k.bride_attr || '--'}</td>
+          <td style="text-align: center;"><span class="${ptsClass}" style="font-weight: 800; font-size: 0.95rem;">${k.obtained} / ${k.max}</span></td>
+          <td style="font-size: 0.88rem; color: #4A3B32;">${k.description || ''}</td>
+        </tr>
+      `;
+    }).join("");
+
+    const dashaHtml = (gm.dashakoota?.list || []).map(d => {
+      const icon = d.is_matched ? "✅" : (d.critical ? "❌" : "⚠️");
+      const bg = d.is_matched ? "#F1F8E9" : (d.critical ? "#FFEBEE" : "#FFF8E1");
+      const col = d.is_matched ? "#2E7D32" : (d.critical ? "#C62828" : "#F57F17");
+      return `
+        <div style="background: ${bg}; border: 1px solid ${col}; border-radius: 8px; padding: 10px; display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 1.2rem;">${icon}</span>
+          <div>
+            <div style="font-weight: 700; font-size: 0.9rem; color: ${col};">${d.name_te}</div>
+            <div style="font-size: 0.78rem; color: #555;">${d.significance}</div>
+          </div>
+        </div>
+      `;
+    }).join("");
+
+    gunaEl.innerHTML = `
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; border-bottom: 2px solid #D4AF37; padding-bottom: 14px;">
+        <h3 class="card-title" style="margin: 0; display: flex; align-items: center; gap: 8px; font-size: 1.3rem;">
+          <span>💍</span> వివాహ అష్టకూట గుణ మేలనం (36-Point Vedic Guna Milan)
+        </h3>
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+          <div style="background: linear-gradient(135deg, #4A0E17, #80142B); color: #FFF8E7; padding: 6px 16px; border-radius: 20px; font-weight: 800; font-size: 1.15rem; border: 1.5px solid #D4AF37; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+            గుణాల స్కోరు: <span style="color: #FFD700; font-size: 1.35rem;">${score}</span> / 36.0 (${pct}%)
+          </div>
+          <span class="dignity-tag" style="background: ${badgeBg}; color: ${badgeCol}; font-weight: 800; font-size: 0.95rem; padding: 6px 14px; border: 1px solid ${badgeCol};">
+            ${gm.verdict_te}
+          </span>
+        </div>
+      </div>
+
+      <!-- Verdict Banner -->
+      <div style="background: ${badgeBg}; border-left: 5px solid ${badgeCol}; border-radius: 8px; padding: 16px; margin-bottom: 20px;">
+        <div style="font-weight: 800; font-size: 1.15rem; color: ${badgeCol}; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+          <span>📜</span> వివాహ పొంతన నిర్ణయం: ${gm.verdict_te}
+        </div>
+        <p style="margin: 0; color: #2B2118; font-size: 0.95rem; line-height: 1.7;">
+          ${gm.verdict_desc}
+        </p>
+      </div>
+
+      <!-- 8 Kootas Detailed Points Table -->
+      <div style="margin-bottom: 20px;">
+        <h4 style="color: #4A0E17; font-size: 1.05rem; font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+          <span>📊</span> అష్టకూట గుణాల పట్టిక (8-Koota Points Breakdown):
+        </h4>
+        <div class="table-responsive">
+          <table class="vedic-table">
+            <thead>
+              <tr>
+                <th>కూటం (Koota)</th>
+                <th>వరుడు (${hk.input.name})</th>
+                <th>వధువు (${wk.input.name})</th>
+                <th style="text-align: center;">పాయింట్లు (Points)</th>
+                <th>శాస్త్ర వివరణ</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${kootaRows}
+            </tbody>
+            <tfoot>
+              <tr style="background: #FFF8E7; font-weight: 800; font-size: 1.05rem; border-top: 2px solid #D4AF37;">
+                <td colspan="3" style="text-align: right; color: #4A0E17;">మొత్తం గుణ మేలనం (Total Score):</td>
+                <td style="text-align: center; color: #B71C1C; font-size: 1.25rem;">${score} / 36.0</td>
+                <td style="color: ${badgeCol};">${score >= 18 ? '✅ వివాహానికి శ్రేష్ఠమైనది (కనీసం 18 పాయింట్లు అర్హత దాటినది)' : '⚠️ కనీస 18 పాయింట్లు రాలేదు - శాస్త్రోక్త విచారణ ఆవశ్యకం'}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+      <!-- South Indian Dashakoota Poruthams Grid -->
+      <div style="background: #FAF7F2; border: 1.5px solid #E2D4B7; border-radius: 10px; padding: 16px; margin-bottom: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+          <h4 style="margin: 0; color: #4A0E17; font-size: 1.02rem; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+            <span>🔱</span> దక్షిణ భారత దశకూట పొంతన (South Indian 10 Poruthams):
+          </h4>
+          <span style="font-weight: 800; color: #2E7D32; font-size: 0.95rem; background: #E8F5E9; padding: 4px 12px; border-radius: 14px; border: 1px solid #C8E6C9;">
+            10 కూటాలలో ${gm.dashakoota?.passed_count || 0} కూటాలు సరిపోయినవి
+          </span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+          ${dashaHtml}
+        </div>
+      </div>
+
+      <div style="font-size: 0.85rem; color: #795548; font-style: italic; text-align: right; margin-bottom: 15px;">
+        📜 ఆధార గ్రంథం: ${gm.shastra_quote || 'బృహత్ పరాశర హోరాశాస్త్రం (అధ్యాయం 83 - వివాహ మేలనం) & ముహూర్త చింతామణి'}
+      </div>
+    `;
+  }
+
   // 2. Santana Section
   const santanaEl = document.getElementById("coupleSantanaSection");
   if (santanaEl) {

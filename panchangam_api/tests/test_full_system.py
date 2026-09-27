@@ -253,6 +253,12 @@ class TestJyotishyamKundaliEngine:
         assert "joint_analysis" in data
         assert "santana_joint" in data["joint_analysis"]
         assert "kuja_samya" in data["joint_analysis"]
+        assert "guna_milan" in data["joint_analysis"]
+        gm = data["joint_analysis"]["guna_milan"]
+        assert "total_points_obtained" in gm
+        assert gm["total_points_max"] == 36.0
+        assert len(gm["kootas"]) == 8
+        assert "dashakoota" in gm
 
     def test_santana_sphuta_analysis(self):
         """Verify Santana Sphuta and Pregnancy Loss analysis."""
