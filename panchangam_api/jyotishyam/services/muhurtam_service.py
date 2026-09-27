@@ -746,6 +746,100 @@ def calculate_muhurta_day_windows(
     }
 
 
+# Classical Pushkara Navamsha midpoint degrees within sign (0-indexed 0..11)
+# Fire signs (0, 4, 8): Dhanu navamsha mid ~21°40' (21.666667°)
+# Earth signs (1, 5, 9): Kanya navamsha mid 15°00' (15.0°)
+# Air signs (2, 6, 10): Tula navamsha mid 25°00' (25.0°)
+# Water signs (3, 7, 11): Kanya navamsha mid 8°20' (8.333333°)
+PUSHKARA_NAV_MID_DEG = {
+    0: 21.666667, 1: 15.0, 2: 25.0, 3: 8.333333,
+    4: 21.666667, 5: 15.0, 6: 25.0, 7: 8.333333,
+    8: 21.666667, 9: 15.0, 10: 25.0, 11: 8.333333
+}
+
+RITUAL_PEAK_LABELS = {
+    "vivaha": "జీలకర్ర-బెల్లం & మాంగళ్యధారణ సుముహూర్తం (Wedding Auspicious Moment)",
+    "gruhapravesha": "ప్రథమ గృహప్రవేశ / కలశ స్థాపన సుముహూర్తం (Housewarming Moment)",
+    "upanayana": "గాయత్రీ బ్రహ్మోపదేశ సుముహూర్తం (Sacred Thread Initiation)",
+    "namakarana": "నామకరణ / కర్ణ నామఘోషణ సుముహూర్తం (Naming Ceremony)",
+    "annaprashana": "ప్రథమ అన్నప్రాశన సుముహూర్తం (First Feeding)",
+    "aksharabhyasa": "సరస్వతీ అక్షరాభ్యాస సుముహూర్తం (Education Initiation)",
+    "vastu_shanku": "శంకుస్థాపన / భూమి పూజా సుముహూర్తం (Foundation Laying)",
+    "vyapara": "వ్యాపార ప్రారంభ / గల్లా పూజా సుముహూర్తం (Business Inauguration)",
+    "rudra_pashupatam": "మహాన్యాస పూర్వక రుద్రాభిషేక సంకల్పం",
+    "chandi_homam": "చండీ సప్తశతీ పారాయణ & హోమ సంకల్పం",
+    "sudarshana_homam": "సుదర్శన మహా హోమ సంకల్పం",
+    "mrityunjaya_homam": "మహా మృత్యుంజయ హోమ సంకల్పం",
+    "santana_gopala": "సంతాన గోపాల హోమ సంకల్పం",
+    "naga_pratishtha": "నాగ ప్రతిష్ఠా స్థాపనా సంకల్పం",
+    "ashlesha_bali": "ఆశ్లేషా బలి పూజా సంకల్పం",
+    "satyanarayana_vrata": "శ్రీ సత్యనారాయణ స్వామి వ్రత సంకల్పం",
+    "navagraha_shanti": "నవగ్రహ శాంతి & హోమ సంకల్పం"
+}
+
+
+def get_sidereal_lagna_deg(jd: float, lat: float, lon: float) -> float:
+    swe.set_sid_mode(swe.SIDM_LAHIRI)
+    cusps, ascmc = swe.houses_ex(jd, lat, lon, b'E', swe.FLG_SIDEREAL)
+    return ascmc[0] % 360.0
+
+
+def find_lagna_boundaries_and_pushkara(
+    jd_anchor: float,
+    target_sign_idx: int,
+    lat: float,
+    lon: float
+) -> Tuple[float, float, float]:
+    """
+    Finds exact Julian Day when the Lagna enters target_sign_idx, exits it,
+    and reaches the Pushkara Navamsha midpoint degree.
+    """
+    target_start_deg = float(target_sign_idx * 30)
+    target_end_deg = float(((target_sign_idx + 1) % 12) * 30)
+
+    # 1. Search backward for start of sign (~3.6 hours max)
+    low = jd_anchor - 0.15
+    high = jd_anchor
+    for _ in range(25):
+        mid = (low + high) / 2.0
+        d = get_sidereal_lagna_deg(mid, lat, lon)
+        diff = (d - target_start_deg + 180.0) % 360.0 - 180.0
+        if diff < 0:
+            low = mid
+        else:
+            high = mid
+    jd_start = (low + high) / 2.0
+
+    # 2. Search forward for end of sign (~3.6 hours max)
+    low = jd_anchor
+    high = jd_anchor + 0.15
+    for _ in range(25):
+        mid = (low + high) / 2.0
+        d = get_sidereal_lagna_deg(mid, lat, lon)
+        diff = (d - target_end_deg + 180.0) % 360.0 - 180.0
+        if diff < 0:
+            low = mid
+        else:
+            high = mid
+    jd_end = (low + high) / 2.0
+
+    # 3. Search for Pushkara Navamsha midpoint
+    target_pushkara = (target_sign_idx * 30.0 + PUSHKARA_NAV_MID_DEG.get(target_sign_idx, 15.0)) % 360.0
+    low = jd_start
+    high = jd_end
+    for _ in range(25):
+        mid = (low + high) / 2.0
+        d = get_sidereal_lagna_deg(mid, lat, lon)
+        diff = (d - target_pushkara + 180.0) % 360.0 - 180.0
+        if diff < 0:
+            low = mid
+        else:
+            high = mid
+    jd_pushkara = (low + high) / 2.0
+
+    return jd_start, jd_end, jd_pushkara
+
+
 def find_best_muhurtams(
     event_type: str,
     start_date_str: Optional[str] = None,
@@ -891,12 +985,18 @@ def find_best_muhurtams(
         if is_abhijit_clean and weekday != 3: # Avoid Abhijit on Wednesday
             best_window_str = f"{day_windows['abhijit_str']} (అభిజిత్ ముహూర్తం - సర్వదోషహరం)"
             best_window_label = "మధ్యాహ్న అభిజిత్ ముహూర్తం"
+            window_start_jd = ab_start
+            window_end_jd = ab_end
             jd_window_mid = (ab_start + ab_end) / 2.0
+            is_abhijit = True
             score += 10
         else:
             best_window_str = f"{amrita_str} (అమృత ఘడియలు)"
             best_window_label = "అమృత కాలం"
+            window_start_jd = jd_amrita_start
+            window_end_jd = jd_amrita_end
             jd_window_mid = (jd_amrita_start + jd_amrita_end) / 2.0
+            is_abhijit = False
 
         # Calculate exact Muhurta Lagna & Ashtama Shuddhi at window midpoint
         lagna_raw, _ = calculate_lagna_and_houses(jd_window_mid, lat, lon, ayanamsa_name="lahiri")
@@ -912,6 +1012,44 @@ def find_best_muhurtams(
             lagna_nature_te = "ద్విస్వభావ లగ్నం (Dual - అనుకూలం)"
         else:
             lagna_nature_te = "చర లగ్నం (Movable)"
+
+        # Calculate exact Lagna Start & End JD, and Pushkara Navamsha JD
+        jd_lagna_start, jd_lagna_end, jd_pushkara = find_lagna_boundaries_and_pushkara(
+            jd_window_mid, lagna_rashi_idx, lat, lon
+        )
+        lagna_start_str = jd_to_time_str(jd_lagna_start, tz_offset)
+        lagna_end_str = jd_to_time_str(jd_lagna_end, tz_offset)
+        lagna_span_str = f"{lagna_start_str} - {lagna_end_str}"
+        pushkara_time_str = jd_to_time_str(jd_pushkara, tz_offset)
+
+        dur_min = int(round((jd_lagna_end - jd_lagna_start) * 24 * 60))
+        dur_h, dur_m = divmod(dur_min, 60)
+        lagna_duration_desc = f"{lagna_start_str} నుండి {lagna_end_str} వరకు ({dur_h} గం. {dur_m} ని.)"
+
+        # Effective Auspicious Window: Overlap of Lagna duration and Auspicious period
+        eff_start_jd = max(window_start_jd, jd_lagna_start)
+        eff_end_jd = min(window_end_jd, jd_lagna_end)
+        if eff_start_jd < eff_end_jd:
+            exact_window_str = f"{jd_to_time_str(eff_start_jd, tz_offset)} నుండి {jd_to_time_str(eff_end_jd, tz_offset)} వరకు"
+        else:
+            exact_window_str = f"{jd_to_time_str(window_start_jd, tz_offset)} నుండి {jd_to_time_str(window_end_jd, tz_offset)} వరకు"
+
+        # Exact Su-Muhurta Moment (కచ్చితమైన సుముహూర్త సమయం):
+        if eff_start_jd <= jd_pushkara <= eff_end_jd:
+            peak_jd = jd_pushkara
+            peak_basis = "పుష్కరాంశ సుముహూర్తం (Pushkara Navamsha)"
+        elif is_abhijit:
+            peak_jd = day_windows["noon_jd"]
+            peak_basis = "మధ్యాహ్న అభిజిత్ సుముహూర్తం"
+        elif jd_lagna_start <= jd_pushkara <= jd_lagna_end:
+            peak_jd = jd_pushkara
+            peak_basis = "లగ్న పుష్కరాంశ సుముహూర్తం"
+        else:
+            peak_jd = (eff_start_jd + eff_end_jd) / 2.0 if eff_start_jd < eff_end_jd else jd_window_mid
+            peak_basis = "ప్రశస్త లగ్న సంధి సుముహూర్తం"
+
+        exact_muhurta_time = jd_to_time_str(peak_jd, tz_offset)
+        peak_moment_label = RITUAL_PEAK_LABELS.get(event_type, "ప్రధాన సుముహూర్త క్షణం")
 
         # Ashtama Shuddhi check (8th house from Muhurta Lagna must be clean of malefics)
         ashtama_rashi_idx = (lagna_rashi_idx + 7) % 12
@@ -938,6 +1076,11 @@ def find_best_muhurtams(
             "rashi_name_te": lagna_name_te,
             "nature_te": lagna_nature_te,
             "degree_formatted": lagna_deg_str,
+            "start_time": lagna_start_str,
+            "end_time": lagna_end_str,
+            "lagna_window": lagna_span_str,
+            "duration_str": lagna_duration_desc,
+            "pushkara_amsha_time": pushkara_time_str,
             "has_ashtama_shuddhi": has_ashtama_shuddhi,
             "ashtama_shuddhi_desc": ashtama_shuddhi_desc,
             "ashtama_shuddhi_badge": ashtama_shuddhi_badge
@@ -962,6 +1105,12 @@ def find_best_muhurtams(
             "score": score,
             "badge": badge,
             "classification": classification,
+            "exact_muhurta_time": exact_muhurta_time,
+            "exact_window": exact_window_str,
+            "peak_moment_label": peak_moment_label,
+            "peak_basis": peak_basis,
+            "pushkara_amsha": pushkara_time_str,
+            "lagna_window": lagna_span_str,
             "best_window": best_window_str,
             "best_window_label": best_window_label,
             "muhurta_lagna": muhurta_lagna_data,

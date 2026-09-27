@@ -4314,14 +4314,46 @@ function renderMuhurtamResults(data) {
             </div>
           </div>
 
-          <!-- Highlighted Best Window -->
-          <div style="background: linear-gradient(135deg, #FFFDF0, #FFF8E1); border: 2px dashed #FFB300; border-radius: 8px; padding: 12px 16px; margin-bottom: 14px; display: flex; align-items: center; gap: 12px;">
-            <span style="font-size: 2rem;">🌟</span>
-            <div>
-              <div style="font-size: 0.85rem; color: #996515; font-weight: 700; text-transform: uppercase;">
-                ${m.best_window_label || 'ప్రశస్త ముహూర్త సమయం (Optimal Window)'}
+          <!-- Grand Exact Auspicious Muhurta Time (కచ్చితమైన సుముహూర్త సమయం) -->
+          <div style="background: linear-gradient(135deg, #FFFDE7, #FFF9C4); border: 2.5px solid #F57F17; border-radius: 10px; padding: 14px 18px; margin-bottom: 14px; box-shadow: 0 4px 14px rgba(245, 127, 23, 0.2); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <span style="font-size: 2.5rem; line-height: 1;">⏰</span>
+              <div>
+                <div style="font-size: 0.88rem; color: #B71C1C; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">
+                  ${m.peak_moment_label || 'కచ్చితమైన సుముహూర్త సమయం (Exact Auspicious Moment)'}
+                </div>
+                <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin: 2px 0;">
+                  <span style="font-size: 1.95rem; font-weight: 900; color: #780016; letter-spacing: -0.5px;">
+                    ${m.exact_muhurta_time || m.best_window}
+                  </span>
+                  ${m.peak_basis ? `
+                    <span style="background: #E8F5E9; color: #1B5E20; border: 1px solid #A5D6A7; padding: 2px 10px; border-radius: 12px; font-size: 0.82rem; font-weight: 700;">
+                      ✓ ${m.peak_basis}
+                    </span>
+                  ` : ''}
+                </div>
+                <div style="font-size: 0.9rem; color: #4E342E; font-weight: 600;">
+                  ${m.exact_window ? `<span>శుభ కాల వ్యవధి: <strong style="color: #780016;">${m.exact_window}</strong></span>` : ''}
+                  ${m.muhurta_lagna ? ` | <span>🏛️ లగ్నం: <strong>${m.muhurta_lagna.rashi_name_te}</strong> (${m.muhurta_lagna.lagna_window || m.lagna_window})</span>` : ''}
+                  ${m.pushkara_amsha ? ` | <span>🌟 పుష్కరాంశ: <strong style="color: #1B5E20;">${m.pushkara_amsha}</strong></span>` : ''}
+                </div>
               </div>
-              <div style="font-size: 1.3rem; font-weight: 800; color: #B71C1C;">
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 0.82rem; color: #2E7D32; font-weight: 700; background: #C8E6C9; padding: 4px 12px; border-radius: 14px; display: inline-block;">
+                సుముహూర్త నిర్ణయం సిద్ధించినది ✓
+              </div>
+            </div>
+          </div>
+
+          <!-- Highlighted Best Window & Amrita Kalam -->
+          <div style="background: linear-gradient(135deg, #FFFDF0, #FFF8E1); border: 1.5px dashed #FFB300; border-radius: 8px; padding: 10px 16px; margin-bottom: 14px; display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 1.8rem;">🌟</span>
+            <div>
+              <div style="font-size: 0.82rem; color: #996515; font-weight: 700; text-transform: uppercase;">
+                ${m.best_window_label || 'ప్రశస్త ముహూర్త కాలం (Auspicious Window)'}
+              </div>
+              <div style="font-size: 1.15rem; font-weight: 800; color: #B71C1C;">
                 ${m.best_window}
               </div>
             </div>
@@ -4334,13 +4366,17 @@ function renderMuhurtamResults(data) {
                 <span style="font-size: 1.8rem;">🏛️</span>
                 <div>
                   <div style="font-size: 0.82rem; color: #2E7D32; font-weight: 700; text-transform: uppercase;">
-                    ముహూర్త లగ్నం & స్వభావం (Muhurta Lagna)
+                    ముహూర్త లగ్నం & కాల వ్యవధి (Muhurta Lagna & Duration)
                   </div>
                   <div style="font-size: 1.15rem; font-weight: 800; color: #1B5E20;">
                     ${m.muhurta_lagna.rashi_name_te} (${m.muhurta_lagna.degree_formatted})
                     <span style="font-size: 0.82rem; font-weight: 700; color: #2E7D32; background: #C8E6C9; padding: 2px 8px; border-radius: 12px; margin-left: 6px;">
                       ${m.muhurta_lagna.nature_te}
                     </span>
+                  </div>
+                  <div style="font-size: 0.88rem; color: #33691E; margin-top: 2px;">
+                    ⏱️ లగ్న సమయం: <strong>${m.muhurta_lagna.duration_str || m.muhurta_lagna.lagna_window}</strong>
+                    ${m.muhurta_lagna.pushkara_amsha_time ? ` | 🌟 పుష్కరాంశ ఘడియ: <strong>${m.muhurta_lagna.pushkara_amsha_time}</strong>` : ''}
                   </div>
                 </div>
               </div>
@@ -4555,12 +4591,18 @@ window.printMuhurtaPatrika = function() {
         <span style="font-weight: 800; font-size: 1.15rem; color: #780016;">శుభ ముహూర్తం #${idx + 1}: ${m.formatted_date} (${m.weekday_te})</span>
         <span style="font-weight: 700; color: #1B5E20; font-size: 1rem;">${m.classification} (స్కోరు: ${m.score})</span>
       </div>
-      <div style="background: #FFF8E1; border: 1px solid #FFE082; padding: 8px 12px; border-radius: 6px; margin-bottom: 10px; font-size: 1.05rem;">
-        <strong style="color: #B71C1C;">🌟 ప్రశస్త ముహూర్త సమయం:</strong> <span style="font-size: 1.15rem; font-weight: 800; color: #4A0E17;">${m.best_window}</span>
+      <div style="background: #FFF8E1; border: 1.5px solid #FFB300; padding: 10px 14px; border-radius: 6px; margin-bottom: 10px;">
+        <div style="font-size: 1.15rem; font-weight: 800; color: #780016; margin-bottom: 4px;">
+          ⏰ కచ్చితమైన సుముహూర్తం: <span style="font-size: 1.4rem; color: #B71C1C;">${m.exact_muhurta_time || m.best_window}</span> (${m.peak_moment_label || 'ప్రధాన సమయం'})
+        </div>
+        <div style="font-size: 0.95rem; color: #4E342E;">
+          <strong>ప్రశస్త వ్యవధి:</strong> ${m.exact_window || m.best_window} | <strong>ముహూర్త లగ్నం:</strong> ${m.muhurta_lagna ? `${m.muhurta_lagna.rashi_name_te} (${m.muhurta_lagna.duration_str || m.lagna_window})` : ''}
+          ${m.pushkara_amsha ? ` | <strong>పుష్కరాంశ క్షణం:</strong> ${m.pushkara_amsha}` : ''}
+        </div>
       </div>
       ${m.muhurta_lagna ? `
         <div style="font-size: 0.95rem; margin-bottom: 8px; color: #1B5E20;">
-          <strong>🏛️ ముహూర్త లగ్నం:</strong> ${m.muhurta_lagna.rashi_name_te} (${m.muhurta_lagna.degree_formatted}) — ${m.muhurta_lagna.nature_te} | <strong>అష్టమ శుద్ధి:</strong> ${m.muhurta_lagna.ashtama_shuddhi_desc}
+          <strong>🏛️ లగ్న స్వభావం & అష్టమ శుద్ధి:</strong> ${m.muhurta_lagna.rashi_name_te} (${m.muhurta_lagna.degree_formatted}) — ${m.muhurta_lagna.nature_te} | <strong>అష్టమ శుద్ధి:</strong> ${m.muhurta_lagna.ashtama_shuddhi_desc}
         </div>
       ` : ''}
       <table style="width: 100%; border-collapse: collapse; font-size: 0.92rem; margin-bottom: 8px;">
@@ -4642,9 +4684,13 @@ window.copyMuhurtaToWhatsApp = function() {
   data.top_muhurtams.slice(0, 3).forEach((m, idx) => {
     text += `*ముహూర్తం #${idx + 1}* (${m.classification}):\n`;
     text += `📅 తేది: *${m.formatted_date} (${m.weekday_te})*\n`;
-    text += `⏰ ప్రశస్త సమయం: *${m.best_window}*\n`;
+    text += `⏰ కచ్చితమైన సుముహూర్తం: *${m.exact_muhurta_time || m.best_window}* (${m.peak_moment_label || 'ప్రధాన సమయం'})\n`;
+    text += `⏱️ శుభ కాల వ్యవధి: ${m.exact_window || m.best_window}\n`;
     if (m.muhurta_lagna) {
-      text += `🏛️ లగ్నం: *${m.muhurta_lagna.rashi_name_te}* (${m.muhurta_lagna.nature_te})\n`;
+      text += `🏛️ లగ్నం: *${m.muhurta_lagna.rashi_name_te}* (${m.muhurta_lagna.duration_str || m.lagna_window} - ${m.muhurta_lagna.nature_te})\n`;
+    }
+    if (m.pushkara_amsha) {
+      text += `🌟 పుష్కరాంశ క్షణం: *${m.pushkara_amsha}*\n`;
     }
     text += `📜 తిథి: ${m.tithi} | నక్షత్రం: ${m.nakshatra}\n`;
     text += `✨ అమృత ఘడియలు: ${m.amrita_kalam}\n`;
